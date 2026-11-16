@@ -7,15 +7,24 @@ Blender se télécharge gratuitement depuis le site officiel, blender.org. Vous 
 Deux formats d'installation existent. L'**installeur** classique (`.msi`) intègre Blender au système comme n'importe quel logiciel, avec un raccourci dans le menu Démarrer. La version **portable** (`.zip`) ne s'installe pas : on la décompresse dans un dossier et on lance l'exécutable directement. Cette seconde option est précieuse lorsqu'on ne dispose pas des droits administrateur, ou pour transporter Blender sur une clé USB.
 
 ### Premier lancement et fichier de démarrage
-Au premier démarrage, un écran d'accueil (*splash screen*) propose quelques réglages rapides. Une fois passé, vous arrivez sur le **fichier de démarrage** par défaut, qui contient systématiquement trois éléments : un cube, une caméra et une lampe. Ce fichier sert de point de départ neuf à chaque nouveau projet ; vous pourrez plus tard le personnaliser pour qu'il corresponde à vos habitudes.
+Au premier démarrage, un écran d'accueil (*splash screen*) propose quelques réglages rapides : langue, raccourcis clavier, thème. Aux lancements suivants, il donne accès aux modèles de nouveau fichier et aux fichiers récents. Une fois l'écran fermé, vous arrivez sur le **fichier de démarrage** par défaut, qui contient systématiquement trois éléments : un cube, une caméra et une lampe. Ce fichier sert de point de départ neuf à chaque nouveau projet ; vous pourrez plus tard le personnaliser pour qu'il corresponde à vos habitudes.
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/splash_screen_blender.jpg"
+caption: "Figure 1.1 : L'écran d'accueil de Blender 5.2 : modèles de nouveau fichier à gauche, fichiers récents à droite (masqués sur cette capture)."
+title: "L'écran d'accueil"
+---
+La capture montre l'écran d'accueil tel qu'il apparaît aux lancements suivants. La colonne New File crée un fichier à partir d'un modèle : General correspond au fichier de démarrage décrit ci-dessus. La colonne Recent Files rouvre vos derniers fichiers, et Recover Last Session récupère la session précédente après un arrêt imprévu. Un clic en dehors de l'écran le referme.
+```
 
 ### Configurer les préférences essentielles
 Les préférences s'ouvrent via le menu *Edit > Preferences*. Trois réglages méritent votre attention dès le départ. Dans l'onglet **Interface**, vous pouvez choisir la **langue** de l'affichage. Dans l'onglet **System**, à la rubrique *Cycles Render Devices*, vous sélectionnez le **backend GPU** correspondant à votre carte graphique — CUDA ou OptiX pour une carte NVIDIA, HIP pour une carte AMD, oneAPI pour une puce Intel — puis vous cochez votre carte. Enfin, l'onglet **Add-ons** permet d'activer des extensions fournies avec Blender. Les préférences sont enregistrées automatiquement.
 
 ```side-by-side
 layout: "textLeft"
-imagePath: "assets/images/placeholder_preferences_system_gpu_blender.jpg"
-caption: "Figure 1.1 : L'onglet System des préférences, avec la sélection du backend GPU pour Cycles."
+imagePath: "assets/images/preferences_system_gpu_blender.jpg"
+caption: "Figure 1.2 : L'onglet System des préférences, avec la sélection du backend GPU pour Cycles."
 title: "Activer le GPU pour le rendu"
 ---
 La capture montre la rubrique Cycles Render Devices dans l'onglet System. On y choisit d'abord le backend adapté à sa carte graphique, puis on coche la carte dans la liste. Sans cette étape, Cycles calcule sur le processeur, bien plus lentement : c'est l'un des tout premiers réglages à effectuer.
@@ -49,7 +58,7 @@ Chaque éditeur possède un **en-tête** (*header*), une barre regroupant ses me
 
 ```side-by-side
 layout: "textRight"
-imagePath: "assets/images/placeholder_editor_type_selector_blender.jpg"
+imagePath: "assets/images/editor_type_selector_blender.jpg"
 caption: "Figure 2.1 : Le sélecteur de type d'éditeur, en haut à gauche de l'en-tête d'une zone."
 title: "Changer le type d'un éditeur"
 ---
@@ -61,6 +70,8 @@ Les zones se réorganisent à la souris. Pour **redimensionner**, glissez la bor
 
 ### Les workspaces
 Plutôt que de tout reconfigurer manuellement, Blender propose des **workspaces** : des dispositions d'éditeurs préréglées pour chaque grande tâche. Ce sont les onglets alignés tout en haut de la fenêtre — Layout, Modeling, Sculpting, Shading, et ainsi de suite. Passer de l'un à l'autre est instantané et ne change rien à la scène : seul l'agencement de l'écran évolue. Vous en avez déjà utilisé plusieurs dans cette formation, comme Shading et UV Editing.
+
+![Figure 2.2 : Les onglets de workspaces, en haut de la fenêtre, avec Layout actif.](assets/images/workspaces_tabs_blender.jpg)
 
 > [!NOTE]
 > Un workspace n'est qu'un **agencement d'éditeurs**, pas un fichier ni une scène séparée. Quand vous passez de Layout à Shading, vous travaillez toujours sur les mêmes objets : vous changez simplement la disposition des outils affichés à l'écran. Rien n'est perdu en basculant d'un workspace à l'autre.
@@ -84,7 +95,7 @@ explanation: "Un **workspace** est une simple disposition d'éditeurs prérégl�
 
 ```side-by-side
 layout: "textLeft"
-imagePath: "assets/images/placeholder_properties_editor_tabs_blender.jpg"
+imagePath: "assets/images/properties_editor_tabs_blender.jpg"
 caption: "Figure 3.1 : La colonne d'onglets de l'éditeur de propriétés (Render, Output, Object, Material…)."
 title: "Les onglets des propriétés"
 ---
@@ -99,7 +110,7 @@ En haut à droite, l'**Outliner** affiche l'arborescence complète de la scène 
 
 ```side-by-side
 layout: "textRight"
-imagePath: "assets/images/placeholder_outliner_hierarchy_blender.jpg"
+imagePath: "assets/images/outliner_hierarchy_blender.jpg"
 caption: "Figure 3.2 : L'Outliner et son arborescence de collections, objets et données."
 title: "L'Outliner, plan de la scène"
 ---
@@ -134,7 +145,7 @@ Pour celles et ceux qui ne disposent pas d'une souris à trois boutons, un **giz
 
 ```side-by-side
 layout: "textLeft"
-imagePath: "assets/images/placeholder_navigation_gizmo_blender.jpg"
+imagePath: "assets/images/navigation_gizmo_blender.jpg"
 caption: "Figure 4.1 : Le gizmo de navigation en haut à droite de la vue 3D."
 title: "Le gizmo de navigation"
 ---
@@ -154,6 +165,15 @@ Ces raccourcis font gagner un temps considérable dès qu'on cherche à se posit
 ### Perspective, orthographique et modes d'affichage
 La touche `5` du pavé numérique bascule entre deux projections. La vue **perspective** imite l'œil humain : les lignes parallèles convergent au loin, ce qui donne une impression de profondeur. La vue **orthographique** conserve les lignes parallèles, sans déformation de distance, ce qui est idéal pour aligner des objets avec précision. Enfin, le coin supérieur droit de la vue propose quatre **modes d'affichage** — *Wireframe* (fil de fer), *Solid* (volumes mats), *Material Preview* (aperçu des matériaux) et *Rendered* (rendu réel du moteur) — que vous retrouverez et exploiterez pleinement au chapitre 4, consacré au rendu avec EEVEE.
 
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/shading_modes_buttons_blender.jpg"
+caption: "Figure 4.2 : Les quatre boutons de mode d'affichage, en haut à droite de la vue 3D, avec le mode Solid actif."
+title: "Les modes d'affichage"
+---
+La capture montre le coin supérieur droit de la vue 3D. Les quatre boutons ronds, côte à côte, choisissent le mode d'affichage : Wireframe, Solid (actif par défaut), Material Preview et Rendered. La petite flèche à leur droite ouvre les options du mode actif. Juste en dessous, vous retrouvez le gizmo de navigation.
+```
+
 ```resource
 title: "Mémo de navigation et raccourcis"
 description: "Fiche de référence récapitulant les gestes de navigation et les raccourcis du pavé numérique, à garder sous la main pendant vos premières heures de pratique."
@@ -163,6 +183,8 @@ downloadUrl: "https://example.com/files/memo-navigation-blender"
 
 > [!TIP]
 > Sur un ordinateur portable dépourvu de pavé numérique ou de souris à trois boutons, activez les options *Emulate Numpad* et *Emulate 3 Button Mouse* dans les préférences (onglet *Input*). La première redirige les chiffres de la rangée principale vers les vues prédéfinies, la seconde remplace le bouton du milieu par une combinaison de touches. Indispensable pour travailler confortablement sur portable.
+
+![Figure 4.3 : L'onglet Input des préférences, avec les options Emulate Numpad et Emulate 3 Button Mouse, désactivées par défaut.](assets/images/preferences_input_emulate_blender.jpg)
 
 ```quiz
 question: "Quelle touche du pavé numérique permet de basculer entre vue perspective et vue orthographique ?"

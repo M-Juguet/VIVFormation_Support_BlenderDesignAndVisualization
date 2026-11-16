@@ -22,7 +22,15 @@ const List<ContentModule> basics101Modules = [
   TextModule(
     id: 'basics101_sec1_txt3',
     title: 'Premier lancement et fichier de démarrage',
-    content: 'Au premier démarrage, un écran d\'accueil (*splash screen*) propose quelques réglages rapides. Une fois passé, vous arrivez sur le **fichier de démarrage** par défaut, qui contient systématiquement trois éléments : un cube, une caméra et une lampe. Ce fichier sert de point de départ neuf à chaque nouveau projet ; vous pourrez plus tard le personnaliser pour qu\'il corresponde à vos habitudes.',
+    content: 'Au premier démarrage, un écran d\'accueil (*splash screen*) propose quelques réglages rapides : langue, raccourcis clavier, thème. Aux lancements suivants, il donne accès aux modèles de nouveau fichier et aux fichiers récents. Une fois l\'écran fermé, vous arrivez sur le **fichier de démarrage** par défaut, qui contient systématiquement trois éléments : un cube, une caméra et une lampe. Ce fichier sert de point de départ neuf à chaque nouveau projet ; vous pourrez plus tard le personnaliser pour qu\'il corresponde à vos habitudes.',
+  ),
+  SideBySideModule(
+    id: 'basics101_sec1_side2',
+    title: 'L\'écran d\'accueil',
+    content: 'La capture montre l\'écran d\'accueil tel qu\'il apparaît aux lancements suivants. La colonne New File crée un fichier à partir d\'un modèle : General correspond au fichier de démarrage décrit ci-dessus. La colonne Recent Files rouvre vos derniers fichiers, et Recover Last Session récupère la session précédente après un arrêt imprévu. Un clic en dehors de l\'écran le referme.',
+    imagePath: 'assets/images/splash_screen_blender.jpg',
+    caption: 'Figure 1.1 : L\'écran d\'accueil de Blender 5.2 : modèles de nouveau fichier à gauche, fichiers récents à droite (masqués sur cette capture).',
+    layout: ContentLayout.textRight,
   ),
   TextModule(
     id: 'basics101_sec1_txt4',
@@ -34,7 +42,7 @@ const List<ContentModule> basics101Modules = [
     title: 'Activer le GPU pour le rendu',
     content: 'La capture montre la rubrique Cycles Render Devices dans l\'onglet System. On y choisit d\'abord le backend adapté à sa carte graphique, puis on coche la carte dans la liste. Sans cette étape, Cycles calcule sur le processeur, bien plus lentement : c\'est l\'un des tout premiers réglages à effectuer.',
     imagePath: 'assets/images/preferences_system_gpu_blender.jpg',
-    caption: 'Figure 1.1 : L\'onglet System des préférences, avec la sélection du backend GPU pour Cycles.',
+    caption: 'Figure 1.2 : L\'onglet System des préférences, avec la sélection du backend GPU pour Cycles.',
     layout: ContentLayout.textLeft,
   ),
   InfoModule(
@@ -90,6 +98,11 @@ const List<ContentModule> basics101Modules = [
     id: 'basics101_sec2_txt4',
     title: 'Les workspaces',
     content: 'Plutôt que de tout reconfigurer manuellement, Blender propose des **workspaces** : des dispositions d\'éditeurs préréglées pour chaque grande tâche. Ce sont les onglets alignés tout en haut de la fenêtre — Layout, Modeling, Sculpting, Shading, et ainsi de suite. Passer de l\'un à l\'autre est instantané et ne change rien à la scène : seul l\'agencement de l\'écran évolue. Vous en avez déjà utilisé plusieurs dans cette formation, comme Shading et UV Editing.',
+  ),
+  FullMediaModule(
+    id: 'basics101_sec2_media1',
+    imagePath: 'assets/images/workspaces_tabs_blender.jpg',
+    caption: 'Figure 2.2 : Les onglets de workspaces, en haut de la fenêtre, avec Layout actif.',
   ),
   InfoModule(
     id: 'basics101_sec2_info1',
@@ -197,6 +210,14 @@ const List<ContentModule> basics101Modules = [
     title: 'Perspective, orthographique et modes d\'affichage',
     content: 'La touche `5` du pavé numérique bascule entre deux projections. La vue **perspective** imite l\'œil humain : les lignes parallèles convergent au loin, ce qui donne une impression de profondeur. La vue **orthographique** conserve les lignes parallèles, sans déformation de distance, ce qui est idéal pour aligner des objets avec précision. Enfin, le coin supérieur droit de la vue propose quatre **modes d\'affichage** — *Wireframe* (fil de fer), *Solid* (volumes mats), *Material Preview* (aperçu des matériaux) et *Rendered* (rendu réel du moteur) — que vous retrouverez et exploiterez pleinement au chapitre 4, consacré au rendu avec EEVEE.',
   ),
+  SideBySideModule(
+    id: 'basics101_sec4_side2',
+    title: 'Les modes d\'affichage',
+    content: 'La capture montre le coin supérieur droit de la vue 3D. Les quatre boutons ronds, côte à côte, choisissent le mode d\'affichage : Wireframe, Solid (actif par défaut), Material Preview et Rendered. La petite flèche à leur droite ouvre les options du mode actif. Juste en dessous, vous retrouvez le gizmo de navigation.',
+    imagePath: 'assets/images/shading_modes_buttons_blender.jpg',
+    caption: 'Figure 4.2 : Les quatre boutons de mode d\'affichage, en haut à droite de la vue 3D, avec le mode Solid actif.',
+    layout: ContentLayout.textRight,
+  ),
   ResourceModule(
     id: 'basics101_sec4_res1',
     title: 'Mémo de navigation et raccourcis',
@@ -208,6 +229,11 @@ const List<ContentModule> basics101Modules = [
     id: 'basics101_sec4_info1',
     type: InfoType.tip,
     text: 'Sur un ordinateur portable dépourvu de pavé numérique ou de souris à trois boutons, activez les options *Emulate Numpad* et *Emulate 3 Button Mouse* dans les préférences (onglet *Input*). La première redirige les chiffres de la rangée principale vers les vues prédéfinies, la seconde remplace le bouton du milieu par une combinaison de touches. Indispensable pour travailler confortablement sur portable.',
+  ),
+  FullMediaModule(
+    id: 'basics101_sec4_media1',
+    imagePath: 'assets/images/preferences_input_emulate_blender.jpg',
+    caption: 'Figure 4.3 : L\'onglet Input des préférences, avec les options Emulate Numpad et Emulate 3 Button Mouse, désactivées par défaut.',
   ),
   QuizModule(
     id: 'basics101_sec4_quiz1',
@@ -237,6 +263,11 @@ const List<ContentModule> basics102Modules = [
     title: 'Sélectionner dans la vue 3D',
     content: 'Avant d\'agir sur un objet, il faut le sélectionner. Un **clic gauche** sélectionne l\'objet sous le curseur, qui devient alors l\'**objet actif**, signalé par un contour clair. Maintenir `Maj` en cliquant **ajoute ou retire** des objets de la sélection. Pour des sélections multiples rapides, la sélection rectangulaire (touche `B` ou simple glissé) et la sélection circulaire (`C`) sont précieuses. Enfin, `A` sélectionne tout, et `Alt + A` désélectionne tout.\n\nLa distinction entre **sélection** et **objet actif** est importante : on peut avoir plusieurs objets sélectionnés, mais un seul est actif (le dernier cliqué). Certaines opérations s\'appliquent à toute la sélection, d\'autres uniquement à l\'objet actif.',
   ),
+  FullMediaModule(
+    id: 'basics102_sec1_media1',
+    imagePath: 'assets/images/selection_active_object_blender.jpg',
+    caption: 'Figure 1.1 : Trois objets sélectionnés : le cube, objet actif, a un contour orange clair ; le cylindre et la sphère, simplement sélectionnés, un contour orange plus foncé.',
+  ),
   TextModule(
     id: 'basics102_sec1_txt2',
     title: 'Les trois transformations : déplacer, tourner, redimensionner',
@@ -245,9 +276,9 @@ const List<ContentModule> basics102Modules = [
   SideBySideModule(
     id: 'basics102_sec1_side1',
     title: 'Déplacer, tourner, redimensionner',
-    content: 'La capture illustre les trois transformations fondamentales. Une fois la touche pressée, l\'objet suit la souris, et un retour visuel indique la transformation en cours. Ce trio G/R/S, combiné aux contraintes d\'axe vues juste après, couvre l\'immense majorité des manipulations du quotidien.',
-    imagePath: 'assets/images/placeholder_grab_rotate_scale_blender.jpg',
-    caption: 'Figure 1.1 : Les trois transformations de base appliquées à un objet : déplacer (G), tourner (R), redimensionner (S).',
+    content: 'La capture montre le gizmo de l\'outil Transform, choisi dans la barre d\'outils de gauche : il réunit les trois transformations. Les flèches déplacent l\'objet, les arcs de cercle le font tourner et les petits cubes, au bout des segments courts, le redimensionnent, chacun selon un axe. Au clavier, G, R et S produisent les mêmes gestes, que l\'on contraint ensuite à un axe comme décrit ci-dessous.',
+    imagePath: 'assets/images/grab_rotate_scale_blender.jpg',
+    caption: 'Figure 1.2 : Le gizmo de l\'outil Transform sur un cube : flèches pour déplacer, arcs pour tourner, petits cubes pour redimensionner.',
     layout: ContentLayout.textLeft,
   ),
   TextModule(
@@ -312,9 +343,9 @@ const List<ContentModule> basics102Modules = [
   SideBySideModule(
     id: 'basics102_sec2_side2',
     title: 'Le panneau F9',
-    content: 'La capture montre le panneau ouvert après l\'ajout d\'une primitive, exposant ses paramètres modifiables (rayon, segments, emplacement). Tant qu\'aucune autre action n\'est effectuée, ces réglages restent ajustables : un excellent moyen d\'affiner sans refaire.',
+    content: 'La capture montre le panneau ouvert avec F9 après l\'ajout d\'une sphère UV : nombre de segments et d\'anneaux (Rings), rayon, puis emplacement et rotation. Tant qu\'aucune autre action n\'est effectuée, ces réglages restent ajustables : un excellent moyen d\'affiner sans refaire.',
     imagePath: 'assets/images/adjust_last_operation_f9_blender.jpg',
-    caption: 'Figure 2.2 : Le panneau Ajuster la dernière opération (F9) après l\'ajout d\'un objet.',
+    caption: 'Figure 2.2 : Le panneau Ajuster la dernière opération (F9) après l\'ajout d\'une sphère UV.',
     layout: ContentLayout.textLeft,
   ),
   InfoModule(
@@ -366,6 +397,14 @@ const List<ContentModule> basics102Modules = [
     title: 'Les données partagées',
     content: 'Conséquence directe : **plusieurs objets peuvent pointer vers les mêmes données**. C\'est précisément ce que produit la duplication liée (`Alt + D`). Modifier la géométrie partagée se répercute alors sur tous les objets concernés. Un compteur, affiché à côté du nom des données, indique combien d\'objets les utilisent ; cliquer dessus crée une copie indépendante (*single-user*) pour rompre le partage. Maîtriser cette mécanique évite l\'une des plus grandes confusions du débutant.',
   ),
+  SideBySideModule(
+    id: 'basics102_sec3_side2',
+    title: 'Le compteur d\'utilisateurs',
+    content: 'La capture montre une copie liée du cube, Cube.001, créée avec Alt + D et sélectionnée dans l\'Outliner. Dans l\'onglet des données du maillage, le chiffre 2, à droite du nom Cube, indique que deux objets utilisent ce maillage. Un clic sur ce chiffre crée une copie indépendante pour l\'objet actif.',
+    imagePath: 'assets/images/datablock_users_count_blender.jpg',
+    caption: 'Figure 3.2 : Le compteur d\'utilisateurs, à droite du nom des données : deux objets partagent le maillage Cube.',
+    layout: ContentLayout.textLeft,
+  ),
   InfoModule(
     id: 'basics102_sec3_info1',
     type: InfoType.warning,
@@ -392,6 +431,14 @@ const List<ContentModule> basics102Modules = [
     title: 'Les collections',
     content: 'À mesure qu\'une scène grossit, les **collections** permettent de la ranger, à la manière de dossiers ou de calques. On crée une collection, on y déplace des objets (touche `M`, ou par glissé dans l\'Outliner), et l\'on contrôle sa visibilité dans la vue comme dans le rendu. Une scène bien organisée en collections — par exemple « Décor », « Éclairage », « Sujet » — reste lisible et agréable à manipuler, même avec des dizaines d\'objets.',
   ),
+  SideBySideModule(
+    id: 'basics102_sec4_side2',
+    title: 'Ranger avec la touche M',
+    content: 'La capture montre le menu ouvert avec la touche M, la sphère sélectionnée. Il liste les collections de la scène, ici Collection, Décor et Éclairage. New Collection crée une nouvelle collection et y range aussitôt la sélection ; le champ Search filtre la liste quand les collections sont nombreuses.',
+    imagePath: 'assets/images/move_to_collection_menu_blender.jpg',
+    caption: 'Figure 4.1 : Le menu Move to Collection, ouvert avec la touche M.',
+    layout: ContentLayout.textRight,
+  ),
   TextModule(
     id: 'basics102_sec4_txt2',
     title: 'L\'hygiène de nommage',
@@ -412,7 +459,7 @@ const List<ContentModule> basics102Modules = [
     title: 'Sécuriser ses textures',
     content: 'La capture montre le menu External Data déroulé. L\'option Pack Resources intègre toutes les textures dans le fichier .blend, garantissant qu\'aucune image ne sera perdue lors d\'un transfert. C\'est le réflexe à adopter systématiquement avant d\'envoyer un projet contenant des matériaux texturés.',
     imagePath: 'assets/images/external_data_pack_blender.jpg',
-    caption: 'Figure 4.1 : Le menu File > External Data avec les options Pack Resources et Make Paths Relative.',
+    caption: 'Figure 4.2 : Le menu File > External Data avec les options Pack Resources et Make Paths Relative.',
     layout: ContentLayout.textLeft,
   ),
   ResourceModule(
@@ -458,7 +505,7 @@ const List<ContentModule> basics103Modules = [
   TextModule(
     id: 'basics103_sec1_txt1',
     title: 'L\'anatomie d\'un maillage',
-    content: 'Tout objet modélisé dans Blender est un **maillage** (*mesh*), constitué de trois éléments fondamentaux. Les **sommets** (*vertices*) sont des points dans l\'espace. Les **arêtes** (*edges*) sont les segments qui relient deux sommets. Les **faces** sont les surfaces délimitées par des arêtes, le plus souvent par trois ou quatre d\'entre elles. Modéliser, ce n\'est rien d\'autre que manipuler ces trois éléments — les déplacer, en ajouter, en supprimer — pour façonnage d\'une forme.',
+    content: 'Tout objet modélisé dans Blender est un **maillage** (*mesh*), constitué de trois éléments fondamentaux. Les **sommets** (*vertices*) sont des points dans l\'espace. Les **arêtes** (*edges*) sont les segments qui relient deux sommets. Les **faces** sont les surfaces délimitées par des arêtes, le plus souvent par trois ou quatre d\'entre elles. Modéliser, ce n\'est rien d\'autre que manipuler ces trois éléments — les déplacer, en ajouter, en supprimer — pour façonner une forme.',
   ),
   TextModule(
     id: 'basics103_sec1_txt2',
@@ -473,8 +520,8 @@ const List<ContentModule> basics103Modules = [
   SideBySideModule(
     id: 'basics103_sec1_side1',
     title: 'Sommets, arêtes, faces',
-    content: 'La capture montre les trois boutons de l\'en-tête. La touche `1` active la sélection par **sommets**, la `2` par **arêtes** et la `3` par **faces**. On passe de l\'un à l\'autre en permanence selon l\'opération : sélectionner une boucle d\'arêtes pour la biseauter, une face pour l\'extruder, un sommet pour l\'ajuster finement.',
-    imagePath: 'assets/images/placeholder_select_modes_blender.jpg',
+    content: 'La capture montre les trois boutons de l\'en-tête, à droite du sélecteur de mode. La touche `1` active la sélection par **sommets**, la `2` par **arêtes** et la `3` par **faces**. Ici, la sélection par faces est active et la face du dessus du cube est sélectionnée. On passe de l\'un à l\'autre en permanence selon l\'opération : sélectionner une boucle d\'arêtes pour la biseauter, une face pour l\'extruder, un sommet pour l\'ajuster finement.',
+    imagePath: 'assets/images/select_modes_blender.jpg',
     caption: 'Figure 1.1 : Les trois modes de sélection en Mode Édition — Sommets, Arêtes, Faces.',
     layout: ContentLayout.textRight,
   ),
@@ -524,9 +571,9 @@ const List<ContentModule> basics103Modules = [
   SideBySideModule(
     id: 'basics103_sec2_side1',
     title: 'L\'extrusion',
-    content: 'Sur la capture, une face sélectionnée est extrudée vers le haut : Blender crée de nouvelles arêtes reliant la face d\'origine à sa copie déplacée, formant un volume. Répéter cette opération dans différentes directions est la base de la construction d\'un objet complexe à partir d\'une simple primitive.',
-    imagePath: 'assets/images/placeholder_extrude_tool_blender.jpg',
-    caption: 'Figure 2.1 : Extrusion d\'une face pour créer un nouveau volume.',
+    content: 'Sur la capture, la face du dessus a été extrudée vers le haut : Blender crée de nouvelles arêtes reliant la face d\'origine à sa copie déplacée, formant un volume. L\'outil Extrude Region, actif dans la barre d\'outils, affiche aussi une poignée jaune marquée d\'un + : la tirer extrude à nouveau la face sélectionnée. Répéter cette opération dans différentes directions est la base de la construction d\'un objet complexe à partir d\'une simple primitive.',
+    imagePath: 'assets/images/extrude_tool_blender.jpg',
+    caption: 'Figure 2.1 : Extrusion de la face du dessus pour créer un nouveau volume, avec la poignée de l\'outil Extrude Region.',
     layout: ContentLayout.textLeft,
   ),
   TextModule(
@@ -538,6 +585,14 @@ const List<ContentModule> basics103Modules = [
     id: 'basics103_sec2_txt4',
     title: 'Loop Cut et Subdivide',
     content: 'Pour ajouter de la résolution là où on en a besoin, deux outils s\'imposent. Le **Loop Cut** (`Ctrl + R`) insère une boucle d\'arêtes continue tout autour du maillage, ce qui permet de le plier ou de le détailler à cet endroit précis. La **Subdivision** (*Subdivide*) découpe les faces sélectionnées en plusieurs, augmentant la densité localement.',
+  ),
+  SideBySideModule(
+    id: 'basics103_sec2_side2',
+    title: 'Une boucle tout autour',
+    content: 'La capture montre une boucle d\'arêtes, sélectionnée, qui fait le tour du volume en son milieu, telle que la crée un Loop Cut. L\'outil Loop Cut, actif dans la barre d\'outils, affiche un aperçu jaune de la boucle au survol d\'une arête, puis l\'insère au clic ; Ctrl + R fait de même au clavier.',
+    imagePath: 'assets/images/loop_cut_blender.jpg',
+    caption: 'Figure 2.2 : Une boucle d\'arêtes insérée tout autour du volume, telle que la crée Loop Cut.',
+    layout: ContentLayout.textRight,
   ),
   TextModule(
     id: 'basics103_sec2_txt5',
@@ -578,9 +633,9 @@ const List<ContentModule> basics103Modules = [
   SideBySideModule(
     id: 'basics103_sec3_side1',
     title: 'Le modificateur Subdivision Surface',
-    content: 'À gauche de l\'illustration, le maillage de base (une simple cage cubique) reste modifiable ; à droite, le modificateur Subdivision Surface l\'affiche lissé et arrondi. On sculpte la cage grossière, et le modificateur se charge du lissage en temps réel — l\'essence même de la modélisation non destructive.',
-    imagePath: 'assets/images/placeholder_subdivision_surface_blender.jpg',
-    caption: 'Figure 3.1 : Un cube avec un modificateur Subdivision Surface, lissé en forme arrondie.',
+    content: 'À gauche, un cube sans modificateur. À droite, le même cube avec un modificateur Subdivision Surface, en Mode Édition : la cage d\'origine, en traits noirs, reste modifiable, et le modificateur en affiche une version lissée et arrondie. On sculpte la cage grossière, et le modificateur se charge du lissage en temps réel : c\'est l\'essence même de la modélisation non destructive.',
+    imagePath: 'assets/images/subdivision_surface_blender.jpg',
+    caption: 'Figure 3.1 : Un cube seul (à gauche) et le même cube avec un modificateur Subdivision Surface (à droite), sa cage visible en Mode Édition.',
     layout: ContentLayout.textRight,
   ),
   TextModule(
@@ -592,6 +647,14 @@ const List<ContentModule> basics103Modules = [
     id: 'basics103_sec3_txt3',
     title: 'L\'ordre compte, et l\'application',
     content: 'Dans la pile, **l\'ordre des modificateurs change le résultat**. Un Mirror placé avant une Subdivision Surface ne produit pas le même effet que l\'inverse : chaque modificateur agit sur le résultat du précédent. On peut, à tout moment, activer ou désactiver leur affichage dans la vue. Et lorsqu\'on a besoin de figer l\'effet en véritable géométrie — pour l\'exporter ou continuer à l\'éditer manuellement — on **applique** le modificateur.',
+  ),
+  SideBySideModule(
+    id: 'basics103_sec3_side2',
+    title: 'Lire la pile',
+    content: 'La capture montre l\'onglet Modifiers, reconnaissable à sa clé à molette. Le Mirror, replié, est en haut de la pile : il est évalué en premier, puis la Subdivision Surface lisse le résultat. Les icônes de chaque en-tête règlent l\'affichage du modificateur en Mode Édition, dans la vue et au rendu ; la flèche voisine ouvre un menu qui contient notamment Apply.',
+    imagePath: 'assets/images/modifier_stack_blender.jpg',
+    caption: 'Figure 3.2 : Une pile de deux modificateurs dans l\'onglet Modifiers : Mirror, replié, puis Subdivision Surface.',
+    layout: ContentLayout.textLeft,
   ),
   InfoModule(
     id: 'basics103_sec3_info1',
@@ -617,7 +680,12 @@ const List<ContentModule> basics103Modules = [
   TextModule(
     id: 'basics103_sec4_txt1',
     title: 'Quads, triangles et n-gons',
-    content: 'Une face peut avoir un nombre variable de côtés. Une face à quatre côtés est un **quad**, à trois un **triangle** (*tri*), à pics ou plus un **n-gon**. La règle d\'or de la modélisation propre est de **privilégier les quads** : ils se subdivisent proprement, se déforment bien et se déplient plus facilement en UV. Les triangles et n-gons sont tolérables sur des surfaces planes, mais à éviter sur les zones courbes ou destinées à être lissées, où ils provoquent des artefacts.',
+    content: 'Une face peut avoir un nombre variable de côtés. Une face à quatre côtés est un **quad**, à trois un **triangle** (*tri*), à cinq ou plus un **n-gon**. La règle d\'or de la modélisation propre est de **privilégier les quads** : ils se subdivisent proprement, se déforment bien et se déplient plus facilement en UV. Les triangles et n-gons sont tolérables sur des surfaces planes, mais à éviter sur les zones courbes ou destinées à être lissées, où ils provoquent des artefacts.',
+  ),
+  FullMediaModule(
+    id: 'basics103_sec4_media1',
+    imagePath: 'assets/images/quads_tris_ngons_blender.jpg',
+    caption: 'Figure 4.1 : Trois faces vues de dessus en Mode Édition : un quad (4 côtés), un triangle (3 côtés) et un n-gon (7 côtés).',
   ),
   TextModule(
     id: 'basics103_sec4_txt2',
@@ -627,20 +695,28 @@ const List<ContentModule> basics103Modules = [
   TextModule(
     id: 'basics103_sec4_txt3',
     title: 'Les normales',
-    content: 'Chaque face possède une **normale** : un vecteur qui indique le côté vers lequel elle est orientée, son « extérieur ». Quand une normale est inversée (elle pointe vers l\'intérieur), la face réagit mal à la lumière et produit des erreurs de rendu — zones sombres, reflets incohérents. On corrige cela avec **Recalculate Outside** (`Maj + N`), qui réoriente toutes les normales vers l\'extérieur. L\'overlay *Face Orientation* aide à repérer le problème : les faces correctes apparaissent en bleu, les inversées en rouge.',
+    content: 'Chaque face possède une **normale** : un vecteur qui indique le côté vers lequel elle est orientée, son « extérieur ». Quand une normale est inversée (elle pointe vers l\'intérieur), la face réagit mal à la lumière et produit des erreurs de rendu — zones sombres, reflets incohérents. On corrige cela avec **Recalculate Outside** (`Maj + N`), qui réoriente toutes les normales vers l\'extérieur. L\'overlay *Face Orientation*, dans le menu *Overlays* de la vue 3D, aide à repérer le problème : les faces inversées apparaissent en rouge, les autres gardent leur aspect habituel.',
   ),
   SideBySideModule(
     id: 'basics103_sec4_side1',
     title: 'Vérifier les normales',
-    content: 'La capture montre un objet sous l\'overlay Face Orientation : les faces bleues sont correctement orientées vers l\'extérieur, les rouges ont leur normale inversée. Un simple `Maj + N` recalcule l\'ensemble vers l\'extérieur. Des normales saines sont indispensables à un shading correct, comme vous le verrez au chapitre 3 consacré aux matières.',
-    imagePath: 'assets/images/placeholder_face_orientation_blender.jpg',
-    caption: 'Figure 4.1 : L\'overlay Face Orientation — faces correctes en bleu, normales inversées en rouge.',
+    content: 'La capture montre un cylindre sous l\'overlay Face Orientation : le dessus et trois faces latérales, en rouge, ont leur normale inversée ; les autres faces, correctement orientées, gardent leur gris habituel. Un simple `Maj + N`, en Mode Édition, recalcule l\'ensemble vers l\'extérieur. Des normales saines sont indispensables à un shading correct, comme vous le verrez au chapitre 3 consacré aux matières.',
+    imagePath: 'assets/images/face_orientation_blender.jpg',
+    caption: 'Figure 4.2 : L\'overlay Face Orientation : les faces dont la normale est inversée apparaissent en rouge.',
     layout: ContentLayout.textLeft,
   ),
   TextModule(
     id: 'basics103_sec4_txt4',
     title: 'Le point d\'origine et l\'application des transformations',
     content: 'Deux notions d\'hygiène ferment ce chapitre. Le **point d\'origine** (le petit point orange de l\'objet) sert de référence à sa position, sa rotation et son échelle ; on peut le repositionner via *Object > Set Origin*. Surtout, il faut **appliquer les transformations** avec `Ctrl + A` — l\'échelle en particulier. Un objet dont l\'échelle n\'a pas été appliquée conserve une déformation cachée qui perturbe de nombreux outils en aval.',
+  ),
+  SideBySideModule(
+    id: 'basics103_sec4_side2',
+    title: 'Appliquer l\'échelle',
+    content: 'La capture montre le menu ouvert avec Ctrl + A sur un pavé dont l\'échelle vaut 1,6 × 1 × 0,5. Scale remet l\'échelle à 1,000 sans changer la forme ; All Transforms applique aussi la position et la rotation.',
+    imagePath: 'assets/images/apply_transform_menu_blender.jpg',
+    caption: 'Figure 4.3 : Le menu Apply, ouvert avec Ctrl + A en Mode Objet.',
+    layout: ContentLayout.textRight,
   ),
   TextModule(
     id: 'basics103_sec4_txt5',
@@ -677,7 +753,411 @@ const List<ContentModule> basics103Modules = [
 // Tant qu'une liste est vide, le chapitre s'affiche « en préparation ».
 // ---------------------------------------------------------------------------
 
-const List<ContentModule> chapter1Modules = [];
+const List<ContentModule> chapter1Modules = [
+  TitleModule(
+    id: 'ch1_title',
+    title: 'Environnement de travail et blocage de volumes',
+  ),
+
+  // --- Section 1 : environnement de travail ---------------------------------
+  TitleModule(
+    id: 'ch1_sec1_title',
+    title: '1. Un environnement adapté au design produit',
+  ),
+  InfoModule(
+    id: 'ch1_sec1_info1',
+    type: InfoType.info,
+    text: 'Ce chapitre part du principe que vous savez naviguer dans la vue 3D, sélectionner un objet et le transformer avec `G`, `R` et `S`. Si ces gestes ne vous sont pas encore familiers, les chapitres Basics 101 à 103 les reprennent pas à pas. Les captures et les libellés correspondent à Blender 5.2 LTS, avec l\'interface en anglais.',
+  ),
+  TextModule(
+    id: 'ch1_sec1_txt1',
+    title: 'Adapter Blender à votre façon de travailler',
+    content: 'Blender fonctionne très bien avec ses réglages d\'origine. Les options présentées dans cette section ne sont donc pas des passages obligés : elles rapprochent le logiciel de vos habitudes et de celles de votre équipe.\n\nGardez celles qui vous font gagner du temps et laissez les autres de côté. Vous pourrez y revenir le jour où un projet le demande.',
+  ),
+  TextModule(
+    id: 'ch1_sec1_txt2',
+    title: 'Choisir l\'unité d\'affichage',
+    content: 'Par défaut, Blender mesure tout en mètres, ce qui convient très bien à un véhicule entier ou à un aménagement intérieur. Si vos plans et vos cotes sont exprimés dans une autre unité, vous pouvez changer l\'unité d\'affichage dans l\'éditeur de propriétés, onglet *Scene*, rubrique *Units* : le champ *Length* propose notamment *Centimeters* et *Millimeters*.\n\nQuelle que soit l\'unité affichée, vous pouvez aussi la préciser en tapant une valeur dans un champ : `35mm`, `3.5cm` ou `1m 20mm` sont compris tels quels.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec1_side1',
+    title: 'Afficher les cotes dans votre unité',
+    content: 'La capture montre la rubrique Units de l\'onglet Scene. Seul le champ Length a changé : il passe de Meters à Millimeters. Unit Scale reste à 1,000, ce qui conserve l\'échelle réelle de la scène : un objet de 120 mm mesure toujours 0,12 m pour Blender.',
+    imagePath: 'assets/images/scene_units_blender.jpg',
+    caption: 'Figure 1.1 : La rubrique Units de l\'onglet Scene, avec la longueur affichée en millimètres.',
+    layout: ContentLayout.textLeft,
+  ),
+  InfoModule(
+    id: 'ch1_sec1_info2',
+    type: InfoType.warning,
+    text: 'Le champ *Unit Scale* change lui aussi les valeurs affichées, mais pas le comportement interne de la scène : les simulations physiques, par exemple, continuent de calculer en unités internes. Pour simplement afficher une autre unité, le champ *Length* suffit et *Unit Scale* peut rester à 1,000.',
+  ),
+  TextModule(
+    id: 'ch1_sec1_txt3',
+    title: 'Voir de près les petits objets',
+    content: 'Quand vous zoomez très près d\'un petit objet, une partie peut disparaître, comme coupée par un plan invisible. C\'est la distance minimale d\'affichage de la vue, *Clip Start*, réglée par défaut à 10 mm.\n\nSi cela vous gêne, vous pouvez la réduire dans la barre latérale (`N`), onglet *View*, par exemple à 1 mm. Mieux vaut ne pas descendre beaucoup plus bas : plus l\'écart avec *Clip End* est grand, moins l\'affichage de la profondeur est précis, et des surfaces proches peuvent se mettre à scintiller.',
+  ),
+  FullMediaModule(
+    id: 'ch1_sec1_media2',
+    imagePath: 'assets/images/clip_start_sidebar_blender.jpg',
+    caption: 'Figure 1.2 : L\'interrupteur de la lampe, 16 mm de diamètre, vu de très près : avec Clip Start réglé à 1 mm dans l\'onglet View de la barre latérale, il reste entièrement visible.',
+  ),
+  TextModule(
+    id: 'ch1_sec1_txt4',
+    title: 'Lire la forme dans la vue 3D',
+    content: 'Le mode d\'affichage *Solid*, celui par défaut, propose plusieurs options pour mieux lire les volumes. Elles se trouvent dans le menu *Viewport Shading*, ouvert par la petite flèche à droite des quatre boutons de mode d\'affichage, en haut à droite de la vue 3D :\n- *Lighting* : *Studio* éclaire les volumes comme en studio photo, *MatCap* (*material capture*, une image de matière qui simule éclairage et reflets) révèle les courbures, *Flat* supprime tout éclairage.\n- *Color* : *Random* donne une couleur différente à chaque objet, pratique pour distinguer des volumes qui se touchent.\n- *Cavity* : souligne les arêtes saillantes et les creux.\n- *Outline* : trace le contour de chaque objet.\nCes réglages ne changent que l\'affichage dans la vue : ils n\'ont aucun effet sur le rendu final.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec1_side2',
+    title: 'Des volumes faciles à distinguer',
+    content: 'La capture montre le menu ouvert à côté du blocage d\'une lampe. Avec la couleur Random, chaque volume se détache de ses voisins ; avec Cavity, les arêtes vives ressortent en clair. Regardez la jonction entre le socle et le bras : elle se lit d\'un coup d\'œil.',
+    imagePath: 'assets/images/solid_shading_options_blender.jpg',
+    caption: 'Figure 1.3 : Le menu Viewport Shading du mode Solid, avec la couleur Random et l\'option Cavity activées.',
+    layout: ContentLayout.textRight,
+  ),
+  TextModule(
+    id: 'ch1_sec1_txt5',
+    title: 'Travailler avec des images de référence',
+    content: 'Un croquis, une vue de face ou de profil, la photo d\'une maquette : une image de référence aide à respecter les proportions d\'un concept. Pour en placer une, passez dans une vue orthographique, par exemple la vue de face (`1` du pavé numérique), puis utilisez *Add > Image > Reference*, ou *Background* pour qu\'elle reste toujours derrière les objets. Vous pouvez aussi faire glisser l\'image depuis l\'Explorateur Windows dans la vue 3D.\n\nL\'image est portée par un objet *Empty*, un objet sans géométrie que vous déplacez et redimensionnez comme les autres. Dans son onglet *Object Data*, quelques réglages la rendent plus confortable : *Opacity* pour la rendre transparente, *Depth* pour l\'afficher devant ou derrière les objets, et *Show In* pour ne la montrer que dans les vues orthographiques.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec1_side3',
+    title: 'Caler le volume sur un croquis',
+    content: 'Le croquis est affiché en transparence derrière les volumes. Vous vérifiez d\'un coup d\'œil que la hauteur du bras et le diamètre du socle suivent le dessin. Une seconde image, placée dans la vue de côté, permet de caler le volume sur un deuxième axe.',
+    imagePath: 'assets/images/reference_image_blender.jpg',
+    caption: 'Figure 1.4 : Un croquis de face placé en image de référence derrière le blocage de la lampe, en vue orthographique.',
+    layout: ContentLayout.textLeft,
+  ),
+  SideBySideModule(
+    id: 'ch1_sec1_side4',
+    title: 'Régler l\'affichage de l\'image',
+    content: 'La capture montre l\'onglet Object Data du croquis de face. Opacity, à 0,5, rend l\'image transparente ; Depth sur Back la garde derrière les volumes. Avec Show In réglé sur Orthographic et Only Axis Aligned, le croquis ne s\'affiche qu\'en vue orthographique de face : il disparaît dès que vous tournez autour de l\'objet.',
+    imagePath: 'assets/images/reference_image_settings_blender.jpg',
+    caption: 'Figure 1.5 : Les réglages de l\'image de référence dans l\'onglet Object Data : opacité, profondeur et vues où elle s\'affiche.',
+    layout: ContentLayout.textRight,
+  ),
+  TextModule(
+    id: 'ch1_sec1_txt6',
+    title: 'Voir sous tous les angles avec la Quad View',
+    content: '`Ctrl + Alt + Q` divise la vue 3D en quatre : trois vues orthographiques (dessus, face et droite) et une vue en perspective. C\'est une mise en plan qui se met à jour en direct : chaque modification se lit simultanément sous tous les angles. Le même raccourci revient à une seule vue.',
+  ),
+  FullMediaModule(
+    id: 'ch1_sec1_media1',
+    imagePath: 'assets/images/quad_view_blender.jpg',
+    caption: 'Figure 1.6 : La Quad View : vues de dessus, de face et de droite en orthographique, et vue en perspective en haut à droite.',
+  ),
+  TextModule(
+    id: 'ch1_sec1_txt7',
+    title: 'Garder ses outils à portée : les Quick Favorites',
+    content: 'Certains outils et réglages reviennent sans cesse. Pour les garder sous la main, faites un clic droit sur un outil ou une entrée de menu, puis choisissez *Add to Quick Favorites*. La touche `Q` ouvre ensuite ce menu personnel à l\'endroit du curseur.\n\nVous pouvez y ranger, par exemple, la Quad View, l\'aimantation ou un mode d\'affichage que vous utilisez souvent.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec1_side5',
+    title: 'Un menu à votre main',
+    content: 'La touche Q ouvre le menu Quick Favorites à l\'endroit du curseur. Les trois entrées de la capture y ont été ajoutées par un clic droit, puis Add to Quick Favorites : Toggle Quad View depuis le menu View > Area, Snap depuis le bouton en forme d\'aimant de l\'en-tête, et Toggle X-Ray depuis le bouton placé à gauche des modes d\'affichage. Le menu rappelle à droite le raccourci de chaque entrée. Pour en retirer une, faites un clic droit dessus dans ce menu, puis Remove from Quick Favorites.',
+    imagePath: 'assets/images/quick_favorites_menu_blender.jpg',
+    caption: 'Figure 1.7 : Le menu Quick Favorites, ouvert avec la touche Q, avec trois commandes ajoutées par clic droit : Toggle Quad View, Snap et Toggle X-Ray.',
+    layout: ContentLayout.textLeft,
+  ),
+  TextModule(
+    id: 'ch1_sec1_txt8',
+    title: 'Ajuster la navigation',
+    content: 'L\'onglet *Navigation* des préférences (*Edit > Preferences*) contient trois options désactivées par défaut, qui changent nettement le confort de travail autour d\'un objet :\n- *Orbit Around Selection* : la vue tourne autour de la sélection plutôt qu\'autour du centre de l\'écran.\n- *Zoom to Mouse Position* : le zoom se dirige vers le curseur de la souris.\n- *Auto Depth*, la case *Depth* de la ligne *Auto* : la navigation s\'adapte à la profondeur de la surface pointée, utile pour tourner autour d\'un détail.\nTestez-les et gardez celles qui vous conviennent.',
+  ),
+  FullMediaModule(
+    id: 'ch1_sec1_media3',
+    imagePath: 'assets/images/preferences_navigation_blender.jpg',
+    caption: 'Figure 1.8 : L\'onglet Navigation des préférences : Orbit Around Selection, la case Depth de la ligne Auto et Zoom to Mouse Position sont désactivées par défaut.',
+  ),
+  TextModule(
+    id: 'ch1_sec1_txt9',
+    title: 'Enregistrer son fichier de démarrage',
+    content: 'Les préférences s\'enregistrent automatiquement, mais l\'unité, les options d\'affichage et la disposition des vues appartiennent au fichier ouvert. Pour retrouver votre environnement à chaque nouveau projet, réglez un fichier à votre goût, puis choisissez *File > Defaults > Save Startup File*.\n\nEn cas de besoin, *File > Defaults > Load Factory Settings* rétablit le fichier de démarrage et les préférences d\'origine.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec1_side6',
+    title: 'Le sous-menu Defaults',
+    content: 'Le sous-menu Defaults du menu File réunit les deux commandes. Save Startup File enregistre le fichier courant comme point de départ de chaque nouveau projet ; Load Factory Settings revient aux réglages d\'origine de Blender.',
+    imagePath: 'assets/images/file_defaults_menu_blender.jpg',
+    caption: 'Figure 1.9 : Le sous-menu File > Defaults, avec Save Startup File et Load Factory Settings.',
+    layout: ContentLayout.textRight,
+  ),
+  InfoModule(
+    id: 'ch1_sec1_info3',
+    type: InfoType.tip,
+    text: 'Dans une équipe, un fichier de démarrage commun garantit que tout le monde travaille avec la même unité et les mêmes repères. Les fichiers échangés s\'ouvrent alors avec les mêmes réglages chez chacun.',
+  ),
+  QuizModule(
+    id: 'ch1_sec1_quiz1',
+    question: 'Vos cotes sont en millimètres. Quel réglage permet de les afficher dans cette unité, sans rien changer au comportement interne de la scène ?',
+    options: [
+      'Passer Unit Scale à 0,001',
+      'Régler Length sur Millimeters dans la rubrique Units de l\'onglet Scene',
+      'Diviser toutes les dimensions des objets par 1000',
+      'Réduire Clip Start à 1 mm',
+    ],
+    correctIndices: [1],
+    explanation: 'Le champ **Length** de la rubrique *Units* change l\'unité d\'affichage et de saisie. *Unit Scale* agit aussi sur l\'affichage, mais introduit un écart avec les unités internes, que la physique, par exemple, ne prend pas en compte. *Clip Start* ne règle que la distance minimale d\'affichage de la vue.',
+  ),
+
+  // --- Section 2 : blocage de volumes ---------------------------------------
+  TitleModule(
+    id: 'ch1_sec2_title',
+    title: '2. Explorer un concept par blocage de volumes',
+  ),
+  TextModule(
+    id: 'ch1_sec2_txt1',
+    title: 'Le blocage, une maquette numérique rapide',
+    content: 'Le blocage de volumes, souvent appelé *greyboxing* (« boîte grise »), consiste à assembler des formes simples pour représenter un objet dans ses grandes masses. C\'est l\'équivalent numérique d\'une maquette en mousse : on y juge les proportions, la silhouette et l\'encombrement, sans s\'occuper des détails.\n\nSon intérêt est de pouvoir se tromper vite. Un volume mal proportionné se corrige en quelques secondes, une forme détaillée en plusieurs heures. Le blocage permet ainsi de comparer plusieurs pistes avant d\'investir du temps dans l\'une d\'elles.',
+  ),
+  TextModule(
+    id: 'ch1_sec2_txt2',
+    title: 'Une méthode en quatre temps',
+    content: 'Il n\'existe pas une seule bonne façon de bloquer un concept. Ces quatre étapes offrent un point de départ fiable, à adapter à votre objet :\n1. **Poser l\'encombrement** : un simple cube, aux cotes maximales de l\'objet, sert de gabarit.\n2. **Placer les grands volumes** : une primitive par masse principale (socle, bras, tête…), avec peu de segments.\n3. **Ajuster les proportions** : à la souris, ou en saisissant les cotes au chiffre près.\n4. **Lire la silhouette et itérer** : comparer, corriger, essayer une variante.\nLe blocage s\'arrête quand les proportions vous conviennent : le détail viendra au chapitre 2.',
+  ),
+  ResourceModule(
+    id: 'ch1_sec2_res1',
+    title: 'Fichier d\'exercice : blocage de la lampe de bureau',
+    description: 'Scène de départ du fil rouge, avec les croquis de face et de profil de la lampe et un exemple de blocage terminé, masqué, pour comparer votre travail.',
+    fileName: 'PRC02_ch1_blocage_lampe.blend (0.2 Mo)',
+    downloadUrl: 'https://example.com/files/prc02-ch1-blocage-lampe',
+  ),
+  TextModule(
+    id: 'ch1_sec2_txt3',
+    title: 'Partir des primitives',
+    content: 'Les primitives s\'ajoutent avec *Add > Mesh* (`Maj + A`) : cube, cylindre, sphère, cône… Juste après l\'ajout, le panneau *Ajuster la dernière opération*, en bas à gauche de la vue (rouvert avec `F9`), règle leurs paramètres : nombre de sommets (*Vertices*), rayon, profondeur.\n\nPour un blocage, peu de segments suffisent : un cylindre à 16 ou 24 sommets reste léger et se lit aussi bien qu\'un cylindre à 64. Nommer chaque volume dès sa création (double-clic dans l\'Outliner) vous fera gagner du temps au moment de comparer et de modifier.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec2_side3',
+    title: 'Le menu des primitives',
+    content: 'La capture montre le sous-menu Mesh du menu Add (Maj + A dans la vue 3D). Cube, Cylinder, UV Sphere et Cone suffisent à la plupart des blocages ; Plane et Circle servent de base aux formes plates.',
+    imagePath: 'assets/images/add_mesh_menu_blender.jpg',
+    caption: 'Figure 1.10 : Le sous-menu Mesh du menu Add, ouvert à côté du blocage de la lampe.',
+    layout: ContentLayout.textLeft,
+  ),
+  FullMediaModule(
+    id: 'ch1_sec2_media1',
+    imagePath: 'assets/images/greybox_lamp_blender.jpg',
+    caption: 'Figure 1.11 : Le blocage d\'une lampe de bureau : une primitive par volume, nommée dans l\'Outliner et affichée en couleur aléatoire.',
+  ),
+  TextModule(
+    id: 'ch1_sec2_txt4',
+    title: 'Donner les bonnes dimensions',
+    content: 'Pour obtenir une taille précise, la barre latérale (`N`), onglet *Item*, affiche le champ *Dimensions* : la taille réelle de l\'objet sur X, Y et Z. Vous pouvez y taper directement une cote, par exemple `180mm` pour le diamètre du socle. Blender ajuste alors l\'échelle (*Scale*) de l\'objet en conséquence.\n\nCette échelle gagne à être appliquée avant certaines opérations, comme le biseau : `Ctrl + A > Scale` la ramène à 1,000 sans changer la forme. Basics 103 explique pourquoi.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec2_side1',
+    title: 'Saisir une cote',
+    content: 'La capture montre le socle de la lampe sélectionné. Les champs Dimensions indiquent son diamètre et sa hauteur, tandis que les champs Scale montrent le facteur d\'échelle qui en découle. Taper une cote dans Dimensions est souvent plus parlant que de chercher le bon facteur d\'échelle.',
+    imagePath: 'assets/images/dimensions_sidebar_blender.jpg',
+    caption: 'Figure 1.12 : Le panneau Transform de la barre latérale : les champs Dimensions donnent la taille réelle de l\'objet sélectionné.',
+    layout: ContentLayout.textRight,
+  ),
+  TextModule(
+    id: 'ch1_sec2_txt5',
+    title: 'Isoler et masquer',
+    content: 'Quand les volumes se multiplient, quelques raccourcis aident à se concentrer :\n- `/` du pavé numérique bascule en **vue locale** : seuls les objets sélectionnés restent affichés ; le même raccourci ramène la vue complète.\n- `H` masque la sélection, `Maj + H` masque tout le reste, `Alt + H` réaffiche tout.\nCes commandes ne changent que l\'affichage dans la vue 3D : rien n\'est supprimé.',
+  ),
+  TextModule(
+    id: 'ch1_sec2_txt6',
+    title: 'Comparer des variantes',
+    content: 'Le blocage prend tout son sens quand on compare plusieurs pistes côte à côte. Rangez chaque proposition dans sa propre collection (les collections sont présentées dans Basics 102), par exemple « Variante A ».\n\nUn clic droit sur la collection dans l\'Outliner, puis *Duplicate Collection*, en crée une copie complète. Décalez-la sur le côté et modifiez-la librement : bras plus long, tête plus large, socle carré…',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec2_side4',
+    title: 'Dupliquer une variante',
+    content: 'La capture montre le menu ouvert par un clic droit sur la collection Variante A dans l\'Outliner. Duplicate Collection copie la collection avec tous ses objets ; Duplicate Linked crée des copies liées, qui partagent leur géométrie avec l\'original.',
+    imagePath: 'assets/images/duplicate_collection_menu_blender.jpg',
+    caption: 'Figure 1.13 : Le menu contextuel d\'une collection dans l\'Outliner, avec Duplicate Collection.',
+    layout: ContentLayout.textRight,
+  ),
+  SideBySideModule(
+    id: 'ch1_sec2_side2',
+    title: 'Une collection par variante',
+    content: 'Chaque variante occupe sa propre collection dans l\'Outliner. L\'icône en forme d\'œil permet d\'afficher une seule variante ou de les comparer toutes. Ici, la variante B allonge le bras supérieur et la variante C remplace la tête conique par une tête cylindrique.',
+    imagePath: 'assets/images/variants_collections_blender.jpg',
+    caption: 'Figure 1.14 : Trois variantes du concept, chacune dans sa collection, alignées pour être comparées.',
+    layout: ContentLayout.textLeft,
+  ),
+  TextModule(
+    id: 'ch1_sec2_txt7',
+    title: 'Juger la silhouette',
+    content: 'Une forme se reconnaît d\'abord à sa silhouette. Pour l\'évaluer sans être distrait par le modelé des volumes, vous pouvez régler temporairement le mode *Solid* ainsi : *Lighting* sur *Flat*, *Color* sur *Custom* avec une couleur noire, et *Background* sur *Custom* avec un fond clair.\n\nLes objets deviennent des ombres chinoises, à observer dans les vues de face, de côté et de dessus. Une silhouette lisible et équilibrée sous ces trois angles est un bon signe pour la suite.',
+  ),
+  FullMediaModule(
+    id: 'ch1_sec2_media2',
+    imagePath: 'assets/images/silhouette_check_blender.jpg',
+    caption: 'Figure 1.15 : Le test de silhouette sur les trois variantes : en aplat noir, les différences de proportions sautent aux yeux.',
+  ),
+  InfoModule(
+    id: 'ch1_sec2_info1',
+    type: InfoType.warning,
+    text: 'Tant que les proportions ne sont pas arrêtées, des volumes simples suffisent. Un biseau ou un perçage ajouté trop tôt alourdit chaque correction suivante, et une finition soignée masque souvent un problème de proportions.',
+  ),
+  InfoModule(
+    id: 'ch1_sec2_info2',
+    type: InfoType.info,
+    text: 'Le blocage ne disparaît pas une fois validé. Il sert de gabarit au chapitre 2 : la modélisation propre s\'appuie sur ses volumes et ses cotes.',
+  ),
+  QuizModule(
+    id: 'ch1_sec2_quiz1',
+    question: 'Pour juger la silhouette d\'un concept, quel réglage du mode Solid est le plus parlant ?',
+    options: [
+      'Lighting sur Flat, avec une couleur unie sombre sur un fond clair',
+      'Color sur Random',
+      'Lighting sur MatCap',
+      'L\'option Cavity',
+    ],
+    correctIndices: [0],
+    explanation: 'Sans éclairage (**Flat**) et avec une couleur unie sombre sur fond clair, les objets deviennent des **ombres chinoises** : seul le contour compte. Random, MatCap et Cavity, au contraire, aident à lire les volumes et le modelé.',
+  ),
+
+  // --- Section 3 : transformation et édition interactive --------------------
+  TitleModule(
+    id: 'ch1_sec3_title',
+    title: '3. Transformer et éditer avec précision',
+  ),
+  TextModule(
+    id: 'ch1_sec3_txt1',
+    title: 'Aller plus loin que les gestes de base',
+    content: 'Les transformations (`G`, `R`, `S`) et les outils d\'édition (*Extrude*, *Inset*, *Bevel*, *Loop Cut*) sont présentés dans Basics 102 et 103. Cette section les complète par ce qui fait la différence sur un concept produit : contrôler la direction d\'un geste, s\'accrocher à la géométrie existante et ajuster une forme sans la reconstruire.',
+  ),
+  TextModule(
+    id: 'ch1_sec3_txt2',
+    title: 'Choisir l\'orientation de transformation',
+    content: 'Une transformation contrainte à un axe, `G` puis `Z` par exemple, suit par défaut les axes du monde : c\'est l\'orientation *Global*. Dès qu\'un élément est incliné, comme la tête d\'une lampe tournée vers le plan de travail, ces axes ne correspondent plus à sa forme. Le menu *Transform Orientation* de l\'en-tête, ou le menu circulaire `,` (virgule), propose notamment ces repères :\n- *Global* : les axes du monde.\n- *Local* : les axes propres de l\'objet, qui tournent avec lui.\n- *Normal* : en Mode Édition, l\'axe perpendiculaire à la face ou à l\'arête sélectionnée.\n- *View* : les axes de l\'écran.\n- *Cursor* : les axes du curseur 3D.\nUn raccourci évite de passer par le menu : appuyer deux fois sur la touche d\'axe. Avec l\'orientation *Global*, `G Z Z` déplace l\'objet le long de son propre axe Z.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec3_side5',
+    title: 'Le menu des orientations',
+    content: 'La capture montre le menu ouvert depuis le bouton Global de l\'en-tête de la vue 3D. Il propose aussi Gimbal et Parent, plus rarement utiles pour un blocage. Le bouton + crée une orientation personnalisée à partir de la sélection.',
+    imagePath: 'assets/images/transform_orientation_menu_blender.jpg',
+    caption: 'Figure 1.16 : Le menu Transform Orientation de l\'en-tête, avec l\'orientation Global active.',
+    layout: ContentLayout.textLeft,
+  ),
+  SideBySideModule(
+    id: 'ch1_sec3_side1',
+    title: 'Des axes qui suivent l\'objet',
+    content: 'Sur la capture, la tête de la lampe est inclinée. En orientation Local, la flèche bleue du gizmo pointe dans l\'axe de la tête : un déplacement le long de cette flèche l\'avance ou la recule sans la décaler de côté.',
+    imagePath: 'assets/images/local_orientation_blender.jpg',
+    caption: 'Figure 1.17 : La tête de lampe inclinée, avec le gizmo de déplacement en orientation Local : ses axes suivent l\'inclinaison.',
+    layout: ContentLayout.textRight,
+  ),
+  TextModule(
+    id: 'ch1_sec3_txt3',
+    title: 'L\'aimantation',
+    content: 'L\'aimantation (*snapping*) accroche l\'élément déplacé à une cible : la grille, un sommet, une arête, une face. Elle s\'active avec l\'icône d\'aimant de l\'en-tête ou `Maj + Tab`. Au quotidien, maintenir `Ctrl` pendant un déplacement l\'active seulement le temps du geste.\n\nLe menu déroulant à côté de l\'aimant règle deux choses. *Snap Target* désigne la cible : *Increment* (le pas de la grille, par défaut), *Vertex*, *Edge*, *Face*, ou encore *Edge Center* et *Face Center* pour viser un milieu. *Snap Base* désigne le point de l\'objet déplacé qui vient se poser sur la cible : le plus proche (*Closest*), le centre (*Center*), la moyenne (*Median*) ou l\'élément actif (*Active*).\n\nPar exemple, pour centrer une articulation sur l\'extrémité d\'un bras, choisissez la cible *Face Center* et le point de base *Center*, puis déplacez l\'articulation en maintenant `Ctrl` au-dessus de la face du bout du bras.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec3_side2',
+    title: 'Régler la cible et le point de base',
+    content: 'La capture montre le menu déroulé à droite de l\'icône d\'aimant. La partie haute choisit le point de base, la liste Snap Target choisit la cible. Ce réglage reste actif jusqu\'à ce que vous le changiez : pensez à le vérifier quand une aimantation ne tombe pas où vous l\'attendiez.',
+    imagePath: 'assets/images/snapping_menu_blender.jpg',
+    caption: 'Figure 1.18 : Le menu d\'aimantation de l\'en-tête, avec la cible Face Center et le point de base Center.',
+    layout: ContentLayout.textLeft,
+  ),
+  InfoModule(
+    id: 'ch1_sec3_info1',
+    type: InfoType.tip,
+    text: 'Plusieurs cibles peuvent être actives en même temps : `Maj + clic` dans la liste *Snap Target* en ajoute une. Pendant un déplacement, la touche `B` permet aussi de choisir à la volée le point de base de l\'aimantation.',
+  ),
+  TextModule(
+    id: 'ch1_sec3_txt4',
+    title: 'L\'édition proportionnelle',
+    content: 'L\'édition proportionnelle (`O`, ou son bouton dans l\'en-tête de la vue 3D) entraîne les éléments voisins de la sélection, avec une influence qui diminue avec la distance. Vous déplacez un sommet, et la surface alentour suit en douceur : de quoi bomber le dessus d\'un socle ou galber un capot.\n\nPendant le geste, la molette agrandit ou réduit le cercle d\'influence ; `Maj + O`, ou le menu à droite du bouton, change le profil d\'atténuation (doux, linéaire, pointu…). L\'outil a besoin de géométrie pour agir : sur un cube à six faces, il n\'y a rien à entraîner. Quelques boucles ajoutées avec *Loop Cut* (`Ctrl + R`) lui donnent de la matière.',
+  ),
+  FullMediaModule(
+    id: 'ch1_sec3_media1',
+    imagePath: 'assets/images/proportional_editing_blender.jpg',
+    caption: 'Figure 1.19 : Un sommet soulevé avec l\'édition proportionnelle : la surface voisine suit en douceur. En haut, le bouton de l\'édition proportionnelle, actif, et son menu de profils d\'atténuation, ici Smooth.',
+  ),
+  TextModule(
+    id: 'ch1_sec3_txt5',
+    title: 'Des extrusions adaptées à la forme',
+    content: 'Au-delà de l\'extrusion simple (`E`), le menu `Alt + E` propose des variantes utiles en Mode Édition :\n- *Extrude Faces Along Normals* : chaque face avance perpendiculairement à elle-même, pour épaissir une surface courbe.\n- *Extrude Individual Faces* : chaque face s\'extrude séparément, par exemple pour une série de plots.\n- *Extrude Manifold* : en extrudant vers l\'intérieur, l\'outil découpe et supprime automatiquement les faces voisines, pour creuser proprement un logement ou une rainure.\nUne *normale* est la direction perpendiculaire à une face, qui indique son côté extérieur.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec3_side6',
+    title: 'Le menu Extrude',
+    content: 'La capture montre le menu ouvert avec Alt + E, la grande face de la tête de lampe sélectionnée. Extrude Faces correspond à l\'extrusion simple (E) ; les trois entrées suivantes sont les variantes décrites ci-dessus.',
+    imagePath: 'assets/images/extrude_menu_alt_e_blender.jpg',
+    caption: 'Figure 1.20 : Le menu Extrude, ouvert avec Alt + E en Mode Édition.',
+    layout: ContentLayout.textLeft,
+  ),
+  TextModule(
+    id: 'ch1_sec3_txt6',
+    title: 'Des biseaux mesurés',
+    content: 'Le biseau (`Ctrl + B`) se règle avec précision juste après l\'opération, dans le panneau *Ajuster la dernière opération* :\n- *Width* : la largeur, que vous pouvez saisir avec son unité (`2mm`).\n- *Segments* : un segment donne un chanfrein (coupe plate), plusieurs segments un congé arrondi.\n- *Profile Shape* : le profil de l\'arrondi ; la valeur 0,5 donne un arc de cercle.\n- *Clamp Overlap* : empêche des biseaux voisins de se chevaucher.\n`Ctrl + Maj + B` biseaute un sommet seul, pour arrondir un coin sans toucher aux arêtes.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec3_side3',
+    title: 'Régler un biseau après coup',
+    content: 'La capture montre le bord du socle biseauté avec une largeur de 4 mm et 4 segments. Le panneau replié en bas à gauche de la vue, ou la touche F9, donne accès aux réglages. Tant qu\'aucune autre opération n\'a été lancée, chaque valeur reste modifiable : vous passez d\'un chanfrein à un congé sans refaire le biseau.',
+    imagePath: 'assets/images/bevel_adjust_panel_blender.jpg',
+    caption: 'Figure 1.21 : Le panneau du biseau, rouvert avec F9 : largeur, nombre de segments et profil se règlent au chiffre près.',
+    layout: ContentLayout.textRight,
+  ),
+  InfoModule(
+    id: 'ch1_sec3_info2',
+    type: InfoType.warning,
+    text: 'Sur un objet dont l\'échelle n\'est pas appliquée, un biseau donne des largeurs irrégulières : 2 mm d\'un côté, davantage de l\'autre. En cas de doute, `Ctrl + A > Scale` avant de biseauter remet les choses d\'aplomb.',
+  ),
+  TextModule(
+    id: 'ch1_sec3_txt7',
+    title: 'Ajuster sans reconstruire',
+    content: 'Deux gestes corrigent une forme sans refaire l\'opération qui l\'a créée :\n- `G G` (deux fois `G`) fait **glisser** une arête ou un sommet le long des arêtes voisines : la forme ne se déforme pas, seule la position de la coupe change.\n- `Alt + S` (*Shrink/Fatten*) **gonfle ou rétrécit** la sélection le long des normales, pour épaissir ou affiner une zone courbe.',
+  ),
+  TextModule(
+    id: 'ch1_sec3_txt8',
+    title: 'Mesurer',
+    content: 'Pour contrôler une cote, l\'outil *Measure* de la barre d\'outils, à gauche de la vue, trace une règle : cliquez-glissez d\'un point à un autre, en maintenant `Ctrl` pour vous accrocher aux sommets et aux arêtes. Cliquer au milieu de la règle la transforme en rapporteur d\'angle.\n\nEn Mode Édition, un second menu de superpositions apparaît à droite du menu *Overlays* : *Mesh Edit Mode*. Dans sa rubrique *Measurement*, l\'option *Edge Length* affiche en permanence la longueur des arêtes sélectionnées.',
+  ),
+  SideBySideModule(
+    id: 'ch1_sec3_side7',
+    title: 'Tracer une règle',
+    content: 'La capture montre une règle tracée avec l\'outil Measure, actif dans la barre d\'outils, d\'un bord à l\'autre du dessus du socle, en maintenant Ctrl. Ses extrémités se sont accrochées à deux sommets opposés : la cote, 180 mm, est le diamètre du socle. Elle s\'affiche au milieu de la règle, dans l\'unité de la scène. La règle reste affichée tant que l\'outil est actif : vous pouvez en déplacer les extrémités pour reprendre la mesure.',
+    imagePath: 'assets/images/measure_tool_ruler_blender.jpg',
+    caption: 'Figure 1.22 : Une règle tracée avec l\'outil Measure d\'un bord à l\'autre du socle : 180 mm, son diamètre.',
+    layout: ContentLayout.textRight,
+  ),
+  SideBySideModule(
+    id: 'ch1_sec3_side4',
+    title: 'Lire les cotes dans la vue',
+    content: 'La capture montre la tête de la lampe en Mode Édition, avec les quatre arêtes d\'une face sélectionnées. Leur longueur s\'affiche au milieu de chacune, dans l\'unité choisie pour la scène. En haut à droite, la rubrique Measurement du menu Mesh Edit Mode, avec Edge Length cochée. Pendant un déplacement, les valeurs se mettent à jour en direct.',
+    imagePath: 'assets/images/edge_length_overlay_blender.jpg',
+    caption: 'Figure 1.23 : L\'option Edge Length en Mode Édition : la longueur des arêtes sélectionnées s\'affiche directement dans la vue.',
+    layout: ContentLayout.textLeft,
+  ),
+  InfoModule(
+    id: 'ch1_sec3_info3',
+    type: InfoType.challenge,
+    text: 'Bloquez le concept d\'une lampe de bureau articulée, qui vous accompagnera jusqu\'au chapitre 4. Placez les croquis du fichier d\'exercice en images de référence, puis assemblez socle, bras et tête avec des primitives. Cotes indicatives : socle de 180 mm de diamètre, hauteur totale d\'environ 450 mm, tête de 120 mm de diamètre. Utilisez l\'aimantation pour poser les articulations et l\'orientation *Local* pour incliner et avancer la tête. Déclinez ensuite deux variantes, comparez leurs silhouettes, puis enregistrez celle que vous retenez sous `lampe_blocage_v001.blend`. Ces cotes sont un point de départ : libre à vous de les adapter à votre propre concept.',
+  ),
+  QuizModule(
+    id: 'ch1_sec3_quiz1',
+    question: 'La tête de la lampe est inclinée. L\'orientation Global est active : comment la déplacer le long de son propre axe Z ?',
+    options: [
+      'G puis Z',
+      'G puis Z puis Z',
+      'G puis Maj + Z',
+      'R puis Z',
+    ],
+    correctIndices: [1],
+    explanation: 'Un premier appui sur `Z` contraint le déplacement à l\'axe Z de l\'orientation active, ici **Global**. Un second appui bascule sur l\'axe Z **Local**, celui de l\'objet incliné. `Maj + Z` exclurait au contraire l\'axe Z.',
+  ),
+  QuizModule(
+    id: 'ch1_sec3_quiz2',
+    question: 'Pendant un déplacement, quelle touche maintenir pour activer l\'aimantation le temps du geste, sans l\'allumer dans l\'en-tête ?',
+    options: [
+      'Maj',
+      'Ctrl',
+      'Alt',
+      'B',
+    ],
+    correctIndices: [1],
+    explanation: 'Maintenir **Ctrl** active l\'aimantation le temps du geste, avec la cible réglée dans le menu de l\'en-tête. La touche `B`, elle, sert à choisir le point de base de l\'aimantation pendant le déplacement.',
+  ),
+];
 
 const List<ContentModule> chapter2Modules = [];
 

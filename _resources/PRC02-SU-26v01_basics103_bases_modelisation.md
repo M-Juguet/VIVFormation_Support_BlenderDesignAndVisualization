@@ -11,11 +11,11 @@ Une fois en Mode Édition, un choix s'impose : sur quel type d'élément voulez-
 
 ```side-by-side
 layout: "textRight"
-imagePath: "assets/images/placeholder_select_modes_blender.jpg"
+imagePath: "assets/images/select_modes_blender.jpg"
 caption: "Figure 1.1 : Les trois modes de sélection en Mode Édition — Sommets, Arêtes, Faces."
 title: "Sommets, arêtes, faces"
 ---
-La capture montre les trois boutons de l'en-tête. La touche `1` active la sélection par **sommets**, la `2` par **arêtes** et la `3` par **faces**. On passe de l'un à l'autre en permanence selon l'opération : sélectionner une boucle d'arêtes pour la biseauter, une face pour l'extruder, un sommet pour l'ajuster finement.
+La capture montre les trois boutons de l'en-tête, à droite du sélecteur de mode. La touche `1` active la sélection par **sommets**, la `2` par **arêtes** et la `3` par **faces**. Ici, la sélection par faces est active et la face du dessus du cube est sélectionnée. On passe de l'un à l'autre en permanence selon l'opération : sélectionner une boucle d'arêtes pour la biseauter, une face pour l'extruder, un sommet pour l'ajuster finement.
 ```
 
 ### Sélectionner efficacement en édition
@@ -58,11 +58,11 @@ L'**extrusion** (`E`) est l'outil de modélisation par excellence. Il tire de la
 
 ```side-by-side
 layout: "textLeft"
-imagePath: "assets/images/placeholder_extrude_tool_blender.jpg"
-caption: "Figure 2.1 : Extrusion d'une face pour créer un nouveau volume."
+imagePath: "assets/images/extrude_tool_blender.jpg"
+caption: "Figure 2.1 : Extrusion de la face du dessus pour créer un nouveau volume, avec la poignée de l'outil Extrude Region."
 title: "L'extrusion"
 ---
-Sur la capture, une face sélectionnée est extrudée vers le haut : Blender crée de nouvelles arêtes reliant la face d'origine à sa copie déplacée, formant un volume. Répéter cette opération dans différentes directions est la base de la construction d'un objet complexe à partir d'une simple primitive.
+Sur la capture, la face du dessus a été extrudée vers le haut : Blender crée de nouvelles arêtes reliant la face d'origine à sa copie déplacée, formant un volume. L'outil Extrude Region, actif dans la barre d'outils, affiche aussi une poignée jaune marquée d'un + : la tirer extrude à nouveau la face sélectionnée. Répéter cette opération dans différentes directions est la base de la construction d'un objet complexe à partir d'une simple primitive.
 ```
 
 ### Inset et Bevel
@@ -70,6 +70,15 @@ Deux outils affinent les faces et les arêtes. L'**Inset** (`I`) crée une face 
 
 ### Loop Cut et Subdivide
 Pour ajouter de la résolution là où on en a besoin, deux outils s'imposent. Le **Loop Cut** (`Ctrl + R`) insère une boucle d'arêtes continue tout autour du maillage, ce qui permet de le plier ou de le détailler à cet endroit précis. La **Subdivision** (*Subdivide*) découpe les faces sélectionnées en plusieurs, augmentant la densité localement.
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/loop_cut_blender.jpg"
+caption: "Figure 2.2 : Une boucle d'arêtes insérée tout autour du volume, telle que la crée Loop Cut."
+title: "Une boucle tout autour"
+---
+La capture montre une boucle d'arêtes, sélectionnée, qui fait le tour du volume en son milieu, telle que la crée un Loop Cut. L'outil Loop Cut, actif dans la barre d'outils, affiche un aperçu jaune de la boucle au survol d'une arête, puis l'insère au clic ; Ctrl + R fait de même au clavier.
+```
 
 ### Fusionner et couper
 Enfin, deux outils complètent la panoplie de base. Le **Merge** (`M`) fusionne plusieurs sommets en un seul, utile pour refermer une forme ou nettoyer une géométrie. Le **couteau** (*Knife*, `K`) permet de tracer des découpes personnalisées directement sur la surface.
@@ -99,11 +108,11 @@ Un **modificateur** applique un effet sur le maillage **sans en altérer la géo
 
 ```side-by-side
 layout: "textRight"
-imagePath: "assets/images/placeholder_subdivision_surface_blender.jpg"
-caption: "Figure 3.1 : Un cube avec un modificateur Subdivision Surface, lissé en forme arrondie."
+imagePath: "assets/images/subdivision_surface_blender.jpg"
+caption: "Figure 3.1 : Un cube seul (à gauche) et le même cube avec un modificateur Subdivision Surface (à droite), sa cage visible en Mode Édition."
 title: "Le modificateur Subdivision Surface"
 ---
-À gauche de l'illustration, le maillage de base (une simple cage cubique) reste modifiable ; à droite, le modificateur Subdivision Surface l'affiche lissé et arrondi. On sculpte la cage grossière, et le modificateur se charge du lissage en temps réel — l'essence même de la modélisation non destructive.
+À gauche, un cube sans modificateur. À droite, le même cube avec un modificateur Subdivision Surface, en Mode Édition : la cage d'origine, en traits noirs, reste modifiable, et le modificateur en affiche une version lissée et arrondie. On sculpte la cage grossière, et le modificateur se charge du lissage en temps réel : c'est l'essence même de la modélisation non destructive.
 ```
 
 ### Les modificateurs clés de la modélisation
@@ -117,6 +126,15 @@ Quelques modificateurs reviennent en permanence et méritent d'être connus dès
 
 ### L'ordre compte, et l'application
 Dans la pile, **l'ordre des modificateurs change le résultat**. Un Mirror placé avant une Subdivision Surface ne produit pas le même effet que l'inverse : chaque modificateur agit sur le résultat du précédent. On peut, à tout moment, activer ou désactiver leur affichage dans la vue. Et lorsqu'on a besoin de figer l'effet en véritable géométrie — pour l'exporter ou continuer à l'éditer manuellement — on **applique** le modificateur.
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/modifier_stack_blender.jpg"
+caption: "Figure 3.2 : Une pile de deux modificateurs dans l'onglet Modifiers : Mirror, replié, puis Subdivision Surface."
+title: "Lire la pile"
+---
+La capture montre l'onglet Modifiers, reconnaissable à sa clé à molette. Le Mirror, replié, est en haut de la pile : il est évalué en premier, puis la Subdivision Surface lisse le résultat. Les icônes de chaque en-tête règlent l'affichage du modificateur en Mode Édition, dans la vue et au rendu ; la flèche voisine ouvre un menu qui contient notamment Apply.
+```
 
 > [!NOTE]
 > Tant qu'un modificateur n'est pas appliqué, tous ses réglages restent modifiables : niveau de subdivision, axe de miroir, nombre de copies d'un Array… C'est cette souplesse qui fait tout l'intérêt de l'approche non destructive. N'appliquez un modificateur que lorsque vous êtes certain de ne plus vouloir revenir sur ses paramètres.
@@ -138,23 +156,34 @@ explanation: "Les modificateurs sont **non destructifs** : ils appliquent leurs 
 ### Quads, triangles et n-gons
 Une face peut avoir un nombre variable de côtés. Une face à quatre côtés est un **quad**, à trois un **triangle** (*tri*), à cinq ou plus un **n-gon**. La règle d'or de la modélisation propre est de **privilégier les quads** : ils se subdivisent proprement, se déforment bien et se déplient plus facilement en UV. Les triangles et n-gons sont tolérables sur des surfaces planes, mais à éviter sur les zones courbes ou destinées à être lissées, où ils provoquent des artefacts.
 
+![Figure 4.1 : Trois faces vues de dessus en Mode Édition : un quad (4 côtés), un triangle (3 côtés) et un n-gon (7 côtés).](assets/images/quads_tris_ngons_blender.jpg)
+
 ### Une topologie propre
 La **topologie** désigne la manière dont les faces s'organisent sur la surface. Une bonne topologie présente un flux de quads régulier, dont les boucles d'arêtes suivent naturellement les formes de l'objet. Ce n'est pas qu'une question d'esthétique : une topologie propre conditionne la qualité du lissage, la facilité du dépliage UV et le bon comportement lors des déformations.
 
 ### Les normales
-Chaque face possède une **normale** : un vecteur qui indique le côté vers lequel elle est orientée, son « extérieur ». Quand une normale est inversée (elle pointe vers l'intérieur), la face réagit mal à la lumière et produit des erreurs de rendu — zones sombres, reflets incohérents. On corrige cela avec **Recalculate Outside** (`Maj + N`), qui réoriente toutes les normales vers l'extérieur. L'overlay *Face Orientation* aide à repérer le problème : les faces correctes apparaissent en bleu, les inversées en rouge.
+Chaque face possède une **normale** : un vecteur qui indique le côté vers lequel elle est orientée, son « extérieur ». Quand une normale est inversée (elle pointe vers l'intérieur), la face réagit mal à la lumière et produit des erreurs de rendu — zones sombres, reflets incohérents. On corrige cela avec **Recalculate Outside** (`Maj + N`), qui réoriente toutes les normales vers l'extérieur. L'overlay *Face Orientation*, dans le menu *Overlays* de la vue 3D, aide à repérer le problème : les faces inversées apparaissent en rouge, les autres gardent leur aspect habituel.
 
 ```side-by-side
 layout: "textLeft"
-imagePath: "assets/images/placeholder_face_orientation_blender.jpg"
-caption: "Figure 4.1 : L'overlay Face Orientation — faces correctes en bleu, normales inversées en rouge."
+imagePath: "assets/images/face_orientation_blender.jpg"
+caption: "Figure 4.2 : L'overlay Face Orientation : les faces dont la normale est inversée apparaissent en rouge."
 title: "Vérifier les normales"
 ---
-La capture montre un objet sous l'overlay Face Orientation : les faces bleues sont correctement orientées vers l'extérieur, les rouges ont leur normale inversée. Un simple `Maj + N` recalcule l'ensemble vers l'extérieur. Des normales saines sont indispensables à un shading correct, comme vous le verrez au chapitre 3 consacré aux matières.
+La capture montre un cylindre sous l'overlay Face Orientation : le dessus et trois faces latérales, en rouge, ont leur normale inversée ; les autres faces, correctement orientées, gardent leur gris habituel. Un simple `Maj + N`, en Mode Édition, recalcule l'ensemble vers l'extérieur. Des normales saines sont indispensables à un shading correct, comme vous le verrez au chapitre 3 consacré aux matières.
 ```
 
 ### Le point d'origine et l'application des transformations
 Deux notions d'hygiène ferment ce chapitre. Le **point d'origine** (le petit point orange de l'objet) sert de référence à sa position, sa rotation et son échelle ; on peut le repositionner via *Object > Set Origin*. Surtout, il faut **appliquer les transformations** avec `Ctrl + A` — l'échelle en particulier. Un objet dont l'échelle n'a pas été appliquée conserve une déformation cachée qui perturbe de nombreux outils en aval.
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/apply_transform_menu_blender.jpg"
+caption: "Figure 4.3 : Le menu Apply, ouvert avec Ctrl + A en Mode Objet."
+title: "Appliquer l'échelle"
+---
+La capture montre le menu ouvert avec Ctrl + A sur un pavé dont l'échelle vaut 1,6 × 1 × 0,5. Scale remet l'échelle à 1,000 sans changer la forme ; All Transforms applique aussi la position et la rotation.
+```
 
 ### La checklist des bonnes pratiques
 Avant de considérer un objet comme « terminé », prenez le réflexe de vérifier ces points :

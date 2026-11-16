@@ -5,16 +5,18 @@ Avant d'agir sur un objet, il faut le sélectionner. Un **clic gauche** sélecti
 
 La distinction entre **sélection** et **objet actif** est importante : on peut avoir plusieurs objets sélectionnés, mais un seul est actif (le dernier cliqué). Certaines opérations s'appliquent à toute la sélection, d'autres uniquement à l'objet actif.
 
+![Figure 1.1 : Trois objets sélectionnés : le cube, objet actif, a un contour orange clair ; le cylindre et la sphère, simplement sélectionnés, un contour orange plus foncé.](assets/images/selection_active_object_blender.jpg)
+
 ### Les trois transformations : déplacer, tourner, redimensionner
 Toute la manipulation d'objets repose sur trois actions, associées à trois touches faciles à mémoriser : `G` pour déplacer (*Grab*), `R` pour tourner (*Rotate*) et `S` pour redimensionner (*Scale*). Le principe est toujours le même : on appuie sur la touche, on bouge la souris pour ajuster, puis on **clique gauche pour valider** ou l'on appuie sur `Échap` (ou clic droit) pour annuler. Ces trois raccourcis sont le geste fondateur de la pratique Blender, à acquérir en tout premier.
 
 ```side-by-side
 layout: "textLeft"
-imagePath: "assets/images/placeholder_grab_rotate_scale_blender.jpg"
-caption: "Figure 1.1 : Les trois transformations de base appliquées à un objet : déplacer (G), tourner (R), redimensionner (S)."
+imagePath: "assets/images/grab_rotate_scale_blender.jpg"
+caption: "Figure 1.2 : Le gizmo de l'outil Transform sur un cube : flèches pour déplacer, arcs pour tourner, petits cubes pour redimensionner."
 title: "Déplacer, tourner, redimensionner"
 ---
-La capture illustre les trois transformations fondamentales. Une fois la touche pressée, l'objet suit la souris, et un retour visuel indique la transformation en cours. Ce trio G/R/S, combiné aux contraintes d'axe vues juste après, couvre l'immense majorité des manipulations du quotidien.
+La capture montre le gizmo de l'outil Transform, choisi dans la barre d'outils de gauche : il réunit les trois transformations. Les flèches déplacent l'objet, les arcs de cercle le font tourner et les petits cubes, au bout des segments courts, le redimensionnent, chacun selon un axe. Au clavier, G, R et S produisent les mêmes gestes, que l'on contraint ensuite à un axe comme décrit ci-dessous.
 ```
 
 ### Contrainte d'axe et saisie numérique
@@ -25,7 +27,7 @@ La vraie puissance de ces transformations vient de deux compléments. Après avo
 - `Maj + Z` après `G` : déplace dans le plan XY en **excluant** l'axe Z.
 
 ### Annuler et refaire
-Toute erreur se corrige sans crainte : `Ctrl + Z` annule la dernière action, et `Ctrl + Maj + Z` la rétablit. Cette filet de sécurité permet d'expérimenter librement. À côté des raccourcis, des **gizmos** interactifs (les poignées colorées des outils Déplacer, Tourner et Redimensionner, dans la barre d'outils de gauche) offrent une alternative visuelle pour qui préfère la souris au clavier.
+Toute erreur se corrige sans crainte : `Ctrl + Z` annule la dernière action, et `Ctrl + Maj + Z` la rétablit. Ce filet de sécurité permet d'expérimenter librement. À côté des raccourcis, des **gizmos** interactifs (les poignées colorées des outils Déplacer, Tourner et Redimensionner, dans la barre d'outils de gauche) offrent une alternative visuelle pour qui préfère la souris au clavier.
 
 > [!TIP]
 > Prenez tôt l'habitude de la **saisie numérique** pendant une transformation. Taper `G X 1` est plus rapide et infiniment plus précis que d'essayer de glisser l'objet pile au bon endroit. C'est ce réflexe qui sépare une manipulation approximative d'un travail rigoureux et propre.
@@ -52,7 +54,7 @@ Lorsqu'on tourne ou redimensionne, encore faut-il savoir **autour de quoi**. C'e
 
 ```side-by-side
 layout: "textRight"
-imagePath: "assets/images/placeholder_pivot_points_blender.jpg"
+imagePath: "assets/images/pivot_points_blender.jpg"
 caption: "Figure 2.1 : Le menu de sélection du point de pivot dans l'en-tête de la vue 3D."
 title: "Choisir le point de pivot"
 ---
@@ -67,11 +69,11 @@ Après la plupart des opérations, un petit panneau apparaît en bas à gauche d
 
 ```side-by-side
 layout: "textLeft"
-imagePath: "assets/images/placeholder_adjust_last_operation_f9_blender.jpg"
-caption: "Figure 2.2 : Le panneau Ajuster la dernière opération (F9) après l'ajout d'un objet."
+imagePath: "assets/images/adjust_last_operation_f9_blender.jpg"
+caption: "Figure 2.2 : Le panneau Ajuster la dernière opération (F9) après l'ajout d'une sphère UV."
 title: "Le panneau F9"
 ---
-La capture montre le panneau ouvert après l'ajout d'une primitive, exposant ses paramètres modifiables (rayon, segments, emplacement). Tant qu'aucune autre action n'est effectuée, ces réglages restent ajustables : un excellent moyen d'affiner sans refaire.
+La capture montre le panneau ouvert avec F9 après l'ajout d'une sphère UV : nombre de segments et d'anneaux (Rings), rayon, puis emplacement et rotation. Tant qu'aucune autre action n'est effectuée, ces réglages restent ajustables : un excellent moyen d'affiner sans refaire.
 ```
 
 > [!NOTE]
@@ -99,7 +101,7 @@ En Mode Édition, on choisit ce que l'on manipule grâce aux touches `1`, `2` et
 
 ```side-by-side
 layout: "textRight"
-imagePath: "assets/images/placeholder_object_vs_edit_mode_blender.jpg"
+imagePath: "assets/images/object_vs_edit_mode_blender.jpg"
 caption: "Figure 3.1 : Un même cube en Mode Objet (à gauche) et en Mode Édition (à droite), sommets visibles."
 title: "Mode Objet et Mode Édition"
 ---
@@ -111,6 +113,15 @@ Voici l'idée la plus structurante de tout ce chapitre. Un **objet** n'est qu'un
 
 ### Les données partagées
 Conséquence directe : **plusieurs objets peuvent pointer vers les mêmes données**. C'est précisément ce que produit la duplication liée (`Alt + D`). Modifier la géométrie partagée se répercute alors sur tous les objets concernés. Un compteur, affiché à côté du nom des données, indique combien d'objets les utilisent ; cliquer dessus crée une copie indépendante (*single-user*) pour rompre le partage. Maîtriser cette mécanique évite l'une des plus grandes confusions du débutant.
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/datablock_users_count_blender.jpg"
+caption: "Figure 3.2 : Le compteur d'utilisateurs, à droite du nom des données : deux objets partagent le maillage Cube."
+title: "Le compteur d'utilisateurs"
+---
+La capture montre une copie liée du cube, Cube.001, créée avec Alt + D et sélectionnée dans l'Outliner. Dans l'onglet des données du maillage, le chiffre 2, à droite du nom Cube, indique que deux objets utilisent ce maillage. Un clic sur ce chiffre crée une copie indépendante pour l'objet actif.
+```
 
 > [!IMPORTANT]
 > Ne confondez jamais un **objet** et ses **données**. Renommer un objet ne renomme pas son maillage, et supprimer un objet ne supprime pas forcément ses données si un autre objet les utilise encore. Garder à l'esprit cette séparation — l'objet est le contenant, les données sont le contenu — clarifie une grande partie du fonctionnement de Blender.
@@ -132,6 +143,15 @@ explanation: "Des objets qui **partagent les mêmes données** sont tous affect�
 ### Les collections
 À mesure qu'une scène grossit, les **collections** permettent de la ranger, à la manière de dossiers ou de calques. On crée une collection, on y déplace des objets (touche `M`, ou par glissé dans l'Outliner), et l'on contrôle sa visibilité dans la vue comme dans le rendu. Une scène bien organisée en collections — par exemple « Décor », « Éclairage », « Sujet » — reste lisible et agréable à manipuler, même avec des dizaines d'objets.
 
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/move_to_collection_menu_blender.jpg"
+caption: "Figure 4.1 : Le menu Move to Collection, ouvert avec la touche M."
+title: "Ranger avec la touche M"
+---
+La capture montre le menu ouvert avec la touche M, la sphère sélectionnée. Il liste les collections de la scène, ici Collection, Décor et Éclairage. New Collection crée une nouvelle collection et y range aussitôt la sélection ; le champ Search filtre la liste quand les collections sont nombreuses.
+```
+
 ### L'hygiène de nommage
 Le réflexe le plus simple et le plus rentable est de **nommer clairement** ses objets dans l'Outliner (double-clic pour renommer). Une scène où tout s'appelle « Cube.001 », « Cube.002 » devient vite illisible. Des noms parlants font gagner un temps précieux, à soi-même comme à toute personne qui reprendra le fichier.
 
@@ -147,8 +167,8 @@ Point capital, en lien direct avec le travail des matériaux : par défaut, les 
 
 ```side-by-side
 layout: "textLeft"
-imagePath: "assets/images/placeholder_external_data_pack_blender.jpg"
-caption: "Figure 4.1 : Le menu File > External Data avec les options Pack Resources et Make Paths Relative."
+imagePath: "assets/images/external_data_pack_blender.jpg"
+caption: "Figure 4.2 : Le menu File > External Data avec les options Pack Resources et Make Paths Relative."
 title: "Sécuriser ses textures"
 ---
 La capture montre le menu External Data déroulé. L'option Pack Resources intègre toutes les textures dans le fichier .blend, garantissant qu'aucune image ne sera perdue lors d'un transfert. C'est le réflexe à adopter systématiquement avant d'envoyer un projet contenant des matériaux texturés.
