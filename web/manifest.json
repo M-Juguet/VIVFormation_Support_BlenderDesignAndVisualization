@@ -1,0 +1,35 @@
+{
+    "name": "Design & visualisation temps réel avec Blender",
+    "short_name": "Blender Design & Visualisation",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#9C3F68",
+    "theme_color": "#9C3F68",
+    "description": "Support de formation VIV Formation PRC02 : design et visualisation temps réel avec Blender.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
