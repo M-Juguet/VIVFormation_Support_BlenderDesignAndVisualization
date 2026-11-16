@@ -38,6 +38,7 @@ viv-formation-design-system/    # Référence du design system (tokens, composan
 writer_guide.md                 # Format Markdown des sources de chapitre
 setup.iss                       # Installeur Inno Setup
 tool/build_release.ps1          # Compilation Release + installeur
+visualiser_application.bat      # Lancement en mode développement (double-clic)
 ```
 
 ## Prérequis
@@ -46,6 +47,12 @@ tool/build_release.ps1          # Compilation Release + installeur
 - **Visual Studio** avec la charge de travail « Développement Desktop en C++ » ;
 - **Mode développeur Windows** activé (liens symboliques des plugins) ;
 - **Inno Setup 6** pour produire l'installeur.
+
+## Visualiser l'application
+
+Double-cliquez sur **`visualiser_application.bat`**, à la racine du projet. Le fichier ouvre une invite de commandes, met à jour les paquets (`flutter pub get`), puis lance l'application en mode développement (`flutter run -d windows`). Dans cette fenêtre, `r` recharge le code modifié, `R` redémarre l'application et `q` la ferme.
+
+> Pourquoi un `pub get` à chaque lancement ? L'application Claude est empaquetée en MSIX. Les paquets Dart téléchargés par ses outils sont donc rangés dans son stockage privé (`AppData\Local\Packages\Claude_…`), invisible des terminaux Windows. Lancé depuis l'Explorateur, le `pub get` les récupère dans le cache normal. Il est quasi instantané quand rien ne manque, et ne change aucun réglage hors de ce projet.
 
 ## Développer
 
