@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Mémo de navigation — Blender 5.2 LTS</title>
+<!-- Source du PDF memo_navigation_blender.pdf (module basics101_sec4_res1).
+     Export : tool/memo_navigation/export_pdf.ps1 (Edge en mode headless).
+     Raccourcis vérifiés dans la configuration clavier par défaut de Blender 5.2.1 LTS. -->
+<link rel="stylesheet" href="../../viv-formation-design-system/styles.css">
+<style>
+  @page { size: 297mm 210mm; margin: 0; }
+  html, body { margin: 0; padding: 0; background: var(--surface); }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: var(--ink); font-family: var(--font-sans); }
+
+  .page { width: 297mm; height: 210mm; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; }
+  .top-line { height: 6px; background: var(--gradient-brand); flex: none; }
+
+  header { display: flex; justify-content: space-between; align-items: flex-end; padding: 18px 40px 14px; border-bottom: 1px solid var(--border); flex: none; }
+  .overline { color: var(--ink-muted); margin: 0 0 6px; }
+  h1 { font: var(--text-display-md); margin: 0; font-size: 30px; line-height: 36px; }
+  .subtitle { margin: 4px 0 0; font-size: 13px; line-height: 18px; color: var(--ink-muted); }
+  header img { height: 34px; width: auto; display: block; margin-bottom: 4px; }
+
+  main { flex: 1; display: grid; grid-template-columns: 268px 1fr 282px; gap: 22px; padding: 16px 40px 10px; min-height: 0; }
+  .col { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+
+  h2 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 16px; line-height: 22px; margin: 0; color: var(--accent-deep); }
+  h3 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 14px; line-height: 20px; margin: 0; }
+
+  .card { border: 1px solid var(--border); border-radius: 14px; padding: 12px 14px; background: var(--surface-raised); }
+  .card--brand { background: var(--surface-brand); border-color: transparent; }
+  .card--sunken { background: var(--surface-sunken); }
+
+  p, li { font-size: 12.5px; line-height: 18px; margin: 0; }
+  .muted { color: var(--ink-muted); }
+  .note { font-size: 12px; line-height: 17px; color: var(--ink-muted); }
+
+  /* Composant Kbd du design system (.viv-kbd), resserré pour l'impression. */
+  .viv-kbd { font-size: 12px; line-height: 16px; padding: 1px 6px; }
+  .viv-kbd__plus { margin: 0 3px; }
+  code { font-family: var(--font-mono); font-size: 11.5px; line-height: 16px; background: var(--surface-code); border-radius: var(--radius-sm); padding: 1px 5px; white-space: nowrap; }
+
+  /* Gestes de souris */
+  .gesture { display: grid; grid-template-columns: 92px 1fr; gap: 10px; align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(218,165,188,.45); }
+  .gesture:first-of-type { border-top: 0; padding-top: 4px; }
+  .gesture .verb { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 20px; line-height: 24px; }
+  .gesture p { font-size: 13px; line-height: 19px; }
+  .extras { list-style: none; padding: 0; margin: 6px 0 0; display: flex; flex-direction: column; gap: 7px; }
+  .extras li { padding-left: 12px; position: relative; }
+  .extras li::before { content: ""; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--brand-rose); }
+
+  /* Pavé numérique */
+  .pad-wrap { display: flex; flex-direction: column; gap: 8px; }
+  .numpad { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 44px repeat(4, 80px); gap: 7px; }
+  .key { border: 1px solid var(--border-strong); background: var(--surface-code); border-radius: 10px; padding: 6px 8px; display: flex; flex-direction: column; gap: 2px; box-sizing: border-box; min-width: 0; }
+  .key .cap { font-family: var(--font-mono); font-size: 17px; line-height: 20px; color: var(--ink); }
+  .key .fn { font-size: 12px; line-height: 15px; color: var(--ink); }
+  .key .alt { font-size: 12px; line-height: 15px; color: var(--ink-muted); }
+  .key--taught { background: var(--surface-brand); border: 2px solid var(--action); padding: 5px 7px; }
+  .key--taught .cap { color: var(--action); }
+  .key--idle { background: transparent; border: 1px dashed var(--border-strong); opacity: .55; }
+  .key--idle .cap { font-family: var(--font-sans); font-size: 12px; line-height: 16px; color: var(--ink-subtle); }
+  .key--row1 { flex-direction: row; align-items: center; gap: 8px; }
+  .key--tall { grid-row: span 2; }
+  .key--wide { grid-column: span 2; }
+  .legend { display: flex; gap: 18px; align-items: center; }
+  .legend span.sw { display: inline-block; width: 26px; height: 15px; border-radius: 5px; vertical-align: -2px; margin-right: 6px; }
+  .sw--taught { background: var(--surface-brand); border: 2px solid var(--action); box-sizing: border-box; }
+  .sw--extra { background: var(--surface-code); border: 1px solid var(--border-strong); box-sizing: border-box; }
+
+  /* Gizmo */
+  .gizmo { display: grid; grid-template-columns: 72px 1fr; gap: 12px; align-items: start; }
+  .gizmo img { width: 72px; height: auto; border-radius: 8px; border: 1px solid var(--border); display: block; }
+  .gizmo ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px; }
+  .gizmo li b { font-weight: 400; font-style: italic; }
+
+  .defs { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 6px; align-items: baseline; margin-top: 6px; }
+
+  footer { flex: none; display: flex; justify-content: space-between; align-items: baseline; padding: 8px 40px 12px; border-top: 1px solid var(--border); }
+  footer p { font-size: 11px; line-height: 15px; color: var(--ink-subtle); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top-line"></div>
+
+  <header>
+    <div>
+      <p class="overline">PRC02 · Les bases 101 · Fiche mémo</p>
+      <h1>Naviguer dans la vue 3D</h1>
+      <p class="subtitle">Blender 5.2 LTS · interface en anglais · raccourcis de la configuration par défaut</p>
+    </div>
+    <img src="../../viv-formation-design-system/assets/logos/viv-formation-couleur.svg" alt="VIV Formation">
+  </header>
+
+  <main>
+    <!-- Colonne 1 : la souris -->
+    <section class="col">
+      <h2>À la souris</h2>
+      <div class="card card--brand">
+        <div class="gesture">
+          <span class="verb">Orbiter</span>
+          <p>Maintenez le bouton du milieu (molette pressée) et glissez.</p>
+        </div>
+        <div class="gesture">
+          <span class="verb">Déplacer</span>
+          <p><kbd class="viv-kbd">Maj</kbd> + bouton du milieu, glissez : panoramique.</p>
+        </div>
+        <div class="gesture">
+          <span class="verb">Zoomer</span>
+          <p>Tournez la molette, en avant ou en arrière.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Compléments</h3>
+        <ul class="extras">
+          <li><kbd class="viv-kbd">Ctrl</kbd> + bouton du milieu, glissez : zoom progressif.</li>
+          <li><kbd class="viv-kbd">Alt</kbd> + bouton du milieu, glissez : la vue s'aligne sur l'axe le plus proche.</li>
+        </ul>
+      </div>
+
+      <h2>Cadrer et afficher</h2>
+      <div class="card">
+        <div class="defs" style="margin-top:0">
+          <span><kbd class="viv-kbd">Origine</kbd></span><p>cadrer toute la scène</p>
+          <span><kbd class="viv-kbd">Z</kbd></span><p>menu circulaire des modes d'affichage : <em>Wireframe</em>, <em>Solid</em>, <em>Material Preview</em>, <em>Rendered</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Colonne 2 : le pavé numérique -->
+    <section class="col">
+      <h2>Le pavé numérique</h2>
+      <div class="pad-wrap">
+        <div class="numpad">
+          <div class="key key--idle key--row1"><span class="cap">Verr num</span></div>
+          <div class="key key--row1"><span class="cap">/</span><span class="fn">Vue locale</span></div>
+          <div class="key key--idle key--row1"><span class="cap">*</span></div>
+          <div class="key key--row1"><span class="cap">−</span><span class="fn">Zoom arrière</span></div>
+
+          <div class="key key--taught"><span class="cap">7</span><span class="fn">Dessus</span><span class="alt">Ctrl : dessous</span></div>
+          <div class="key"><span class="cap">8</span><span class="fn">Orbite vers le haut</span></div>
+          <div class="key"><span class="cap">9</span><span class="fn">Vue opposée</span></div>
+          <div class="key key--tall"><span class="cap">+</span><span class="fn">Zoom avant</span></div>
+
+          <div class="key"><span class="cap">4</span><span class="fn">Orbite à gauche</span></div>
+          <div class="key key--taught"><span class="cap">5</span><span class="fn">Perspective ou ortho&shy;graphique</span></div>
+          <div class="key"><span class="cap">6</span><span class="fn">Orbite à droite</span></div>
+
+          <div class="key key--taught"><span class="cap">1</span><span class="fn">Face</span><span class="alt">Ctrl : derrière</span></div>
+          <div class="key"><span class="cap">2</span><span class="fn">Orbite vers le bas</span></div>
+          <div class="key key--taught"><span class="cap">3</span><span class="fn">Droite</span><span class="alt">Ctrl : gauche</span></div>
+          <div class="key key--idle key--tall"><span class="cap">Entrée</span></div>
+
+          <div class="key key--taught key--wide"><span class="cap">0</span><span class="fn">Vue à travers la caméra active</span></div>
+          <div class="key key--taught"><span class="cap">.</span><span class="fn">Cadrer la sélection</span></div>
+        </div>
+
+        <div class="legend">
+          <p><span class="sw sw--taught"></span>Vues présentées dans la section 4</p>
+          <p><span class="sw sw--extra"></span>Compléments</p>
+        </div>
+        <p class="note">Les orbites tournent la vue par pas de 15°. Avec <kbd class="viv-kbd">Ctrl</kbd>, les touches <kbd class="viv-kbd">2</kbd> <kbd class="viv-kbd">4</kbd> <kbd class="viv-kbd">6</kbd> <kbd class="viv-kbd">8</kbd> font un panoramique. La vue locale isole la sélection ; la même touche ramène toute la scène.</p>
+      </div>
+      <div class="card card--sunken">
+        <h3>Le bouton du milieu déplace la vue au lieu de la faire tourner&nbsp;?</h3>
+        <p class="note" style="margin-top:2px">Le réglage <em>Middle Mouse Action</em> est passé sur <em>Pan</em> : rétablissez <em>Orbit</em> dans <code>Edit &gt; Preferences &gt; Keymap</code>.</p>
+      </div>
+    </section>
+
+    <!-- Colonne 3 : portable, gizmo, affichage -->
+    <section class="col">
+      <h2>Sur un ordinateur portable</h2>
+      <div class="card">
+        <p class="muted">Dans <code>Edit &gt; Preferences &gt; Input</code>&nbsp;:</p>
+        <h3 style="margin-top:6px">Emulate 3 Button Mouse</h3>
+        <ul class="extras">
+          <li>Orbiter : <kbd class="viv-kbd">Alt</kbd> + clic gauche, glissez.</li>
+          <li>Panoramique : <kbd class="viv-kbd">Maj</kbd><span class="viv-kbd__plus">+</span><kbd class="viv-kbd">Alt</kbd> + clic gauche.</li>
+          <li>Zoom : <kbd class="viv-kbd">Ctrl</kbd><span class="viv-kbd__plus">+</span><kbd class="viv-kbd">Alt</kbd> + clic gauche.</li>
+        </ul>
+        <h3 style="margin-top:8px">Emulate Numpad</h3>
+        <p>Les chiffres de la rangée principale remplacent le pavé numérique.</p>
+      </div>
+
+      <h2>Le gizmo de navigation</h2>
+      <div class="card gizmo">
+        <img src="../../assets/images/navigation_gizmo_blender.jpg" alt="Gizmo de navigation de Blender 5.2">
+        <ul>
+          <li><b>Axes X, Y, Z</b> : cliquez pour aligner la vue ; glissez pour orbiter.</li>
+          <li><b>Loupe</b> : glissez pour zoomer.</li>
+          <li><b>Main</b> : glissez pour un panoramique.</li>
+          <li><b>Caméra</b> : vue à travers la caméra.</li>
+          <li><b>Quadrillage</b> : perspective ou orthographique.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>PRC02-SU-26v01 · Mémo de navigation · Raccourcis vérifiés dans Blender 5.2.1 LTS, configuration clavier par défaut</p>
+    <p>VIV Formation</p>
+  </footer>
+</div>
+</body>
+</html>

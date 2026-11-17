@@ -148,7 +148,7 @@ Le blocage s'arrête quand les proportions vous conviennent : le détail viendra
 title: "Fichier d'exercice : blocage de la lampe de bureau"
 description: "Scène de départ du fil rouge, avec les croquis de face et de profil de la lampe et un exemple de blocage terminé, masqué, pour comparer votre travail."
 fileName: "PRC02_ch1_blocage_lampe.blend (0.2 Mo)"
-downloadUrl: "https://example.com/files/prc02-ch1-blocage-lampe"
+downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch1_blocage_lampe.blend"
 ```
 
 ### Partir des primitives

@@ -177,8 +177,8 @@ La capture montre le menu External Data déroulé. L'option Pack Resources intè
 ```resource
 title: "Modèle de projet organisé"
 description: "Fichier .blend structuré en collections nommées, avec ses textures déjà empaquetées, à utiliser comme point de départ propre pour vos propres projets."
-fileName: "modele_projet_organise.blend (5.1 Mo)"
-downloadUrl: "https://example.com/files/modele-projet-organise"
+fileName: "modele_projet_organise.blend (5.2 Mo)"
+downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/modele_projet_organise.blend"
 ```
 
 ### Append, Link et fichier de démarrage

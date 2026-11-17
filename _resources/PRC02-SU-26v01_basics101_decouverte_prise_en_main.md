@@ -177,8 +177,8 @@ La capture montre le coin supérieur droit de la vue 3D. Les quatre boutons rond
 ```resource
 title: "Mémo de navigation et raccourcis"
 description: "Fiche de référence récapitulant les gestes de navigation et les raccourcis du pavé numérique, à garder sous la main pendant vos premières heures de pratique."
-fileName: "memo_navigation_blender.pdf (0.4 Mo)"
-downloadUrl: "https://example.com/files/memo-navigation-blender"
+fileName: "memo_navigation_blender.pdf (0.1 Mo)"
+downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/memo_navigation_blender.pdf"
 ```
 
 > [!TIP]

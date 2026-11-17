@@ -222,8 +222,8 @@ const List<ContentModule> basics101Modules = [
     id: 'basics101_sec4_res1',
     title: 'Mémo de navigation et raccourcis',
     description: 'Fiche de référence récapitulant les gestes de navigation et les raccourcis du pavé numérique, à garder sous la main pendant vos premières heures de pratique.',
-    fileName: 'memo_navigation_blender.pdf (0.4 Mo)',
-    downloadUrl: 'https://example.com/files/memo-navigation-blender',
+    fileName: 'memo_navigation_blender.pdf (0.1 Mo)',
+    downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/memo_navigation_blender.pdf',
   ),
   InfoModule(
     id: 'basics101_sec4_info1',
@@ -466,8 +466,8 @@ const List<ContentModule> basics102Modules = [
     id: 'basics102_sec4_res1',
     title: 'Modèle de projet organisé',
     description: 'Fichier .blend structuré en collections nommées, avec ses textures déjà empaquetées, à utiliser comme point de départ propre pour vos propres projets.',
-    fileName: 'modele_projet_organise.blend (5.1 Mo)',
-    downloadUrl: 'https://example.com/files/modele-projet-organise',
+    fileName: 'modele_projet_organise.blend (5.2 Mo)',
+    downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/modele_projet_organise.blend',
   ),
   TextModule(
     id: 'basics102_sec4_txt5',
@@ -560,8 +560,8 @@ const List<ContentModule> basics103Modules = [
     id: 'basics103_sec2_res1',
     title: 'Scène d\'exercices - Primitives',
     description: 'Fichier contenant plusieurs primitives de départ et quelques formes cibles à reproduire, pour vous entraîner aux outils d\'édition de cette section.',
-    fileName: 'exercices_modelisation_primitives.blend (3.6 Mo)',
-    downloadUrl: 'https://example.com/files/exercices-modelisation-primitives',
+    fileName: 'exercices_modelisation_primitives.blend (0.1 Mo)',
+    downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/exercices_modelisation_primitives.blend',
   ),
   TextModule(
     id: 'basics103_sec2_txt2',
@@ -920,7 +920,7 @@ const List<ContentModule> chapter1Modules = [
     title: 'Fichier d\'exercice : blocage de la lampe de bureau',
     description: 'Scène de départ du fil rouge, avec les croquis de face et de profil de la lampe et un exemple de blocage terminé, masqué, pour comparer votre travail.',
     fileName: 'PRC02_ch1_blocage_lampe.blend (0.2 Mo)',
-    downloadUrl: 'https://example.com/files/prc02-ch1-blocage-lampe',
+    downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch1_blocage_lampe.blend',
   ),
   TextModule(
     id: 'ch1_sec2_txt3',

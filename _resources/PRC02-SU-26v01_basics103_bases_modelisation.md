@@ -49,8 +49,8 @@ On ne modélise presque jamais à partir de rien : on part d'une **primitive** �
 ```resource
 title: "Scène d'exercices - Primitives"
 description: "Fichier contenant plusieurs primitives de départ et quelques formes cibles à reproduire, pour vous entraîner aux outils d'édition de cette section."
-fileName: "exercices_modelisation_primitives.blend (3.6 Mo)"
-downloadUrl: "https://example.com/files/exercices-modelisation-primitives"
+fileName: "exercices_modelisation_primitives.blend (0.1 Mo)"
+downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/exercices_modelisation_primitives.blend"
 ```
 
 ### Extrude : l'outil fondamental
