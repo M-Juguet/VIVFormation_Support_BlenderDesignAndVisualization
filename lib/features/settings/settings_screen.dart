@@ -159,23 +159,44 @@ class SettingsScreen extends ConsumerWidget {
   }
 
   Widget _buildDiagnosticResult(Map<String, dynamic> report) {
-    final hasError = report['error'] != null ||
-        report['statusCode'] != 200 ||
-        !report['releaseFound'] ||
-        !report['hasExeAsset'];
+    final releaseOk = report['releaseFound'] == true && report['hasExeAsset'] == true;
+    final viaWindows = report['channel'] == 'windows';
+    final channelLabel = switch (report['channel']) {
+      'direct' => 'Connexion directe',
+      'windows' => 'Réseau Windows (proxy et certificats du système)',
+      _ => 'Aucun',
+    };
+
+    final technical = <String>[
+      if (report['directError'] != null) 'Connexion directe\n${report['directError']}',
+      if (report['windowsError'] != null) 'Réseau Windows\n${report['windowsError']}',
+    ].join('\n\n');
+
+    final (String badgeLabel, VivBadgeTone badgeTone, IconData badgeIcon) = !releaseOk
+        ? ('Problème détecté', VivBadgeTone.danger, LucideIcons.triangleAlert)
+        : viaWindows
+            ? ('Connexion établie par le réseau Windows', VivBadgeTone.warning, LucideIcons.circleCheck)
+            : ('Connexion établie', VivBadgeTone.success, LucideIcons.circleCheck);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        VivBadge(
-          hasError ? 'Problème détecté' : 'Connexion établie',
-          tone: hasError ? VivBadgeTone.danger : VivBadgeTone.success,
-          icon: hasError ? LucideIcons.triangleAlert : LucideIcons.circleCheck,
-        ),
+        VivBadge(badgeLabel, tone: badgeTone, icon: badgeIcon),
+        if (report['hint'] != null) ...[
+          const SizedBox(height: VivSpacing.space3),
+          Text(
+            viaWindows
+                ? '${report['hint']} Les mises à jour passent donc par le réseau Windows, qui fonctionne.'
+                : '${report['hint']}',
+            style: VivTypography.bodySm,
+          ),
+        ],
         const SizedBox(height: VivSpacing.space4),
         _buildDiagnosticRow('URL ciblée', report['targetUrl'] ?? ''),
         const SizedBox(height: VivSpacing.space2),
         _buildDiagnosticRow('Jeton d\'accès configuré', report['hasToken'] == true ? 'Oui' : 'Non'),
+        const SizedBox(height: VivSpacing.space2),
+        _buildDiagnosticRow('Canal utilisé', channelLabel),
         const SizedBox(height: VivSpacing.space2),
         _buildDiagnosticRow(
           'Code HTTP retourné',
@@ -189,7 +210,7 @@ class SettingsScreen extends ConsumerWidget {
         ),
         const SizedBox(height: VivSpacing.space2),
         _buildDiagnosticRow('Installeur (.exe) détecté', report['hasExeAsset'] == true ? 'Oui' : 'Non'),
-        if (report['error'] != null) ...[
+        if (technical.isNotEmpty) ...[
           const SizedBox(height: VivSpacing.space4),
           Text('Message d\'erreur technique', style: VivTypography.headingSm),
           const SizedBox(height: VivSpacing.space2),
@@ -203,8 +224,11 @@ class SettingsScreen extends ConsumerWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: SelectableText(
-                '${report['error']}',
-                style: VivTypography.code.copyWith(fontSize: 12, color: VivColors.danger),
+                technical,
+                style: VivTypography.code.copyWith(
+                  fontSize: 12,
+                  color: releaseOk ? VivColors.inkMuted : VivColors.danger,
+                ),
               ),
             ),
           ),

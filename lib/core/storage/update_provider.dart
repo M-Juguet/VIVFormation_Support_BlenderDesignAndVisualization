@@ -132,10 +132,11 @@ class UpdateNotifier extends Notifier<UpdateState> {
     final localPath = await updateService.downloadUpdate(
       state.release!.downloadUrl,
       (count, total) {
-        if (total != -1) {
-          state = state.copyWith(progress: count / total);
+        if (total > 0) {
+          state = state.copyWith(progress: (count / total).clamp(0.0, 1.0));
         }
       },
+      expectedSize: state.release!.downloadSize,
     );
 
     if (localPath != null) {
