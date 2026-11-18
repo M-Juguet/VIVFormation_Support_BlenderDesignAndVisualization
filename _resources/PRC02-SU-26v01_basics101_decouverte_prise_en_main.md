@@ -163,7 +163,7 @@ Le pavé numérique offre des raccourcis de vue extrêmement efficaces, à mémo
 Ces raccourcis font gagner un temps considérable dès qu'on cherche à se positionner précisément.
 
 ### Perspective, orthographique et modes d'affichage
-La touche `5` du pavé numérique bascule entre deux projections. La vue **perspective** imite l'œil humain : les lignes parallèles convergent au loin, ce qui donne une impression de profondeur. La vue **orthographique** conserve les lignes parallèles, sans déformation de distance, ce qui est idéal pour aligner des objets avec précision. Enfin, le coin supérieur droit de la vue propose quatre **modes d'affichage** — *Wireframe* (fil de fer), *Solid* (volumes mats), *Material Preview* (aperçu des matériaux) et *Rendered* (rendu réel du moteur) — que vous retrouverez et exploiterez pleinement au chapitre 4, consacré au rendu avec EEVEE.
+La touche `5` du pavé numérique bascule entre deux projections. La vue **perspective** imite l'œil humain : les lignes parallèles convergent au loin, ce qui donne une impression de profondeur. La vue **orthographique** conserve les lignes parallèles, sans déformation de distance, ce qui est idéal pour aligner des objets avec précision. Enfin, le coin supérieur droit de la vue propose quatre **modes d'affichage** — *Wireframe* (fil de fer), *Solid* (volumes mats), *Material Preview* (aperçu des matériaux) et *Rendered* (rendu réel du moteur) — que vous retrouverez tout au long de la formation : *Material Preview* au chapitre 3, pour juger les matières, puis *Rendered* au chapitre 4, consacré au rendu avec EEVEE.
 
 ```side-by-side
 layout: "textRight"
