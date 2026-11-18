@@ -47,3 +47,7 @@ app.*.map.json
 # Inno Setup output folder
 /Output/
 
+
+# Journaux des outils Blender et sources téléchargées
+/tool/blender/journaux/
+/tool/blender/relance.log

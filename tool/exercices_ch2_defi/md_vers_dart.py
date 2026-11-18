@@ -1,5 +1,5 @@
 # Convertit la source Markdown du chapitre 2 (format de writer_guide.md) en modules Dart, et
-# remplace la liste chapter2Modules de lib/core/data/mock_chapters_data.dart.
+# remplace la liste chapter2Modules de lib/core/data/chapter2_data.dart.
 #
 # Usage, depuis la racine du dépôt, avec le Python livré avec Blender :
 #   "C:\Program Files\Blender Foundation\Blender 5.2\5.2\python\bin\python.exe" -I ^
@@ -20,7 +20,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 SRC = os.path.join(ROOT, "_resources", "PRC02-SU-26v01_chap2_modelisation_non_destructive.md")
-DART = os.path.join(ROOT, "lib", "core", "data", "mock_chapters_data.dart")
+DART = os.path.join(ROOT, "lib", "core", "data", "chapter2_data.dart")
 CHAPTER_TITLE = "Modélisation non destructive : modificateurs et courbes"
 
 INFO = {"NOTE": "info", "IMPORTANT": "info", "TIP": "tip", "WARNING": "warning", "CAUTION": "challenge", "IDEA": "idea"}
