@@ -81,7 +81,7 @@ Sur 3 h 30 : 39 minutes de démonstration, 74 minutes de pratique guidée, 49 mi
 ## Avant la séance
 
 ### Les postes des apprenants
-- [ ] Un rendu F12 du fichier `PRC02_ch4_lampe_habillee.blend` a été lancé sur chaque poste. Notez le temps : un poste lent se repère avant la séance.
+- [ ] Un rendu F12 du fichier `PRC02_ch4_lampe_en_studio.blend` a été lancé sur chaque poste. Notez le temps : un poste lent se repère avant la séance.
 - [ ] Le studio et le fichier de secours du chapitre 4 sont copiés dans le dossier de travail.
 - [ ] Le fichier de fin du chapitre 3, `lampe_habillage_v002.blend`, est retrouvé sur chaque poste.
 - [ ] Un dossier partagé `Galerie_PRC02` est accessible en écriture depuis tous les postes, ou une clé USB circule.
@@ -109,7 +109,7 @@ Sur 3 h 30 : 39 minutes de démonstration, 74 minutes de pratique guidée, 49 mi
 - **Montrez la cible.** Projetez les trois visuels du corrigé. « À 17 heures, vous aurez exporté les vôtres. » Présentez les livrables (voir « L'atelier final ») et le dossier `Galerie_PRC02`.
 - **Chacun ouvre son point de départ :**
   - si la lampe du chapitre 3 est exploitable : ouvrir `PRC02_ch4_studio.blend`, puis *File > Append* : `lampe_habillage_v002.blend`, dossier *Collection*, collection *Lampe*. Enregistrer sous `lampe_rendu_v001.blend` ;
-  - sinon : ouvrir le fichier de secours `PRC02_ch4_lampe_habillee.blend` et l'enregistrer sous le même nom.
+  - sinon : ouvrir le fichier de secours `PRC02_ch4_lampe_en_studio.blend` et l'enregistrer sous le même nom.
 - **Le coloris B attend.** La collection `Lampe_coloris_B` reste dans le fichier du chapitre 3 : elle n'entre dans le studio qu'au palier ★ de l'atelier. Dans le fichier de secours, elle est déjà là, masquée.
 - **Règle de bascule :** au bout de 3 minutes de difficulté (Append qui échoue, matières perdues, échelle non appliquée), on passe au fichier de secours, sans débat. Rassurez : la lampe du chapitre 3 pourra être mise en scène plus tard, dans le même studio.
 - **Au paperboard,** les touches du jour, ajoutées au fil de la séance : `Z` (menu des modes d'affichage), `F12` (rendre), `J` (emplacement de rendu suivant), `Ctrl + Alt + 0` du pavé numérique (caméra sur la vue), `Maj + Alt + S` (enregistrer l'image).
@@ -361,7 +361,7 @@ Voir « L'atelier final » plus bas pour la situation, les livrables et les pali
 - La vue de détail sort en 16:9, ou la vue héros en carré : la résolution n'a pas été changée entre deux caméras.
 - Un sol qui scintille sous le plateau de bureau : la collection `Studio` est restée visible. La masquer pour la vue de situation.
 - Au palier ★, `ABS_Noir.001` ou `PVC_Mat_Noir.001` apparaissent après l'Append du coloris B : ce sont des copies des matières partagées par les deux coloris, sans effet sur le rendu.
-- Au palier ★, les deux lampes se touchent : le coloris B avait été peu décalé au chapitre 3. Aidez l'apprenant à l'éloigner : clic droit sur `Lampe_coloris_B` dans l'Outliner, *Select Objects*, puis `G X` et une valeur saisie.
+- Au palier ★, les deux lampes se touchent : le décalage de 750 mm demandé au chapitre 3 a été oublié ou mal saisi. Aidez l'apprenant à éloigner la copie : clic droit sur `Lampe_coloris_B` dans l'Outliner, *Select Objects*, puis `G X` et une valeur saisie.
 - Un apprenant perdu à la fin de la section 3 : il ouvre le fichier de secours, l'enregistre sous `lampe_rendu_v001.blend`, rend visibles les collections « Corrigé éclairage » et « Corrigé caméras » (œil et appareil photo), applique les notes « Corrigé » du LISEZ-MOI, puis commence l'atelier de là.
 
 **Points de contrôle**
@@ -414,7 +414,7 @@ Le point de départ se choisit au lancement de la séance (voir 0:00) :
 | Situation de l'apprenant | Fichier | Geste |
 |---|---|---|
 | Lampe du chapitre 3 exploitable | `PRC02_ch4_studio.blend` | *File > Append* de la collection *Lampe* de `lampe_habillage_v002.blend`, puis *Save As* `lampe_rendu_v001.blend` |
-| Lampe absente, incomplète ou abîmée | `PRC02_ch4_lampe_habillee.blend` | *Save As* `lampe_rendu_v001.blend` |
+| Lampe absente, incomplète ou abîmée | `PRC02_ch4_lampe_en_studio.blend` | *Save As* `lampe_rendu_v001.blend` |
 | Autre objet retenu aux chapitres 2 et 3 | `PRC02_ch4_studio.blend` | Même geste que pour la lampe ; `lampe` devient le nom de l'objet dans les fichiers livrés |
 
 Le fichier de secours reproduit l'état de `lampe_habillage_v002.blend` à la fin du chapitre 3 : la collection *Lampe* en coloris A, la collection `Lampe_coloris_B`, les modificateurs actifs, les échelles à 1 et les matières du corrigé du chapitre 3.
@@ -471,11 +471,11 @@ Le chapitre suit la convention commune aux chapitres 2 à 4 :
 - le LISEZ-MOI indique en une ligne où le trouver ;
 - un fichier séparé n'existe que si le résultat ne tient pas dans une collection (réglages de rendu, monde, images exportées) ou s'il sert de fichier de secours.
 
-Toute la séance se passe dans un seul fichier de travail, `lampe_rendu_v001.blend`. Il naît du studio (`PRC02_ch4_studio.blend` et l'Append de la lampe) ou du fichier de secours (`PRC02_ch4_lampe_habillee.blend`). Les deux contiennent les mêmes collections « Corrigé ».
+Toute la séance se passe dans un seul fichier de travail, `lampe_rendu_v001.blend`. Il naît du studio (`PRC02_ch4_studio.blend` et l'Append de la lampe) ou du fichier de secours (`PRC02_ch4_lampe_en_studio.blend`). Les deux contiennent les mêmes collections « Corrigé ».
 
 | Exercice ou atelier | Moment du minutage | Fichier de travail | Où se trouve le corrigé |
 |---|---|---|---|
-| Lancement : la lampe dans le studio | 0:00 à 0:10 | `PRC02_ch4_studio.blend`, puis Append de la collection *Lampe* de `lampe_habillage_v002.blend` | Fichier séparé : `PRC02_ch4_lampe_habillee.blend`. Raison : c'est le fichier de secours, et il montre la lampe en place dans le studio. |
+| Lancement : la lampe dans le studio | 0:00 à 0:10 | `PRC02_ch4_studio.blend`, puis Append de la collection *Lampe* de `lampe_habillage_v002.blend` | Fichier séparé : `PRC02_ch4_lampe_en_studio.blend`. Raison : c'est le fichier de secours, et il montre la lampe en place dans le studio. |
 | Section 1 · Le banc d'essai EEVEE | 0:10 à 0:40 | `lampe_rendu_v001.blend` | Note « Corrigé » du LISEZ-MOI : *Raytracing* coché, *Render > Samples* 128, *View* *Khronos PBR Neutral*. Raison : trois réglages de la scène, qui ne tiennent pas dans une collection ; une note suffit, et l'image `PRC02_ch4_comparatif_moteurs.png` en montre l'effet. Un fichier séparé pèserait 13 Mo pour trois cases. |
 | Section 2 · Éclairer par HDRI | 0:40 à 1:00 | `lampe_rendu_v001.blend` | Note « Corrigé » du LISEZ-MOI : `Monde_Interieur` et la valeur de sa rotation Z. Raison : un monde n'est pas dans une collection, et le réglage tient en une ligne. |
 | Section 2 · Éclairer en studio | 1:10 à 1:45 | `lampe_rendu_v001.blend` | Collection masquée « Corrigé éclairage », avec `Monde_Neutre` rappelé dans le LISEZ-MOI. |
@@ -576,7 +576,7 @@ Chaque monde à HDRI suit le même câblage : *Texture Coordinate* (*Generated*)
 
 **Taille estimée :** environ 13 Mo, presque tout dans les deux HDRI 2K.
 
-### `PRC02_ch4_lampe_habillee.blend` · le fichier de secours
+### `PRC02_ch4_lampe_en_studio.blend` · le fichier de secours
 
 **Moments :** lancement, pour ceux dont la lampe du chapitre 3 n'est pas exploitable ; corrigé du lancement, puisqu'il montre la lampe en place dans le studio ; point de reprise pour un apprenant perdu en cours de séance. Il sert aussi au formateur pour ses démos et pour fabriquer les images du corrigé.
 
@@ -588,22 +588,20 @@ Chaque monde à HDRI suit le même câblage : *Texture Coordinate* (*Generated*)
   - Position du chapitre 2 : socle centré sur l'origine, posé à Z = 0.
   - Matières du cahier CMF du chapitre 3 : `Structure_Vert` (socle), `Peinture_Vert` laquée (tête), `ABS_Noir` grainé (grille, interrupteur et ses crans), `Alu_Brosse` (bras), `Chrome` (articulations), `PVC_Mat_Noir` (câble), `Alu_Naturel` (douille), `Verre_Clair` avec *Thin Wall* et *Raytraced Transmission* cochés (ampoule).
 - **`Lampe_coloris_B` : le coloris B.**
-  - Les mêmes pièces, suffixées `_B`, décalées de + 0,75 m en X. Ce décalage évite que le câble de l'une traverse le socle de l'autre.
+  - Les mêmes pièces, sous les noms que leur donne *Duplicate Collection* (`Socle.001`…), décalées de + 0,75 m en X, comme le demande l'atelier du chapitre 3. Ce décalage évite que le câble de l'une traverse le socle de l'autre.
   - Œil fermé et appareil photo désactivé à l'ouverture : elle n'entre dans le cadre qu'au palier ★ de la gamme.
   - Matières : `Structure_Blanche`, `Laque_Blanche`, `Alu_Anodise_Noir` brossé, `Laiton` (articulations, douille), `Verre_Depoli` ; `ABS_Noir` et `PVC_Mat_Noir` partagés avec le coloris A.
 - Matières marquées comme actifs et rangées en catalogues, comme à la fin du chapitre 3 ; image `grain_structure.png` empaquetée ; aucune matière liée.
 - Modificateurs actifs, jamais appliqués ; échelles à 1 ; rotations des bras non appliquées.
 - Scène : celle du studio, *Raytracing* décoché (voir « Règles communes »).
 
-**Source :** les collections *Corrigé coloris A* et *Corrigé coloris B* de `PRC02_ch3_lampe_a_habiller.blend`, le corrigé du chapitre 3, ramenées par Append :
-- la première renommée `Lampe`, ses objets sans suffixe, replacée sur l'origine ;
-- la seconde renommée `Lampe_coloris_B`, placée à + 0,75 m en X de la première.
+**Source :** `PRC02_ch3_lampe_habillage.blend`, la lampe habillée du chapitre 3 (sa fiche A2). C'est l'état attendu de `lampe_habillage_v002.blend`. Ses collections `Lampe` et `Lampe_coloris_B` sont ramenées dans le studio par *File > Append*, le geste même des apprenants, sans renommage ni déplacement.
 
 **Vue d'ouverture :** celle du studio. **LISEZ-MOI :** celui du studio, avec la rubrique « Démarrer (fichier de secours) ».
 
 ### Les images du corrigé et du formateur
 
-Ce sont des fichiers séparés, puisque ce sont des images exportées. Elles sont toutes rendues depuis une copie de travail de `PRC02_ch4_lampe_habillee.blend`, jamais enregistrée par-dessus le fichier de secours, avec les réglages des notes « Corrigé » : *Raytracing* coché, 128 échantillons, *Khronos PBR Neutral*.
+Ce sont des fichiers séparés, puisque ce sont des images exportées. Elles sont toutes rendues depuis une copie de travail de `PRC02_ch4_lampe_en_studio.blend`, jamais enregistrée par-dessus le fichier de secours, avec les réglages des notes « Corrigé » : *Raytracing* coché, 128 échantillons, *Khronos PBR Neutral*.
 
 | Fichier | Moment | Fabrication |
 |---|---|---|
@@ -746,7 +744,7 @@ Les plans `PRC02-plan-chap2.md` et `PRC02-plan-chap3.md`, quasi finaux, ont ét�
 |---|---|---|
 | Fichier d'entrée | `lampe_habillage_v002.blend`, la fin du chapitre 3 | Append de la collection *Lampe* au lancement |
 | Collections | *Lampe* en coloris A ; `Lampe_coloris_B`, créée à l'atelier du chapitre 3 | *Lampe* au lancement ; `Lampe_coloris_B` par Append au palier ★ de la gamme, jamais recréée |
-| Fichier de secours | — | `PRC02_ch4_lampe_habillee.blend` reproduit l'état de `lampe_habillage_v002.blend`, coloris B compris |
+| Fichier de secours | — | `PRC02_ch4_lampe_en_studio.blend` reproduit l'état de `lampe_habillage_v002.blend`, coloris B compris |
 | Pièces | `Socle`, `Grille_aeration` et `Grille_pivot`, `Interrupteur`, `Interrupteur_crans` et `Interrupteur_pivot`, trois articulations, `Bras_bas` et `Bras_haut` en tiges doubles, `Tête`, `Douille`, `Ampoule`, `Câble` | La vue de détail du corrigé porte sur l'interrupteur cranté et la grille d'aération |
 | Dimensions | Hauteur d'environ 0,45 m ; câble au sol jusqu'à X = −0,333 | La lampe de référence du studio et les cadrages sont recalculés sur le corrigé du chapitre 2, câble compris |
 | Modificateurs | Actifs, jamais appliqués ; rotations des bras non appliquées | EEVEE les rend tels quels |
@@ -763,11 +761,14 @@ Les plans `PRC02-plan-chap2.md` et `PRC02-plan-chap3.md`, quasi finaux, ont ét�
 
 ### Incohérences relevées
 
-À arbitrer avec les sessions des chapitres 2 et 3 ; ce plan ne les corrige pas chez eux.
+Les trois points relevés ont été traités à la relecture, le 18 novembre 2026.
 
-1. **Le décalage des lampes au chapitre 3.** La fiche A du chapitre 3 décale ses corrigés de 0,40 m et 0,80 m en X. Or le câble du chapitre 2 s'étend jusqu'à X = −0,333 : avec 0,40 m d'écart, l'extrémité du câble d'une copie tombe à 0,073 m du centre du socle voisin, dont le rayon est 0,090. Le câble traverse donc le socle. L'atelier du chapitre 3 dit seulement « décalez-la ». Proposition : 0,75 m en X, la valeur retenue ici pour `Lampe_coloris_B`, ou 0,30 m en Y.
-2. **Le palier de la lampe allumée.** La section « Coordination » du plan du chapitre 2 la cite comme palier ★ du chapitre 4 ; c'est un palier ★★.
-3. **Le moteur du fichier du chapitre 1**, pour mémoire : il est réglé sur Cycles. Sans effet au chapitre 4 ; le check-up du chapitre 3 le traite.
+1. **Le décalage des lampes au chapitre 3 : harmonisé à 0,75 m en X.**
+   - Le chapitre 3 fait saisir `G X 750` à l'atelier.
+   - Sa fiche A décale ses corrigés de 0,75 m et de 1,50 m.
+   - Avec l'ancien écart de 0,40 m, le câble d'une copie traversait le socle voisin : le câble s'étend jusqu'à X = −0,333, et le socle a un rayon de 0,090.
+2. **Le palier de la lampe allumée : un palier ★★.** La section « Coordination » du plan du chapitre 2 a été corrigée.
+3. **Le moteur du fichier du chapitre 1**, pour mémoire. Ce fichier est réglé sur Cycles, et sa correction est prévue en fin de projet. Cela n'a pas d'effet au chapitre 4 : le check-up du chapitre 3 traite ce point.
 
 La grille d'aération, signalée comme absente dans la version précédente de ce plan, existe bien depuis le chapitre 2 : ce point est clos.
 
@@ -778,7 +779,7 @@ La grille d'aération, signalée comme absente dans la version précédente de c
 | 1 · Durée | 210 minutes de contenu et 20 minutes de pauses : 3 h 50, sous les 4 heures. |
 | 2 · Périmètre | Les quatre ancres `ch4_sec1_title` à `ch4_sec4_title` ; EEVEE, l'éclairage et la caméra. Append est réinvesti, pas réexpliqué. |
 | 3 · Pas de redite | Tableau « Ce que le chapitre ne refait pas ». |
-| 4 · Continuité | Entrée : `lampe_habillage_v002.blend`. Fichier de départ propre : `PRC02_ch4_lampe_habillee.blend`, au même état, qui sert aussi de point de reprise en cours de séance. |
+| 4 · Continuité | Entrée : `lampe_habillage_v002.blend`. Fichier de départ propre : `PRC02_ch4_lampe_en_studio.blend`, au même état, qui sert aussi de point de reprise en cours de séance. |
 | 5 · Fichiers et ateliers | Tableau « Fichiers de travail et corrigés », selon la convention commune aux chapitres 2 à 4 : corrigés dans des collections masquées « Corrigé », notes « Corrigé » du LISEZ-MOI pour les réglages de rendu et le monde, fichiers séparés pour les images et le fichier de secours seulement. Ressources empaquetées ; LISEZ-MOI par paliers ; défis à part. |
 | 6 · Chapitre 4 | Contenu technique de 3 h, accueil compris ; galerie et bilan de 30 minutes. |
 | 7 · Progression | Prérequis et nouveautés en tête de chaque séquence ; une notion par cycle ; démo, guidé, puis autonome ; un atelier sans notion nouvelle, la matière émissive étant fournie. |
@@ -790,10 +791,11 @@ La grille d'aération, signalée comme absente dans la version précédente de c
 3. **Cycles :** une image comparative seulement, `PRC02_ch4_comparatif_moteurs.png`. Aucune manipulation de Cycles en séance : le défi de comparaison avec Cycles est retiré.
 4. **Le questionnaire de satisfaction :** hors du support, géré par VIV Formation. Il est retiré du plan, avec la grille d'autoévaluation qui relevait de la même procédure. Ses minutes vont au bilan pédagogique : le récapitulatif des six demi-journées, les ressources pour continuer et les questions.
 
-**Ajouts du 18 novembre, à confirmer à la relecture :**
+**Ajouts du 18 novembre, confirmés à la relecture :**
 - les corrigés selon la convention commune aux chapitres 2 à 4 : trois collections masquées « Corrigé » dans le fichier de travail, une note « Corrigé » du LISEZ-MOI pour les réglages de rendu et le monde, aucun fichier `_fini` ;
 - le palier ★ des coloris devient une vue de gamme, `lampe_gamme_<initiales>_v001.png`, avec le coloris B amené par Append ;
-- le décalage de `Lampe_coloris_B`, à harmoniser avec le chapitre 3 (incohérence 1).
+- le décalage de `Lampe_coloris_B` : 0,75 m en X, harmonisé avec le chapitre 3 (point 1 ci-dessus) ;
+- le fichier de secours est renommé `PRC02_ch4_lampe_en_studio.blend`, pour ne pas le confondre avec `PRC02_ch3_lampe_habillage.blend`. Il est tiré de ce dernier par Append.
 
 ## Annexe · Les textes LISEZ-MOI
 
@@ -808,7 +810,7 @@ Blender 5.2 LTS. Ctrl + Espace agrandit ce texte.
 DÉMARRER (fichier studio)
 - Votre lampe du chapitre 3 est prête : File > Append,
   lampe_habillage_v002.blend, dossier Collection, collection Lampe.
-- Sinon : ouvrez plutôt PRC02_ch4_lampe_habillee.blend.
+- Sinon : ouvrez plutôt PRC02_ch4_lampe_en_studio.blend.
 - Puis File > Save As : lampe_rendu_v001.blend.
 - L'ampoule ne laisse plus voir le fond de la tête : c'est normal,
   la section 1 explique pourquoi.
@@ -902,7 +904,7 @@ Trois collections masquées (œil fermé) : Corrigé éclairage, Corrigé
 caméras, Corrigé paliers. Pour en voir une au rendu, ouvrez son œil et
 son appareil photo. Réglages de rendu et monde : la ligne « Corrigé »
 de chaque section. Images : PRC02_ch4_corrige_*.png.
-Perdu en cours de route ? Ouvrez PRC02_ch4_lampe_habillee.blend,
+Perdu en cours de route ? Ouvrez PRC02_ch4_lampe_en_studio.blend,
 enregistrez-le sous lampe_rendu_v001.blend, puis suivez les corrigés.
 ```
 
@@ -910,7 +912,7 @@ Les lignes « Corrigé » de chaque section, une par section :
 
 | Rubrique | Ligne à placer en fin de rubrique |
 |---|---|
-| Démarrer (fichier studio) | `Corrigé : PRC02_ch4_lampe_habillee.blend montre la lampe en place.` |
+| Démarrer (fichier studio) | `Corrigé : PRC02_ch4_lampe_en_studio.blend montre la lampe en place.` |
 | 1 · Paramétrer EEVEE | `Corrigé : Raytracing coché, Render > Samples 128, View Khronos PBR Neutral.` |
 | 2 · Éclairer par HDRI | `Corrigé : Monde_Interieur, rotation Z du Mapping <valeur notée au montage> °.` |
 | 3 · Éclairer en studio | `Corrigé : collection « Corrigé éclairage », avec Monde_Neutre.` |

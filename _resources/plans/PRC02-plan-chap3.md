@@ -463,7 +463,7 @@ Faites des matières de votre lampe des actifs, rangés en catalogues et décrit
 **Gestes :** aucun nouveau. *Duplicate Collection* (chapitre 1) ; le compteur d'utilisateurs pour rendre une matière indépendante (initiation, section 2) ; *Base Color*, *Metallic*, *Roughness*, *Coat* et le verre (section 1) ; *Mark as Asset*, les catalogues, le glisser-déposer et *File > Append* (section 3) ; l'enregistrement avec le bouton `+` (initiation).
 
 **Déroulé :**
-1. **Lancement (2 min).** « Dupliquez la collection *Lampe*, renommez la copie `Lampe_coloris_B` et décalez-la de 400 mm sur X (`G X 400`). Attention : la copie partage les matières de l'original. » Si un apprenant manque d'idée, proposez le coloris B du corrigé : une version claire pour un bureau d'études, avec structure et laque blanches, bras anodisés noirs, articulations en laiton et verre dépoli.
+1. **Lancement (2 min).** « Dupliquez la collection *Lampe*, renommez la copie `Lampe_coloris_B` et décalez-la de 750 mm sur X (`G X 750`) : avec moins, le câble de la copie traverserait le socle de l'original. Attention : la copie partage les matières de l'original. » Si un apprenant manque d'idée, proposez le coloris B du corrigé : une version claire pour un bureau d'études, avec structure et laque blanches, bras anodisés noirs, articulations en laiton et verre dépoli.
 2. **Autonomie (16 min).** Chacun compose son coloris B sur la copie, pièce par pièce. La collection *Lampe* garde le coloris A et son nom : le chapitre 4 l'importe sous ce nom. Passez voir chaque poste au moins une fois.
 3. **Revue (2 min).** Chacun change une teinte du coloris B, vérifie que le coloris A ne bouge pas, puis enregistre sous `lampe_habillage_v002.blend` avec le bouton `+`.
 
@@ -493,7 +493,7 @@ Faites des matières de votre lampe des actifs, rangés en catalogues et décrit
 
 ### La lampe au début du chapitre
 
-Le chapitre part de `lampe_modele_v001.blend`, le fichier de fin du chapitre 2. D'après le plan du chapitre 2 (en attente de validation), il contient :
+Le chapitre part de `lampe_modele_v001.blend`, le fichier de fin du chapitre 2. D'après le plan validé du chapitre 2, il contient :
 - la collection *Lampe*, en millimètres, avec le moteur EEVEE, sans matière ni lumière ;
 - des pièces séparées et nommées : *Socle*, *Grille_aeration* (couronne de lamelles sur le socle, avec son *Empty*), *Interrupteur* (molette crantée, avec son *Empty*), *Articulation_bas*, *_milieu* et *_haut*, *Bras_bas* et *Bras_haut* (deux tiges chacun, par Mirror), *Tête* (coque en Solidify), *Douille* (pièce séparée, au fond de la tête), *Ampoule* (courbe et Screw, volume plein), *Câble* (courbe) ;
 - des échelles appliquées et des modificateurs actifs, non appliqués : les matières se posent sans les appliquer ;
@@ -555,7 +555,7 @@ La convention est commune aux chapitres 2 à 4. Le corrigé de chaque exercice e
 | Fin du chapitre | 3:50 | `lampe_habillage_v002.blend` | Fichier séparé `PRC02_ch3_lampe_habillage.blend` (fiche A2), justifié ci-dessous |
 
 **Un seul fichier séparé : `PRC02_ch3_lampe_habillage.blend`.** Il est justifié deux fois :
-- il sert de point de départ au chapitre suivant : c'est l'état attendu de `lampe_habillage_v002.blend`, avec les collections *Lampe* et `Lampe_coloris_B` sous leurs vrais noms. Le chapitre 4 en tire son fichier de secours `PRC02_ch4_lampe_habillee.blend`, par le même Append que les apprenants. C'est le rôle que joue `PRC02_ch2_lampe_modele.blend` pour le chapitre 3 ;
+- il sert de point de départ au chapitre suivant : c'est l'état attendu de `lampe_habillage_v002.blend`, avec les collections *Lampe* et `Lampe_coloris_B` sous leurs vrais noms. Le chapitre 4 en tire son fichier de secours `PRC02_ch4_lampe_en_studio.blend`, par le même Append que les apprenants. C'est le rôle que joue `PRC02_ch2_lampe_modele.blend` pour le chapitre 3 ;
 - une partie du résultat ne tient pas dans une collection : la case *Raytracing* de la scène, et les catalogues de la lampe.
 
 **Les apprenants qui gardent leur propre lampe,** soit le parcours principal, n'ont pas le corrigé dans leur fichier. Ils le voient sur l'écran du formateur à chaque point de contrôle, ou dans `PRC02_ch3_lampe_a_habiller.blend` ouvert dans une seconde fenêtre de Blender.
@@ -609,8 +609,8 @@ Le mémo des matières imprimé (ancienne fiche E) est reporté : plus tard, hor
 
   Hauteur totale : 0,450 m environ.
 - À ajouter si le corrigé du chapitre 2 ne l'a pas : *Shade Auto Smooth* sur *Bras_bas*, *Bras_haut*, les trois articulations et l'interrupteur. La rotation des bras n'est pas appliquée : leur axe Z local suit la tige, ce que le brossé utilise.
-- Collection *Corrigé coloris A*, masquée (œil fermé) : une copie de la lampe décalée de X + 0,40 m, objets suffixés `_A`, avec les matières du coloris A (cahier CMF ci-dessus), toutes suffixées `_corrige` : `Peinture_Vert_corrige`, `Structure_Vert_corrige`, `ABS_Noir_corrige`, `Alu_Brosse_corrige`, `Chrome_corrige`, `PVC_Mat_Noir_corrige`, `Verre_Clair_corrige`, `Alu_Naturel_corrige`. Valeurs et chaînes de nœuds : celles de la fiche A2. C'est le résultat attendu des sections 1 à 3 sur la lampe. Les matières ne sont pas marquées comme actifs : le corrigé du rangement est la bibliothèque (fiche B).
-- Collection *Corrigé coloris B*, masquée : une copie décalée de X + 0,80 m, objets suffixés `_B`, avec les matières du coloris B, suffixées `_corrige` elles aussi. `ABS_Noir_corrige` et `PVC_Mat_Noir_corrige` restent partagées avec le coloris A, comme dans le résultat attendu. C'est le corrigé de l'atelier.
+- Collection *Corrigé coloris A*, masquée (œil fermé) : une copie de la lampe décalée de X + 0,75 m, objets suffixés `_A`, avec les matières du coloris A (cahier CMF ci-dessus), toutes suffixées `_corrige` : `Peinture_Vert_corrige`, `Structure_Vert_corrige`, `ABS_Noir_corrige`, `Alu_Brosse_corrige`, `Chrome_corrige`, `PVC_Mat_Noir_corrige`, `Verre_Clair_corrige`, `Alu_Naturel_corrige`. Valeurs et chaînes de nœuds : celles de la fiche A2. C'est le résultat attendu des sections 1 à 3 sur la lampe. Les matières ne sont pas marquées comme actifs : le corrigé du rangement est la bibliothèque (fiche B).
+- Collection *Corrigé coloris B*, masquée : une copie décalée de X + 1,50 m, soit 0,75 m de plus que le coloris A, comme dans la consigne de l'atelier, objets suffixés `_B`, avec les matières du coloris B, suffixées `_corrige` elles aussi. `ABS_Noir_corrige` et `PVC_Mat_Noir_corrige` restent partagées avec le coloris A, comme dans le résultat attendu. C'est le corrigé de l'atelier.
 - Image empaquetée : `grain_structure.png` (fiche D).
 - Scène : EEVEE, *Raytracing* **décoché**, comme dans les fichiers des apprenants : la démo du verre en a besoin. Le formateur la coche pendant la séquence.
 
@@ -660,7 +660,7 @@ Socle
 
 ATELIER · Le coloris B
 Socle
-- Duplicate Collection sur Lampe ; renommez la copie Lampe_coloris_B ; G X 400.
+- Duplicate Collection sur Lampe ; renommez la copie Lampe_coloris_B ; G X 750.
 - Changez au moins quatre matières, dont une peinture et un métal :
   rendez-les d'abord indépendantes (compteur), puis renommez-les.
 - Le coloris A ne doit pas bouger.
@@ -688,14 +688,14 @@ Enregistrez sous lampe_habillage_v002.blend (bouton +).
 ### Fiche A2 · `PRC02_ch3_lampe_habillage.blend` : la lampe habillée
 
 **Rôle :** l'état attendu de `lampe_habillage_v002.blend`, sous les vrais noms. C'est le seul fichier séparé du chapitre, pour deux raisons :
-- il sert de point de départ au chapitre 4 : la session du chapitre 4 en tire `PRC02_ch4_lampe_habillee.blend`, par un Append de la collection *Lampe*, comme les apprenants. C'est le rôle de `PRC02_ch2_lampe_modele.blend` pour le chapitre 3 ;
+- il sert de point de départ au chapitre 4 : la session du chapitre 4 en tire `PRC02_ch4_lampe_en_studio.blend`, par un Append de la collection *Lampe*, comme les apprenants. C'est le rôle de `PRC02_ch2_lampe_modele.blend` pour le chapitre 3 ;
 - une partie du résultat ne tient pas dans une collection : la case *Raytracing* de la scène, et les catalogues.
 
 Le formateur l'ouvre aussi à l'ouverture du chapitre, pour montrer le but du jour.
 
 **Source :** le contenu des collections *Corrigé coloris A* et *B* de la fiche A, sans suffixes :
 - collection *Lampe* : le coloris A, à l'origine, noms des pièces du chapitre 2 ;
-- collection `Lampe_coloris_B` : le coloris B, décalé de X + 0,40 m, noms d'objets laissés tels que *Duplicate Collection* les donne (`Socle.001`…) ;
+- collection `Lampe_coloris_B` : le coloris B, décalé de X + 0,75 m comme dans la consigne de l'atelier, noms d'objets laissés tels que *Duplicate Collection* les donne (`Socle.001`…) ;
 - matières du tableau ci-dessus, sans suffixe, toutes marquées comme actifs, vignettes générées ; catalogues *Métaux*, *Plastiques et peintures* et *Verres* ; description de `Alu_Brosse` ;
 - EEVEE, case *Raytracing* cochée ; images empaquetées ; aucune matière liée.
 
@@ -921,7 +921,7 @@ Les plans `PRC02-plan-chap2.md` et `PRC02-plan-chap4.md`, en attente de validati
 - les seules images d'environnement de *Material Preview* : le monde de la scène et les HDRI restent au chapitre 4 ;
 - *File > Append* pratiqué au chapitre 3 sur une matière, réinvesti au chapitre 4 sur la collection *Lampe*, sans nouvelle explication ;
 - Link cité en une phrase au chapitre 3, comme à l'initiation : le chapitre 4 ne doit pas supposer qu'il a été manipulé ;
-- le fichier de secours du chapitre 4, `PRC02_ch4_lampe_habillee.blend`, construit à partir de `PRC02_ch3_lampe_habillage.blend` (fiche A2) ;
+- le fichier de secours du chapitre 4, `PRC02_ch4_lampe_en_studio.blend`, construit à partir de `PRC02_ch3_lampe_habillage.blend` (fiche A2) ;
 - la convention des corrigés, commune aux chapitres 2 à 4 : une collection masquée dont le nom commence par « Corrigé », dans le fichier de travail ; objets suffixés `_corrige`, comme au chapitre 2, et ici matières aussi ;
 - les noms gardés tels quels pour le chapitre 4 : `lampe_habillage_v002.blend`, les collections *Lampe* et `Lampe_coloris_B`, les noms des matières. Aucun n'a changé avec les décisions du 18 novembre.
 

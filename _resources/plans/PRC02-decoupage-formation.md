@@ -91,7 +91,9 @@ Ces décisions ont été prises par le formateur à la relecture des plans des c
   - Le studio est éclairé par les HDRI livrées avec Blender. Deux HDRI 2K de Poly Haven, sous licence CC0, servent pour l'intérieur et l'extérieur ; leur téléchargement attend l'accord du formateur.
   - Les visuels attendus sont trois vues : héros 16:9, détail 1:1 et situation 16:9.
   - Cycles n'apparaît que dans une image comparative.
-- **Hors périmètre du support.** Le questionnaire de satisfaction est géré en externe par VIV Formation.
+- **Hors périmètre du support : satisfaction et autoévaluation sur les objectifs.** Elles relèvent du questionnaire de satisfaction à chaud de fin de formation, géré en externe par VIV Formation.
+  - Le support ne contient donc aucune grille d'autoévaluation (« Je sais… », « Acquis / En cours / À revoir »).
+  - Dans le support, la vérification des acquis passe exclusivement par les quiz de l'application, ajoutés avec le module dédié. Ils peuvent se faire ensemble à l'écran en fin de séquence.
 
 ## Points de vigilance connus
 

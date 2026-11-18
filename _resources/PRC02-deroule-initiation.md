@@ -266,18 +266,9 @@ La fiche complète est plus bas. Tout le monde traite les patients 1 à 3 (15 mi
 ### 3:20 · Passerelle vers le chapitre 1 et bilan (20 min)
 
 - **Ouvrez `PRC02_ch1_blocage_lampe.blend`** et affichez les trois variantes. « Des primitives, des cotes, des collections : vous savez déjà tout faire. Le chapitre 1 ajoute les unités, l'aimantation et les images de référence. »
-- **Autoévaluation (5 min) :** chacun se situe sur la grille ci-dessous.
+- **Vérification des acquis (5 min) :** un quiz de Basics 103 dans l'application, fait ensemble à l'écran. Chacun répond pour soi, puis on commente les erreurs.
 - **Tour de table express :** un mot pour finir.
-- **Pour aller plus loin :** les quiz de Basics 103, les défis des Basics et les patients restants de la clinique.
-
-| Je sais… | Acquis | En cours | À revoir |
-|---|---|---|---|
-| naviguer et prendre une vue précise sans me perdre | ☐ | ☐ | ☐ |
-| déplacer, tourner et redimensionner au chiffre près | ☐ | ☐ | ☐ |
-| retrouver, masquer et renommer un objet dans l'Outliner | ☐ | ☐ | ☐ |
-| ranger mon fichier en collections et l'enregistrer par versions | ☐ | ☐ | ☐ |
-| modéliser une forme simple avec Extrude, Inset, Bevel et Loop Cut | ☐ | ☐ | ☐ |
-| construire avec des modificateurs, et corriger normales et échelle | ☐ | ☐ | ☐ |
+- **Pour aller plus loin :** les autres quiz des Basics, leurs défis et les patients restants de la clinique.
 
 <!-- pagebreak -->
 

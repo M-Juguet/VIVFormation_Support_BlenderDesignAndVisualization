@@ -393,18 +393,8 @@ La checklist, au tableau et à la fin du LISEZ-MOI :
   - « Pourquoi le *Mirror* n'a-t-il rien fait, quand la tige avait été déplacée en Mode Objet ? »
   - « Quel réglage donne son épaisseur à un câble ? »
   - « Que se passe-t-il si l'on déplace la lamelle sans son *Empty* ? »
-- **Autoévaluation (3 min) :** la grille ci-dessous.
+- **Vérification des acquis (3 min) :** un quiz du chapitre dans l'application, fait ensemble à l'écran. Chacun répond pour soi, puis on commente les erreurs.
 - **Passerelle (2 min) :** « Au chapitre 3, chaque pièce reçoit sa matière : un plastique laqué pour la tête, un métal pour les tiges, du verre pour l'ampoule. Vos pièces sont séparées : c'est ce qui rend l'habillage simple. »
-
-| Je sais… | Acquis | En cours | À revoir |
-|---|---|---|---|
-| refléter une pièce avec *Mirror*, sur l'axe de mon choix | ☐ | ☐ | ☐ |
-| donner une épaisseur régulière à une coque avec *Solidify* | ☐ | ☐ | ☐ |
-| arrondir les arêtes avec *Bevel* et lisser l'affichage avec *Shade Auto Smooth* | ☐ | ☐ | ☐ |
-| répéter un détail en couronne avec *Array* et un *Empty* | ☐ | ☐ | ☐ |
-| dessiner une courbe de Bézier et régler ses poignées | ☐ | ☐ | ☐ |
-| faire d'une courbe un câble ou une pièce de révolution | ☐ | ☐ | ☐ |
-| garder un modèle modifiable, propre et bien rangé | ☐ | ☐ | ☐ |
 
 ## Les quiz prévus dans l'application
 
@@ -849,7 +839,7 @@ Ce plan a été relu face au découpage validé (`PRC02-decoupage-formation.md`,
 - **Les pièces attendues :** socle, bras, articulations, abat-jour, grille d'aération, câble, interrupteur et ampoule. Le gros plan sur une articulation, l'interrupteur ou l'ampoule trouve ses sujets.
 - **L'état de la lampe :** une seule collection *Lampe*, à l'échelle réelle (millimètres, *Unit Scale* 1,0), échelle appliquée, modificateurs actifs.
 - **Le nommage :** `lampe_blocage_v001.blend` (chapitre 1), `lampe_modele_v001.blend` (chapitre 2), `lampe_habillage_v002.blend` (chapitre 3), `lampe_rendu_v001.blend` (chapitre 4).
-- **La lampe allumée** (palier ★ du chapitre 4) : l'ampoule est un objet séparé, logé au fond de l'abat-jour.
+- **La lampe allumée** (palier ★★ du chapitre 4) : l'ampoule est un objet séparé, logé au fond de l'abat-jour.
 - **La liseuse de cabine :** le défi ★★ du chapitre 2, que le chapitre 4 propose de mettre en scène, a son fichier de travail, corrigé compris.
 
 **Ce qui est aligné avec le chapitre 3 :**
