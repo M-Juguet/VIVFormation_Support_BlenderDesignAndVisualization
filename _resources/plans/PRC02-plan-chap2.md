@@ -31,7 +31,7 @@ L'initiation a présenté les modificateurs (Basics 103 § 3) et les a mis en œ
 | La pile de modificateurs | Onglet *Modifiers*, ordre, affichage, *Apply* | *Copy to Selected* ; ne pas appliquer ; l'ordre, en simple remarque |
 | *Mirror* | Axe X, origine sur l'axe du couloir (sièges) | Un autre axe ; le reflet autour de l'origine ; *Mirror Object* |
 | *Solidify* | Une démo sur un plan | Une coque ouverte : *Offset*, *Even Thickness*, *Fill Rim* |
-| *Bevel* (modificateur) | Le *Bevel* en outil (`Ctrl + B`) ; le modificateur cité, en palier ★ des sièges seulement | Nouveau pour la plupart : découvert sur le socle, en autonomie ; *Width*, *Segments*, *Limit Method* sur *Angle* |
+| *Bevel* (modificateur) | Le *Bevel* en outil (`Ctrl + B`) ; le modificateur cité, en palier ★ des sièges seulement | Nouveau pour la plupart : découvert sur le socle, en autonomie ; *Amount*, *Segments*, *Limit Method* sur *Angle* |
 | *Array* | *Relative Offset* et *Constant Offset* (sièges) | *Object Offset* avec un *Empty* : la répétition en couronne |
 | Courbes de Bézier | Rien | Tout : points, poignées, *Curve Pen*, épaisseur, révolution |
 | Aimantation, orientation *Local*, mesure | Chapitre 1 § 3 | Réutilisées pour poser les pièces |
@@ -106,7 +106,7 @@ Ancre : `ch2_sec1_title`.
 | 2. *Mirror Object* et *Copy to Selected* | Symétrie, cycle B |
 | 3. Supprimer une face en Mode Édition (`X > Faces`) ; *Solidify* sur une coque ouverte | Épaisseur, cycle A |
 | 4. *Shade Auto Smooth* | Épaisseur, cycle B (démo, puis guidé) |
-| 5. Le *Bevel* en modificateur : *Width*, *Segments*, *Limit Method* | Épaisseur, cycle B (découverte en autonomie, sur le socle) |
+| 5. Le *Bevel* en modificateur : *Amount*, *Segments*, *Limit Method* | Épaisseur, cycle B (découverte en autonomie, sur le socle) |
 | 6. L'*Empty* (`Maj + A > Empty`) et l'*Array* en *Object Offset* | Répétition, cycle A |
 | 7. Le parentage (`Ctrl + P > Object`) | Répétition, cycle B |
 
@@ -115,7 +115,7 @@ Ancre : `ch2_sec1_title`.
 - **La pile :** *Add Modifier > Generate* ; le menu de l'en-tête d'un modificateur (*Apply*, *Duplicate*, *Copy to Selected*, *Move to First*, *Move to Last*). L'ordre d'évaluation, de haut en bas, est rappelé en simple remarque, sans manipulation. La différence entre **appliquer un modificateur** et **appliquer l'échelle** (`Ctrl + A > Scale`), que les débutants confondent.
 - ***Mirror* :** l'axe se lit dans le repère de l'objet ; le reflet se fait autour de l'origine ; *Mirror Object* reflète autour d'un autre objet.
 - ***Solidify* :** *Thickness* ; *Offset* (-1, 0 ou 1) pour épaissir vers l'intérieur, de part et d'autre ou vers l'extérieur ; le rôle des normales ; *Even Thickness* ; *Fill Rim*.
-- **Lissage et *Bevel* :** *Object > Shade Auto Smooth* ajoute en bas de la pile le modificateur *Smooth by Angle*, épinglé en dernière position. Le *Bevel* en outil (`Ctrl + B`), connu depuis l'initiation, existe aussi en modificateur : le même arrondi, qui reste modifiable. *Width*, *Segments*, *Limit Method* sur *Angle* (le réglage d'usine).
+- **Lissage et *Bevel* :** *Object > Shade Auto Smooth* ajoute en bas de la pile le modificateur *Smooth by Angle*, épinglé en dernière position. Le *Bevel* en outil (`Ctrl + B`), connu depuis l'initiation, existe aussi en modificateur : le même arrondi, qui reste modifiable. *Amount*, *Segments*, *Limit Method* sur *Angle* (le réglage d'usine).
 - ***Array* en couronne :** *Object Offset* avec un *Empty* tourné de 360° divisé par le nombre de copies ; l'*Empty* rendu enfant de la pièce répétée.
 
 **Dans l'application**, la section suivra la même progression : la pile, puis symétrie, épaisseur (avec le lissage et le *Bevel*) et répétition. Chaque modificateur aura une capture de son panneau, un exemple sur la lampe et un exemple dans les transports.
@@ -167,7 +167,7 @@ Vous montrez : *Object > Shade Auto Smooth* sur *Tête*. Les 24 côtés de la co
 
 Ils font :
 - **en guidé :** *Shade Auto Smooth* sur *Tête* ;
-- **en autonomie, découverte du *Bevel* sur *Socle*,** avec les valeurs du LISEZ-MOI et la figure 2.10. Annoncez-le en une phrase : « Le *Bevel* que vous connaissez en outil existe aussi en modificateur. » *Add Modifier > Generate > Bevel* : *Width* `3mm`, *Segments* 3, *Limit Method* sur *Angle* (déjà réglé). Puis *Shade Auto Smooth* sur *Socle*. Enfin, *Shade Auto Smooth* sur *Bras_bas* et *Bras_haut*, sélectionnés ensemble : leurs tiges seront en métal au chapitre 3, et un métal montre la moindre facette ;
+- **en autonomie, découverte du *Bevel* sur *Socle*,** avec les valeurs du LISEZ-MOI et la figure 2.10. Annoncez-le en une phrase : « Le *Bevel* que vous connaissez en outil existe aussi en modificateur. » *Add Modifier > Generate > Bevel* : *Amount* `3mm`, *Segments* 3, *Limit Method* sur *Angle* (déjà réglé). Puis *Shade Auto Smooth* sur *Socle*. Enfin, *Shade Auto Smooth* sur *Bras_bas* et *Bras_haut*, sélectionnés ensemble : leurs tiges seront en métal au chapitre 3, et un métal montre la moindre facette ;
 - **★ :** essayer 1 mm puis 3 mm d'épaisseur sur la tête ; ajouter dès maintenant le *Bevel* de la tête, prévu à l'atelier.
 
 Passez d'abord par les postes qui découvrent le *Bevel* : c'est la seule notion nouvelle pratiquée sans démo.
@@ -180,7 +180,7 @@ Passez d'abord par les postes qui découvrent le *Bevel* : c'est la seule notion
 - L'épaisseur part vers l'extérieur : les normales sont inversées, ou *Offset* vaut 1. *Face Orientation* tranche la question.
 - `X` en Mode Objet supprime tout l'objet : `Ctrl + Z`.
 - Un arrondi à grosses facettes : *Segments* est resté à 1.
-- Un socle déformé : *Width* est trop grand. Lisez la valeur affichée dans le champ, avec son unité.
+- Un socle déformé : *Amount* est trop grand. Lisez la valeur affichée dans le champ, avec son unité.
 
 ### 1:00 · Pause (10 min)
 
@@ -194,8 +194,10 @@ Vous montrez :
 1. **Rappel (1 min) :** *Relative Offset* et *Constant Offset*, vus avec les sièges, répètent en ligne. Pour répéter en couronne, il faut un repère qui tourne : un *Empty*, un objet sans géométrie, comme celui qui porte une image de référence.
 2. `Maj + C` : le curseur 3D revient au centre, sous l'axe du socle. `Maj + A > Mesh > Cube`, F9 : *Size* `2mm`. `Tab`, puis `S X 6` : une lamelle de 12 mm. `G X = 76mm`, puis `G Z = 25mm` : elle se pose sur le dessus du socle, près du bord. `Tab`. L'origine de la lamelle reste au centre du socle. Renommez-la *Grille_aeration*.
 3. `Maj + A > Empty > Plain Axes`, au même endroit, puis `R Z 10`. Renommez-le *Grille_pivot*.
-4. Sur la lamelle : *Add Modifier > Generate > Array*. Décochez *Relative Offset*, cochez *Object Offset* et choisissez *Grille_pivot*. *Count* 36 : les lamelles font le tour du socle.
+4. Sur la lamelle : *Add Modifier > Generate > Array (Legacy)*. Décochez *Relative Offset*, cochez *Object Offset* et choisissez *Grille_pivot*. *Count* 36 : les lamelles font le tour du socle.
 5. **Ailleurs :** les aubes d'une soufflante, les rayons d'une jante, les boulons d'une roue de bogie.
+
+> **NOTE · Deux entrées *Array*.** Blender 5.2 propose aussi *Array*, un nouvel outil en Geometry Nodes ; ce chapitre utilise le modificateur classique, *Array (Legacy)*, qui accepte un *Empty* en *Object Offset*.
 
 Ils font, en guidé : les étapes 2 à 4.
 
@@ -382,7 +384,7 @@ La checklist, au tableau et à la fin du LISEZ-MOI :
 - Un *Bevel* plus large que l'épaisseur croise la géométrie : sur la tête, 0,5 mm pour 1,5 mm d'épaisseur.
 - Palier ★ : les molettes en copie liée partagent leur maillage, pas leurs modificateurs. Changer le nombre de crans sur l'une ne change pas les autres.
 - Palier ★ : `Alt + D` sur le cran seul, et la copie garde l'ancien *Empty*. Sélectionnez la molette, ses crans et son *Empty* ensemble avant de copier.
-- Palier ★ : le *Bevel* de 3 mm du socle adoucit aussi la rainure. C'est voulu ; pour une rainure plus nette, réduisez *Width*.
+- Palier ★ : le *Bevel* de 3 mm du socle adoucit aussi la rainure. C'est voulu ; pour une rainure plus nette, réduisez *Amount*.
 
 **Corrigé :** la collection masquée *Corrigé* ; celui des paliers ★ et des défis ★★ est dans la collection masquée *Corrigé défis*. La lampe terminée existe aussi en fichier séparé, `PRC02_ch2_lampe_modele.blend`, parce que le chapitre 3 en part.
 
@@ -552,7 +554,7 @@ Les copies de *Lampe* ont exactement les mêmes formes, positions et rotations.
 
 | Objet | Construction | Dimensions et position (m) | Modificateurs, de haut en bas |
 |---|---|---|---|
-| *Socle* | Copie de *Socle_A* | Comme *Socle_A* | *Bevel* (*Width* 0.003, *Segments* 3, *Limit Method* *Angle* 30°) ; *Smooth by Angle* (par *Shade Auto Smooth*) |
+| *Socle* | Copie de *Socle_A* | Comme *Socle_A* | *Bevel* (*Amount* 0.003, soit `width` en Python, *Segments* 3, *Limit Method* *Angle* 30°) ; *Smooth by Angle* (par *Shade Auto Smooth*) |
 | *Grille_aeration* | Cube de 0.002, mis à l'échelle X 6 en Mode Édition : lamelle de 0.012 × 0.002 × 0.002, centrée en (0.076, 0, 0.025) par rapport à l'origine | Origine en (0, 0, 0) | *Array* : *Relative Offset* décoché, *Object Offset* *Grille_pivot*, *Count* 36 |
 | *Grille_pivot* | *Empty* *Plain Axes*, taille 0.010 | (0, 0, 0), rotation Z 10°, enfant de *Grille_aeration* | |
 | *Interrupteur* | Copie d'*Interrupteur_A* | Comme *Interrupteur_A* | *Bevel* (0.0005, 2, *Angle*) ; *Smooth by Angle* |
@@ -627,7 +629,7 @@ Valeurs indicatives. N'appliquez aucun modificateur.
 Corrigé : collection « Corrigé », masquée (œil fermé dans l'Outliner).
 D'abord : File > Save As, sous liseuse_modele_v001.blend.
 
-1. Platine : Bevel (Width 2 mm, Segments 2), puis Shade Auto Smooth.
+1. Platine : Bevel (Amount 2 mm, Segments 2), puis Shade Auto Smooth.
 2. Vis : Add > Mesh > Cylinder (Vertices 16, Radius 2.5 mm, Depth 2 mm), R X 90.
    N > Item : Location 27, -9, 160 mm. Mirror : axe X seul, Mirror Object = Platine.
 3. Bouton : 16 crans de 1 x 4 x 1 mm, à 5 mm de l'axe. Le bouton est couché :
@@ -684,10 +686,10 @@ Contrôle : vue de dessus (7), deux tiges par bras.
 2. Add Modifier > Generate > Solidify : Thickness 1.5 mm, Offset -1, Even Thickness.
 3. Object > Shade Auto Smooth.
 4. À vous, sur Socle : Add Modifier > Generate > Bevel.
-   Width 3 mm, Segments 3, Limit Method Angle (déjà réglé). Puis Shade Auto Smooth.
+   Amount 3 mm, Segments 3, Limit Method Angle (déjà réglé). Puis Shade Auto Smooth.
 5. Bras_bas et Bras_haut, sélectionnés ensemble : Object > Shade Auto Smooth.
 ★ Offset à 1, puis -1 ; Thickness 1 mm, puis 3 mm.
-  Tête : Bevel (Width 0.5 mm, Segments 2), prévu à l'atelier.
+  Tête : Bevel (Amount 0.5 mm, Segments 2), prévu à l'atelier.
 Contrôle : pile de la tête = Solidify, Smooth by Angle ;
 pile du socle = Bevel, Smooth by Angle.
 
@@ -695,8 +697,8 @@ pile du socle = Bevel, Smooth by Angle.
 1. Maj + C. Add > Mesh > Cube, F9 : Size 2 mm. Renommez : Grille_aeration.
 2. Tab, S X 6, G X = 76mm, G Z = 25mm, Tab.
 3. Add > Empty > Plain Axes, R Z 10. Renommez : Grille_pivot.
-4. Grille_aeration : Add Modifier > Generate > Array. Décochez Relative Offset,
-   cochez Object Offset > Grille_pivot. Count 36.
+4. Grille_aeration : Add Modifier > Generate > Array (Legacy).
+   Décochez Relative Offset, cochez Object Offset > Grille_pivot. Count 36.
 5. Clic sur Grille_pivot, Maj + clic sur Grille_aeration, Ctrl + P > Object.
 6. À vous : Interrupteur devient une molette de 24 crans (1,5 x 1,5 x 6 mm, à 8 mm de l'axe).
    Nommez Interrupteur_crans et Interrupteur_pivot. Quelle rotation pour l'Empty ?
@@ -732,8 +734,8 @@ Contrôle : une ampoule lisse et fermée, au fond de la tête.
 2. Douille : Cursor to Selected sur Tête, Add > Mesh > Cylinder
    (F9 : Radius 15 mm, Depth 20 mm, Rotation Y -30°), puis G Z Z = 45mm (le long de son axe).
    Bevel (1 mm, 2 segments) et Shade Auto Smooth.
-3. Tête : Bevel (Width 0.5 mm, Segments 2). Il se range au-dessus de Smooth by Angle.
-4. Interrupteur : Bevel (Width 0.5 mm, Segments 2) et Shade Auto Smooth.
+3. Tête : Bevel (Amount 0.5 mm, Segments 2). Il se range au-dessus de Smooth by Angle.
+4. Interrupteur : Bevel (Amount 0.5 mm, Segments 2) et Shade Auto Smooth.
 5. Checklist : noms clairs ; échelles à 1 ; aucune face rouge (Face Orientation) ;
    modificateurs actifs ; silhouette conforme au gabarit (vues 1 et 3).
 6. Masquez Gabarit. Ctrl + S : lampe_modele_v001.blend.
@@ -758,11 +760,11 @@ Une capture par menu, bouton ou panneau cité. Les figures sont numérotées « 
 | 2.7 | 1 | Le menu *Delete* (`X`) en Mode Édition, sur *Faces* | Côte à côte | `delete_menu_faces_blender.jpg` |
 | 2.8 | 1 | Le panneau *Solidify* : *Thickness*, *Offset*, *Even Thickness*, *Fill Rim* | Côte à côte | `solidify_modifier_panel_blender.jpg` |
 | 2.9 | 1 | La coque de la tête, vue de dessous : l'épaisseur du bord | Côte à côte | `solidify_lamp_head_blender.jpg` |
-| 2.10 | 1 | Le panneau *Bevel* : *Width*, *Segments*, *Limit Method* sur *Angle* (la figure de la découverte en autonomie) | Côte à côte | `bevel_modifier_angle_blender.jpg` |
+| 2.10 | 1 | Le panneau *Bevel* : *Amount*, *Segments*, *Limit Method* sur *Angle* (la figure de la découverte en autonomie) | Côte à côte | `bevel_modifier_angle_blender.jpg` |
 | 2.11 | 1 | Le menu *Object* avec *Shade Auto Smooth* | Côte à côte | `object_menu_shade_auto_smooth_blender.jpg` |
 | 2.12 | 1 | La pile de la tête : *Solidify*, *Bevel*, *Smooth by Angle* et l'épingle de son en-tête ; facettes avant, lisse après | Pleine largeur | `modifier_stack_head_blender.jpg` |
 | 2.13 | 1 | Le menu *Add > Empty* | Côte à côte | `add_empty_menu_blender.jpg` |
-| 2.14 | 1 | Le panneau *Array* : *Relative Offset* décoché, *Object Offset* sur l'*Empty*, *Count* | Côte à côte | `array_object_offset_panel_blender.jpg` |
+| 2.14 | 1 | Le panneau du modificateur ajouté par *Array (Legacy)*, nommé *Array* dans la pile : *Relative Offset* décoché, *Object Offset* sur l'*Empty*, *Count* | Côte à côte | `array_object_offset_panel_blender.jpg` |
 | 2.15 | 1 | La grille d'aération en couronne sur le socle, et son *Empty* tourné de 10° | Côte à côte | `radial_array_vent_grille_blender.jpg` |
 | 2.16 | 1 | Le menu *Set Parent To* (`Ctrl + P`) | Côte à côte | `parent_menu_blender.jpg` |
 | 2.17 | 1 | La molette crantée de l'interrupteur | Côte à côte | `radial_array_knob_blender.jpg` |
