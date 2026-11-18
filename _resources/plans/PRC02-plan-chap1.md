@@ -743,7 +743,7 @@ Ce que cela change pour la séance :
 
 ### Les croquis
 
-`croquis_lampe_face.png` et `croquis_lampe_profil.png` (dans `_resources/exercices/`) sont les images déjà empaquetées dans le fichier. L'exercice de 0:45 en a besoin. Ils seront téléchargeables depuis l'application à la prochaine mise à jour du contenu, faite par la session principale. D'ici là, le formateur les distribue lui-même avec le fichier.
+`croquis_lampe_face.png` et `croquis_lampe_profil.png` (dans `_resources/exercices/`) sont les images déjà empaquetées dans le fichier. L'exercice de 0:45 en a besoin. L'application les propose dans l'archive `PRC02_ch1_croquis_lampe.zip`. Elle figure dans la section 1 du chapitre, sous les réglages de l'image de référence, et sera disponible à partir de la prochaine version. D'ici là, le formateur les distribue lui-même avec le fichier.
 
 ### Pas de nouveau fichier
 

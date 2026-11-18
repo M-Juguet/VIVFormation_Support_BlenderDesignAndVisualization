@@ -313,9 +313,9 @@ Ancre `ch3_sec2_title` · 65 minutes, de 1:35 à 2:40 · Espace de travail *Shad
 
 **Étape 1 · Les coordonnées (démo 3 min + guidée 3 min).** Reliez de nouveau *Noise* à *Base Color* : le motif est étiré sur la longueur du bras. `Maj + A > Input > Texture Coordinate`, sortie *Object* vers l'entrée *Vector* du *Noise* : le motif garde la même taille partout. La lampe est petite : *Scale* du *Noise* passe de 5 à 1000, soit environ un motif par millimètre.
 
-**Étape 2 · Le relief (démo 3 min + guidée 4 min).** Défaites le lien vers *Base Color*. `Maj + A > Vector > Bump` : *Fac* du *Noise* vers *Height*, *Normal* du *Bump* vers *Normal* du Principled. Le motif devient un relief. *Distance* passe de 0,001 à 0,0002 : la valeur par défaut est trop forte pour un si petit objet.
+**Étape 2 · Le relief (démo 3 min + guidée 4 min).** Défaites le lien vers *Base Color*. `Maj + A > Displacement > Bump` : *Factor* du *Noise* vers *Height*, *Normal* du *Bump* vers *Normal* du Principled. Le motif devient un relief. *Distance* passe de 0,001 à 0,0002 : la valeur par défaut est trop forte pour un si petit objet.
 
-**Étape 3 · Le brossé (démo 2 min + guidée 4 min).** `Maj + A > Vector > Mapping`, entre *Texture Coordinate* et *Noise*. *Scale* Z à 0,02 : le grain s'étire en fines rayures dans l'axe du bras. *Distance* du *Bump* à 0,00015. Renommez la matière `Alu_Brosse`.
+**Étape 3 · Le brossé (démo 2 min + guidée 4 min).** `Maj + A > Utilities > Vector > Mapping`, entre *Texture Coordinate* et *Noise*. *Scale* Z à 0,02 : le grain s'étire en fines rayures dans l'axe du bras. *Distance* du *Bump* à 0,00015. Renommez la matière `Alu_Brosse`.
 
 **Ils font, en autonomie (6 min) :** la même chaîne, sans *Mapping*, sur `ABS_Noir` : un grain fin pour l'interrupteur et la grille (*Noise Scale* 1500, *Distance* 0,00005). Les plus rapides microbillent les articulations.
 

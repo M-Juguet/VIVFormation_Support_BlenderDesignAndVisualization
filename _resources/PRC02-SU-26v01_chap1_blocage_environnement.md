@@ -25,6 +25,9 @@ La capture montre la rubrique Units de l'onglet Scene. Seul le champ Length a ch
 > [!WARNING]
 > Le champ *Unit Scale* change lui aussi les valeurs affichées, mais pas le comportement interne de la scène : les simulations physiques, par exemple, continuent de calculer en unités internes. Pour simplement afficher une autre unité, le champ *Length* suffit et *Unit Scale* peut rester à 1,000.
 
+> [!TIP]
+> Dans un champ, l'unité tapée est toujours comprise. Pendant un geste, un nombre seul s'entend dans l'unité affichée : `G Z 25` monte de 25 m dans une scène en mètres, de 25 mm dans une scène en millimètres. Pour taper une unité pendant le geste, appuyez d'abord sur `=` (ou `*` du pavé numérique) : `G Z = 25mm` monte de 25 mm dans les deux cas. Sans `=`, l'unité est ignorée.
+
 ### Voir de près les petits objets
 Quand vous zoomez très près d'un petit objet, une partie peut disparaître, comme coupée par un plan invisible. C'est la distance minimale d'affichage de la vue, *Clip Start*, réglée par défaut à 10 mm.
 
@@ -70,6 +73,13 @@ caption: "Figure 1.5 : Les réglages de l'image de référence dans l'onglet Obj
 title: "Régler l'affichage de l'image"
 ---
 La capture montre l'onglet Object Data du croquis de face. Opacity, à 0,5, rend l'image transparente ; Depth sur Back la garde derrière les volumes. Avec Show In réglé sur Orthographic et Only Axis Aligned, le croquis ne s'affiche qu'en vue orthographique de face : il disparaît dès que vous tournez autour de l'objet.
+```
+
+```resource
+title: "Croquis de la lampe de bureau"
+description: "Les croquis de face et de profil de la lampe, en images PNG, pour les placer vous-même en images de référence. Décompressez l'archive (clic droit > Extraire tout) avant de choisir une image dans Blender. Les croquis sont aussi déjà en place dans le fichier d'exercice du blocage."
+fileName: "PRC02_ch1_croquis_lampe.zip (0.1 Mo)"
+downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch1_croquis_lampe.zip"
 ```
 
 ### Voir sous tous les angles avec la Quad View
@@ -118,15 +128,16 @@ Le sous-menu Defaults du menu File réunit les deux commandes. Save Startup File
 > Dans une équipe, un fichier de démarrage commun garantit que tout le monde travaille avec la même unité et les mêmes repères. Les fichiers échangés s'ouvrent alors avec les mêmes réglages chez chacun.
 
 ```quiz
-question: "Vos cotes sont en millimètres. Quel réglage permet de les afficher dans cette unité, sans rien changer au comportement interne de la scène ?"
+question: "Votre scène affiche des mètres. Pendant un déplacement, que tapez-vous pour monter une pièce de 25 mm ?"
 options:
-  - "Passer Unit Scale à 0,001"
-  - "Régler Length sur Millimeters dans la rubrique Units de l'onglet Scene"
-  - "Diviser toutes les dimensions des objets par 1000"
-  - "Réduire Clip Start à 1 mm"
+  - "G Z 25mm"
+  - "G Z = 25mm"
+  - "G Z 0.025"
+  - "G Z 25"
 correctIndices:
   - 1
-explanation: "Le champ **Length** de la rubrique *Units* change l'unité d'affichage et de saisie. *Unit Scale* agit aussi sur l'affichage, mais introduit un écart avec les unités internes, que la physique, par exemple, ne prend pas en compte. *Clip Start* ne règle que la distance minimale d'affichage de la vue."
+  - 2
+explanation: "Pendant un geste, Blender ne lit l'unité qu'en saisie avancée, ouverte par `=` : `G Z = 25mm`. Sans `=`, les lettres sont ignorées, et `G Z 25mm` monte de 25 m, comme `G Z 25`. `G Z 0.025` marche aussi : un nombre seul s'entend dans l'unité affichée, ici le mètre. Dans un champ, en revanche, `25mm` est toujours compris."
 ```
 
 ## 2. Explorer un concept par blocage de volumes
@@ -358,7 +369,7 @@ La capture montre la tête de la lampe en Mode Édition, avec les quatre arêtes
 ```
 
 > [!CAUTION]
-> Bloquez le concept d'une lampe de bureau articulée, qui vous accompagnera jusqu'au chapitre 4. Placez les croquis du fichier d'exercice en images de référence, puis assemblez socle, bras et tête avec des primitives. Cotes indicatives : socle de 180 mm de diamètre, hauteur totale d'environ 450 mm, tête de 120 mm de diamètre. Utilisez l'aimantation pour poser les articulations et l'orientation *Local* pour incliner et avancer la tête. Déclinez ensuite deux variantes, comparez leurs silhouettes, puis enregistrez celle que vous retenez sous `lampe_blocage_v001.blend`. Ces cotes sont un point de départ : libre à vous de les adapter à votre propre concept.
+> Bloquez le concept d'une lampe de bureau articulée, qui vous accompagnera jusqu'au chapitre 4. Les croquis sont déjà en place dans le fichier d'exercice : masquez celui de profil et replacez-le vous-même pour vous entraîner. Assemblez ensuite socle, bras et tête avec des primitives. Cotes indicatives : socle de 180 mm de diamètre, hauteur totale d'environ 450 mm, tête de 120 mm de diamètre. Utilisez l'aimantation pour poser les articulations et l'orientation *Local* pour incliner et avancer la tête. Déclinez ensuite deux variantes, comparez leurs silhouettes, puis enregistrez celle que vous retenez sous `lampe_blocage_v001.blend`. Ces cotes sont un point de départ : libre à vous de les adapter à votre propre concept.
 
 ```quiz
 question: "La tête de la lampe est inclinée. L'orientation Global est active : comment la déplacer le long de son propre axe Z ?"
