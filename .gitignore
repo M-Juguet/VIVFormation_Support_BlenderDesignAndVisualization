@@ -51,3 +51,4 @@ app.*.map.json
 # Journaux des outils Blender et sources téléchargées
 /tool/blender/journaux/
 /tool/blender/relance.log
+/tool/exercices_ch4/hdri/
