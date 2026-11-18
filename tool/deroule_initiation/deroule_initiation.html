@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Initiation à Blender : déroulé formateur</title>
+<!-- Fichier généré par tool/deroule_initiation/md_to_html.py depuis _resources/PRC02-deroule-initiation.md : ne pas modifier à la main. -->
+<link rel="stylesheet" href="../../viv-formation-design-system/styles.css">
+<style>
+@page { size: A4 portrait; margin: 14mm 15mm 16mm; }
+@page { @bottom-right { content: counter(page) " / " counter(pages); font: 9pt 'Noto Sans', sans-serif; color: #8a7f86; } }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: var(--ink);
+       font-family: var(--font-sans); font-size: 10pt; line-height: 1.45; }
+.top-line { height: 5px; background: var(--gradient-brand); margin: 0 0 14px; border-radius: 3px; }
+header.doc { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+             padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+header.doc img { height: 30px; width: auto; display: block; margin-bottom: 4px; }
+.overline { color: var(--ink-muted); margin: 0 0 4px; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase; }
+h1 { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 25pt; line-height: 1.15; margin: 0; }
+.subtitle { margin: 4px 0 0; font-size: 9.5pt; color: var(--ink-muted); }
+h2 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 15pt; line-height: 1.25;
+     color: var(--accent-deep); margin: 20px 0 8px; padding-top: 8px; border-top: 2px solid var(--brand-rose);
+     break-after: avoid; }
+h3 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 11.5pt; line-height: 1.3;
+     margin: 14px 0 6px; break-after: avoid; }
+p { margin: 0 0 7px; }
+ul, ol { margin: 0 0 8px; padding-left: 20px; }
+li { margin: 0 0 3px; }
+li > ul, li > ol { margin: 3px 0 0; }
+ul.checks { list-style: none; padding-left: 4px; }
+ul.checks li::before { content: "☐"; margin-right: 7px; color: var(--accent-deep); }
+strong { font-weight: 700; }
+code { font-family: var(--font-mono); font-size: 8.6pt; background: var(--surface-code); border: 1px solid var(--border);
+       border-radius: 4px; padding: 0 4px; white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; margin: 4px 0 10px; font-size: 8.8pt; line-height: 1.35; }
+th { text-align: left; font-weight: 700; background: var(--surface-brand); padding: 5px 7px; border-bottom: 1px solid var(--border-strong); }
+td { padding: 5px 7px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr { break-inside: avoid; }
+td code { white-space: normal; }
+blockquote { margin: 8px 0 10px; padding: 8px 12px; background: var(--surface-sunken); border-left: 3px solid var(--action);
+             border-radius: 0 8px 8px 0; break-inside: avoid; }
+blockquote p { margin: 0; }
+hr { border: 0; border-top: 1px solid var(--border); margin: 18px 0 8px; }
+hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
+.pagebreak { break-before: page; }
+.pagebreak + h2 { border-top: 0; margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="top-line"></div><header class="doc"><div>
+<p class="overline">PRC02 · Initiation · Document formateur</p>
+<h1>Initiation à Blender : déroulé formateur</h1>
+<p class="subtitle">PRC02 · Design &amp; visualisation temps réel avec Blender · Blender 5.2 LTS, interface en anglais</p>
+<p class="subtitle">Deux demi-journées en présentiel, de 5 à 8 apprenants · Version du 17 novembre 2026</p>
+</div><img src="../../viv-formation-design-system/assets/logos/viv-formation-couleur.svg" alt="VIV Formation"></header>
+<h2>En bref</h2>
+<ul>
+<li><strong>Objectif :</strong> à la fin de l'initiation, chaque apprenant navigue sans se perdre et place un objet au chiffre près. Il range et enregistre son fichier, puis modélise un objet simple par extrusion et modificateurs. Il aborde ainsi le chapitre 1 sans buter sur les gestes de base.
+</li>
+<li><strong>Format :</strong> 2 demi-journées de 3 h 40, pauses comprises. Chacune compte 3 h 20 de contenu et 2 pauses de 10 minutes, ce qui laisse environ 20 minutes de marge sur 4 heures. Exemple : de 9 h 00 à 12 h 40.
+</li>
+<li><strong>Principe :</strong> une démo de 10 minutes au plus, un geste guidé, puis un réinvestissement. Les apprenants ne passent jamais plus de 15 minutes sans toucher la souris.
+</li>
+<li><strong>Fil conducteur :</strong> trois activités dans le logiciel, liées au design de transport. En demi-journée 1, la maquette en kit ; en demi-journée 2, la rangée de sièges et la clinique du fichier.
+</li>
+</ul>
+<h3>Répartition des Basics</h3>
+<table><thead><tr><th></th><th>Demi-journée 1 · Prendre ses repères</th><th>Demi-journée 2 · Modéliser</th></tr></thead><tbody>
+<tr><td>Basics</td><td>101 en entier ; 102 § 1, 2 et 4</td><td>102 § 3 ; 103 en entier</td></tr>
+<tr><td>Notions</td><td>Interface, Outliner et propriétés, navigation, sélection, transformations, curseur 3D, copies, collections, sauvegarde</td><td>Mode Édition, objet et données, Extrude, Inset, Bevel, Loop Cut, modificateurs, normales, échelle, origine</td></tr>
+<tr><td>Activités</td><td>A · La maquette en kit (45 min)</td><td>B · La rangée de sièges (50 min) ; C · La clinique du fichier (25 min)</td></tr>
+</tbody></table>
+<p>Le § 3 de Basics 102 (objet et données, Mode Édition) passe en demi-journée 2. C'est la porte d'entrée de la modélisation, et l'activité A le prépare : ses roues sont des copies liées.</p>
+<h3>Ce que l'on survole</h3>
+<p>Ces contenus restent dans l'application : les apprenants les retrouvent au besoin.</p>
+<ul>
+<li>L'installation et les préférences GPU : Blender est déjà installé, et Cycles ne sert pas dans cette formation.
+</li>
+<li>La visite de l'interface menu par menu : une chasse aux réglages la remplace.
+</li>
+<li>Append et Link : ils reviennent avec l'Asset Browser au chapitre 3.
+</li>
+<li>Knife, Merge, quads et n-gons : une phrase chacun, au moment où ils servent.
+</li>
+</ul>
+<h3>Les fichiers</h3>
+<table><thead><tr><th>Fichier</th><th>Moment</th><th>Contenu</th></tr></thead><tbody>
+<tr><td><code>memo_navigation_blender.pdf</code></td><td>DJ1, navigation</td><td>Mémo A4 paysage, à imprimer pour chaque apprenant</td></tr>
+<tr><td><code>PRC02_ch1_blocage_lampe.blend</code></td><td>DJ1, navigation ; DJ2, passerelle</td><td>Le blocage de la lampe du chapitre 1</td></tr>
+<tr><td><code>PRC02_init_maquette_en_kit.blend</code></td><td>DJ1, activité A</td><td>Trois véhicules en vrac et leurs gabarits</td></tr>
+<tr><td><code>modele_projet_organise.blend</code></td><td>DJ1, organiser</td><td>Démo de Pack Resources (textures empaquetées)</td></tr>
+<tr><td><code>exercices_modelisation_primitives.blend</code></td><td>DJ2, outils d'édition</td><td>Exercices 1 à 4 et défi Boîtier</td></tr>
+<tr><td><code>PRC02_init_rangee_sieges.blend</code></td><td>DJ2, activité B</td><td>Le siège de départ, la cabine et le corrigé masqué</td></tr>
+<tr><td><code>PRC02_init_clinique_fichier.blend</code></td><td>DJ2, activité C</td><td>Cinq pièces à soigner, chacune avec sa jumelle saine</td></tr>
+</tbody></table>
+<p>Tous ces fichiers se trouvent dans <code>_resources/exercices/</code>. Chaque fichier d'activité s'ouvre sur un texte LISEZ-MOI en bas de l'écran, avec les consignes par paliers ; <code>Ctrl + Espace</code> l'agrandit.</p>
+<blockquote><p><strong>À savoir :</strong> les trois fichiers <code>PRC02_init_…</code> ne sont pas reliés à l'application. Distribuez-les par clé USB ou dossier partagé. Une fois poussés sur la branche <code>main</code> du dépôt, ils sont aussi téléchargeables à l'adresse <code>https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/</code> suivie du nom du fichier.</p></blockquote>
+<h2>Avant la première demi-journée</h2>
+<h3>Les postes des apprenants</h3>
+<ul class="checks">
+<li>Blender 5.2 LTS est installé et a été ouvert une fois.
+</li>
+<li>Une souris à trois boutons (molette cliquable) est branchée. Avec un pavé tactile, Blender devient vite pénible.
+</li>
+<li>Sur un portable sans pavé numérique, <em>Emulate Numpad</em> est à activer à l'accueil (<em>Edit &gt; Preferences &gt; Input</em>).
+</li>
+<li>L'application support v0.1.0 est installée.
+</li>
+<li>Les fichiers d'exercice sont copiés dans un dossier de travail.
+</li>
+</ul>
+<h3>Votre poste de démonstration</h3>
+<ul>
+<li><strong>Lancez Blender en configuration d'usine pour vos démos</strong>, avec un raccourci Windows vers <code>blender.exe --factory-startup</code>. Votre Blender habituel a le bouton du milieu réglé sur <em>Pan</em> et des onglets d'extensions (BlenderKit, Geo-Scatter…). En configuration d'usine, ce que vous montrez correspond exactement à l'écran des apprenants. Vos préférences ne sont pas touchées : dans ce mode, Blender n'enregistre rien en quittant. Évitez seulement le bouton <em>Save Preferences</em>.
+</li>
+<li><strong>Agrandissez l'interface pour le vidéoprojecteur</strong> : <em>Edit &gt; Preferences &gt; Interface &gt; Resolution Scale</em>, par exemple à 1,3. En configuration d'usine, ce réglage est à refaire à chaque lancement.
+</li>
+<li><strong>Testez le vidéoprojecteur</strong> avec le fichier de la maquette en kit : le fil de fer du gabarit doit rester lisible.
+</li>
+</ul>
+<h3>Le matériel de la salle</h3>
+<ul>
+<li>Le mémo de navigation imprimé, un par apprenant.
+</li>
+<li>Des post-it de deux couleurs, vert et rose, pour les points de contrôle (voir « Animer »).
+</li>
+<li>Un paperboard pour les raccourcis du jour.
+</li>
+<li>Un minuteur visible de tous pour les phases en autonomie.
+</li>
+</ul>
+<h2>Demi-journée 1 · Prendre ses repères</h2>
+<p>Basics 101 et 102 (§ 1, 2 et 4). Les apprenants repartent avec une maquette remontée, rangée et enregistrée.</p>
+<table><thead><tr><th>Horaire</th><th>Durée</th><th>Séquence</th><th>Modalité</th></tr></thead><tbody>
+<tr><td>0:00</td><td>15 min</td><td>Accueil et lancement</td><td>Collectif</td></tr>
+<tr><td>0:15</td><td>25 min</td><td>L'interface en trois idées</td><td>Démo 10 min + chasse aux réglages 15 min</td></tr>
+<tr><td>0:40</td><td>25 min</td><td>Naviguer</td><td>Démo 10 min + défi des vues 15 min</td></tr>
+<tr><td>1:05</td><td>10 min</td><td>Pause</td><td></td></tr>
+<tr><td>1:15</td><td>40 min</td><td>Sélectionner et transformer</td><td>Démo 15 min + pratique guidée 25 min</td></tr>
+<tr><td>1:55</td><td>45 min</td><td>Activité A · La maquette en kit</td><td>Autonomie</td></tr>
+<tr><td>2:40</td><td>10 min</td><td>Pause</td><td></td></tr>
+<tr><td>2:50</td><td>30 min</td><td>Organiser et sauvegarder</td><td>Démo 10 min + pratique guidée 20 min</td></tr>
+<tr><td>3:20</td><td>20 min</td><td>Galerie et bilan</td><td>Collectif</td></tr>
+</tbody></table>
+<h3>0:00 · Accueil et lancement (15 min)</h3>
+<ul>
+<li><strong>Tour de table en trois questions :</strong>
+<ul>
+<li>votre secteur ;</li>
+<li>les outils 3D ou de CAO que vous pratiquez (Alias, CATIA, Rhino, KeyShot, Gravity Sketch…) ;</li>
+<li>Blender : jamais ouvert, un peu, ou régulièrement.</li>
+</ul>
+</li>
+<li><strong>Formez les binômes</strong> d'après les réponses. Chaque débutant complet s'assoit à côté d'une personne plus à l'aise : son copilote.
+</li>
+<li><strong>Annoncez le résultat attendu :</strong> « Dans deux demi-journées, vous saurez remonter, ranger et modéliser un objet simple. »
+</li>
+<li><strong>Faites le contrôle technique.</strong> Sur chaque poste, Blender 5.2 est ouvert et la souris est branchée. Sur les portables sans pavé numérique, <em>Emulate Numpad</em> est activé.
+</li>
+<li><strong>Montrez l'application support :</strong> les Basics y sont rédigés, avec des quiz. « Pendant la séance, gardez les yeux sur Blender. L'application sert après. »
+</li>
+</ul>
+<h3>0:15 · L'interface en trois idées (25 min)</h3>
+<p><strong>Vous montrez (10 min),</strong> d'après Basics 101 § 2 et 3 :</p>
+<ol>
+<li>Tout est éditeur : avec le sélecteur de type d'éditeur, changez la Timeline en Outliner, puis remettez-la. Divisez une zone, puis refusionnez-la.
+</li>
+<li>Les workspaces : passez de <em>Layout</em> à <em>Shading</em>, puis revenez. La scène ne change pas.
+</li>
+<li>Le trio sélection, Outliner et propriétés : cliquez la lampe dans la vue, puis la caméra dans l'Outliner. L'éditeur de propriétés suit.
+</li>
+</ol>
+<p><strong>Ils font (15 min) : la chasse aux réglages.</strong> Sur la scène de démarrage (<em>File &gt; New &gt; General</em>), ils cherchent :</p>
+<ol>
+<li>la puissance de la lampe ;
+</li>
+<li>la focale de la caméra ;
+</li>
+<li>le moteur de rendu actif ;
+</li>
+<li>la résolution de l'image de sortie.
+</li>
+</ol>
+<p>Ensuite, ils renomment le cube « Gabarit » dans l'Outliner. Ils masquent la lampe avec l'œil et excluent la caméra du rendu avec l'icône d'appareil photo.</p>
+<p><strong>Point de contrôle :</strong> les réponses à voix haute : 1000 W, 50 mm, EEVEE, 1920 × 1080. Faites remarquer que le maillage du cube s'appelle toujours « Cube ». Vous y reviendrez en demi-journée 2.</p>
+<h3>0:40 · Naviguer (25 min)</h3>
+<p><strong>Vous montrez (10 min),</strong> d'après Basics 101 § 4, le mémo en main :</p>
+<ul>
+<li>orbite, panoramique et zoom ;
+</li>
+<li>le gizmo de navigation ;
+</li>
+<li>les vues 1, 3 et 7 (avec <code>Ctrl</code> pour la vue opposée) ;
+</li>
+<li>la touche 5 pour l'orthographique ;
+</li>
+<li><code>.</code> pour cadrer la sélection, <code>Origine</code> pour toute la scène.
+</li>
+</ul>
+<p><strong>Ils font (15 min) : le défi des vues.</strong> Ils ouvrent <code>PRC02_ch1_blocage_lampe.blend</code> et affichent la collection <em>Variante A</em> (œil dans l'Outliner). Vous annoncez une vue, et ils la prennent au plus vite :</p>
+<ul>
+<li>« De face, en orthographique » : le croquis apparaît derrière la lampe ;
+</li>
+<li>« Dessus » ;
+</li>
+<li>« Profil gauche » ;
+</li>
+<li>« Cadrez la tête de la lampe » ;
+</li>
+<li>« Vue d'ensemble » ;
+</li>
+<li>« Tournez autour du socle, puis revenez de face ».
+</li>
+</ul>
+<p>Accélérez au fil des annonces. Terminez par deux minutes libres pour tourner autour de la lampe.</p>
+<p><strong>Point de contrôle :</strong> au signal, tous les écrans montrent la même vue. Vous voyez d'un coup d'œil qui est perdu.</p>
+<p><strong>Le petit plus :</strong> cette lampe est l'objet du chapitre 1. Les apprenants la retrouveront.</p>
+<h3>1:05 · Pause (10 min)</h3>
+<h3>1:15 · Sélectionner et transformer (40 min)</h3>
+<p><strong>Vous montrez (15 min),</strong> d'après Basics 102 § 1 et 2 :</p>
+<ul>
+<li>La sélection et l'objet actif : <code>Maj + clic</code>, <code>A</code>, <code>Alt + A</code>.
+</li>
+<li>Les transformations : <code>G</code>, <code>R</code> ou <code>S</code>, puis l'axe, puis la valeur (<code>G X 2</code>, <code>R Z 90</code>, <code>S 0.5</code>). <code>Échap</code> ou un clic droit annule le geste en cours, <code>Ctrl + Z</code> la dernière action.
+</li>
+<li><code>Maj + A</code> et le panneau F9.
+</li>
+<li>Le curseur 3D : <code>Maj + clic droit</code> pour le placer, <code>Maj + C</code> pour le ramener au centre.
+</li>
+<li><code>Maj + D</code> et <code>Alt + D</code> : montrez seulement que les deux copient. Leur différence viendra en demi-journée 2.
+</li>
+<li>Le point de pivot : une rotation de trois objets en <em>Median Point</em>, puis en <em>Individual Origins</em>.
+</li>
+</ul>
+<p><strong>Ils font (25 min) : la balise, au chiffre près.</strong> Dans un fichier neuf (<em>File &gt; New &gt; General</em>), après avoir supprimé le cube avec <code>X</code> :</p>
+<ol>
+<li><code>Maj + A &gt; Mesh &gt; Cylinder</code>, puis F9 : <em>Vertices</em> 16, <em>Radius</em> 0.1, <em>Depth</em> 2.
+</li>
+<li><code>G Z 1</code> : le mât repose sur le sol.
+</li>
+<li><code>Maj + A &gt; Mesh &gt; Cube</code>, <code>S 0.3</code>, puis <code>G Z 2.2</code> : la tête.
+</li>
+<li><code>Maj + A &gt; Mesh &gt; UV Sphere</code>, F9 : <em>Radius</em> 0.12. Puis <code>G Z 2.3</code> et <code>G Y -0.3</code> : un feu, sur la face avant.
+</li>
+<li><code>Maj + D</code>, <code>Z</code>, <code>-0.3</code>, Entrée : un second feu, sous le premier.
+</li>
+<li><code>A</code>, puis <code>R Z 45</code> : tout tourne autour du mât. <code>Ctrl + Z</code>, passez le pivot en <em>Individual Origins</em> et recommencez : les feux se détachent de la tête.
+</li>
+</ol>
+<p><strong>Point de contrôle :</strong> dans la barre latérale (<code>N</code>), onglet <em>Item</em>, le mât affiche <em>Location Z</em> 1 m et la tête 2,2 m. Passez voir les débutants en premier. Un écart de position vient presque toujours d'un <code>G</code> sans axe.</p>
+<h3>1:55 · Activité A · La maquette en kit (45 min)</h3>
+<p>La fiche complète est plus bas. Le lancement dure 5 minutes : la situation, le choix du kit, le gabarit fil de fer et la règle « deux vues orthographiques avant de valider ». Viennent ensuite 35 minutes en autonomie et 5 minutes de retour.</p>
+<h3>2:40 · Pause (10 min)</h3>
+<h3>2:50 · Organiser et sauvegarder (30 min)</h3>
+<p><strong>Vous montrez (10 min),</strong> d'après Basics 102 § 4 :</p>
+<ul>
+<li><code>M &gt; New Collection</code>, et renommer par double-clic dans l'Outliner ou avec <code>F2</code>.
+</li>
+<li><em>Save As</em> (<code>Maj + Ctrl + S</code>) et le bouton <code>+</code>, qui incrémente le numéro. <em>File &gt; Recover &gt; Auto Save</em> après un plantage.
+</li>
+<li><strong>Pack Resources</strong>, avec <code>modele_projet_organise.blend</code> : passez en <em>Material Preview</em> pour montrer les textures, puis ouvrez <em>File &gt; External Data</em>. Expliquez la texture rose sans la provoquer.
+</li>
+<li>Append et Link : une phrase, « vous les verrez au chapitre 3 ».
+</li>
+</ul>
+<p><strong>Ils font (20 min) sur leur kit :</strong></p>
+<ul>
+<li>des collections <em>Carrosserie</em>, <em>Vitrage</em> et <em>Roues</em> ;
+</li>
+<li>des noms clairs pour les copies, par exemple <code>Roue_arrière_gauche_voiture</code> à la place de <code>Roue_avant_gauche_voiture.002</code> ;
+</li>
+<li>un enregistrement sous <code>kit_&lt;secteur&gt;_001.blend</code>, une modification, puis la version <code>_002</code> avec le bouton <code>+</code>.
+</li>
+</ul>
+<p><strong>Point de contrôle :</strong> chaque Outliner montre au moins trois collections nommées et plus aucun nom en <code>.001</code>. Le dossier contient deux versions du fichier.</p>
+<h3>3:20 · Galerie et bilan (20 min)</h3>
+<ul>
+<li><strong>Galerie (8 min) :</strong> chacun laisse sa maquette à l'écran, sous son meilleur angle. Tout le monde se lève et fait le tour des postes.
+</li>
+<li><strong>Trois questions (5 min) :</strong>
+<ul>
+<li>« Pourquoi fallait-il des vues orthographiques pour aligner ? »</li>
+<li>« Quelle différence entre l'œil et l'appareil photo, dans l'Outliner ? »</li>
+<li>« Comment poser une pièce à 2,6 m exactement ? »</li>
+</ul>
+</li>
+<li><strong>Un post-it par personne (5 min) :</strong> « ce qui me bloque encore ». Lisez-les avant la demi-journée 2.
+</li>
+<li><strong>Annonce (2 min) :</strong> la prochaine fois, on modélise. Ceux qui le souhaitent peuvent faire les quiz de Basics 101 et 102 dans l'application.
+</li>
+</ul>
+<h2>Demi-journée 2 · Modéliser</h2>
+<p>Basics 102 (§ 3) et Basics 103. Les apprenants repartent avec une cabine modélisée et les réflexes d'un fichier sain.</p>
+<table><thead><tr><th>Horaire</th><th>Durée</th><th>Séquence</th><th>Modalité</th></tr></thead><tbody>
+<tr><td>0:00</td><td>15 min</td><td>Réactivation</td><td>Collectif</td></tr>
+<tr><td>0:15</td><td>25 min</td><td>Objet, données et Mode Édition</td><td>Démo 10 min + pratique guidée 15 min</td></tr>
+<tr><td>0:40</td><td>45 min</td><td>Les outils d'édition</td><td>Démo 15 min + exercices 30 min</td></tr>
+<tr><td>1:25</td><td>10 min</td><td>Pause</td><td></td></tr>
+<tr><td>1:35</td><td>20 min</td><td>Les modificateurs</td><td>Démo 15 min + essai 5 min</td></tr>
+<tr><td>1:55</td><td>50 min</td><td>Activité B · La rangée de sièges</td><td>Autonomie</td></tr>
+<tr><td>2:45</td><td>10 min</td><td>Pause</td><td></td></tr>
+<tr><td>2:55</td><td>25 min</td><td>Activité C · La clinique du fichier</td><td>Autonomie + retour collectif</td></tr>
+<tr><td>3:20</td><td>20 min</td><td>Passerelle vers le chapitre 1 et bilan</td><td>Collectif</td></tr>
+</tbody></table>
+<h3>0:00 · Réactivation (15 min)</h3>
+<ul>
+<li><strong>Les post-it de la dernière fois :</strong> répondez en 3 minutes aux blocages les plus cités.
+</li>
+<li><strong>Trois gestes en trois minutes :</strong> chacun rouvre son kit, cadre une roue (<code>.</code>), passe en vue de dessus (7), puis revient à la vue d'ensemble (<code>Origine</code>).
+</li>
+<li><strong>La question qui lance la séance.</strong> Sur votre écran, sélectionnez une roue, puis <code>Tab</code>, <code>A</code>, <code>S X 1.4</code> et <code>Tab</code> : toutes les roues s'élargissent. « Pourquoi ? » Laissez chercher une minute avant de répondre.
+</li>
+</ul>
+<h3>0:15 · Objet, données et Mode Édition (25 min)</h3>
+<p><strong>Vous montrez (10 min),</strong> d'après Basics 102 § 3 et Basics 103 § 1 :</p>
+<ul>
+<li><code>Tab</code>, puis 1, 2 et 3 : sommets, arêtes, faces.
+</li>
+<li><code>Alt + clic</code> sur une arête pour sélectionner la boucle, <code>L</code> pour un îlot, <code>Ctrl + Pavé +</code> pour agrandir la sélection.
+</li>
+<li>Dans l'Outliner, dépliez une roue : on voit l'objet et son maillage. Dans l'onglet <em>Object Data</em>, le compteur indique combien d'objets partagent ce maillage.
+</li>
+<li>Un clic sur ce compteur crée une copie indépendante (<em>single user</em>).
+</li>
+</ul>
+<p><strong>Ils font (15 min) sur leur kit :</strong></p>
+<ol>
+<li>lire le compteur de leurs roues : 4 pour la voiture, 8 pour le tram, 3 pour les roues de l'avion ;
+</li>
+<li>rendre une roue indépendante, puis l'élargir seule en Mode Édition ;
+</li>
+<li>sélectionner une boucle d'arêtes autour d'une roue avec <code>Alt + clic</code>.
+</li>
+</ol>
+<p><strong>Point de contrôle :</strong> « Combien affiche votre compteur ? » Sur chaque écran, une seule roue est plus large que les autres.</p>
+<h3>0:40 · Les outils d'édition (45 min)</h3>
+<p><strong>Vous montrez (15 min),</strong> d'après Basics 103 § 2, sur <code>exercices_modelisation_primitives.blend</code> :</p>
+<ul>
+<li>Extrude (<code>E</code>), et le piège de <code>Échap</code> juste après ;
+</li>
+<li>Inset (<code>I</code>) ;
+</li>
+<li>Bevel (<code>Ctrl + B</code>), avec la molette pour les segments et F9 pour corriger ;
+</li>
+<li>Loop Cut (<code>Ctrl + R</code>) ;
+</li>
+<li>Merge (<code>M</code>) et Knife (<code>K</code>) : citez-les simplement.
+</li>
+</ul>
+<p><strong>Ils font (30 min) :</strong> les exercices 1 à 4 du fichier, environ 6 minutes chacun. Chaque forme cible, en orange, sert de corrigé. Les plus rapides passent au défi Boîtier.</p>
+<p><strong>Point de contrôle :</strong> après chaque exercice, la forme grise ressemble à la cible orange. Allez voir d'abord l'exercice 1 des débutants : c'est là que le piège de <code>Échap</code> frappe.</p>
+<h3>1:25 · Pause (10 min)</h3>
+<h3>1:35 · Les modificateurs (20 min)</h3>
+<p><strong>Vous montrez (15 min),</strong> d'après Basics 103 § 3, sur le défi Boîtier ou un simple cube :</p>
+<ul>
+<li>l'onglet <em>Modifiers</em>, reconnaissable à sa clé à molette ;
+</li>
+<li><em>Subdivision Surface</em> (<code>Ctrl + 2</code>) et sa cage ;
+</li>
+<li><em>Mirror</em> et <em>Array</em> ;
+</li>
+<li><em>Solidify</em>, sur un plan ;
+</li>
+<li><em>Bevel</em> ; <em>Boolean</em>, en une phrase ;
+</li>
+<li>l'ordre de la pile, l'affichage dans la vue et <em>Apply</em>.
+</li>
+</ul>
+<p><strong>Ils font (5 min) :</strong> <code>Ctrl + 2</code> sur leur boîtier, puis <code>Tab</code> et le déplacement d'un sommet de la cage.</p>
+<p><strong>Point de contrôle :</strong> chacun voit la cage noire et la forme lissée qui la suit.</p>
+<h3>1:55 · Activité B · La rangée de sièges (50 min)</h3>
+<p>La fiche complète est plus bas. Le lancement dure 5 minutes, le socle 35 minutes en autonomie. Les 10 dernières minutes servent aux paliers ★ et à un retour collectif sur le pas entre les rangs.</p>
+<h3>2:45 · Pause (10 min)</h3>
+<h3>2:55 · Activité C · La clinique du fichier (25 min)</h3>
+<p>La fiche complète est plus bas. Tout le monde traite les patients 1 à 3 (15 minutes) ; les patients 4 et 5 sont pour les plus rapides. Le retour collectif dure 10 minutes : pour chaque défaut, sa cause et son soin. Terminez par la checklist de Basics 103 § 4, à l'écran.</p>
+<h3>3:20 · Passerelle vers le chapitre 1 et bilan (20 min)</h3>
+<ul>
+<li><strong>Ouvrez <code>PRC02_ch1_blocage_lampe.blend</code></strong> et affichez les trois variantes. « Des primitives, des cotes, des collections : vous savez déjà tout faire. Le chapitre 1 ajoute les unités, l'aimantation et les images de référence. »
+</li>
+<li><strong>Autoévaluation (5 min) :</strong> chacun se situe sur la grille ci-dessous.
+</li>
+<li><strong>Tour de table express :</strong> un mot pour finir.
+</li>
+<li><strong>Pour aller plus loin :</strong> les quiz de Basics 103, les défis des Basics et les patients restants de la clinique.
+</li>
+</ul>
+<table><thead><tr><th>Je sais…</th><th>Acquis</th><th>En cours</th><th>À revoir</th></tr></thead><tbody>
+<tr><td>naviguer et prendre une vue précise sans me perdre</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>déplacer, tourner et redimensionner au chiffre près</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>retrouver, masquer et renommer un objet dans l'Outliner</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>ranger mon fichier en collections et l'enregistrer par versions</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>modéliser une forme simple avec Extrude, Inset, Bevel et Loop Cut</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>construire avec des modificateurs, et corriger normales et échelle</td><td>☐</td><td>☐</td><td>☐</td></tr>
+</tbody></table>
+<div class="pagebreak"></div>
+<h2>Activité A · La maquette en kit</h2>
+<p><strong>Fichier :</strong> <code>PRC02_init_maquette_en_kit.blend</code> · <strong>Durée :</strong> 45 min · <strong>Demi-journée 1</strong></p>
+<p><strong>Situation :</strong> « Un collègue vous envoie la maquette d'un concept pour la revue de design de demain. Le fichier est arrivé en vrac. Remontez-la. »</p>
+<p><strong>Objectif :</strong> remettre chaque pièce dans un gabarit fil de fer, puis poser les roues avec des copies liées.</p>
+<p><strong>Pourquoi elle fonctionne :</strong></p>
+<ul>
+<li>Aligner une pièce en perspective est impossible. Les apprenants découvrent seuls l'utilité des vues orthographiques.
+</li>
+<li>Le gabarit leur montre eux-mêmes si c'est juste. Vous restez disponible pour ceux qui bloquent.
+</li>
+<li>Chaque geste prend un sens métier : la voie, l'empattement, l'entraxe des bogies.
+</li>
+<li>Le choix du secteur motive. Les copies liées préparent la notion de données partagées.
+</li>
+</ul>
+<table><thead><tr><th>Kit</th><th>Pièces à remettre en place</th><th>Copies liées (<code>Alt + D</code>)</th></tr></thead><tbody>
+<tr><td>Aéronautique · avion d'affaires</td><td>Fuselage, Aile (tournés), Cône de queue (retourné), Nez (trop petit), Empennage horizontal (masqué), <code>Cube.013</code> (la dérive, couchée)</td><td>Réacteur : <code>X -2.6</code> ; roue principale : <code>X -2.4</code> ; roue avant : <code>X -1.2</code>, puis <code>G Y -4.4</code></td></tr>
+<tr><td>Automobile · voiture compacte</td><td>Feux arrière et rétroviseur droit (déplacés), Caisse (tournée), Habitacle (retourné), Phare gauche, Phare droit (masqué, trop grand), <code>Cube.004</code> (le rétroviseur gauche, tourné de 45°)</td><td>La voie : <code>X -1.6</code> ; puis les deux roues avant : <code>Y 2.6</code>, l'empattement</td></tr>
+<tr><td>Ferroviaire · avant de tram</td><td>Bogie (déplacé) ; Caisse, Nez, Pare-brise, Attelage (tournés) ; Phare gauche ; Phare droit (masqué, trop petit) ; <code>Cube.009</code> (le pantographe, couché)</td><td><code>X -1.5</code> (même essieu) ; <code>Y 1.8</code> (second essieu) ; puis les 4 roues et le bogie : <code>Y 5.2</code> (bogie arrière)</td></tr>
+</tbody></table>
+<p>Les noms se terminent par le véhicule (<code>Caisse_voiture</code>, <code>Nez_tram</code>…), car deux objets d'un même fichier ne peuvent pas porter le même nom. Gauche et droite s'entendent depuis le poste de conduite ; l'avant regarde la vue de face. Le LISEZ-MOI donne aussi la position exacte de chaque pièce, pour le palier ★.</p>
+<p><strong>Déroulé :</strong></p>
+<ol>
+<li><strong>Lancement (5 min).</strong> Projetez le fichier et montrez le gabarit. Remettez une pièce en place devant les apprenants : vue de face et <code>G Z</code>, puis vue de dessus et <code>G X</code>. Montrez ensuite le contrôle dans <code>N</code> : <em>Rotation</em> 0 et <em>Scale</em> 1. Donnez la règle d'or : « Avant de valider, vérifiez sous deux vues orthographiques. »
+</li>
+<li><strong>Autonomie (35 min).</strong> Chacun ferme l'œil des deux autres kits dans l'Outliner, puis suit le LISEZ-MOI. Astuce : <code>Ctrl + clic</code> sur un œil isole une collection.
+</li>
+<li><strong>Retour (5 min).</strong> Projetez une maquette remontée et demandez : « Qu'est-ce qui était difficile ? » Gardez la question des roues pour la demi-journée 2.
+</li>
+</ol>
+<p><strong>Paliers :</strong></p>
+<ul>
+<li><strong>Socle :</strong> toutes les pièces en place, les roues posées.
+</li>
+<li><strong>★ :</strong> les positions exactes saisies dans <code>N &gt; Item</code> ; <code>Alt + R</code> et <code>Alt + S</code> pour nettoyer rotation et échelle.
+</li>
+<li><strong>★★ :</strong> élargir toutes les roues d'un coup ; une variante par <em>Duplicate Collection</em> ; une caméra de revue avec <code>Ctrl + Alt + 0</code>.
+</li>
+</ul>
+<p><strong>Points d'observation :</strong></p>
+<ul>
+<li>Une pièce juste de face mais décalée en profondeur : faites tourner la vue.
+</li>
+<li><code>Alt + D</code>, puis un clic avant de taper l'axe : la copie se pose sous la souris. <code>Ctrl + Z</code>, et on recommence.
+</li>
+<li><code>R Z 90</code> dans le mauvais sens : <code>Ctrl + Z</code>, puis <code>-90</code>. Une rotation qui affiche 360° est juste aussi.
+</li>
+<li>Un clic sur le gabarit ne sélectionne rien : c'est voulu, il est verrouillé.
+</li>
+<li>Faites chercher la pièce masquée dans l'Outliner, à son œil fermé, plutôt qu'avec <code>Alt + H</code> : c'est l'occasion de pratiquer l'Outliner.
+</li>
+</ul>
+<p><strong>Corrigé :</strong> chaque pièce en place affiche <em>Rotation</em> 0, 0, 0 (ou 360°) et <em>Scale</em> 1, 1, 1, et ses arêtes se confondent avec celles du gabarit. Les positions exactes sont dans la partie ★ du LISEZ-MOI.</p>
+<h2>Activité B · La rangée de sièges</h2>
+<p><strong>Fichier :</strong> <code>PRC02_init_rangee_sieges.blend</code> · <strong>Durée :</strong> 50 min · <strong>Demi-journée 2</strong></p>
+<p><strong>Situation :</strong> « Aménagement de cabine. Vous proposez un siège passager et la configuration d'une rangée. Le même siège se retrouve dans un train, un avion ou un car. »</p>
+<p><strong>Objectif :</strong> façonner un siège à partir d'un pavé, puis construire une cabine de 24 sièges avec deux Array et un Mirror.</p>
+<p><strong>Pourquoi elle fonctionne :</strong></p>
+<ul>
+<li>Les quatre outils de Basics 103 servent tout de suite, dans un ordre qui a du sens : Loop Cut, Extrude, Inset, Bevel.
+</li>
+<li>Les modificateurs produisent un effet marquant : un siège devient une cabine.
+</li>
+<li>Le pas entre les rangs se règle dans un seul champ. C'est un vrai raisonnement de designer (confort, nombre de places), avec une silhouette de 1,75 m pour l'échelle.
+</li>
+</ul>
+<p><strong>Le socle, en 9 étapes</strong> (valeurs indicatives, en mètres) :</p>
+<table><thead><tr><th>Étape</th><th>Geste</th><th>Résultat</th></tr></thead><tbody>
+<tr><td>1</td><td>Clic sur <em>Siège</em>, <code>.</code>, puis <code>Tab</code></td><td>Le Mode Édition</td></tr>
+<tr><td>2</td><td><code>Ctrl + R</code> sur une arête qui va de l'avant vers l'arrière, clic, clic droit, puis <code>G Y 0.15</code></td><td>Une bande de 10 cm à l'arrière</td></tr>
+<tr><td>3</td><td><code>3</code>, la face du dessus de la bande, puis <code>E 0.65</code></td><td>Le dossier</td></tr>
+<tr><td>4</td><td><code>G Y 0.12</code></td><td>Le dossier s'incline</td></tr>
+<tr><td>5</td><td><code>Ctrl + B</code>, la molette jusqu'à 3 segments, puis <code>0.04</code></td><td>Le haut du dossier s'arrondit</td></tr>
+<tr><td>6</td><td>La face du dessus de l'assise, <code>I 0.025</code>, puis <code>E 0.03</code></td><td>Un coussin</td></tr>
+<tr><td>7</td><td><code>Ctrl + 7</code>, la grande face avant du dessous, <code>I 0.12</code>, puis <code>E 0.33</code></td><td>Le pied, jusqu'au sol</td></tr>
+<tr><td>8</td><td><code>Tab</code>, onglet <em>Modifiers</em> : Array (Count 2, Relative Offset X 1.05) ; Array (Constant Offset : Distance X 0, Y 0.8 ; Count 6) ; Mirror (X)</td><td>Une cabine 2+2 de 24 sièges</td></tr>
+<tr><td>9</td><td><code>Tab</code>, <code>A</code>, puis <code>S X 0.9</code></td><td>Les 24 sièges s'affinent ensemble</td></tr>
+</tbody></table>
+<p><strong>Déroulé :</strong></p>
+<ol>
+<li><strong>Lancement (5 min).</strong> Montrez le siège cible. Montrez aussi l'origine de l'objet <em>Siège</em>, placée exprès sur l'axe du couloir : le Mirror s'en sert.
+</li>
+<li><strong>Socle (35 min).</strong> Trois points de contrôle : le dossier (étape 3), le pied (étape 7) et la cabine (étape 8).
+</li>
+<li><strong>★ et retour (10 min).</strong> Chacun essaie deux pas, par exemple 0.78 puis 0.95. Retour collectif : « Quel pas choisiriez-vous pour un trajet de 20 minutes ? Et pour un trajet de 3 heures ? »
+</li>
+</ol>
+<p><strong>Paliers :</strong></p>
+<ul>
+<li><strong>★ :</strong> essayer d'autres pas ; passer en 3+3 ; élargir le couloir ; ajouter un Bevel en haut de la pile ; mettre le Mirror en premier pour voir que l'ordre compte.
+</li>
+<li><strong>★★ :</strong> des accoudoirs, avec <code>Alt + E &gt; Extrude Individual Faces</code> ; une première classe 2+1, avec une copie liée.
+</li>
+</ul>
+<p><strong>Points d'observation :</strong></p>
+<ul>
+<li>Dans le second Array, <em>Constant Offset</em> vaut 1 en X par défaut. Il faut le remettre à 0, sinon les rangs partent en biais.
+</li>
+<li>Étape 7 : l'Inset ne se fait que sur la grande face avant du dessous. Sur les deux faces, une face se retourne.
+</li>
+<li>Étape 9 faite en Mode Objet : <code>S X 0.9</code> rétrécit toute la cabine, couloir compris, et laisse une échelle non appliquée. C'est le patient 2 de la clinique.
+</li>
+</ul>
+<p><strong>Corrigé :</strong> la collection <em>Corrigé</em>, masquée, contient la cabine terminée. Ouvrez son œil dans l'Outliner.</p>
+<h2>Activité C · La clinique du fichier</h2>
+<p><strong>Fichier :</strong> <code>PRC02_init_clinique_fichier.blend</code> · <strong>Durée :</strong> 25 min · <strong>Demi-journée 2</strong></p>
+<p><strong>Situation :</strong> « Un collègue vous confie cinq pièces d'une maquette. Chacune présente un défaut. Diagnostiquez, puis soignez. »</p>
+<p><strong>Objectif :</strong> reconnaître, à leur symptôme, les cinq pièges les plus courants du débutant, puis les corriger.</p>
+<p><strong>Pourquoi elle fonctionne :</strong> l'apprenant part de ce qu'il voit, comme il le fera seul sur ses propres fichiers. Chaque pièce a une jumelle saine, en orange, pour comparer. Les indices évitent les blocages, et les solutions sont à la fin du LISEZ-MOI.</p>
+<table><thead><tr><th>Patient</th><th>Symptôme</th><th>Cause</th><th>Soin</th></tr></thead><tbody>
+<tr><td>1 · Le carénage cabossé</td><td>Le flanc paraît enfoncé, en escalier</td><td>Des normales inversées</td><td><em>Overlays &gt; Face Orientation</em> pour les voir ; <code>Tab</code>, <code>A</code>, <code>Maj + N</code></td></tr>
+<tr><td>2 · L'accoudoir déformé</td><td>Des arrondis étirés aux bouts, presque vifs sur les côtés</td><td>Une échelle non appliquée (2,4 × 0,5 × 0,4) sous un Bevel</td><td><code>Ctrl + A &gt; Scale</code></td></tr>
+<tr><td>3 · Le bouton qui ne s'arrondit pas</td><td>Un dessus plat bordé d'une arête vive</td><td>Une extrusion annulée avec <code>Échap</code> : 12 sommets au lieu de 8</td><td><code>Tab</code>, <code>A</code>, <code>M &gt; By Distance</code></td></tr>
+<tr><td>4 · Les hublots jumeaux</td><td>Modifier l'un modifie l'autre</td><td>Des copies liées : le maillage est partagé (compteur 2)</td><td>Clic sur le compteur, puis <code>Tab</code>, <code>A</code>, <code>S Z 1.5</code></td></tr>
+<tr><td>5 · La porte qui tourne mal</td><td><code>R Z 90</code> la fait tourner sur elle-même</td><td>Une origine au centre de la porte</td><td>Arête des charnières, <code>Maj + S &gt; Cursor to Selected</code>, puis <em>Object &gt; Set Origin &gt; Origin to 3D Cursor</em></td></tr>
+</tbody></table>
+<p><strong>Déroulé :</strong></p>
+<ol>
+<li><strong>Lancement (2 min).</strong> « Lisez le symptôme, cherchez la cause, puis soignez. Les solutions sont à la fin du texte : cherchez d'abord. »
+</li>
+<li><strong>Autonomie (15 min).</strong> Les patients 1 à 3 pour tous ; les patients 4 et 5 pour les plus rapides.
+</li>
+<li><strong>Retour (8 min).</strong> Un apprenant volontaire par patient montre le symptôme, puis le soin. Terminez par la checklist de Basics 103 § 4, à l'écran, et une phrase sur les quads et les n-gons.
+</li>
+</ol>
+<p><strong>Points d'observation :</strong></p>
+<ul>
+<li>Patient 1 : en mode <em>Solid</em>, le défaut ressemble à un vrai creux. Faites tourner la vue autour de la pièce avant d'activer <em>Face Orientation</em>.
+</li>
+<li>Patient 2 : la différence se voit de près. Cadrez avec <code>.</code>.
+</li>
+<li>Patient 4 : ceux qui ont déjà étiré les deux hublots font <code>Ctrl + Z</code> avant de soigner.
+</li>
+<li>Faites le lien avec ce qu'ils ont déjà vécu. Le patient 4, ce sont les roues de la maquette ; le patient 2, c'est le <code>S X</code> des sièges fait en Mode Objet.
+</li>
+</ul>
+<h2>Gérer l'hétérogénéité</h2>
+<h3>Le parcours « première fois »</h3>
+<p>Pour ceux qui n'ont jamais ouvert Blender :</p>
+<ul>
+<li><strong>Un copilote</strong> est assis à côté, plus à l'aise. Règle : le copilote explique, mais ne prend jamais la souris.
+</li>
+<li><strong>Le mémo imprimé</strong> est posé à côté du clavier.
+</li>
+<li><strong>Trois touches de survie</strong> sont écrites au paperboard dès l'accueil : <code>Ctrl + Z</code> pour annuler, <code>Échap</code> pour abandonner un geste, <code>Origine</code> pour retrouver la scène.
+</li>
+<li><strong>Le socle de chaque activité suffit</strong> : il couvre tous les gestes de la demi-journée.
+</li>
+<li><strong>Dans la maquette en kit</strong>, si la personne hésite, proposez le kit automobile : ses gestes de roues sont les plus simples.
+</li>
+<li><strong>À chaque point de contrôle</strong>, passez d'abord par ces postes.
+</li>
+</ul>
+<h3>Les défis pour ceux qui avancent vite</h3>
+<ul>
+<li>Les paliers ★ et ★★ de chaque activité, écrits dans le LISEZ-MOI.
+</li>
+<li>Les patients 4 et 5 de la clinique.
+</li>
+<li>Un avant-goût du chapitre 1 :
+<ul>
+<li>la Quad View (<code>Ctrl + Alt + Q</code>) ;</li>
+<li>l'aimantation pendant un déplacement (<code>Ctrl</code> maintenu) ;</li>
+<li>l'affichage des unités en millimètres.</li>
+</ul>
+</li>
+<li>Le rôle de copilote : expliquer un geste à un voisin ancre ses propres acquis.
+</li>
+</ul>
+<h2>Animer : conseils pratiques</h2>
+<ol>
+<li><strong>« Regardez, puis à vous. »</strong> Pendant une démo, les mains restent loin du clavier ; les apprenants refont ensuite le geste seuls. Ceux qui suivent en direct décrochent au premier écart.
+</li>
+<li><strong>Dites chaque touche à voix haute</strong> (« Tab… 3… E, zéro virgule six cinq, Entrée »), puis notez-la au paperboard. La liste reste visible toute la demi-journée.
+</li>
+<li><strong>Faites deviner avant d'expliquer.</strong> « Pourquoi n'arrivez-vous pas à aligner cette pièce ? » « Pourquoi les quatre roues ont-elles changé ? » Une minute de recherche marque plus qu'une réponse immédiate.
+</li>
+<li><strong>Rendez les points de contrôle visibles.</strong> Un post-it vert sur l'écran veut dire « c'est fait », un rose « je bloque ». Depuis l'avant de la salle, vous voyez d'un coup d'œil où aller.
+</li>
+<li><strong>Appliquez la règle des 3 minutes.</strong> Un apprenant bloqué depuis plus de 3 minutes colle son post-it rose : personne ne reste perdu en silence.
+</li>
+<li><strong>Ne prenez pas la souris.</strong> Guidez à l'oral. Si vous devez montrer, faites <code>Ctrl + Z</code> ensuite et laissez l'apprenant refaire.
+</li>
+<li><strong>Faites le tour des postes toujours dans le même ordre</strong>, en commençant par les débutants.
+</li>
+<li><strong>Affichez un minuteur</strong> pour chaque phase en autonomie, et annoncez les 5 dernières minutes.
+</li>
+<li><strong>Tenez un tableau des pièges.</strong> Notez au paperboard chaque erreur qui revient : <code>Échap</code> après <code>E</code>, Mode Édition oublié, mauvais objet sélectionné. Relisez-le au bilan.
+</li>
+<li><strong>Parlez métier.</strong> Voie, empattement, entraxe, pas entre les rangs : les gestes deviennent des décisions de designer.
+</li>
+<li><strong>Gardez l'interface en anglais.</strong> Traduisez un libellé à l'oral la première fois, puis employez le terme anglais : c'est celui du support et des tutoriels.
+</li>
+<li><strong>Montrez les productions.</strong> La galerie de la demi-journée 1 et les cabines de la demi-journée 2 montrent à chacun ce qu'il sait déjà faire.
+</li>
+</ol>
+<h2>Si vous prenez du retard</h2>
+<p>Raccourcissez dans cet ordre :</p>
+<table><thead><tr><th>Ordre</th><th>Demi-journée 1</th><th>Demi-journée 2</th></tr></thead><tbody>
+<tr><td>D'abord</td><td>Chasse aux réglages limitée à 4 questions ; défi des vues en 8 min</td><td>Exercices d'édition 1 et 3 seulement : Inset et Loop Cut reviennent dans les sièges</td></tr>
+<tr><td>Ensuite</td><td>Organiser : démo de Pack Resources seule, enregistrement sans incrément</td><td>Modificateurs : démo de 10 min, sans essai</td></tr>
+<tr><td>En dernier</td><td>Maquette en kit : le socle seulement, sans ★ ni ★★</td><td>Clinique : patients 1 et 2 en séance, la suite après</td></tr>
+</tbody></table>
+<h2>Si vous êtes en avance</h2>
+<ul>
+<li><strong>Demi-journée 1 :</strong> le palier ★★ de la maquette (variante, caméra de revue), puis le défi de Basics 102 : un projet propre de bout en bout.
+</li>
+<li><strong>Demi-journée 2 :</strong> les ★★ des sièges ; la Quad View et l'aimantation du chapitre 1 ; le défi de Basics 103 : un mug, une table basse ou une clé USB.
+</li>
+</ul>
+<hr>
+<p>Les fichiers <code>PRC02_init_…</code> se reconstruisent avec les scripts de <code>tool/exercices_initiation/</code> (Blender 5.2 en arrière-plan, puis <code>finish_ui.py</code> pour la taille des zones). Ce document se convertit en PDF avec <code>tool/deroule_initiation/export_pdf.ps1</code>.</p>
+</body>
+</html>
