@@ -52,6 +52,10 @@ class CourseChapter {
   /// Points clés présentés sur l'écran Programme.
   final List<ChapterPoint> points;
 
+  /// Le contenu de base manque encore, mais le chapitre a déjà des modules (un défi
+  /// facultatif, par exemple) : il s'ouvre, et garde son badge « En préparation ».
+  final bool baseContentPending;
+
   const CourseChapter({
     required this.route,
     required this.branchIndex,
@@ -63,11 +67,15 @@ class CourseChapter {
     required this.icon,
     required this.modules,
     this.points = const [],
+    this.baseContentPending = false,
   });
 
   bool get isBasics => section == CourseSection.bases;
 
   bool get isInPreparation => modules.isEmpty;
+
+  /// Badge « En préparation » du tableau de bord et du Programme.
+  bool get showsPreparationBadge => isInPreparation || baseContentPending;
 
   /// « Basics 101 » ou « Chapitre 1 ».
   String get shortLabel => isBasics ? 'Basics $number' : 'Chapitre $number';
@@ -160,10 +168,13 @@ class CourseData {
           'Modéliser un objet industriel de façon non destructive avec les modificateurs de symétrie, d\'épaisseur et de répétition, et dessiner profils et détails organiques avec les courbes de Bézier.',
       icon: LucideIcons.spline,
       modules: chapter2Modules,
+      // Seul le défi facultatif (section 4) est rédigé : à retirer avec le contenu de base.
+      baseContentPending: true,
       points: [
         ChapterPoint(label: 'Modificateurs : symétrie, épaisseur, répétition', targetModuleId: 'ch2_sec1_title'),
         ChapterPoint(label: 'Courbes de Bézier : profils et détails', targetModuleId: 'ch2_sec2_title'),
         ChapterPoint(label: 'Atelier : concept d\'objet industriel', targetModuleId: 'ch2_sec3_title'),
+        ChapterPoint(label: 'Défi facultatif : modélisation avancée', targetModuleId: 'ch2_sec4_title'),
       ],
     ),
 

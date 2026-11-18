@@ -253,7 +253,7 @@ class DashboardScreen extends ConsumerWidget {
                 Expanded(child: VivOverline('Chapitre ${chapter.number.toString().padLeft(2, '0')}')),
                 if (isCompleted)
                   const VivBadge('Terminé', tone: VivBadgeTone.success, icon: LucideIcons.check)
-                else if (chapter.isInPreparation)
+                else if (chapter.showsPreparationBadge)
                   const VivBadge('En préparation'),
               ],
             ),

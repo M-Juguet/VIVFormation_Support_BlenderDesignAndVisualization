@@ -53,7 +53,7 @@ class ProgramScreen extends StatelessWidget {
             Row(
               children: [
                 VivBadge('Chapitre ${chapter.number.toString().padLeft(2, '0')}', tone: VivBadgeTone.gold),
-                if (chapter.isInPreparation) ...[
+                if (chapter.showsPreparationBadge) ...[
                   const SizedBox(width: VivSpacing.space2),
                   const VivBadge('En préparation'),
                 ],
