@@ -63,7 +63,7 @@ extension InfoTypeLabels on InfoType {
         InfoType.warning => 'Attention',
         InfoType.info => 'Information',
         InfoType.objective => 'Objectif',
-        InfoType.challenge => 'Défi fil rouge',
+        InfoType.challenge => 'Défi',
       };
 
   IconData get icon => switch (this) {

@@ -50,7 +50,7 @@ class InfoModuleWidget extends StatelessWidget {
       ),
     );
 
-    // Le défi fil rouge est une carte de module : filet de dégradé en tête.
+    // L'encart de défi est une carte de module : filet de dégradé en tête.
     if (module.type == InfoType.challenge) {
       return Container(
         width: double.infinity,
