@@ -764,7 +764,7 @@ Les plans `PRC02-plan-chap2.md` et `PRC02-plan-chap3.md`, quasi finaux, ont ét�
 Les trois points relevés ont été traités à la relecture, le 18 novembre 2026.
 
 1. **Le décalage des lampes au chapitre 3 : harmonisé à 0,75 m en X.**
-   - Le chapitre 3 fait saisir `G X 750` à l'atelier.
+   - Le chapitre 3 fait saisir `G X = 750mm` à l'atelier.
    - Sa fiche A décale ses corrigés de 0,75 m et de 1,50 m.
    - Avec l'ancien écart de 0,40 m, le câble d'une copie traversait le socle voisin : le câble s'étend jusqu'à X = −0,333, et le socle a un rayon de 0,090.
 2. **Le palier de la lampe allumée : un palier ★★.** La section « Coordination » du plan du chapitre 2 a été corrigée.

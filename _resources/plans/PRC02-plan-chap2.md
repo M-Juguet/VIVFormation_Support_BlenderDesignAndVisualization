@@ -98,7 +98,7 @@ Ancre : `ch2_sec1_title`.
 | *Mirror* sur X, *Array* en *Relative* et *Constant Offset* | Initiation, activité B |
 | *Solidify* (une démo) ; le *Bevel* en outil (`Ctrl + B`, segments à la molette) | Initiation, demi-journée 2 ; activité B |
 | Normales, *Face Orientation*, échelle appliquée | Basics 103 § 4 ; clinique |
-| Unités en millimètres, saisie d'une valeur avec son unité | Chapitre 1 § 1 |
+| Saisie d'une valeur avec son unité ; affichage en millimètres, recommandé et non exigé | Chapitre 1 § 1 |
 
 | Nouveau, dans l'ordre d'introduction | Séquence |
 |---|---|
@@ -125,7 +125,7 @@ Ancre : `ch2_sec1_title`.
 **Cycle A : un autre axe (démo 5 min, guidé 10 min).**
 
 Vous montrez, sur *Bras_bas* :
-1. `Tab`, `A`, `S Maj + Z 0.5` : la tige passe à 8 mm de diamètre. Puis `G Y 10` : elle quitte l'axe de la lampe. `Tab`.
+1. `Tab`, `A`, `S Maj + Z 0.5` : la tige passe à 8 mm de diamètre. Puis `G Y = 10mm` : elle quitte l'axe de la lampe. `Tab`.
 2. *Add Modifier > Generate > Mirror*. Par défaut, l'axe X est coché : décochez-le et cochez Y. Le bras devient une paire de tiges parallèles.
 3. **Ailleurs :** on modélise ainsi une moitié de capot, de nez de tram ou de fuselage.
 
@@ -134,7 +134,7 @@ Ils font, en guidé : les étapes 1 et 2 sur *Bras_bas*.
 **Cycle B : l'origine, *Mirror Object* et *Copy to Selected* (démo 5 min, autonomie 5 min).**
 
 Vous montrez :
-1. **Le piège :** sur une copie, `G Y 10` en Mode Objet. Le *Mirror* semble ne rien faire : il reflète autour de l'origine de l'objet, qui a suivi la tige. Deux solutions : décaler la géométrie en Mode Édition, comme au cycle A, ou choisir le *Socle* comme *Mirror Object*.
+1. **Le piège :** sur une copie, `G Y = 10mm` en Mode Objet. Le *Mirror* semble ne rien faire : il reflète autour de l'origine de l'objet, qui a suivi la tige. Deux solutions : décaler la géométrie en Mode Édition, comme au cycle A, ou choisir le *Socle* comme *Mirror Object*.
 2. *Copy to Selected* : *Bras_haut* sélectionné, *Bras_bas* actif, menu de l'en-tête du *Mirror*. Le modificateur passe sur *Bras_haut*.
 
 Ils font, en autonomie : le même résultat sur *Bras_haut*, avec *Copy to Selected* et un décalage de 10 mm en Mode Édition.
@@ -192,7 +192,7 @@ Le socle cache l'électronique de la lampe : il lui faut une grille d'aération.
 
 Vous montrez :
 1. **Rappel (1 min) :** *Relative Offset* et *Constant Offset*, vus avec les sièges, répètent en ligne. Pour répéter en couronne, il faut un repère qui tourne : un *Empty*, un objet sans géométrie, comme celui qui porte une image de référence.
-2. `Maj + C` : le curseur 3D revient au centre, sous l'axe du socle. `Maj + A > Mesh > Cube`, F9 : *Size* `2mm`. `Tab`, puis `S X 6` : une lamelle de 12 mm. `G X 76`, puis `G Z 25` : elle se pose sur le dessus du socle, près du bord. `Tab`. L'origine de la lamelle reste au centre du socle. Renommez-la *Grille_aeration*.
+2. `Maj + C` : le curseur 3D revient au centre, sous l'axe du socle. `Maj + A > Mesh > Cube`, F9 : *Size* `2mm`. `Tab`, puis `S X 6` : une lamelle de 12 mm. `G X = 76mm`, puis `G Z = 25mm` : elle se pose sur le dessus du socle, près du bord. `Tab`. L'origine de la lamelle reste au centre du socle. Renommez-la *Grille_aeration*.
 3. `Maj + A > Empty > Plain Axes`, au même endroit, puis `R Z 10`. Renommez-le *Grille_pivot*.
 4. Sur la lamelle : *Add Modifier > Generate > Array*. Décochez *Relative Offset*, cochez *Object Offset* et choisissez *Grille_pivot*. *Count* 36 : les lamelles font le tour du socle.
 5. **Ailleurs :** les aubes d'une soufflante, les rayons d'une jante, les boulons d'une roue de bogie.
@@ -312,7 +312,7 @@ Ils font, en autonomie : un second tracé du câble avec *Curve Pen*, avec une b
 
 > **À tester lors de la construction des fichiers :**
 > - l'enchaînement de l'étape 4 : *Curve Pen* prolonge-t-il bien la courbe depuis le point 1 sélectionné ? Sinon, `Ctrl + clic droit` pour les points 2 à 4, puis *Curve Pen* pour le point 5 ;
-> - une valeur tapée pendant un geste (`G X 76`) suit-elle bien l'unité de la scène, le millimètre ? Sinon, les étapes donneront l'unité, dans les champs où elle est acceptée.
+> - une valeur tapée pendant un geste : point tranché au plan du chapitre 1. Un nombre seul suit l'unité affichée, et une unité n'est lue qu'après `=`, la saisie avancée. Les valeurs à taper pendant un geste s'écrivent donc avec `=` et leur unité (`G X = 76mm`). Ainsi, chacun suit, que son fichier affiche des mètres ou des millimètres.
 
 ### 2:35 · Pause (10 min)
 
@@ -357,7 +357,7 @@ Ancre : `ch2_sec3_title`.
 | Pièce | Ce qu'il reste à faire | Gestes réinvestis |
 |---|---|---|
 | *Articulation_bas*, *_milieu*, *_haut* | Remplacer chaque sphère par un cylindre couché sur Y, au même diamètre, de 36 mm de long | `Maj + S > Cursor to Selected`, `Maj + A` et F9, `R X 90`, `X`, *Bevel*, *Shade Auto Smooth* |
-| *Douille* | Un cylindre de 30 mm de diamètre et 20 mm de long, au fond de la tête | `Maj + S > Cursor to Selected` sur *Tête*, F9 (*Rotation* Y -30°), puis `G Z Z 45` : le long de son propre axe ; *Bevel*, *Shade Auto Smooth* |
+| *Douille* | Un cylindre de 30 mm de diamètre et 20 mm de long, au fond de la tête | `Maj + S > Cursor to Selected` sur *Tête*, F9 (*Rotation* Y -30°), puis `G Z Z = 45mm` : le long de son propre axe ; *Bevel*, *Shade Auto Smooth* |
 | *Tête* | Arrondir le bord de l'ouverture : *Bevel* de 0,5 mm. Il se place de lui-même au-dessus de *Smooth by Angle* | *Bevel*, vu sur le socle |
 | *Interrupteur* | *Bevel* de 0,5 mm et *Shade Auto Smooth* | *Bevel*, *Shade Auto Smooth* |
 | *Ampoule* | La placer, si ce n'est pas fait | `N > Item` |
@@ -416,7 +416,7 @@ Le découpage validé et le chapitre 1 l'annoncent : « le blocage sert de gabar
 
 **Au début du chapitre, l'apprenant a en main :**
 - son blocage `lampe_blocage_v001.blend` (chapitre 1), ou le fichier de départ `PRC02_ch2_lampe_depart.blend`, qui ne demande aucun travail préalable ;
-- les gestes de l'initiation et du chapitre 1 : Mode Édition, *Extrude*, *Bevel* en outil, la pile de modificateurs, les unités en millimètres, l'aimantation, l'orientation *Local*, la mesure.
+- les gestes de l'initiation et du chapitre 1 : Mode Édition, *Extrude*, *Bevel* en outil, la pile de modificateurs, la saisie d'une valeur avec son unité, l'aimantation, l'orientation *Local*, la mesure.
 
 **À la fin du chapitre, il a en main** le fichier `lampe_modele_v001.blend`. C'est le point de départ du chapitre 3 :
 
@@ -672,11 +672,11 @@ Corrigé : collection « Corrigé », masquée (œil fermé) ; défis : « Corri
 Une pièce vous manque ? Prenez-la dans « Corrigé » : M vers Lampe, puis renommez-la.
 
 1 · SYMÉTRIE (Bras_bas, Bras_haut)
-1. Bras_bas : Tab, A, S Maj+Z 0.5, G Y 10, Tab.
+1. Bras_bas : Tab, A, S Maj+Z 0.5, G Y = 10mm, Tab.
 2. Modifiers > Add Modifier > Generate > Mirror : décochez X, cochez Y.
-3. Bras_haut : Tab, A, S Maj+Z 0.5, G Y 10, Tab. Puis Bras_haut sélectionné,
+3. Bras_haut : Tab, A, S Maj+Z 0.5, G Y = 10mm, Tab. Puis Bras_haut sélectionné,
    Bras_bas actif : menu du Mirror > Copy to Selected.
-★ Sur une copie, G Y 10 en Mode Objet : que fait le Mirror ? Réglez Mirror Object sur Socle.
+★ Sur une copie, G Y = 10mm en Mode Objet : que fait le Mirror ? Réglez Mirror Object sur Socle.
 Contrôle : vue de dessus (7), deux tiges par bras.
 
 2 · ÉPAISSEUR (Tête, Socle, Bras)
@@ -693,7 +693,7 @@ pile du socle = Bevel, Smooth by Angle.
 
 3 · RÉPÉTITION (grille d'aération, interrupteur)
 1. Maj + C. Add > Mesh > Cube, F9 : Size 2 mm. Renommez : Grille_aeration.
-2. Tab, S X 6, G X 76, G Z 25, Tab.
+2. Tab, S X 6, G X = 76mm, G Z = 25mm, Tab.
 3. Add > Empty > Plain Axes, R Z 10. Renommez : Grille_pivot.
 4. Grille_aeration : Add Modifier > Generate > Array. Décochez Relative Offset,
    cochez Object Offset > Grille_pivot. Count 36.
@@ -730,7 +730,7 @@ Contrôle : une ampoule lisse et fermée, au fond de la tête.
    Add > Mesh > Cylinder (F9 : Vertices 32, Radius 15, 14 ou 12 mm, Depth 36 mm),
    R X 90. Bevel (2 mm, 2 segments, Angle) et Shade Auto Smooth. Renommez.
 2. Douille : Cursor to Selected sur Tête, Add > Mesh > Cylinder
-   (F9 : Radius 15 mm, Depth 20 mm, Rotation Y -30°), puis G Z Z 45 (le long de son axe).
+   (F9 : Radius 15 mm, Depth 20 mm, Rotation Y -30°), puis G Z Z = 45mm (le long de son axe).
    Bevel (1 mm, 2 segments) et Shade Auto Smooth.
 3. Tête : Bevel (Width 0.5 mm, Segments 2). Il se range au-dessus de Smooth by Angle.
 4. Interrupteur : Bevel (Width 0.5 mm, Segments 2) et Shade Auto Smooth.

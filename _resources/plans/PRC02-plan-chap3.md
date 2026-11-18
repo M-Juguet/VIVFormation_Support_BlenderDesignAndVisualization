@@ -463,7 +463,7 @@ Faites des matières de votre lampe des actifs, rangés en catalogues et décrit
 **Gestes :** aucun nouveau. *Duplicate Collection* (chapitre 1) ; le compteur d'utilisateurs pour rendre une matière indépendante (initiation, section 2) ; *Base Color*, *Metallic*, *Roughness*, *Coat* et le verre (section 1) ; *Mark as Asset*, les catalogues, le glisser-déposer et *File > Append* (section 3) ; l'enregistrement avec le bouton `+` (initiation).
 
 **Déroulé :**
-1. **Lancement (2 min).** « Dupliquez la collection *Lampe*, renommez la copie `Lampe_coloris_B` et décalez-la de 750 mm sur X (`G X 750`) : avec moins, le câble de la copie traverserait le socle de l'original. Attention : la copie partage les matières de l'original. » Si un apprenant manque d'idée, proposez le coloris B du corrigé : une version claire pour un bureau d'études, avec structure et laque blanches, bras anodisés noirs, articulations en laiton et verre dépoli.
+1. **Lancement (2 min).** « Dupliquez la collection *Lampe*, renommez la copie `Lampe_coloris_B` et décalez-la de 750 mm sur X (`G X = 750mm`) : avec moins, le câble de la copie traverserait le socle de l'original. Attention : la copie partage les matières de l'original. » Si un apprenant manque d'idée, proposez le coloris B du corrigé : une version claire pour un bureau d'études, avec structure et laque blanches, bras anodisés noirs, articulations en laiton et verre dépoli.
 2. **Autonomie (16 min).** Chacun compose son coloris B sur la copie, pièce par pièce. La collection *Lampe* garde le coloris A et son nom : le chapitre 4 l'importe sous ce nom. Passez voir chaque poste au moins une fois.
 3. **Revue (2 min).** Chacun change une teinte du coloris B, vérifie que le coloris A ne bouge pas, puis enregistre sous `lampe_habillage_v002.blend` avec le bouton `+`.
 
@@ -660,7 +660,7 @@ Socle
 
 ATELIER · Le coloris B
 Socle
-- Duplicate Collection sur Lampe ; renommez la copie Lampe_coloris_B ; G X 750.
+- Duplicate Collection sur Lampe ; renommez la copie Lampe_coloris_B ; G X = 750mm.
 - Changez au moins quatre matières, dont une peinture et un métal :
   rendez-les d'abord indépendantes (compteur), puis renommez-les.
 - Le coloris A ne doit pas bouger.

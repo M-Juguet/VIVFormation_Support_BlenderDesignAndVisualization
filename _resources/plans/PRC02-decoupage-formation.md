@@ -91,6 +91,12 @@ Ces décisions ont été prises par le formateur à la relecture des plans des c
   - Le studio est éclairé par les HDRI livrées avec Blender. Deux HDRI 2K de Poly Haven, sous licence CC0, servent pour l'intérieur et l'extérieur ; leur téléchargement attend l'accord du formateur.
   - Les visuels attendus sont trois vues : héros 16:9, détail 1:1 et situation 16:9.
   - Cycles n'apparaît que dans une image comparative.
+- **Les unités.** Afficher les longueurs en millimètres est une recommandation, pas un prérequis : on peut très bien travailler en mètres.
+  - L'essentiel est de **saisir chaque valeur avec son unité**, ce qui fonctionne quelle que soit l'unité affichée :
+    - dans un champ, on tape `25mm` ;
+    - pendant un geste, on tape `G Z = 25mm`. L'unité n'y est lue qu'après `=`, qui ouvre la saisie avancée. Sans `=`, les lettres sont ignorées, et le nombre s'entend dans l'unité affichée.
+  - Les plans, les consignes et les LISEZ-MOI donnent donc toujours les valeurs à taper avec leur unité.
+  - Les fichiers fournis restent réglés en millimètres : c'est un choix du fichier, pas une exigence envers l'apprenant.
 - **Hors périmètre du support : satisfaction et autoévaluation sur les objectifs.** Elles relèvent du questionnaire de satisfaction à chaud de fin de formation, géré en externe par VIV Formation.
   - Le support ne contient donc aucune grille d'autoévaluation (« Je sais… », « Acquis / En cours / À revoir »).
   - Dans le support, la vérification des acquis passe exclusivement par les quiz de l'application, ajoutés avec le module dédié. Ils peuvent se faire ensemble à l'écran en fin de séquence.
