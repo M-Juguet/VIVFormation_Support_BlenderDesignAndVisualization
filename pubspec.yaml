@@ -1,7 +1,7 @@
 name: viv_support_blender_design_viz
 description: "Support de formation VIV Formation PRC02 : Design & visualisation temps réel avec Blender."
 publish_to: 'none'
-version: 0.1.0+1
+version: 0.2.0+2
 
 environment:
   sdk: ^3.11.4
