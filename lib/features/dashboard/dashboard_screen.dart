@@ -373,6 +373,43 @@ class DashboardScreen extends ConsumerWidget {
             label: 'Télécharger Blender',
             onTap: () => launchUrlHelper('https://www.blender.org/download/'),
           ),
+          const SizedBox(height: VivSpacing.space5),
+          Text('Bibliothèques de ressources', style: VivTypography.label.copyWith(color: VivColors.inkMuted)),
+          const SizedBox(height: VivSpacing.space2),
+          _buildLinkItem(
+            icon: LucideIcons.puzzle,
+            label: 'Blender Extensions',
+            description: 'La plateforme officielle de Blender : extensions et thèmes gratuits',
+            onTap: () => launchUrlHelper('https://extensions.blender.org/'),
+          ),
+          const Divider(height: VivSpacing.space4, color: VivColors.border),
+          _buildLinkItem(
+            icon: LucideIcons.store,
+            label: 'Superhive (ex-Blender Market)',
+            description: 'Extensions, modèles et matières, gratuits ou payants',
+            onTap: () => launchUrlHelper('https://superhivemarket.com/'),
+          ),
+          const Divider(height: VivSpacing.space4, color: VivColors.border),
+          _buildLinkItem(
+            icon: LucideIcons.package,
+            label: 'Blendkit (ex-BlenderKit)',
+            description: 'Modèles, matières et HDRI, gratuits ou payants, à importer depuis Blender',
+            onTap: () => launchUrlHelper('https://www.blendkit.com/'),
+          ),
+          const Divider(height: VivSpacing.space4, color: VivColors.border),
+          _buildLinkItem(
+            icon: LucideIcons.image,
+            label: 'Poly Haven',
+            description: 'HDRI, textures et modèles gratuits, libres de droits (CC0)',
+            onTap: () => launchUrlHelper('https://polyhaven.com/'),
+          ),
+          const Divider(height: VivSpacing.space4, color: VivColors.border),
+          _buildLinkItem(
+            icon: LucideIcons.palette,
+            label: 'Udin Blender Shaders',
+            description: 'Shaders procéduraux pour le design produit, avec une version gratuite',
+            onTap: () => launchUrlHelper('https://superhivemarket.com/products/udin-shaders'),
+          ),
         ],
       ),
     );
@@ -381,6 +418,7 @@ class DashboardScreen extends ConsumerWidget {
   Widget _buildLinkItem({
     required IconData icon,
     required String label,
+    String? description,
     required VoidCallback onTap,
   }) {
     return InkWell(
@@ -390,11 +428,26 @@ class DashboardScreen extends ConsumerWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: VivSpacing.space2, horizontal: VivSpacing.space1),
         child: Row(
+          crossAxisAlignment: description == null ? CrossAxisAlignment.center : CrossAxisAlignment.start,
           children: [
-            Icon(icon, size: 16, color: VivColors.inkMuted),
+            Padding(
+              padding: EdgeInsets.only(top: description == null ? 0 : 3),
+              child: Icon(icon, size: 16, color: VivColors.inkMuted),
+            ),
             const SizedBox(width: VivSpacing.space3),
-            Expanded(child: Text(label, style: VivTypography.body)),
-            const Icon(LucideIcons.externalLink, size: 14, color: VivColors.inkSubtle),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(label, style: VivTypography.body),
+                  if (description != null) Text(description, style: VivTypography.caption),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: description == null ? 0 : 4),
+              child: const Icon(LucideIcons.externalLink, size: 14, color: VivColors.inkSubtle),
+            ),
           ],
         ),
       ),
