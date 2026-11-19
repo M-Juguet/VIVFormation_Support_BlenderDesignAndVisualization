@@ -1,14 +1,19 @@
-# Convertit _resources/PRC02-deroule-initiation.md en HTML imprimable (A4 portrait),
-# à la charte VIV Formation. Sans dépendance : il suffit du Python fourni avec Blender.
+# Convertit un déroulé formateur (_resources/PRC02-deroule-*.md : l'initiation, puis un par
+# chapitre) en HTML imprimable (A4 portrait), à la charte VIV Formation. Sans dépendance : il suffit
+# du Python fourni avec Blender.
 # Sous-ensemble Markdown pris en charge : titres #, ## et ###, paragraphes, listes à puces
 # et numérotées (un niveau d'imbrication), cases [ ], tableaux, citations >, ---,
 # code `…`, gras **…**, italique *…*, et le commentaire <!-- pagebreak -->.
+# Le surtitre de l'en-tête suit le nom du fichier : « Chapitre N » pour PRC02-deroule-chapN.md,
+# « Initiation » sinon.
 #
 # Usage : python md_to_html.py <source.md> <sortie.html>
 
-import html, re, sys
+import html, os, re, sys
 
 SRC, OUT = sys.argv[1], sys.argv[2]
+_chap = re.search(r"chap(\d+)", os.path.basename(SRC))
+OVERLINE = f"PRC02 · Chapitre {_chap.group(1)} · Document formateur" if _chap else "PRC02 · Initiation · Document formateur"
 
 CSS = r"""
 @page { size: A4 portrait; margin: 14mm 15mm 16mm; }
@@ -80,7 +85,7 @@ def convert(md):
             sub.append(inline(lines[i].strip()))
         i += 1
     out.append('<div class="top-line"></div><header class="doc"><div>')
-    out.append('<p class="overline">PRC02 · Initiation · Document formateur</p>')
+    out.append(f'<p class="overline">{OVERLINE}</p>')
     out.append(f"<h1>{inline(title)}</h1>")
     for s in sub:
         out.append(f'<p class="subtitle">{s}</p>')
@@ -164,12 +169,13 @@ def convert(md):
 
 md = open(SRC, encoding="utf-8").read()
 body = convert(md)
+TITLE = html.escape(md.splitlines()[0].lstrip("# ").strip(), quote=False)
 doc = f"""<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<title>Initiation à Blender : déroulé formateur</title>
-<!-- Fichier généré par tool/deroule_initiation/md_to_html.py depuis _resources/PRC02-deroule-initiation.md : ne pas modifier à la main. -->
+<title>{TITLE}</title>
+<!-- Fichier généré par tool/deroule_initiation/md_to_html.py depuis _resources/{os.path.basename(SRC)} : ne pas modifier à la main. -->
 <link rel="stylesheet" href="../../viv-formation-design-system/styles.css">
 <style>{CSS}</style>
 </head>

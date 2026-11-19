@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Chapitre 4 · Rendu temps réel et visuels de présentation : déroulé formateur</title>
+<!-- Fichier généré par tool/deroule_initiation/md_to_html.py depuis _resources/PRC02-deroule-chap4.md : ne pas modifier à la main. -->
+<link rel="stylesheet" href="../../viv-formation-design-system/styles.css">
+<style>
+@page { size: A4 portrait; margin: 14mm 15mm 16mm; }
+@page { @bottom-right { content: counter(page) " / " counter(pages); font: 9pt 'Noto Sans', sans-serif; color: #8a7f86; } }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: var(--ink);
+       font-family: var(--font-sans); font-size: 10pt; line-height: 1.45; }
+.top-line { height: 5px; background: var(--gradient-brand); margin: 0 0 14px; border-radius: 3px; }
+header.doc { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+             padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+header.doc img { height: 30px; width: auto; display: block; margin-bottom: 4px; }
+.overline { color: var(--ink-muted); margin: 0 0 4px; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase; }
+h1 { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 25pt; line-height: 1.15; margin: 0; }
+.subtitle { margin: 4px 0 0; font-size: 9.5pt; color: var(--ink-muted); }
+h2 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 15pt; line-height: 1.25;
+     color: var(--accent-deep); margin: 20px 0 8px; padding-top: 8px; border-top: 2px solid var(--brand-rose);
+     break-after: avoid; }
+h3 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 11.5pt; line-height: 1.3;
+     margin: 14px 0 6px; break-after: avoid; }
+p { margin: 0 0 7px; }
+ul, ol { margin: 0 0 8px; padding-left: 20px; }
+li { margin: 0 0 3px; }
+li > ul, li > ol { margin: 3px 0 0; }
+ul.checks { list-style: none; padding-left: 4px; }
+ul.checks li::before { content: "☐"; margin-right: 7px; color: var(--accent-deep); }
+strong { font-weight: 700; }
+code { font-family: var(--font-mono); font-size: 8.6pt; background: var(--surface-code); border: 1px solid var(--border);
+       border-radius: 4px; padding: 0 4px; white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; margin: 4px 0 10px; font-size: 8.8pt; line-height: 1.35; }
+th { text-align: left; font-weight: 700; background: var(--surface-brand); padding: 5px 7px; border-bottom: 1px solid var(--border-strong); }
+td { padding: 5px 7px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr { break-inside: avoid; }
+td code { white-space: normal; }
+blockquote { margin: 8px 0 10px; padding: 8px 12px; background: var(--surface-sunken); border-left: 3px solid var(--action);
+             border-radius: 0 8px 8px 0; break-inside: avoid; }
+blockquote p { margin: 0; }
+hr { border: 0; border-top: 1px solid var(--border); margin: 18px 0 8px; }
+hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
+.pagebreak { break-before: page; }
+.pagebreak + h2 { border-top: 0; margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="top-line"></div><header class="doc"><div>
+<p class="overline">PRC02 · Chapitre 4 · Document formateur</p>
+<h1>Chapitre 4 · Rendu temps réel et visuels de présentation : déroulé formateur</h1>
+<p class="subtitle">PRC02 · Design &amp; visualisation temps réel avec Blender · Blender 5.2 LTS, interface en anglais</p>
+<p class="subtitle">Demi-journée 6 sur 6, en présentiel, de 5 à 8 apprenants · Version du 19 novembre 2026, application support 1.0.0</p>
+</div><img src="../../viv-formation-design-system/assets/logos/viv-formation-couleur.svg" alt="VIV Formation"></header>
+<h2>En bref</h2>
+<ul>
+<li><strong>Objectif :</strong> à la fin de la demi-journée, chaque apprenant choisit l'affichage adapté à son besoin et règle EEVEE pour un rendu fidèle : échantillons, <em>Raytracing</em>, transformation de vue. Il éclaire sa lampe par une HDRI, puis en studio avec trois lumières. Il la cadre avec une focale adaptée, des guides de composition et une profondeur de champ. Il exporte enfin trois visuels, nommés selon une convention.
+</li>
+<li><strong>Format :</strong> 3 h 50, dont 3 h 30 de contenu et 2 pauses de 10 minutes. Il reste 10 minutes de marge sur 4 heures. Exemple : de 13 h 30 à 17 h 20. Les 30 dernières minutes vont à la galerie des visuels et au bilan de la formation.
+</li>
+<li><strong>Principe :</strong> le même qu'aux demi-journées précédentes. Une notion à la fois : vous la montrez en quelques minutes, ils la pratiquent en guidé, puis seuls. Ce qui est déjà vu sert sans être redit : les modes d'affichage, <em>Material Preview</em>, la case <em>Raytracing</em> du chapitre 3, <em>File &gt; Append</em>, l'œil et l'appareil photo de l'Outliner.
+</li>
+<li><strong>L'idée du jour : comparer deux images avant de choisir.</strong> <code>F12</code> dans un emplacement de rendu, un réglage, <code>F12</code> dans un autre emplacement, puis <code>J</code> pour passer de l'un à l'autre. Le geste sert au <em>Raytracing</em>, aux échantillons, aux mondes et aux lumières. Et <code>F12</code> n'enregistre rien : seul <em>Image &gt; Save As</em> crée un fichier.
+</li>
+<li><strong>Fil rouge :</strong> la lampe habillée au chapitre 3, en deux coloris (<code>lampe_habillage_v002.blend</code>). Elle entre dans le studio par <em>File &gt; Append</em>, et toute la séance se passe dans un seul fichier, <code>lampe_rendu_v001.blend</code>. Chacun en exporte trois visuels : une vue héros, un détail et une mise en situation. Leur galerie clôt la formation.
+</li>
+</ul>
+<h3>Ce que l'on survole</h3>
+<p>Ces notions sont dans l'application. Elles ne sont pas exigées en séance, et certaines servent de défi.</p>
+<ul>
+<li>Cycles : une image comparative (figure 4.6) et le menu <em>Render Engine</em>, ouvert sans être changé. Personne ne manipule Cycles en séance.
+</li>
+<li><em>Look</em>, <em>Exposure</em> et <em>Render Pass</em> : une phrase chacun.
+</li>
+<li><em>Film &gt; Transparent</em> et la caméra <em>Orthographic</em> : une phrase en démo, puis un palier ★ de l'atelier.
+</li>
+<li>La matière émissive : fournie toute prête, <code>Ampoule_allumee</code>, pour le palier ★★. Son réglage reste un défi.
+</li>
+<li>Le nœud <em>Glare</em>, les marqueurs liés aux caméras, <em>Render Animation</em> et la contrainte <em>Damped Track</em> : des défis, dont le LISEZ-MOI donne le chemin.
+</li>
+<li>Hors formation, et absents de l'application : les sondes de lumière, les volumes, le flou de mouvement, les passes de rendu et le <em>light linking</em>. Une phrase suffit si on vous les demande.
+</li>
+</ul>
+<h3>Les fichiers</h3>
+<table><thead><tr><th>Fichier</th><th>Moment</th><th>Contenu</th></tr></thead><tbody>
+<tr><td><code>PRC02_ch4_studio.blend</code></td><td>0:00, puis toute la séance</td><td>Le studio : fond courbe, nuancier, plateau de bureau en chêne et carnet (collection <em>Mise_en_situation</em>, masquée), quatre mondes, la caméra <code>CAM_banc_essai</code> et la matière fournie <code>Ampoule_allumee</code>. Les corrigés sont dans trois collections masquées : « Corrigé éclairage », « Corrigé caméras » et « Corrigé paliers »</td></tr>
+<tr><td><code>PRC02_ch4_lampe_en_studio.blend</code></td><td>0:00 ; point de reprise ; vos démos</td><td>Le fichier de secours : le même studio, avec la lampe habillée du chapitre 3 en place. Le coloris A est visible, dans <em>Lampe</em> ; le coloris B est masqué, dans <code>Lampe_coloris_B</code></td></tr>
+<tr><td><code>lampe_habillage_v002.blend</code></td><td>0:00, puis palier ★</td><td>Le fichier de fin du chapitre 3, sur chaque poste : sa collection <em>Lampe</em> entre dans le studio au lancement, <code>Lampe_coloris_B</code> au palier ★ de la gamme</td></tr>
+<tr><td><code>PRC02_ch3_lampe_habillage.zip</code></td><td>0:00, au besoin</td><td>La lampe habillée du chapitre 3, pour qui a fait le défi procédural à la place de l'atelier : même Append, depuis le <code>.blend</code> décompressé</td></tr>
+<tr><td><code>PRC02_ch4_images_corrige.zip</code></td><td>0:00, 0:10, corrigés, galerie</td><td>Cinq PNG : la vue héros, le détail, la situation, la situation allumée du palier ★★ et le comparatif des moteurs</td></tr>
+</tbody></table>
+<p>L'application propose le studio et le fichier de secours en section 1, juste après la figure 4.1, et les images du corrigé en section 4, sous les consignes de l'atelier. L'archive de la lampe habillée est au chapitre 3, avec les consignes du coloris B.</p>
+<blockquote><p><strong>À savoir :</strong> les deux fichiers s'ouvrent sur un texte LISEZ-MOI, en bas de l'écran : les consignes de chaque partie, les paliers de l'atelier, une ligne « Corrigé » par partie et le chemin des défis. Il tient lieu d'annexe : ce document n'en a pas. <code>Ctrl + Espace</code> agrandit la zone.</p></blockquote>
+<h2>Avant la demi-journée</h2>
+<h3>Les postes des apprenants</h3>
+<ul class="checks">
+<li>L'application support 1.0.0 est installée. Une version plus ancienne propose la mise à jour à son démarrage.
+</li>
+<li>Blender 5.2 LTS s'ouvre, avec une souris à trois boutons. <em>Emulate Numpad</em> reste activé sur les portables sans pavé numérique : <code>Ctrl + 0</code> et <code>Ctrl + Alt + 0</code> passent alors par la rangée des chiffres.
+</li>
+<li>Le dossier de travail contient <code>PRC02_ch4_studio.blend</code>, <code>PRC02_ch4_lampe_en_studio.blend</code> et un sous-dossier <code>rendus</code>, vide. À défaut, chacun télécharge les fichiers depuis l'application à 0:00 : comptez environ 15 Mo par fichier.
+</li>
+<li>Le fichier de fin du chapitre 3, <code>lampe_habillage_v002.blend</code>, est retrouvé sur chaque poste. Sinon, l'apprenant partira du fichier de secours.
+</li>
+<li><strong>Les temps de rendu EEVEE sont mesurés.</strong> Sur chaque poste, ouvrez le fichier de secours, cochez <em>Raytracing</em>, puis lancez un <code>F12</code> à 64, puis à 128 échantillons. Notez les temps, puis refermez sans enregistrer : un poste lent se repère avant la séance. Les temps de la figure 4.6 viennent d'un poste récent, avec une carte graphique puissante ; ceux de la salle n'ont pas encore été mesurés. Cycles n'est pas à tester : en séance, il n'existe qu'en image.
+</li>
+</ul>
+<h3>Votre poste de démonstration</h3>
+<ul>
+<li><strong>Lancez Blender en configuration d'usine</strong> (<code>blender.exe --factory-startup</code>), comme aux demi-journées précédentes, et agrandissez l'interface pour le vidéoprojecteur : <em>Resolution Scale</em> à 1,3.
+</li>
+<li><strong>Préparez une copie de travail du fichier de secours,</strong> enregistrée sous un autre nom, pour vos démos : le fichier livré reste intact. Ses collections « Corrigé » et les lignes « Corrigé » du LISEZ-MOI montrent le résultat de chaque étape.
+</li>
+<li><strong>Pour montrer l'Append à 0:00,</strong> gardez le studio et une lampe du chapitre 3 : la vôtre, ou celle de <code>PRC02_ch3_lampe_habillage.zip</code>, décompressée.
+</li>
+<li><strong>Ouvrez les images du corrigé dans une visionneuse,</strong> décompressées de <code>PRC02_ch4_images_corrige.zip</code> : les trois visuels pour 0:00, le comparatif des moteurs pour 0:10.
+</li>
+<li><strong>Préparez six vignettes pour le bilan, une par demi-journée.</strong> La planche récapitulative <code>PRC02_ch4_recapitulatif.png</code> n'est pas produite. Une capture par fichier suffit : <code>PRC02_init_maquette_en_kit.blend</code>, la cabine de <code>PRC02_init_rangee_sieges.blend</code> (collection <em>Corrigé</em>), les trois variantes de <code>PRC02_ch1_blocage_lampe.blend</code>, <code>PRC02_ch2_lampe_modele.blend</code> et la lampe habillée en deux coloris. La sixième est un visuel de la galerie, choisi en direct. Les productions du groupe, si vous les avez gardées, valent mieux encore.
+</li>
+<li><strong>Gardez l'application ouverte</strong> sur le chapitre 4, pour projeter les quiz.
+</li>
+</ul>
+<h3>Le matériel de la salle</h3>
+<ul>
+<li>Les post-it vert et rose des points de contrôle, et le minuteur.
+</li>
+<li><strong>Le dossier de la galerie, à préparer par vous :</strong> un dossier partagé, par exemple <code>Galerie_PRC02</code>, accessible en écriture depuis chaque poste, ou une clé USB qui circule. Ni l'application ni le LISEZ-MOI n'en donnent le nom. Le diaporama est prêt à lire ce dossier.
+</li>
+<li>Le paperboard, préparé avant l'arrivée des apprenants :
+<ul>
+<li>l'idée du jour : « Comparez deux images : <code>F12</code> dans un emplacement, un réglage, <code>F12</code> dans un autre, puis <code>J</code>. » ;</li>
+<li>la grille des temps de rendu, une ligne par poste : temps à 64 échantillons, temps à 128 ;</li>
+<li>le corrigé : « Trois collections Corrigé, œil fermé, et une ligne Corrigé par partie du LISEZ-MOI. On compare, on ne copie pas. » ;</li>
+<li>les livrables : <code>lampe_heros_&lt;initiales&gt;_v001.png</code>, de même <code>detail</code> et <code>situation</code>, dans <code>rendus</code>, puis dans le dossier de la galerie, dont vous écrivez le nom ;</li>
+<li>les touches du jour, complétées au fil de la séance : <code>Z</code>, <code>F12</code>, <code>J</code>, <code>F11</code>, <code>Ctrl + 0</code> et <code>Ctrl + Alt + 0</code> du pavé numérique, <code>Maj + Alt + S</code>.</li>
+</ul>
+</li>
+</ul>
+<h2>La demi-journée · Du studio aux visuels</h2>
+<p>Les quatre sections du chapitre 4, dans l'ordre de l'application. La section 2 se joue en deux temps, de part et d'autre de la première pause : l'HDRI d'abord, le studio ensuite. Les apprenants repartent avec trois visuels exportés et leur fichier <code>lampe_rendu_v001.blend</code>, empaqueté. Dans la colonne « Modalité », les durées sont en minutes.</p>
+<table><thead><tr><th>Horaire</th><th>Durée</th><th>Séquence</th><th>Section</th><th>Modalité</th></tr></thead><tbody>
+<tr><td>0:00</td><td>10 min</td><td>Accueil : la lampe entre dans le studio</td><td>1</td><td>Collectif 5 + guidé 5</td></tr>
+<tr><td>0:10</td><td>30 min</td><td>Paramétrer EEVEE : le banc d'essai</td><td>1</td><td>Démo 10 + guidé 14 + quiz 3 + autonomie 3</td></tr>
+<tr><td>0:40</td><td>20 min</td><td>Éclairer par HDRI</td><td>2</td><td>Démo 7 + guidé 9 + autonomie 3 + quiz 1</td></tr>
+<tr><td>1:00</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
+<tr><td>1:10</td><td>35 min</td><td>Éclairer en studio</td><td>2</td><td>Démo 10 + guidé 20 + autonomie 3 + quiz 2</td></tr>
+<tr><td>1:45</td><td>40 min</td><td>Caméra, composition et export</td><td>3</td><td>Démo 12 + guidé 23 + autonomie 3 + quiz 2</td></tr>
+<tr><td>2:25</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
+<tr><td>2:35</td><td>45 min</td><td>Atelier · Le concept final</td><td>4</td><td>Lancement 3 + autonomie 36 + quiz 1 + dépôt 5</td></tr>
+<tr><td>3:20</td><td>15 min</td><td>Galerie et restitution</td><td>4</td><td>Collectif</td></tr>
+<tr><td>3:35</td><td>15 min</td><td>Bilan de la formation</td><td>4</td><td>Collectif</td></tr>
+</tbody></table>
+<h3>0:00 · Accueil : la lampe entre dans le studio (10 min)</h3>
+<ul>
+<li><strong>Le chemin parcouru (collectif, 5 min) :</strong> le blocage du chapitre 1, la lampe modélisée au chapitre 2, habillée en deux coloris au chapitre 3. « C'est la dernière demi-journée : on met la lampe en scène, et on la présente. »
+</li>
+<li><strong>Montrez la cible :</strong> les trois visuels du corrigé (figure 4.1). « Dans trois heures, vous aurez exporté les vôtres. » Annoncez les livrables et le dossier de la galerie.
+</li>
+<li><strong>La règle de bascule :</strong> au bout de 3 minutes de difficulté (un Append qui échoue, des matières perdues, une échelle non appliquée), on passe au fichier de secours, sans débat. « Votre lampe pourra être mise en scène plus tard, dans le même studio. »
+</li>
+</ul>
+<p><strong>Ils font, pas à pas (5 min),</strong> d'après § 1 « Recette · Amener la lampe dans le studio » et « Le dossier Collection » (figure 4.2) :</p>
+<ol>
+<li><em>File &gt; Open</em> : <code>PRC02_ch4_studio.blend</code>.
+</li>
+<li><em>File &gt; Append</em> : double-clic sur <code>lampe_habillage_v002.blend</code>, puis sur le dossier <em>Collection</em>. La collection <em>Lampe</em>, puis <em>Append</em> : la lampe arrive à sa place, posée sur le fond, avec ses matières.
+</li>
+<li><em>File &gt; Save As</em> : <code>lampe_rendu_v001.blend</code>, dans le dossier de travail. Le studio livré reste intact.
+</li>
+<li>Le tour du fichier : les collections <em>Studio</em>, <em>Nuancier</em>, <em>Mise_en_situation</em> (œil fermé) et les trois « Corrigé » ; le LISEZ-MOI en bas. « Le coloris B attend dans votre fichier du chapitre 3 : il servira au palier ★. »
+</li>
+</ol>
+<p>Sans lampe exploitable, chacun ouvre le fichier de secours et l'enregistre sous le même nom ; le coloris B y est déjà, masqué. Qui a fait le défi procédural au chapitre 3 amène sa propre lampe, gardée dans la collection <em>Lampe</em>, ou celle de <code>PRC02_ch3_lampe_habillage.zip</code>, par le même geste.</p>
+<p><strong>Point de contrôle :</strong> la lampe est posée sur le fond du studio ; la barre de titre affiche <code>lampe_rendu_v001.blend</code>.</p>
+<p><strong>Corrigé :</strong> le fichier de secours montre la lampe en place.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Des objets choisis un par un au lieu de la collection : les <em>Empty</em> <code>Grille_pivot</code> et <code>Interrupteur_pivot</code> manquent, et la grille et les crans en dépendent. <code>Ctrl + Z</code>, puis la collection.
+</li>
+<li>Rien d'utile dans la fenêtre d'Append : le dossier ouvert est <em>Material</em> ou <em>Object</em>. Remontez d'un niveau, puis <em>Collection</em>.
+</li>
+<li>Un apprenant qui travaille dans <code>PRC02_ch4_studio.blend</code> : le <em>Save As</em> a été oublié. Faites-le tout de suite.
+</li>
+</ul>
+<p><strong>À savoir :</strong> l'ampoule ne laisse plus voir le fond de la tête. C'est normal : « On y revient dans un quart d'heure. »</p>
+<h3>0:10 · Paramétrer EEVEE : le banc d'essai (30 min)</h3>
+<p>Quatre cycles courts, sur la lampe de chacun. <code>F12</code> rend toujours par la caméra active du studio, <code>CAM_banc_essai</code>, qui cadre la lampe et le nuancier ; <code>0</code> du pavé numérique montre son cadre. Chaque cycle montre une notion, puis la fait pratiquer aussitôt.</p>
+<p><strong>Cycle 1 · Trois affichages (démo 2 min, guidé 2 min, quiz 1 min).</strong> Vous montrez, d'après § 1 « Trois façons de voir la même scène » (figures 4.3 à 4.5) : <code>Z</code>, le pointeur dans la vue 3D, ouvre le menu circulaire des modes. <em>Material Preview</em>, puis <em>Rendered</em> : la lampe prend la lumière du studio. De retour en <em>Material Preview</em>, menu <em>Viewport Shading</em> : <em>Scene World</em> cochée, l'éclairage change. Ils font la « Recette · Trois affichages ». <strong>Quiz,</strong> ensemble à l'écran : le premier quiz de la section 1, <em>Material Preview</em> et les lumières de la scène. Chacun répond pour soi, puis on commente les erreurs.</p>
+<p><strong>Cycle 2 · EEVEE et Cycles (démo 2 min).</strong> D'après § 1 « EEVEE et Cycles » (figures 4.6 et 4.7), projetez le comparatif des moteurs : EEVEE à 64 échantillons en 1 s ; Cycles, 128 échantillons débruités, en 3 s avec la carte graphique et 11 s sans elle. « Cycles suit le trajet de la lumière : c'est la référence physique. EEVEE donne une image très proche, et il la donne aussi en temps réel, dans la vue. Sur une scène lourde, l'écart grandit. » Ouvrez le menu <em>Render Engine</em> de l'onglet <em>Render</em>, sans le changer. Ils ne font rien : on reste sur EEVEE.</p>
+<p><strong>Cycle 3 · Le <em>Raytracing</em> (démo 3 min, guidé 6 min, quiz 1 min).</strong> Vous montrez, d'après § 1 « Rendre une image : F12 et les emplacements », « Le Raytracing, expliqué » et « Les échantillons : Samples » (figures 4.8 à 4.11) :</p>
+<ol>
+<li>« Au chapitre 3, vous avez coché cette case pour le verre. Le studio ne l'a pas : voyons tout ce qu'elle change. »
+</li>
+<li><code>F12</code> : la fenêtre de rendu, son champ <em>Slot</em> et le temps de calcul, en haut à gauche de l'image.
+</li>
+<li>Onglet <em>Render</em>, <em>Raytracing</em> coché ; emplacement 2, puis <code>F12</code>. <code>J</code> : le chrome des articulations, la laque de la tête, le verre de l'ampoule. <em>Fast GI Approximation</em>, qui en dépend, n'est plus grisée.
+</li>
+<li>La rubrique <em>Sampling</em> : <em>Viewport &gt; Samples</em> pour la vue, <em>Render &gt; Samples</em> pour <code>F12</code>.
+</li>
+</ol>
+<p>Ils font la « Recette · Le banc d'essai » : l'emplacement 1 sans <em>Raytracing</em>, l'emplacement 2 avec, <code>J</code> ; puis <em>Render &gt; Samples</em> à 128 dans l'emplacement 3. Chacun reporte ses deux temps sur la grille du paperboard. <strong>Quiz :</strong> le deuxième quiz de la section 1, l'ampoule qui ne laisse plus voir le fond de la tête.</p>
+<p><strong>Cycle 4 · La transformation de vue (démo 3 min, guidé 6 min, quiz 1 min).</strong> Vous montrez, d'après § 1 « La transformation de vue » (figures 4.12 et 4.13), en <em>Rendered</em> : la rubrique <em>Color Management</em>, en bas de l'onglet <em>Render</em>, menu <em>View</em>. Le nuancier en <em>AgX</em>, qui pâlit le rouge CMF ; en <em>Standard</em>, qui brûle les reflets ; en <em>Khronos PBR Neutral</em>, qui garde la couleur de base. <em>Look</em> et <em>Exposure</em> : une phrase. <strong>Ailleurs :</strong> la teinte d'une sellerie de train, d'une planche de bord ou d'un panneau de cabine se vérifie face au nuancier du client, en <em>Khronos PBR Neutral</em>. Ils font : les trois transformations sur le nuancier ; chacun en garde une et sait dire pourquoi. <strong>Quiz :</strong> le troisième quiz de la section 1, le rouge du nuancier CMF.</p>
+<p><strong>En autonomie (3 min) :</strong> la consigne « Régler son fichier » : <em>Raytracing</em> coché, un nombre d'échantillons adapté au poste, une transformation de vue, <code>Ctrl + S</code>.</p>
+<p><strong>Point de contrôle :</strong> deux emplacements montrent la lampe sans et avec <em>Raytracing</em> ; les temps sont au paperboard. Commentez les écarts entre postes : ils guident le nombre d'échantillons de l'atelier. Chacun annonce sa transformation de vue et sa raison.</p>
+<p><strong>Corrigé :</strong> la ligne « Corrigé » de la partie 1 du LISEZ-MOI : <em>Raytracing</em> coché, <em>Render &gt; Samples</em> 128, <em>View</em> sur <em>Khronos PBR Neutral</em>. La figure 4.10 en montre l'effet.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Un réglage introuvable : les rubriques de l'onglet <em>Render</em> sont repliées. Dépliez-les une par une.
+</li>
+<li>Un verre qui ne laisse rien voir, <em>Raytracing</em> coché : sa matière n'a pas <em>Raytraced Transmission</em> (onglet <em>Material</em>, rubrique <em>Settings</em>, figure 3.13).
+</li>
+<li>Un poste lent : <em>Viewport &gt; Samples</em> à 8, et des rendus d'essai à 50 % (champ <em>%</em>, onglet <em>Output</em>, rubrique <em>Format</em>).
+</li>
+<li>La fenêtre de rendu cache Blender : fermez-la. Elle revient au prochain <code>F12</code>, ou avec <code>F11</code>.
+</li>
+<li>Un apprenant resté dans son fichier du chapitre 3 : <em>Raytracing</em> y est coché, mais il n'a ni studio ni nuancier. Ramenez-le dans <code>lampe_rendu_v001.blend</code>.
+</li>
+</ul>
+<h3>0:40 · Éclairer par HDRI (20 min)</h3>
+<p><strong>Vous montrez (7 min),</strong> d'après § 2 « Une HDRI : la lumière d'un lieu », « Le sélecteur de monde », « Mettre en place une HDRI » et « Tourner l'HDRI : Mapping » (figures 4.14 à 4.17), en <em>Rendered</em> :</p>
+<ol>
+<li>Une HDRI est une photo panoramique à 360°, qui garde la vraie intensité de la lumière. Placée dans le monde, elle éclaire la lampe et se reflète dans ses surfaces brillantes. <code>Monde_Studio</code> éclairait déjà la section 1.
+</li>
+<li>Onglet <em>World</em>, sélecteur de monde : <code>Monde_Studio</code>, puis <code>Monde_Interieur</code>. La lumière et les reflets changent.
+</li>
+<li>Comment on en met une en place : <em>New</em> dans le sélecteur ; rubrique <em>Surface</em>, le bouton à gauche de <em>Color</em>, <em>Environment Texture</em>, puis <em>Open</em>. Les HDRI de Blender sont dans son dossier d'installation, sous <code>datafiles\studiolights\world</code>. <em>Strength</em> règle l'intensité. Revenez ensuite à <code>Monde_Interieur</code> : rien n'est perdu.
+</li>
+<li>Les nœuds du monde, une fois : espace <em>Shading</em>, menu <em>Object</em> du Shader Editor passé sur <em>World</em>. <em>Texture Coordinate</em>, <em>Mapping</em>, <em>Environment Texture</em>, <em>Background</em>. Faites reconnaître les deux premiers : ceux du brossé du chapitre 3. « Les mondes du studio sont câblés : vous ne réglez que la rotation et l'intensité. » Retour à l'espace <em>Layout</em>.
+</li>
+<li>Onglet <em>World</em>, rubrique <em>Surface</em>, entrée <em>Vector</em> dépliée : la rotation Z du <em>Mapping</em>. Le reflet glisse sur la tête laquée et sur le chrome.
+</li>
+<li><strong>Ailleurs :</strong> un rétroviseur sous un ciel d'extérieur, un siège de train sous la lumière d'un quai, une liseuse dans une cabine. L'HDRI apporte le lieu sans modéliser le décor.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (9 min) :</strong> la « Recette · Trois mondes, un reflet ». <code>Monde_Studio</code>, <code>Monde_Interieur</code> et <code>Monde_Exterieur</code>, chacun rendu avec <code>F12</code> dans un emplacement différent, puis comparés avec <code>J</code>. Ils gardent l'HDRI qu'ils préfèrent et tournent sa rotation Z jusqu'à placer le reflet principal sur la tête.</p>
+<p><strong>En autonomie (3 min) :</strong> choisir l'ambiance de la future vue de situation : le monde, son intensité, sa rotation.</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le quiz de l'HDRI, le reflet mal placé.</p>
+<p><strong>Point de contrôle :</strong> chacun montre sa lampe sous deux mondes, dans deux emplacements, avec un reflet placé volontairement.</p>
+<p><strong>Corrigé :</strong> la ligne « Corrigé » de la partie 2 du LISEZ-MOI : <code>Monde_Interieur</code>, rotation Z à 135°. Les figures 4.14, 4.16 et 4.17 montrent ce réglage.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Le monde change, la vue non : elle est restée en <em>Material Preview</em>, qui ignore le monde. Passez en <em>Rendered</em>, ou rendez avec <code>F12</code>.
+</li>
+<li>La lampe disparaît dans une HDRI très claire : baissez <em>Strength</em>.
+</li>
+<li>Les reflets basculent, l'horizon penche : c'est la rotation X ou Y qui a bougé. Remettez-la à 0 ; seule la rotation Z fait tourner le lieu.
+</li>
+<li>Un monde créé par erreur avec <em>New</em> : le sélecteur ramène les mondes du studio, jamais perdus.
+</li>
+<li>Un fond flou derrière la lampe : une HDRI reste moins nette qu'une photo. Pour la vue de situation, cadrez serré, ou floutez le fond avec la profondeur de champ.
+</li>
+</ul>
+<h3>1:00 · Pause (10 min)</h3>
+<h3>1:10 · Éclairer en studio (35 min)</h3>
+<p><strong>Une lumière (démo 5 min, guidé 10 min).</strong> Vous montrez, d'après § 2 « Partir du noir », « Les quatre types de lumière » et « Les réglages d'une lumière » (figures 4.18 à 4.21), en <em>Rendered</em> :</p>
+<ol>
+<li>Sélecteur de monde : <code>Monde_Neutre</code>. La lampe s'éteint presque. « On part du noir : chaque lumière ajoutée se voit seule. »
+</li>
+<li><code>Maj + A &gt; Light</code>, une à la fois devant la lampe : <em>Point</em>, <em>Sun</em>, <em>Spot</em>, <em>Area</em>. Comparez les ombres, puis supprimez-les.
+</li>
+<li>Une <em>Area</em>, onglet <em>Light</em> : <em>Power</em> ; la case <em>Temperature</em>, puis sa valeur ; <em>Size</em>, petite puis grande. L'ombre et le reflet sur la tête s'adoucissent avec la taille.
+</li>
+</ol>
+<p>Ils font la « Recette · La principale » :</p>
+<ol>
+<li><code>Monde_Neutre</code>, la vue en <em>Rendered</em>.
+</li>
+<li><em>Add &gt; Light &gt; Area</em>, renommée <code>Key</code> (<code>F2</code>).
+</li>
+<li>À 45° environ, au-dessus de la lampe et sur le côté, tournée vers elle avec <code>R</code>. Repère : <code>Key_corrige</code> est à X <code>-600mm</code>, Y <code>-900mm</code>, Z <code>900mm</code>.
+</li>
+<li><em>Temperature</em> cochée. Deux tailles et deux températures : <em>Size</em> <code>300mm</code> puis <code>800mm</code>, 5500 K puis 4500 K. <em>Power</em> vers 20 W.
+</li>
+</ol>
+<p><strong>Trois lumières (démo 5 min, guidé 10 min).</strong> Vous montrez, d'après § 2 « L'éclairage en trois points », « Trois lumières, vues de dessus » et « Les lignes de reflet » (figures 4.22, 4.23 et 4.25) :</p>
+<ol>
+<li>Au paperboard, les trois rôles : la principale modèle les volumes ; la secondaire, plus faible et plus grande, débouche les ombres ; le contre-jour dessine le contour. Un rapport de 3 à 4 entre principale et secondaire : un départ, pas une règle.
+</li>
+<li><code>Fill</code>, puis <code>Rim</code>, ajoutées à côté de <code>Key</code>. En vue de dessus (<code>7</code>), les trois entourent la lampe. Fermez leur œil dans l'Outliner à tour de rôle : le rôle de chaque lumière se voit.
+</li>
+<li>Une <em>Area</em> <em>Rectangle</em>, longue et fine, au-dessus de la lampe : une ligne de lumière suit la tête laquée.
+</li>
+<li><strong>Ailleurs :</strong> le studio automobile aligne de longues <em>Area</em> au-dessus de la voiture pour dessiner ses lignes ; une caisse de train ou un fuselage en maquette se lit mieux avec un contre-jour franc.
+</li>
+</ol>
+<p>Ils font la « Recette · Le studio en trois lumières » (figure 4.24) :</p>
+<ol>
+<li><code>Fill</code> : une <em>Area</em> du côté opposé à <code>Key</code>, avec environ un tiers de sa puissance et une taille plus grande.
+</li>
+<li><code>Rim</code> : une <em>Area</em> derrière et au-dessus, jusqu'au liseré clair sur le contour de la tête.
+</li>
+<li>Les trois sélectionnées, <code>M &gt; New Collection</code> : <code>Eclairage_studio</code>.
+</li>
+<li>Dans l'Outliner, l'œil de deux lumières fermé : le rôle de la troisième. Puis les trois rallumées.
+</li>
+</ol>
+<p><strong>En autonomie (3 min) :</strong> la consigne « Combiner ». <code>Monde_Studio</code> à <em>Strength</em> 0,3, lumières allumées, comparé à <code>Monde_Neutre</code> ; chacun garde sa combinaison pour la vue héros. Palier ★ : une <em>Area</em> <em>Rectangle</em> pour une ligne de reflet ; <code>Key</code> à 4500 K et <code>Rim</code> à 7000 K.</p>
+<p><strong>Quiz (2 min),</strong> ensemble à l'écran : les deux derniers quiz de la section 2, le rôle du contre-jour et l'ombre d'une <em>Area</em>.</p>
+<p><strong>Point de contrôle :</strong> en <em>Rendered</em>, la silhouette de la lampe se détache du fond ; l'Outliner montre <code>Eclairage_studio</code>, avec <code>Key</code>, <code>Fill</code> et <code>Rim</code>. Demandez à deux ou trois apprenants : « Que fait <code>Rim</code> ? » <code>Ctrl + S</code>.</p>
+<p><strong>Corrigé :</strong> la collection « Corrigé éclairage », sous <code>Monde_Neutre</code> : <code>Key_corrige</code> (<em>Area</em> de 500 mm, 20 W, 5500 K), <code>Fill_corrige</code> (800 mm, 5 W, 6000 K), <code>Rim_corrige</code> (300 mm, 15 W, 6500 K) et <code>Reflet_bande_corrige</code> (<em>Rectangle</em> de 1000 × 60 mm, 10 W). Pour la voir au rendu, ouvrez son œil et son appareil photo.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Une lumière qui n'éclaire rien : elle pointe ailleurs, ou elle est née au curseur 3D, dans le socle. La ligne qui part de la lumière montre sa direction.
+</li>
+<li>La température ne change rien : la case <em>Temperature</em> n'est pas cochée.
+</li>
+<li>Tout est blanc ou tout est noir : un <em>Power</em> dix fois trop fort ou trop faible. La lampe mesure 450 mm : les puissances du corrigé donnent l'ordre de grandeur.
+</li>
+<li>Le studio paraît plat : <code>Fill</code> est aussi forte que <code>Key</code>.
+</li>
+<li>Une lumière masquée par l'œil éclaire encore au rendu <code>F12</code> : fermez aussi son appareil photo. C'est la distinction de Basics 101.
+</li>
+</ul>
+<h3>1:45 · Caméra, composition et export (40 min)</h3>
+<p><strong>Cadrer (démo 6 min, guidé 11 min).</strong> Vous montrez, d'après § 3 « Placer une caméra », « La focale » et « La composition » (figures 4.26 à 4.31) :</p>
+<ol>
+<li><em>Add &gt; Camera</em>, renommée, puis <code>Ctrl + 0</code> du pavé numérique : elle devient la caméra active. « Sans ce geste, la commande suivante déplacerait <code>CAM_banc_essai</code>. »
+</li>
+<li>Naviguez jusqu'au point de vue voulu, puis <em>View &gt; Align View &gt; Align Active Camera to View</em> (<code>Ctrl + Alt + 0</code>). <em>Lock Camera to View</em> (<code>N</code>, onglet <em>View</em>, rubrique <em>View Lock</em>) : on affine en naviguant, puis on décoche.
+</li>
+<li>Le même cadrage à <code>24mm</code>, <code>50mm</code> et <code>100mm</code> (<em>Focal Length</em>, onglet <em>Camera</em>, rubrique <em>Lens</em>), en reculant la caméra à chaque fois. « Laquelle respecte votre dessin ? » Puis <em>Type</em> sur <em>Orthographic</em>, en une phrase : la vue technique.
+</li>
+<li>Rubrique <em>Viewport Display</em> : <em>Composition Guides &gt; Thirds</em> et le <em>Passepartout</em>. La tête sur un point fort.
+</li>
+<li><strong>Ailleurs :</strong> une longue focale pour la photo d'un rétroviseur ou d'une calandre ; une caméra <em>Orthographic</em> pour le profil technique d'un siège ou d'une rame.
+</li>
+</ol>
+<p>Ils font la « Recette · La vue héros » :</p>
+<ol>
+<li><em>Add &gt; Camera</em>, renommée <code>CAM_heros</code>, puis <code>Ctrl + 0</code>.
+</li>
+<li><em>Focal Length</em> : <code>85mm</code>.
+</li>
+<li>Une vue de trois quarts avant, un peu au-dessus de la lampe, puis <em>Align Active Camera to View</em>.
+</li>
+<li><em>Lock Camera to View</em> : le cadrage affiné en naviguant, puis la case décochée.
+</li>
+<li><em>Composition Guides &gt; Thirds</em> : la tête sur un point fort. Repère : <code>CAM_heros_corrige</code> est à X <code>1600mm</code>, Y <code>-2100mm</code>, Z <code>650mm</code>.
+</li>
+</ol>
+<p><strong>Le détail et l'export (démo 6 min, guidé 12 min).</strong> Vous montrez, d'après § 3 « La profondeur de champ », « Le format de sortie » et « Rendre et enregistrer » (figures 4.32 à 4.38) :</p>
+<ol>
+<li>Rubrique <em>Depth of Field</em> cochée, <em>Focus on Object</em> sur un <em>Empty</em> posé sur l'interrupteur ; <em>F-Stop</em> à 1,4, puis à 8. « En gros plan, la zone nette ne fait que quelques millimètres : partez de 5,6 à 8. »
+</li>
+<li>Onglet <em>Output</em>, rubrique <em>Format</em> : <em>Resolution X</em> et <em>Y</em>, le pourcentage, le bouton des préréglages. « La résolution appartient à la scène, pas à la caméra. »
+</li>
+<li><code>F12</code>, puis dans la fenêtre de rendu <em>Image &gt; Save As</em> (<code>Maj + Alt + S</code>) : le dossier <code>rendus</code>, le nom, <em>PNG</em>, <em>RGB</em>, <em>Color Depth</em> 8, <em>Color Management</em> sur <em>Follow Scene</em>. « <code>F12</code> n'enregistre rien. »
+</li>
+<li>En une phrase : <em>Film &gt; Transparent</em>, dans l'onglet <em>Render</em>, et <em>RGBA</em> donnent un PNG sans fond.
+</li>
+</ol>
+<p>Ils font la « Recette · Le détail et le premier export » :</p>
+<ol>
+<li><code>CAM_detail</code> : <em>Add &gt; Camera</em>, <code>Ctrl + 0</code>, <em>Focal Length</em> <code>100mm</code>, cadrée comme <code>CAM_heros</code> sur un détail : l'interrupteur cranté et la grille, une articulation, ou l'ampoule dans la tête.
+</li>
+<li><code>Mise_au_point</code> : la pièce du détail sélectionnée, <code>Maj + S &gt; Cursor to Selected</code>, puis <em>Add &gt; Empty &gt; Plain Axes</em>. Rubrique <em>Depth of Field</em> de <code>CAM_detail</code> : cochée, <em>Focus on Object</em> <code>Mise_au_point</code>, <em>F-Stop</em> entre 5,6 et 8.
+</li>
+<li>La collection <em>Nuancier</em> masquée, œil et appareil photo : elle entre dans le cadre de la vue héros.
+</li>
+<li><code>CAM_heros</code> active (<code>Ctrl + 0</code>), le format vérifié à 1920 × 1080, puis <code>F12</code>.
+</li>
+<li><em>Image &gt; Save As</em> : <code>rendus/lampe_heros_&lt;initiales&gt;_v001.png</code>, <em>PNG</em>, <em>Follow Scene</em>.
+</li>
+<li>L'image ouverte dans l'Explorateur Windows : elle est identique au rendu.
+</li>
+</ol>
+<p><strong>En autonomie (3 min) :</strong> la consigne « La vue de détail » : <code>CAM_detail</code> active, résolution 1080 × 1080, <code>F12</code>, puis <code>rendus/lampe_detail_&lt;initiales&gt;_v001.png</code>.</p>
+<p><strong>Quiz (2 min),</strong> ensemble à l'écran : les trois quiz de la section 3, la focale, le rendu non enregistré et le PNG sans fond.</p>
+<p><strong>Point de contrôle :</strong> <code>CAM_heros</code> et <code>CAM_detail</code> existent, nommées, avec leurs guides ; deux PNG sont dans <code>rendus</code>, au bon nom, au bon format et aux couleurs du rendu. <code>Ctrl + S</code>.</p>
+<p><strong>Corrigé :</strong> la collection « Corrigé caméras » : <code>CAM_heros_corrige</code> (85 mm, <em>Thirds</em>) et <code>CAM_detail_corrige</code> (100 mm, <em>F-Stop</em> 8, mise au point sur <code>Mise_au_point_corrige</code>, posé sur l'interrupteur). Les images <code>PRC02_ch4_corrige_heros.png</code> et <code>PRC02_ch4_corrige_detail.png</code>.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li><code>CAM_banc_essai</code> a bougé, pas la nouvelle caméra : <em>Align Active Camera to View</em> déplace la caméra active. <code>Ctrl + Z</code>, puis <code>Ctrl + 0</code> sur la bonne caméra.
+</li>
+<li>Le cadrage se défait au moindre coup d'orbite : <em>Lock Camera to View</em> est resté coché.
+</li>
+<li>La vue de détail sort en 16:9 : la résolution n'a pas été changée. Elle se remet à 1920 × 1080 avant la vue suivante.
+</li>
+<li>Un PNG aux couleurs différentes du rendu : la rubrique <em>Color Management</em> de la fenêtre d'enregistrement est passée sur <em>Override</em>. Remettez <em>Follow Scene</em>.
+</li>
+<li>Une profondeur de champ sans effet : <em>Focus on Object</em> est vide. Un détail flou : <em>F-Stop</em> trop petit. Un détail coupé net : la caméra est à moins de 100 mm de l'objet (<em>Clip Start</em>, figure 4.28) ; reculez-la et allongez la focale.
+</li>
+</ul>
+<h3>2:25 · Pause (10 min)</h3>
+<h3>2:35 · Atelier · Le concept final (45 min)</h3>
+<p>La fiche complète est plus bas. Le lancement dure 3 minutes, l'autonomie 36 minutes, le quiz récapitulatif 1 minute et le dépôt 5 minutes.</p>
+<h3>3:20 · Galerie et restitution (15 min)</h3>
+<p>D'après § 4 « Galerie et restitution ».</p>
+<ul>
+<li><strong>Diaporama (3 min) :</strong> les vues héros du dossier de la galerie, sans commentaire.
+</li>
+<li><strong>Restitution (10 min) :</strong> chacun commente sa vue de situation, ou sa vue préférée, en une minute : un choix de lumière, un choix de cadrage. Le groupe pose une question au plus. Appuyez vos retours sur les critères de la fiche de l'atelier, en commençant par ce qui fonctionne.
+</li>
+<li><strong>Coup de cœur (2 min) :</strong> un post-it vert par personne, sur le visuel d'un autre.
+</li>
+</ul>
+<h3>3:35 · Bilan de la formation (15 min)</h3>
+<p>Le déroulé est plus bas, après la fiche de l'atelier : le récapitulatif des six demi-journées, les ressources pour continuer, puis les questions et le tour de table.</p>
+<div class="pagebreak"></div>
+<h2>Atelier · Le concept final</h2>
+<p><strong>Fichier :</strong> <code>lampe_rendu_v001.blend</code> · <strong>Durée :</strong> 45 min · <strong>De 2:35 à 3:20</strong></p>
+<p><strong>Situation :</strong> « Revue de design demain matin. Vous présentez votre concept de lampe au client en trois visuels. Ils doivent faire comprendre la forme, les matières et l'usage. » Le cadre se transpose : la revue d'un siège ferroviaire, d'un rétroviseur automobile ou d'une liseuse de cabine d'avion se prépare de la même façon.</p>
+<p><strong>Objectif :</strong> régler la lumière définitive, créer la caméra de situation, exporter les trois visuels au bon format et au bon nom, puis livrer un fichier empaqueté.</p>
+<p><strong>Pourquoi il fonctionne :</strong></p>
+<ul>
+<li>Aucune notion nouvelle : l'atelier réinvestit les sections 1 à 3, <em>Pack Resources</em> (Basics 102) et, pour les paliers, <em>File &gt; Append</em> et la liste des matières (chapitre 3). La matière émissive du palier ★★ est fournie.
+</li>
+<li>Trois vues, trois décisions : une lumière de studio, un gros plan, la lumière d'un lieu.
+</li>
+<li>Un vrai livrable : des images nommées selon une convention, comme pour un client. La galerie leur donne un public.
+</li>
+</ul>
+<p><strong>Les livrables :</strong></p>
+<table><thead><tr><th>Vue</th><th>Caméra</th><th>Contenu</th><th>Format</th><th>Nom du fichier</th></tr></thead><tbody>
+<tr><td>V1 · Héros</td><td><code>CAM_heros</code></td><td>La lampe entière en trois quarts avant, câble compris, en studio</td><td>1920 × 1080, PNG <em>RGB</em> 8 bits</td><td><code>lampe_heros_&lt;initiales&gt;_v001.png</code></td></tr>
+<tr><td>V2 · Détail</td><td><code>CAM_detail</code></td><td>Un gros plan, avec profondeur de champ</td><td>1080 × 1080, PNG <em>RGB</em> 8 bits</td><td><code>lampe_detail_&lt;initiales&gt;_v001.png</code></td></tr>
+<tr><td>V3 · Situation</td><td><code>CAM_situation</code></td><td>La lampe sur le plateau de bureau, sous une HDRI</td><td>1920 × 1080, PNG <em>RGB</em> 8 bits</td><td><code>lampe_situation_&lt;initiales&gt;_v001.png</code></td></tr>
+</tbody></table>
+<p>S'y ajoute <code>lampe_rendu_v001.blend</code>, ressources empaquetées. Les noms suivent la convention <code>&lt;objet&gt;_&lt;vue&gt;_&lt;initiales&gt;_v&lt;version&gt;.png</code> : en minuscules, sans accent ni espace, les initiales en majuscules (<code>lampe_heros_AB_v001.png</code>). Les images vont dans <code>rendus</code>, puis dans le dossier de la galerie.</p>
+<p><strong>Le socle, en 5 étapes :</strong></p>
+<table><thead><tr><th>Étape</th><th>Ce qu'il faut faire</th><th>Gestes réinvestis</th></tr></thead><tbody>
+<tr><td>1</td><td>La lumière définitive de la vue héros et du détail : <code>Eclairage_studio</code>, sur <code>Monde_Neutre</code> ou sur <code>Monde_Studio</code> baissé</td><td>Les trois points, <em>Power</em>, <em>Size</em>, sélecteur de monde</td></tr>
+<tr><td>2</td><td>V1 et V2 rendues avec cette lumière, chacune à sa résolution, puis enregistrées</td><td><code>Ctrl + 0</code>, rubrique <em>Format</em>, <code>F12</code>, <em>Image &gt; Save As</em> sur <em>Follow Scene</em></td></tr>
+<tr><td>3</td><td>La situation : <em>Mise_en_situation</em> visible (œil et appareil photo), <em>Studio</em> et <em>Nuancier</em> masqués, une HDRI d'intérieur ou d'extérieur, <code>Eclairage_studio</code> éteint si besoin. La matière du plateau, ouverte dans le <em>Shader Editor</em></td><td>Outliner, onglet <em>World</em>, rotation Z du <em>Mapping</em>, nœuds du chapitre 3</td></tr>
+<tr><td>4</td><td><code>CAM_situation</code>, vers <code>35mm</code>, à hauteur d'yeux d'une personne assise ; 1920 × 1080, <code>F12</code>, puis <code>lampe_situation_&lt;initiales&gt;_v001.png</code></td><td>Caméra active, focale, cadrage en naviguant, export</td></tr>
+<tr><td>5</td><td><em>File &gt; External Data &gt; Pack Resources</em>, <code>Ctrl + S</code> ; les trois PNG copiés dans le dossier de la galerie</td><td>Basics 102, Explorateur Windows</td></tr>
+</tbody></table>
+<p><strong>Déroulé :</strong></p>
+<ol>
+<li><strong>Lancement (3 min).</strong> La situation, les livrables et le nom du dossier de la galerie, au paperboard. Projetez la vue de situation et les paliers du corrigé, d'après § 4 « Consignes · Le concept final, par paliers » (figures 4.39 à 4.41). « Le plateau est en chêne plaqué, posé en projection <em>Box</em> comme vos finitions du chapitre 3 : sélectionnez-le, et lisez sa matière dans le <em>Shader Editor</em>. » Lancez le minuteur et annoncez l'heure du dépôt : 3:15.
+</li>
+<li><strong>Autonomie (36 min).</strong> Chacun suit la partie « Atelier » du LISEZ-MOI. À 2:55, chacun a exporté au moins la vue héros : passez d'abord voir ceux qui n'ont pas de post-it vert. Annoncez les 5 dernières minutes : on empaquette et on enregistre.
+</li>
+<li><strong>Quiz (1 min),</strong> ensemble à l'écran : le quiz récapitulatif de la section 4, à plusieurs bonnes réponses. C'est la liste des vérifications avant l'envoi.
+</li>
+<li><strong>Dépôt (5 min).</strong> Chacun copie ses trois PNG dans le dossier de la galerie. Vous vérifiez les noms, puis lancez le diaporama.
+</li>
+</ol>
+<p><strong>Paliers :</strong></p>
+<ul>
+<li><strong>★ :</strong> une version de la vue héros à fond transparent (<em>Film &gt; Transparent</em>, <em>RGBA</em>) ; une vue technique de profil, avec une caméra <em>Orthographic</em> face à la lampe et <code>Monde_Neutre</code> ; la gamme : <em>File &gt; Append</em> de <code>Lampe_coloris_B</code> depuis <code>lampe_habillage_v002.blend</code> (dans le fichier de secours, on ouvre son œil et son appareil photo), puis une caméra <code>CAM_gamme</code> qui cadre les deux lampes : <code>lampe_gamme_&lt;initiales&gt;_v001.png</code>.
+</li>
+<li><strong>★★ :</strong> la lampe allumée pour la vue de situation. Un <em>Spot</em> dans la tête, devant l'ampoule et tourné comme la tête, <em>Temperature</em> à 2700 K, <em>Power</em> vers 12 W, <code>Eclairage_studio</code> éteint ; sur l'ampoule, la matière fournie <code>Ampoule_allumee</code>, choisie dans la liste des matières (figure 3.6). Ou le même studio pour un autre objet : la liseuse de cabine du chapitre 2, la maquette en kit ou la rangée de sièges de l'initiation.
+</li>
+</ul>
+<p><strong>Ce que vous regardez dans les visuels,</strong> pour vos retours pendant le tour des postes et la galerie :</p>
+<ul>
+<li>les livrables sont conformes : trois vues, leurs formats, leurs noms ;
+</li>
+<li>la forme se lit : la silhouette se détache du fond, la lumière modèle les volumes ;
+</li>
+<li>les matières sont crédibles : le métal, la laque, le plastique et le verre se reconnaissent ;
+</li>
+<li>le cadrage est maîtrisé : focale adaptée, composition, aucune coupe gênante ;
+</li>
+<li>le fichier est propre : caméras et lumières nommées, ressources empaquetées.
+</li>
+</ul>
+<p><strong>Points d'observation :</strong></p>
+<ul>
+<li>Le nuancier apparaît dans un visuel : fermez l'œil et l'appareil photo de sa collection.
+</li>
+<li>Un sol qui scintille sous le plateau de bureau : la collection <em>Studio</em> est restée visible. Masquez-la pour la vue de situation.
+</li>
+<li>Le plateau paraît uni : la vue est en mode <em>Solid</em>, qui ne montre que sa couleur d'affichage. Le chêne se voit en <em>Material Preview</em>, en <em>Rendered</em> et au rendu.
+</li>
+<li>Au palier ★, <code>ABS_Noir.001</code> ou <code>PVC_Mat_Noir.001</code> apparaissent après l'Append du coloris B : des copies des matières partagées par les deux coloris, sans effet sur le rendu.
+</li>
+<li>Au palier ★, les deux lampes se touchent : le décalage de 750 mm du chapitre 3 a été oublié. Clic droit sur <code>Lampe_coloris_B</code> &gt; <em>Select Objects</em>, puis <code>G X = 750mm</code>.
+</li>
+<li>Au palier ★★, la pièce est noire autour du cône : le corrigé garde <code>Monde_Interieur</code>, baissé vers 0,12, plutôt que <code>Monde_Neutre</code>.
+</li>
+<li>Un apprenant perdu à la fin de la section 3 ouvre le fichier de secours et l'enregistre sous <code>lampe_rendu_v001.blend</code>. Il rend visibles « Corrigé éclairage » et « Corrigé caméras » (œil et appareil photo), applique les lignes « Corrigé » du LISEZ-MOI, puis commence l'atelier de là.
+</li>
+</ul>
+<p><strong>Corrigé :</strong> <code>CAM_situation_corrige</code>, dans « Corrigé caméras » : 35 mm, à X <code>-300mm</code>, Y <code>-850mm</code>, Z <code>450mm</code>, le regard d'une personne assise au bureau. La collection « Corrigé paliers » : <code>Spot_lampe_corrige</code> (<em>Spot</em>, 12 W, 2700 K, <em>Angle</em> 70°, <em>Blend</em> 0,3), <code>CAM_gamme_corrige</code> (70 mm) et <code>CAM_profil_ortho_corrige</code> (<em>Orthographic</em>). Les images du corrigé, dont <code>PRC02_ch4_corrige_situation_allumee.png</code> pour le palier ★★.</p>
+<h2>Le bilan de la formation</h2>
+<p><strong>De 3:35 à 3:50 · 15 min · collectif.</strong> D'après § 4 « Bilan de la formation ». C'est un bilan pédagogique : il récapitule, ouvre sur la suite et répond aux questions. Il n'apporte rien de nouveau.</p>
+<p><strong>Les six demi-journées (6 min).</strong> Projetez les six vignettes préparées avant la séance, une à une. Pour chacune, le groupe nomme un geste clé. Exemples de réponses :</p>
+<ul>
+<li>prendre ses repères, la maquette en kit : deux vues orthographiques avant de valider ;
+</li>
+<li>modéliser, la rangée de sièges et la clinique du fichier : <em>Array</em> et <em>Mirror</em>, l'échelle appliquée ;
+</li>
+<li>chapitre 1, le blocage de la lampe : taper l'unité, <code>G Z Z</code>, comparer des silhouettes ;
+</li>
+<li>chapitre 2, la lampe modélisée : des modificateurs jamais appliqués, les courbes ;
+</li>
+<li>chapitre 3, la lampe habillée : le <em>Principled BSDF</em>, la projection <em>Box</em>, la bibliothèque de matières ;
+</li>
+<li>chapitre 4, un visuel de la galerie : trois lumières, une longue focale, <em>Image &gt; Save As</em>.
+</li>
+</ul>
+<p>Reliez ce parcours aux cinq objectifs du programme : optimiser son environnement de travail, explorer un concept par le blocage, modéliser de façon non destructive, créer des matières sans dépliage complexe, produire des visuels en temps réel avec EEVEE.</p>
+<p><strong>Les ressources pour continuer (4 min) :</strong></p>
+<ul>
+<li>l'application support : les chapitres, les quiz et les défis, avec ses mises à jour ;
+</li>
+<li>les fichiers de la formation, avec leurs consignes par paliers et leurs corrigés ;
+</li>
+<li>leur bibliothèque CMF du chapitre 3 et le studio de ce chapitre, à réutiliser pour leurs projets ;
+</li>
+<li>Poly Haven (polyhaven.com), pour des HDRI et des textures sous licence CC0 ;
+</li>
+<li>le manuel officiel de Blender, en anglais, avec les mêmes libellés que l'interface.
+</li>
+</ul>
+<p><strong>Questions et tour de table (5 min).</strong> Le temps qui reste sert aux questions du groupe. Pour finir, chacun dit en une phrase ce qu'il appliquera dès la semaine prochaine.</p>
+<p>Avant le départ du groupe, faites remplir le questionnaire de satisfaction et l'évaluation des objectifs, selon la procédure de VIV Formation.</p>
+<h2>Gérer l'hétérogénéité</h2>
+<h3>Le parcours « première fois »</h3>
+<ul>
+<li>Les binômes et les copilotes des demi-journées précédentes restent en place.
+</li>
+<li>Le fichier de secours est le filet de sécurité : la règle des 3 minutes au lancement, puis le point de reprise à tout moment. Personne ne manque l'atelier faute de lampe.
+</li>
+<li>Les recettes de l'application et le LISEZ-MOI donnent chaque geste. Les valeurs restent indicatives : chacun peut les adapter à son concept.
+</li>
+<li>Orienter une lumière est le geste le plus délicat du jour : placez-la en vue de dessus (<code>7</code>), puis de face (<code>1</code>), et suivez la ligne qui part d'elle.
+</li>
+<li>Le socle de chaque séquence suffit : il couvre tous les points du programme.
+</li>
+<li>À chaque point de contrôle, passez d'abord par les postes des débutants.
+</li>
+<li><strong>Un apprenant très en retard</strong> garde sa <code>Key</code> et passe <code>Fill_corrige</code> et <code>Rim_corrige</code> dans <code>Eclairage_studio</code> avec <code>M</code>, puis vérifie leur œil et leur appareil photo. Pour les caméras, il ouvre l'œil et l'appareil photo de « Corrigé caméras », puis fait de <code>CAM_heros_corrige</code> la caméra active (<code>Ctrl + 0</code>). Ses visuels comptent comme ceux des autres.
+</li>
+</ul>
+<h3>Pour ceux qui avancent vite</h3>
+<ul>
+<li>Les paliers ★ de l'atelier, puis les ★★.
+</li>
+<li><strong>Le <em>Spot</em> réglé finement (★★) :</strong> <em>Angle</em> et <em>Blend</em>, rubrique <em>Beam Shape</em> (figure 4.41), pour un cône net ou doux sur le plateau.
+</li>
+<li><strong>Leur propre ampoule allumée (★★) :</strong> la rubrique <em>Emission</em> de la matière (figure 3.15), au lieu de la matière fournie.
+</li>
+<li><strong>L'éclat de l'ampoule (★★) :</strong> un nœud <em>Glare</em>, de type <em>Bloom</em>, dans le compositeur.
+</li>
+<li><strong>Toutes les vues d'un coup (★★) :</strong> un marqueur par caméra dans la <em>Timeline</em>, <em>Marker &gt; Bind Camera to Markers</em>, le chemin de sortie de l'onglet <em>Output</em>, puis <em>Render &gt; Render Animation</em>.
+</li>
+<li><strong>Des lumières qui suivent la lampe (★★) :</strong> une contrainte <em>Damped Track</em> vers un <em>Empty</em>.
+</li>
+<li><strong>Le studio en bibliothèque (★★) :</strong> le studio et ses lumières rangés en actifs, comme les matières du chapitre 3.
+</li>
+<li>Ces défis apportent une notion nouvelle. Ils n'ont pas de corrigé, sauf le <em>Spot</em> (<code>Spot_lampe_corrige</code>) : vous les validez à l'écran.
+</li>
+<li>Le rôle de copilote, comme aux demi-journées précédentes.
+</li>
+</ul>
+<h2>Animer : ce qui change au chapitre 4</h2>
+<p>Les conseils de l'initiation restent valables : « Regardez, puis à vous », les touches dites à voix haute, les post-it vert et rose, la règle des 3 minutes, la souris qu'on ne prend pas. Ce chapitre en ajoute six :</p>
+<ol>
+<li><strong>Faites juger sur une image rendue.</strong> La vue <em>Rendered</em> sert à régler, <code>F12</code> à décider. Deux emplacements et <code>J</code> valent mieux qu'un souvenir.
+</li>
+<li><strong>Une lumière à la fois.</strong> Partez du noir, ajoutez une lumière, regardez ce qu'elle apporte, puis passez à la suivante. Faites fermer les yeux de l'Outliner à tour de rôle : le rôle de chacune se voit.
+</li>
+<li><strong>Occupez les temps de rendu.</strong> Pendant un <code>F12</code>, posez la question du cycle ou faites deviner ce qui va changer. La grille du paperboard aide chacun à choisir ses échantillons sans attendre les autres.
+</li>
+<li><strong>Parlez photo et revue de design :</strong> principale, secondaire, contre-jour, focale, point fort, livrable. Ce sont les mots du studio et du client.
+</li>
+<li><strong>Protégez l'heure du dépôt.</strong> La vue héros est exportée à 2:55, les trois PNG sont déposés à 3:20. Un apprenant en retard prend le point de reprise plutôt que de manquer la galerie.
+</li>
+<li><strong>Terminez sur les réussites.</strong> La galerie et le bilan clôturent six demi-journées : commencez chaque retour par ce qui fonctionne, et rappelez le chemin parcouru depuis la maquette en kit.
+</li>
+</ol>
+<h2>Si vous prenez du retard</h2>
+<p>Raccourcissez dans cet ordre. Entre parenthèses, le temps gagné :</p>
+<table><thead><tr><th>Ordre</th><th>Ce que l'on coupe</th><th>Ce que l'on garde</th></tr></thead><tbody>
+<tr><td>D'abord</td><td>HDRI : pas de mise en place dans un monde neuf ; on bascule seulement entre les mondes préparés (3 min)</td><td>Le sélecteur de monde et la rotation Z du <em>Mapping</em></td></tr>
+<tr><td>Ensuite</td><td>Section 1 : la transformation de vue reste une démo, sans essai (5 min)</td><td>Le choix de <em>Khronos PBR Neutral</em>, dit et donné par la ligne « Corrigé »</td></tr>
+<tr><td>Ensuite</td><td>Section 3 : la vue de détail sans profondeur de champ (5 min)</td><td>Le format 1080 × 1080 et l'export nommé</td></tr>
+<tr><td>Ensuite</td><td>Studio : chacun règle seulement <code>Key</code>. <code>Fill_corrige</code> et <code>Rim_corrige</code> passent dans <code>Eclairage_studio</code> avec <code>M</code> ; vérifiez leur œil et leur appareil photo (10 min)</td><td>Le rôle des trois lumières, montré en démo</td></tr>
+<tr><td>En dernier</td><td>Galerie : le diaporama seul, sans restitution (10 min)</td><td>Le dépôt dans la galerie et le bilan</td></tr>
+</tbody></table>
+<p><strong>Ce qui ne saute jamais,</strong> car l'atelier et la galerie en dépendent : l'export des trois vues et le bilan ; la case <em>Raytracing</em> et sa raison ; <code>F12</code>, les emplacements et <code>J</code> ; le sélecteur de monde ; une lumière principale réglée par chacun, dans <code>Eclairage_studio</code> ; la caméra active (<code>Ctrl + 0</code>) et <em>Align Active Camera to View</em> ; la focale ; la résolution, réglée vue par vue ; <em>Image &gt; Save As</em> sur <em>Follow Scene</em> ; <em>Pack Resources</em>.</p>
+<h2>Si vous êtes en avance</h2>
+<ul>
+<li><strong>L'atelier s'enrichit :</strong> les paliers ★, puis ★★, puis les défis de « Pour ceux qui avancent vite », en commençant par le <em>Spot</em> réglé finement.
+</li>
+<li><strong>La restitution s'allonge :</strong> chacun présente ses trois visuels, au lieu d'un seul.
+</li>
+<li><strong>Le bilan s'ouvre :</strong> montrez à l'écran un défi réussi, par exemple toutes les vues rendues d'un coup.
+</li>
+</ul>
+<hr>
+<p>Les fichiers <code>PRC02_ch4_…</code> se reconstruisent avec les scripts de <code>tool/exercices_ch4/</code> : <code>construire.ps1</code> lance <code>build_studio.py</code> (Blender 5.2 en arrière-plan), puis <code>finish_ui.py</code> pour la zone LISEZ-MOI, et contrôle chaque fichier avec <code>verifier_blend.py</code>. Les HDRI et le placage de chêne de Poly Haven restent hors du dépôt, dans <code>tool/exercices_ch4/hdri/</code> et <code>tool/exercices_ch4/textures/</code>. Ce document se convertit en PDF avec <code>tool/deroule_initiation/export_pdf.ps1 -Source _resources\PRC02-deroule-chap4.md</code>.</p>
+</body>
+</html>

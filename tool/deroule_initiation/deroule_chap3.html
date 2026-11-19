@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Chapitre 3 · Matières et finitions sans dépliage UV : déroulé formateur</title>
+<!-- Fichier généré par tool/deroule_initiation/md_to_html.py depuis _resources/PRC02-deroule-chap3.md : ne pas modifier à la main. -->
+<link rel="stylesheet" href="../../viv-formation-design-system/styles.css">
+<style>
+@page { size: A4 portrait; margin: 14mm 15mm 16mm; }
+@page { @bottom-right { content: counter(page) " / " counter(pages); font: 9pt 'Noto Sans', sans-serif; color: #8a7f86; } }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: var(--ink);
+       font-family: var(--font-sans); font-size: 10pt; line-height: 1.45; }
+.top-line { height: 5px; background: var(--gradient-brand); margin: 0 0 14px; border-radius: 3px; }
+header.doc { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+             padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+header.doc img { height: 30px; width: auto; display: block; margin-bottom: 4px; }
+.overline { color: var(--ink-muted); margin: 0 0 4px; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase; }
+h1 { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 25pt; line-height: 1.15; margin: 0; }
+.subtitle { margin: 4px 0 0; font-size: 9.5pt; color: var(--ink-muted); }
+h2 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 15pt; line-height: 1.25;
+     color: var(--accent-deep); margin: 20px 0 8px; padding-top: 8px; border-top: 2px solid var(--brand-rose);
+     break-after: avoid; }
+h3 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 11.5pt; line-height: 1.3;
+     margin: 14px 0 6px; break-after: avoid; }
+p { margin: 0 0 7px; }
+ul, ol { margin: 0 0 8px; padding-left: 20px; }
+li { margin: 0 0 3px; }
+li > ul, li > ol { margin: 3px 0 0; }
+ul.checks { list-style: none; padding-left: 4px; }
+ul.checks li::before { content: "☐"; margin-right: 7px; color: var(--accent-deep); }
+strong { font-weight: 700; }
+code { font-family: var(--font-mono); font-size: 8.6pt; background: var(--surface-code); border: 1px solid var(--border);
+       border-radius: 4px; padding: 0 4px; white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; margin: 4px 0 10px; font-size: 8.8pt; line-height: 1.35; }
+th { text-align: left; font-weight: 700; background: var(--surface-brand); padding: 5px 7px; border-bottom: 1px solid var(--border-strong); }
+td { padding: 5px 7px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr { break-inside: avoid; }
+td code { white-space: normal; }
+blockquote { margin: 8px 0 10px; padding: 8px 12px; background: var(--surface-sunken); border-left: 3px solid var(--action);
+             border-radius: 0 8px 8px 0; break-inside: avoid; }
+blockquote p { margin: 0; }
+hr { border: 0; border-top: 1px solid var(--border); margin: 18px 0 8px; }
+hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
+.pagebreak { break-before: page; }
+.pagebreak + h2 { border-top: 0; margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="top-line"></div><header class="doc"><div>
+<p class="overline">PRC02 · Chapitre 3 · Document formateur</p>
+<h1>Chapitre 3 · Matières et finitions sans dépliage UV : déroulé formateur</h1>
+<p class="subtitle">PRC02 · Design &amp; visualisation temps réel avec Blender · Blender 5.2 LTS, interface en anglais</p>
+<p class="subtitle">Demi-journée 5 sur 6, en présentiel, de 5 à 8 apprenants · Version du 19 novembre 2026, application support 1.0.0</p>
+</div><img src="../../viv-formation-design-system/assets/logos/viv-formation-couleur.svg" alt="VIV Formation"></header>
+<h2>En bref</h2>
+<ul>
+<li><strong>Objectif :</strong> à la fin de la demi-journée, chaque apprenant règle une matière de métal, de plastique ou de verre avec le Principled BSDF. Il ajoute une finition brossée, grainée ou structurée, sans dépliage UV. Il range ses matières en actifs dans l'Asset Browser et récupère une matière d'un autre fichier avec <em>File &gt; Append</em>. Enfin, il décline sa lampe en un second coloris.
+</li>
+<li><strong>Format :</strong> 3 h 50, dont 3 h 30 de contenu et 2 pauses de 10 minutes. Il reste 10 minutes de marge sur 4 heures. Exemple : de 9 h 00 à 12 h 50. Les pauses tombent aux mêmes heures qu'à la première demi-journée de l'initiation.
+</li>
+<li><strong>Principe :</strong> le même qu'à l'initiation. Une notion à la fois : vous la montrez en quelques minutes, ils la pratiquent en guidé, puis seuls. Personne ne passe plus de 15 minutes sans toucher la souris. C'est le chapitre le plus abstrait : la section 1 se fait entièrement dans l'onglet <em>Material</em>, sans aucun nœud ; le Shader Editor n'arrive qu'en section 2, un nœud à la fois. Tout le chapitre se fait en vue <em>Material Preview</em>.
+</li>
+<li><strong>L'idée du jour : une matière se partage.</strong> Plusieurs pièces peuvent porter la même matière, comme les roues de la maquette partageaient leur maillage à l'initiation. Avant de changer une matière pour une seule pièce, un clic sur son compteur la rend indépendante. Ce geste revient au socle structuré (2:15) et au coloris B (atelier).
+</li>
+<li><strong>Fil rouge :</strong> la lampe modélisée au chapitre 2, <code>lampe_modele_v001.blend</code>, enregistrée sous <code>lampe_habillage_v001.blend</code>. Elle repart habillée, en deux coloris, ses matières rangées en actifs, dans <code>lampe_habillage_v002.blend</code>. Le chapitre 4 en importe la collection <em>Lampe</em> par <em>File &gt; Append</em>.
+</li>
+</ul>
+<h3>Ce que l'on survole</h3>
+<p>Ces notions sont dans l'application. Elles ne sont pas exigées en séance, et certaines servent de défi.</p>
+<ul>
+<li>Le choix de l'image d'environnement et sa rotation (figure 3.3) : une option, dans votre démo de 0:35.
+</li>
+<li><code>Ctrl + L &gt; Link Materials</code> (figure 3.7) : une astuce pour les plus rapides.
+</li>
+<li>L'IOR : cité avec le verre ; on n'y touche pas.
+</li>
+<li><em>Emission</em> (figure 3.15) et les deux matières d'une pièce (figures 3.16 et 3.17) : des défis ★.
+</li>
+<li>Ce qu'EEVEE simplifie (<em>Anisotropic</em>, le nœud <em>Bevel</em>, <em>Thin Film</em>) : une phrase, au moment du brossé.
+</li>
+<li><em>Node Wrangler</em> (figure 3.32) et <em>Automatically Pack Resources</em> : cités.
+</li>
+<li><em>Link</em> : une phrase ; sa manipulation devient un défi ★ (figure 3.47).
+</li>
+<li>La bibliothèque déclarée dans les préférences et le menu <em>Import Method</em> (figures 3.42 à 3.44) : une minute de démonstration sur votre poste. Les préférences des postes ne sont pas touchées.
+</li>
+<li>La section 4, « Défi facultatif · Matières procédurales » : hors minutage, voir sa partie plus bas.
+</li>
+</ul>
+<h3>Les fichiers</h3>
+<table><thead><tr><th>Fichier</th><th>Moment</th><th>Contenu</th></tr></thead><tbody>
+<tr><td><code>lampe_modele_v001.blend</code></td><td>0:00</td><td>Le fichier de fin du chapitre 2, propre à chaque apprenant ; enregistré sous <code>lampe_habillage_v001.blend</code></td></tr>
+<tr><td><code>PRC02_ch3_lampe_a_habiller.blend</code></td><td>0:00 (secours), puis vos démos jusqu'à 3:10</td><td>La lampe du chapitre 2, sans matière ; les collections masquées <em>Corrigé coloris A</em> (sections 1 à 3) et <em>Corrigé coloris B</em> (atelier), dont les matières portent le suffixe <code>_corrige</code></td></tr>
+<tr><td><code>PRC02_bibliotheque_CMF.zip</code></td><td>0:35 (votre démo), 3:10, atelier</td><td>Le dossier <code>PRC02_bibliotheque_CMF</code> : le nuancier <code>PRC02_ch3_nuancier_cmf.blend</code> (vingt-cinq matières en cinq catalogues, et la grille <em>Metallic</em> / <em>Roughness</em>) et son <code>blender_assets.cats.txt</code>. C'est aussi le corrigé du rangement en actifs</td></tr>
+<tr><td><code>PRC02_ch3_textures_cmf.zip</code></td><td>2:15</td><td>Le dossier <code>textures_cmf</code> : cinq images raccordables, dont <code>grain_structure.png</code>, et un <code>LISEZ-MOI.txt</code></td></tr>
+<tr><td><code>PRC02_ch3_finitions_triplanaires.blend</code></td><td>2:15 (votre démo), défis ★★</td><td>Cinq pièces sans dépliage UV, des trois secteurs ; la collection masquée <em>Corrigé</em></td></tr>
+<tr><td><code>PRC02_ch3_lampe_habillage.zip</code></td><td>0:00 (le but du jour), fin</td><td>L'état attendu de <code>lampe_habillage_v002.blend</code>, avec son fichier de catalogues ; un point de départ possible du chapitre 4</td></tr>
+<tr><td><code>PRC02_ch3_defi_procedural.blend</code></td><td>Hors minutage</td><td>Le défi facultatif ; la collection masquée « Corrigé défi procédural »</td></tr>
+</tbody></table>
+<p>L'application propose la lampe à habiller en section 1, sous « Où l'on en est ». Les images et les finitions triplanaires sont en section 2, sous « Une image projetée sur trois axes : Box ». La bibliothèque est en section 3, sous « Récupérer une matière : File &gt; Append ». La lampe habillée suit l'atelier, et le défi ouvre la section 4.</p>
+<blockquote><p><strong>À savoir :</strong> chaque fichier <code>.blend</code> du chapitre contient un texte LISEZ-MOI, affiché à l'ouverture : en bas de l'écran dans l'espace <em>Layout</em>, en haut à gauche dans les deux fichiers qui s'ouvrent sur l'espace <em>Shading</em>. Il donne les consignes par paliers (socle, ★, ★★) et dit où se trouve le corrigé. Ce document n'a donc pas d'annexe de consignes : projetez le LISEZ-MOI ou renvoyez-y. Celui de la lampe marque <em>Coat</em> et le grain de l'ABS d'une étoile : en séance, tout le monde les fait. Les matières des corrigés ne sont pas des actifs : la bibliothèque <em>Current File</em> est vide au début de la section 3. Un apprenant qui garde sa propre lampe n'a pas le corrigé dans son fichier : il le voit sur votre écran, ou ouvre <code>PRC02_ch3_lampe_a_habiller.blend</code> dans une seconde fenêtre de Blender.</p></blockquote>
+<h2>Avant la demi-journée</h2>
+<h3>Les postes des apprenants</h3>
+<ul class="checks">
+<li>L'application support 1.0.0 est installée. Une version plus ancienne propose la mise à jour à son démarrage.
+</li>
+<li>Le dossier de travail contient le fichier de fin du chapitre 2, <code>lampe_modele_v001.blend</code>.
+</li>
+<li>Il contient aussi les fichiers du chapitre 3, décompressés : <code>PRC02_ch3_lampe_a_habiller.blend</code>, le dossier <code>textures_cmf</code> et le dossier <code>PRC02_bibliotheque_CMF</code>, où le nuancier reste à côté de son <code>blender_assets.cats.txt</code>. À défaut, chacun les télécharge depuis l'application au moment voulu.
+</li>
+<li>Blender 5.2 LTS s'ouvre, avec une souris à trois boutons : la molette cliquée déplace la vue du Shader Editor.
+</li>
+<li>Les préférences des postes ne sont pas modifiées : le parcours principal n'en a pas besoin.
+</li>
+<li><strong>Le temps de compilation des matières, à tester sur le poste le plus modeste de la salle.</strong> Mesurez la première bascule en <em>Material Preview</em> sur la lampe à habiller, puis le même affichage avec la case <em>Raytracing</em> cochée, puis le fichier du défi avec toutes ses collections visibles. Ce temps n'a pas encore été mesuré sur un poste de la salle. Si un poste peine, la parade est prévue à 1:15.
+</li>
+</ul>
+<h3>Votre poste de démonstration</h3>
+<ul>
+<li><strong>Lancez Blender en configuration d'usine</strong> (<code>blender.exe --factory-startup</code>), comme à l'initiation : votre écran correspond à celui des apprenants, et vos préférences ne sont pas touchées. En contrepartie, une bibliothèque déclarée dans les préférences ne survit pas à un redémarrage : pour l'option de 3:10, déclarez-la pendant la pause de 2:40.
+</li>
+<li><strong>Agrandissez l'interface</strong> pour le vidéoprojecteur : <em>Resolution Scale</em> à 1,3.
+</li>
+<li><strong>Préparez une copie de travail de <code>PRC02_ch3_lampe_a_habiller.blend</code>,</strong> enregistrée sous un autre nom, avec le dossier <code>textures_cmf</code> à côté. Toutes vos démos sur la lampe s'y font, et ses corrigés se projettent aux points de contrôle. Sa case <em>Raytracing</em> est décochée, comme chez les apprenants : vous la cochez à 1:15.
+</li>
+<li><strong>Gardez à portée</strong> le dossier <code>PRC02_bibliotheque_CMF</code> (démos de 0:35 et 3:10), une copie de <code>PRC02_ch3_finitions_triplanaires.blend</code> (démo de 2:15) et la lampe habillée, décompressée de <code>PRC02_ch3_lampe_habillage.zip</code> (ouverture). Enregistrez votre copie avant chaque changement de fichier ; <em>File &gt; Open Recent</em> vous ramène à la lampe.
+</li>
+<li><strong>Gardez l'application ouverte</strong> sur le chapitre 3, pour projeter les figures et les quiz.
+</li>
+</ul>
+<h3>Le matériel de la salle</h3>
+<ul>
+<li>Les post-it vert et rose des points de contrôle, et le minuteur.
+</li>
+<li>Le paperboard, préparé avant l'arrivée des apprenants :
+<ul>
+<li>l'idée du jour : « Une matière se partage. Avant de la changer pour une seule pièce : un clic sur son compteur. » ;</li>
+<li>le cahier CMF du coloris A : <em>Socle</em> et <em>Tête</em> <code>Peinture_Vert</code>, puis <code>Structure_Vert</code> sur le socle ; <em>Interrupteur</em>, ses crans et <em>Grille_aeration</em> <code>ABS_Noir</code> ; bras <code>Alu_Naturel</code>, qui devient <code>Alu_Brosse</code> ; articulations <code>Chrome</code> ; <em>Câble</em> <code>PVC_Mat_Noir</code> ; <em>Ampoule</em> <code>Verre_Clair</code> ; <em>Douille</em> <code>Alu_Naturel</code>, pris dans le nuancier ;</li>
+<li>le corrigé : « collections <em>Corrigé coloris A</em> et <em>B</em>, œil fermé, dans <code>PRC02_ch3_lampe_a_habiller.blend</code> : on compare, on ne copie pas » ;</li>
+<li>les fichiers : <code>lampe_habillage_v001.blend</code>, puis <code>lampe_habillage_v002.blend</code>, toujours avec <code>blender_assets.cats.txt</code> à côté ;</li>
+<li>la chaîne des finitions, complétée au fil de la section 2 : <em>Texture Coordinate</em> (<em>Object</em>) → <em>Mapping</em> → texture → <em>Bump</em> → entrée <em>Normal</em> du Principled ;</li>
+<li>les raccourcis du jour, complétés au fil de la séance : <code>/</code> ; dans le Shader Editor, <code>Maj + A</code>, <code>G</code>, <code>X</code> et <code>Origine</code> ; <code>Ctrl + A &gt; Scale</code> ; <code>N</code> dans l'Asset Browser.</li>
+</ul>
+</li>
+</ul>
+<h2>La demi-journée · Habiller la lampe</h2>
+<p>Les trois sections du chapitre 3, puis l'atelier. Les apprenants repartent avec leur lampe habillée, en deux coloris, ses matières rangées en actifs, dans <code>lampe_habillage_v002.blend</code>. Les neuf quiz des sections 1 à 3 se font ensemble à l'écran, une minute chacun, à la fin de la séquence qui les prépare. Dans la colonne « Modalité », les durées sont en minutes.</p>
+<table><thead><tr><th>Horaire</th><th>Durée</th><th>Séquence</th><th>Section</th><th>Modalité</th></tr></thead><tbody>
+<tr><td>0:00</td><td>15 min</td><td>Ouverture et check-up du modèle</td><td></td><td>Collectif 5 + poste 10</td></tr>
+<tr><td>0:15</td><td>20 min</td><td>Une matière dans Blender</td><td>1</td><td>Démo 7 + guidé 13</td></tr>
+<tr><td>0:35</td><td>30 min</td><td>Métal et plastique, puis <em>Coat</em></td><td>1</td><td>Démo 7 + guidé 7 + autonomie 9 + quiz 1 ; <em>Coat</em> : démo 2 + guidé 3 + quiz 1</td></tr>
+<tr><td>1:05</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
+<tr><td>1:15</td><td>20 min</td><td>Le verre</td><td>1</td><td>Démo 6 + guidé 9 + autonomie 4 + quiz 1</td></tr>
+<tr><td>1:35</td><td>15 min</td><td>Le Shader Editor : la matière en nœuds</td><td>2</td><td>Démo 6 + guidé 9</td></tr>
+<tr><td>1:50</td><td>25 min</td><td>Finitions procédurales sans UV</td><td>2</td><td>Démo 8 + guidé 11 + autonomie 5 + quiz 1</td></tr>
+<tr><td>2:15</td><td>25 min</td><td>Projection triplanaire d'images</td><td>2</td><td>Démo 8 + guidé 9 + autonomie 6 + quiz 2</td></tr>
+<tr><td>2:40</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
+<tr><td>2:50</td><td>20 min</td><td>Ranger ses matières en actifs</td><td>3</td><td>Démo 6 + guidé 7 + autonomie 6 + quiz 1</td></tr>
+<tr><td>3:10</td><td>12 min</td><td>Réutiliser : récupérer une matière par Append</td><td>3</td><td>Démo 5 + guidé 6 + quiz 1</td></tr>
+<tr><td>3:22</td><td>20 min</td><td>Atelier · Le second coloris</td><td></td><td>Lancement 2 + autonomie 16 + revue 2</td></tr>
+<tr><td>3:42</td><td>8 min</td><td>Tour des postes, bilan et passerelle vers le chapitre 4</td><td></td><td>Collectif, dont 1 quiz</td></tr>
+</tbody></table>
+<h3>0:00 · Ouverture et check-up du modèle (15 min)</h3>
+<ul>
+<li><strong>Le parcours de la lampe (collectif, 5 min) :</strong> bloquée au chapitre 1, modélisée au chapitre 2, habillée aujourd'hui, mise en scène au chapitre 4.
+</li>
+<li><strong>Montrez le but :</strong> ouvrez la lampe habillée, <code>PRC02_ch3_lampe_habillage.blend</code>, en <em>Material Preview</em> : les deux coloris côte à côte (figure 3.1). « À la fin de la demi-journée, votre lampe ressemble à celle-ci, et ses matières sont rangées pour vos prochains projets. »
+</li>
+<li><strong>Le mot du jour :</strong> CMF, pour <em>Color, Material, Finish</em>. C'est le métier qui choisit les teintes, les matières et les finitions d'un produit : la sellerie d'un train, la planche de bord d'une voiture, l'habillage d'une cabine d'avion.
+</li>
+<li><strong>Une phrase sur les Basics,</strong> qui l'annonçaient : « <em>Material Preview</em> sert aujourd'hui à juger les matières ; <em>Rendered</em> viendra au chapitre 4, consacré au rendu. »
+</li>
+<li><strong>Une phrase sur le défi :</strong> « Pour ceux qui sont à l'aise, ou qui connaissent déjà ces sujets : un défi facultatif, hors programme, en section 4 de l'application. » Pas de démonstration.
+</li>
+</ul>
+<p><strong>Le check-up (sur poste, 10 min),</strong> d'après § 1 « Recette · Prendre le fichier en main » : chacun ouvre <code>lampe_modele_v001.blend</code> et l'enregistre aussitôt sous <code>lampe_habillage_v001.blend</code> (<em>File &gt; Save As</em>). Puis il vérifie cinq points déjà vus, numérotés de 2 à 6 dans l'application :</p>
+<ul>
+<li>chaque pièce porte un nom clair dans la collection <em>Lampe</em> ;
+</li>
+<li>l'échelle est appliquée : <em>Scale</em> à 1 dans <code>N &gt; Item</code>, sinon <code>Ctrl + A &gt; Scale</code> ;
+</li>
+<li>aucune face rouge en <em>Face Orientation</em> ;
+</li>
+<li>aucune facette sur les pièces courbes, surtout les tiges des bras et les articulations, qui seront en métal : sinon <em>Object &gt; Shade Auto Smooth</em> ;
+</li>
+<li>le moteur de rendu est EEVEE, dans l'onglet <em>Render</em> : le fichier du chapitre 1 était réglé sur Cycles.
+</li>
+</ul>
+<p>Un modèle incomplet ou abîmé ? L'apprenant ouvre <code>PRC02_ch3_lampe_a_habiller.blend</code> et l'enregistre sous <code>lampe_habillage_v001.blend</code>.</p>
+<p><strong>Point de contrôle :</strong> un post-it vert sur chaque écran. Les cinq points sont bons, ou le fichier de secours est ouvert ; la barre de titre affiche <code>lampe_habillage_v001.blend</code>.</p>
+<p><strong>Corrigé :</strong> pas de corrigé pour le check-up : la collection <em>Lampe</em> du fichier de secours est le modèle vérifié.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Un apprenant répare son modèle depuis plus de 5 minutes : arrêtez-le, le fichier de secours est fait pour cela.
+</li>
+<li>Des faces rouges, une échelle différente de 1 : ce sont les patients 1 et 2 de la clinique du fichier. Renvoyez-y : <code>Tab</code>, <code>A</code>, <code>Maj + N</code> ; puis <code>Ctrl + A &gt; Scale</code> en Mode Objet.
+</li>
+<li>Un fichier resté sur Cycles : la case <em>Raytracing</em> de 1:15 n'apparaîtra pas. Corrigez-le maintenant.
+</li>
+</ul>
+<h3>0:15 · Une matière dans Blender (20 min)</h3>
+<p><strong>Vous montrez (7 min),</strong> d'après § 1 « Voir les matières : Material Preview » (figure 3.2), « Créer et nommer une matière » (figures 3.4 et 3.5) et « Une matière pour plusieurs pièces » (figure 3.6), sur votre copie de la lampe à habiller :</p>
+<ol>
+<li>En <em>Solid</em>, aucune matière ne s'affiche. Le bouton <em>Material Preview</em>, en haut à droite de la vue 3D : Blender calcule les matières avec EEVEE. Prévenez : « La première bascule fige l'écran quelques secondes. C'est normal. »
+</li>
+<li>Le socle sélectionné : onglet <em>Material</em>, la sphère rouge, bouton <em>New</em>. Double-clic sur le nom : <code>Peinture_Vert</code>. La rubrique <em>Surface</em> indique <em>Principled BSDF</em>. « Aujourd'hui, un seul réglage : <em>Base Color</em>. » Changez la teinte.
+</li>
+<li>La tête sélectionnée : l'icône à gauche du nom ouvre la liste des matières ; choisissez <code>Peinture_Vert</code>. Le chiffre 2 apparaît à droite du nom. Changez la teinte : les deux pièces changent. « Vous avez déjà vu ça : les roues de la maquette. »
+</li>
+<li><strong>Ailleurs :</strong> une même teinte sur toutes les pièces d'une livrée de train, d'une gamme de carrosserie ou d'un habillage de cabine.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (13 min),</strong> d'après § 1 « Recette · Une peinture et un plastique partagés », étapes 1 à 5 : <em>Material Preview</em> ; <code>Peinture_Vert</code> sur le socle, puis sur la tête par la liste ; <code>ABS_Noir</code>, un gris très sombre, sur l'<em>Interrupteur</em>, puis sur <em>Interrupteur_crans</em> et <em>Grille_aeration</em> par la liste.</p>
+<p><strong>Point de contrôle :</strong> socle et tête de la même teinte ; interrupteur, crans et grille en gris très sombre. Le compteur affiche 2 pour <code>Peinture_Vert</code> et 3 pour <code>ABS_Noir</code>.</p>
+<p><strong>Corrigé :</strong> la collection <em>Corrigé coloris A</em>, objets suffixés <code>_A</code>. Elle montre l'état de fin de section 3 : le socle y porte déjà sa peinture structurée.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Pas d'onglet <em>Material</em> : un <em>Empty</em> est sélectionné, <em>Grille_pivot</em> ou <em>Interrupteur_pivot</em>. Sélectionnez la pièce elle-même.
+</li>
+<li><em>New</em> sur une pièce qui a déjà une matière en crée une nouvelle, <code>Material.001</code> : renommez-la aussitôt.
+</li>
+<li>La matière choisie dans la liste arrive sur la mauvaise pièce : l'objet actif n'était pas celui que l'on croyait. <code>Ctrl + Z</code>.
+</li>
+<li>Pour les plus rapides : <code>Ctrl + L &gt; Link Materials</code> donne la matière de l'objet actif à toute la sélection (figure 3.7).
+</li>
+</ul>
+<h3>0:35 · Métal et plastique, puis <em>Coat</em> (30 min)</h3>
+<p><strong>Vous montrez (7 min),</strong> d'après § 1 « Métal ou non : Metallic » et « Du poli au mat : Roughness » (figure 3.8), sur le nuancier <code>PRC02_ch3_nuancier_cmf.blend</code> :</p>
+<ol>
+<li>La grille du fond : rangée arrière <em>Metallic</em> 1, rangée avant <em>Metallic</em> 0 ; de gauche à droite, <em>Roughness</em> de 0 à 1.
+</li>
+<li><em>Metallic</em> vaut 0 pour un plastique, une peinture ou un verre, 1 pour un métal. « Une valeur entre les deux ne correspond à aucune matière réelle : la pièce paraît sale. »
+</li>
+<li>La couleur d'un métal se règle dans <em>Base Color</em> : gris clair pour l'aluminium, jaune doré pour le laiton. Montrez la pastille <code>Laiton</code>.
+</li>
+<li>En option, d'après § 1 « Voir les matières : Material Preview » (figure 3.3) : le menu <em>Viewport Shading</em>, l'image <em>studio</em>, puis <em>Rotation</em>. Les reflets glissent : « C'est ainsi qu'on juge une finition. » <em>Scene Lights</em> et <em>Scene World</em> restent décochées, pour le chapitre 4.
+</li>
+<li><strong>Ailleurs :</strong> une jante en aluminium ou une planche de bord en plastique (automobile), une main courante en inox (ferroviaire), un carénage en aluminium (aéronautique). Le § « Des valeurs de départ » donne les réglages de chaque famille : projetez-le.
+</li>
+</ol>
+<p>Revenez à la lampe par <em>File &gt; Open Recent</em>.</p>
+<p><strong>Ils font, en guidé (7 min),</strong> d'après § 1 « Recette · L'aluminium des bras » : <code>Alu_Naturel</code> sur <em>Bras_bas</em>, <em>Metallic</em> <code>1</code>, <em>Roughness</em> <code>0.3</code>, <em>Base Color</em> gris très clair ; puis la même matière sur <em>Bras_haut</em>, par la liste.</p>
+<p><strong>Ils font, seuls (9 min),</strong> d'après § 1 « Consignes · Le chrome, le câble et le plastique » :</p>
+<ul>
+<li><code>Chrome</code> sur les trois articulations : <em>Metallic</em> <code>1</code>, <em>Roughness</em> <code>0.03</code> ;
+</li>
+<li><code>PVC_Mat_Noir</code> sur le câble : <em>Roughness</em> <code>0.7</code>, <em>Base Color</em> presque noire ;
+</li>
+<li>la <em>Roughness</em> de <code>ABS_Noir</code> à <code>0.15</code>.
+</li>
+</ul>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le premier quiz de la section 1, l'aluminium qui ressemble à du plastique.</p>
+<p><strong><em>Coat</em> (démo 2 min, guidé 3 min).</strong> Vous montrez, d'après § 1 « Laque et vernis : Coat » et « La rubrique Coat » (figure 3.9) : sur <code>Peinture_Vert</code>, dépliez la rubrique <em>Coat</em>, <em>Weight</em> <code>1</code>, <em>Roughness</em> <code>0.03</code>. La peinture devient une laque, au reflet net. <strong>Ailleurs :</strong> une carrosserie, une livrée de train, un carénage peint. Ils font la même chose sur leur peinture.</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le troisième quiz de la section 1, le vernis.</p>
+<p><strong>Point de contrôle :</strong> vue de face, en <em>Material Preview</em>. On distingue au premier regard le métal, aux reflets nets et colorés par l'environnement, la laque, au reflet net sur la teinte, et le plastique.</p>
+<p><strong>Corrigé :</strong> dans <em>Corrigé coloris A</em>, <code>Chrome_corrige</code>, <code>PVC_Mat_Noir_corrige</code>, <code>ABS_Noir_corrige</code> et <code>Peinture_Vert_corrige</code>. Les bras y sont déjà brossés (<code>Alu_Brosse_corrige</code>) : c'est l'état de la section 2.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li><em>Metallic</em> à 0,5 : la pièce paraît sale. Revenez à 0 ou à 1.
+</li>
+<li>Une pièce qui perd tout modelé : sa <em>Base Color</em> est noire pure. Gardez un gris très sombre.
+</li>
+<li>Des reflets en escalier sur une tige : <em>Shade Auto Smooth</em> manque (point 5 du check-up).
+</li>
+<li>Le câble est une courbe : son onglet <em>Material</em> fonctionne comme celui d'un maillage.
+</li>
+<li>Gardez le nom <code>Alu_Naturel</code> jusqu'à 1:50 : il devient alors <code>Alu_Brosse</code>, ce qui évite un conflit avec l'<code>Alu_Naturel</code> du nuancier à 3:10.
+</li>
+</ul>
+<h3>1:05 · Pause (10 min)</h3>
+<h3>1:15 · Le verre (20 min)</h3>
+<p><strong>Vous montrez (6 min),</strong> d'après § 1 « Le verre : Transmission » (figure 3.10), « Voir à travers le verre : deux interrupteurs » (figures 3.11 à 3.13) et « Un verre fin : Thin Wall » (figure 3.14) :</p>
+<ol>
+<li>L'ampoule et la tête sélectionnées, <code>/</code> : la vue locale. <code>Verre_Clair</code> sur l'ampoule ; dépliez <em>Transmission</em>, <em>Weight</em> <code>1</code> ; <em>Roughness</em> <code>0</code>. L'ampoule ne montre que le paysage de l'image d'environnement. Faites deviner pourquoi.
+</li>
+<li>Les deux interrupteurs : onglet <em>Render</em>, case <em>Raytracing</em> (figure 3.12) ; onglet <em>Material</em>, rubrique <em>Settings</em>, case <em>Raytraced Transmission</em> (figure 3.13). Pour <em>Raytracing</em>, une seule phrase : « Sans elle, le verre ne réfracte pas ; le chapitre 4 explique ce réglage. » Une seule case cochée ne change rien.
+</li>
+<li>L'ampoule du chapitre 2 est un volume plein : elle déforme comme une boule de cristal. La case <em>Thin Wall</em>, sous <em>Alpha</em>, en fait une paroi fine (figure 3.11, à droite).
+</li>
+<li><em>Roughness</em> <code>0.4</code> : un verre dépoli. Une <em>Base Color</em> teintée : un verre fumé, un feu arrière. L'IOR se cite seulement : 1,5 pour le verre, 1,58 pour le polycarbonate.
+</li>
+<li><strong>Ailleurs :</strong> un pare-brise ou une vitre de cabine, en paroi fine ; un feu arrière en polycarbonate, en volume plein, garde <em>Thin Wall</em> décochée.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (9 min),</strong> d'après § 1 « Recette · Le verre de l'ampoule », étapes 1 à 5, jusqu'au retour par <code>/</code>.</p>
+<p><strong>Ils font, seuls (4 min) :</strong> un verre dépoli (<em>Roughness</em> <code>0.4</code>) ou fumé (<em>Base Color</em> grise). Chacun garde celui qui convient à sa lampe.</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le deuxième quiz de la section 1, les deux interrupteurs.</p>
+<p><strong>Point de contrôle :</strong> en vue de dessous, la douille se voit à travers l'ampoule, sans déformation.</p>
+<p><strong>Corrigé :</strong> <code>Verre_Clair_corrige</code>, sur <em>Ampoule_A</em>. Le fichier de secours a sa case <em>Raytracing</em> décochée : cochez-la pour voir le corrigé à travers le verre.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Une seule des deux cases cochée : rien ne change. Il faut les deux.
+</li>
+<li>La case <em>Raytracing</em> n'apparaît pas : le moteur est resté sur Cycles (point 6 du check-up).
+</li>
+<li>Un poste devient lent : décochez <em>Raytracing</em> le temps des autres séquences, puis recochez-la avant d'enregistrer en fin de séance.
+</li>
+<li>L'ampoule est une courbe avec un modificateur <em>Screw</em> : son onglet <em>Material</em> fonctionne comme celui d'un maillage.
+</li>
+<li>La douille introuvable au contrôle : la vue locale est restée active. <code>/</code>.
+</li>
+</ul>
+<h3>1:35 · Le Shader Editor : la matière en nœuds (15 min)</h3>
+<p><strong>Vous montrez (6 min),</strong> d'après § 2 « Pourquoi pas de dépliage UV », « Le Shader Editor : la même matière, vue en nœuds » (figure 3.18), « Un nœud, des entrées, des sorties » (figure 3.19), « Se déplacer et agir dans le Shader Editor » et « Ajouter un nœud et le relier » (figures 3.20 et 3.21) :</p>
+<ol>
+<li>Une phrase sur l'UV : « Un dépliage sert à poser une image à un endroit précis, comme un logo. Un grain ou un brossé s'appliquent en 3D, sans dépliage. »
+</li>
+<li>L'onglet <em>Shading</em> : la vue 3D en <em>Material Preview</em> en haut, le Shader Editor en bas, l'éditeur de propriétés à droite.
+</li>
+<li><em>Bras_bas</em> sélectionné : deux nœuds, <em>Principled BSDF</em> relié à <em>Material Output</em>. « C'est <code>Alu_Naturel</code>, vue autrement. » Changez <em>Roughness</em> dans le nœud : l'onglet <em>Material</em> suit.
+</li>
+<li>Les entrées à gauche, les sorties à droite ; le lien va de <em>BSDF</em> à <em>Surface</em>. La molette zoome, le clic molette déplace la vue, <code>Origine</code> cadre tout ; <code>G</code> déplace un nœud, <code>X</code> le supprime.
+</li>
+<li><code>Maj + A &gt; Texture &gt; Noise Texture</code>. Glissez sa sortie <em>Color</em> vers <em>Base Color</em> : le bras se couvre de nuages gris. Glissez le lien hors de <em>Base Color</em> : le bras redevient uni.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (9 min),</strong> d'après § 2 « Recette · La matière en nœuds », étapes 1 à 5. Le nœud <em>Noise Texture</em> reste dans l'éditeur : il resservira.</p>
+<p><strong>Point de contrôle :</strong> chaque bras a montré des nuages gris, puis il est redevenu uni. Le nœud <em>Noise Texture</em> est toujours là.</p>
+<p><strong>Corrigé :</strong> pas de corrigé : le geste se vérifie à l'écran, et la figure 3.21 montre les nuages.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Le Shader Editor est vide : l'objet actif n'a pas de matière, ou ce n'est pas le bon objet.
+</li>
+<li>Un raccourci sans effet : le pointeur n'était pas au-dessus du Shader Editor.
+</li>
+<li>Le lien est tombé sur une autre entrée : glissez-le hors de cette entrée et recommencez.
+</li>
+<li>Les reflets changent en passant dans l'espace <em>Shading</em> : sa vue 3D a ses propres réglages, dont l'image d'environnement.
+</li>
+</ul>
+<h3>1:50 · Finitions procédurales sans UV (25 min)</h3>
+<p>Trois nœuds, l'un après l'autre. Chaque étape suit le même rythme : vous montrez, puis ils font l'étape de la recette, avant la suivante. Ils suivent § 2 « Recette · L'aluminium brossé ». Ajoutez chaque nœud à la chaîne du paperboard.</p>
+<p><strong>Étape 1 · Les coordonnées (démo 3 min, guidé 3 min),</strong> d'après § 2 « Étape 1 · Les coordonnées : Texture Coordinate » (figure 3.22). Reliez de nouveau <em>Color</em> du <em>Noise</em> à <em>Base Color</em> : le motif est étiré sur la longueur du bras. <code>Maj + A &gt; Input &gt; Texture Coordinate</code> ; sa sortie <em>Object</em> vers l'entrée <em>Vector</em> du <em>Noise</em> : le motif garde la même taille partout. La lampe est petite : <em>Scale</em> du <em>Noise</em> passe de 5 à <code>1000</code>, environ un motif par millimètre. Ils font les étapes 1 et 2 de la recette.</p>
+<p><strong>Étape 2 · Le relief (démo 3 min, guidé 4 min),</strong> d'après § 2 « Étape 2 · Du motif au relief : Bump » (figure 3.23). Défaites le lien vers <em>Base Color</em>. <code>Maj + A &gt; Displacement &gt; Bump</code> : <em>Factor</em> du <em>Noise</em> vers <em>Height</em>, <em>Normal</em> du <em>Bump</em> vers <em>Normal</em> du Principled. Le motif devient un relief. <em>Strength</em> passe de 1 à <code>0.2</code> ; <em>Distance</em> garde sa valeur. « La force par défaut est trop forte pour un si petit objet : le relief scintille. » Ils font l'étape 3.</p>
+<p><strong>Étape 3 · Le brossé (démo 2 min, guidé 4 min),</strong> d'après § 2 « Étape 3 · Étirer pour brosser : Mapping » (figure 3.24). <code>Maj + A &gt; Utilities &gt; Vector &gt; Mapping</code>, entre <em>Texture Coordinate</em> et <em>Noise</em>. <em>Scale</em> Z à <code>0.02</code> : le grain s'étire en fines rayures dans l'axe du bras. L'axe Z de chaque tige suit sa longueur, car leur rotation n'a pas été appliquée au chapitre 2 : c'est voulu. <em>Strength</em> du <em>Bump</em> à <code>0.15</code>. Renommez la matière <code>Alu_Brosse</code>. Une phrase, d'après l'encart « Ce qu'EEVEE simplifie » de la section 1 : <em>Anisotropic</em> ne marche que sous Cycles ; le brossé se simule ainsi. Ils font les étapes 4 et 5.</p>
+<p><strong>Ailleurs :</strong> une main courante en inox brossé (ferroviaire), une jante brossée (automobile), une garniture de cabine en aluminium brossé (aéronautique).</p>
+<p><strong>Ils font, seuls (5 min),</strong> d'après § 2 « Consignes · Le grain de l'ABS » : la même chaîne, sans <em>Mapping</em>, sur <code>ABS_Noir</code>. <em>Noise</em> <em>Scale</em> <code>1500</code>, <em>Bump</em> <em>Strength</em> <code>0.05</code>. Pour ceux qui ont fini : les articulations microbillées, <em>Noise</em> <em>Scale</em> <code>2000</code>, <em>Strength</em> <code>0.03</code>, <em>Roughness</em> <code>0.5</code>.</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le premier quiz de la section 2, la sortie <em>Object</em>.</p>
+<p><strong>Point de contrôle :</strong> sur chaque tige, les rayures suivent la longueur du bras. Le grain de l'interrupteur, de ses crans et de la grille est régulier.</p>
+<p><strong>Corrigé :</strong> dans <em>Corrigé coloris A</em>, <code>Alu_Brosse_corrige</code> et <code>ABS_Noir_corrige</code>, avec leurs chaînes de nœuds.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Rien ne se voit : <em>Scale</em> du <em>Noise</em> est resté trop faible, un seul motif couvre la pièce.
+</li>
+<li>Un relief qui scintille : <em>Strength</em> est trop forte. Divisez-la par deux.
+</li>
+<li>Des rayures en travers : l'axe étiré dans <em>Mapping</em> n'est pas le bon. Essayez X ou Y.
+</li>
+<li>Le <em>Mapping</em> est posé, mais rien ne s'étire : la sortie <em>Object</em> va encore directement au <em>Noise</em>.
+</li>
+<li>La matière n'a pas été renommée <code>Alu_Brosse</code> : faites-le maintenant, sinon l'Append de 3:10 donnera <code>Alu_Naturel.001</code>.
+</li>
+</ul>
+<h3>2:15 · Projection triplanaire d'images (25 min)</h3>
+<p><strong>Vous montrez (8 min),</strong> d'après § 2 « Une image projetée sur trois axes : Box » (figures 3.25 à 3.28), « Les images de données : Non-Color » (figure 3.29) et « L'échelle appliquée, condition de la projection » (figure 3.30), sur <code>PRC02_ch3_finitions_triplanaires.blend</code>, qui s'ouvre sur l'espace <em>Shading</em>, l'accoudoir sélectionné :</p>
+<ol>
+<li>L'accoudoir n'a pas de dépliage UV. Sa matière a son Principled réglé et un nœud <em>Image Texture</em> déjà chargé, <code>grain_cuir</code>, non relié. Reliez l'image à <em>Base Color</em>, sans coordonnées : rien de lisible. Avec <em>Texture Coordinate</em> (<em>Object</em>) et la projection <em>Flat</em> : l'image coule sur les flancs.
+</li>
+<li>Le menu de projection, <em>Box</em> : l'image est projetée sur trois axes, d'où le nom de projection triplanaire. Les raccords se voient à 45° ; <em>Blend</em> <code>0.3</code> les fond (figure 3.28).
+</li>
+<li><em>Color Space</em> sur <em>Non-Color</em> : une image de relief est une donnée, pas une couleur. Une image de couleur, comme celle du carbone, reste en <em>sRGB</em>.
+</li>
+<li>La chaîne complète (figure 3.27) : <em>Mapping</em> <em>Scale</em> <code>25</code>, l'image vers <em>Height</em> d'un <em>Bump</em> (<em>Strength</em> <code>0.3</code>), puis <em>Normal</em>. Retirez le lien vers <em>Base Color</em>.
+</li>
+<li>Le piège : l'accoudoir jumeau, dont l'échelle X de 2 n'est pas appliquée. Son grain s'étire. <code>Ctrl + A &gt; Scale</code> le remet d'aplomb : « C'est le patient 2 de la clinique. »
+</li>
+<li><strong>Ailleurs :</strong> un accoudoir en cuir grainé (aéronautique), une coque de rétroviseur grainée (automobile), un marchepied en tôle larmée (ferroviaire). Le fichier propose ces pièces.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (9 min),</strong> d'après § 2 « Recette · La peinture structurée du socle », sur leur lampe :</p>
+<ol>
+<li>Un clic sur le compteur de <code>Peinture_Vert</code>, sur le socle ; la copie est renommée <code>Structure_Vert</code>. « Même teinte, autre finition : c'est une décision CMF. »
+</li>
+<li><em>Coat Weight</em> <code>0</code>, <em>Roughness</em> <code>0.6</code>.
+</li>
+<li><code>Maj + A &gt; Texture &gt; Image Texture</code>, <em>Open</em>, <code>textures_cmf/grain_structure.png</code> ; <em>Non-Color</em> ; <em>Box</em>, <em>Blend</em> <code>0.25</code>.
+</li>
+<li><em>Texture Coordinate</em> (<em>Object</em>), <em>Mapping</em> (<em>Scale</em> <code>50</code> sur les trois axes), l'image, <em>Bump</em> (<em>Strength</em> <code>0.2</code>), puis <em>Normal</em>.
+</li>
+</ol>
+<p><strong>Ils font, seuls (6 min),</strong> d'après § 2 « Consignes · Sans raccord, puis empaqueter » : le tour du socle, <em>Blend</em> et <em>Scale</em> réglés jusqu'à ne plus voir de raccord ; <em>File &gt; External Data &gt; Pack Resources</em> (figure 3.31) ; <code>Ctrl + S</code>.</p>
+<p><strong>Quiz (2 min),</strong> ensemble à l'écran : les deuxième et troisième quiz de la section 2, le grain étiré et le nœud <em>Bump</em>.</p>
+<p><strong>Point de contrôle :</strong> le socle est grainé, la tête reste laquée et lisse ; aucun raccord au tour du socle. Après <em>Pack Resources</em>, le fichier ne dépend plus du dossier <code>textures_cmf</code>.</p>
+<p><strong>Corrigé :</strong> <code>Structure_Vert_corrige</code>, sur <em>Socle_A</em>. Pour la démo : la collection masquée <em>Corrigé</em> du fichier des finitions.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Le grain apparaît aussi sur la tête : la laque n'a pas été rendue indépendante avant la modification. <code>Ctrl + Z</code>, puis un clic sur le compteur.
+</li>
+<li>Un grain trop contrasté, ou un peu coloré : <em>Color Space</em> est resté en <em>sRGB</em>.
+</li>
+<li>Le nœud <em>Normal Map</em> ne convient pas ici : il a besoin d'un dépliage UV. Le nœud <em>Bump</em> suffit.
+</li>
+<li>L'image introuvable : l'archive n'a pas été décompressée (clic droit &gt; <em>Extraire tout</em>), ou le dossier <code>textures_cmf</code> n'est pas à côté du fichier de travail.
+</li>
+</ul>
+<h3>2:40 · Pause (10 min)</h3>
+<h3>2:50 · Ranger ses matières en actifs (20 min)</h3>
+<p><strong>Vous montrez (6 min),</strong> d'après § 3 « Pourquoi une bibliothèque » (figure 3.33), « Faire d'une matière un actif » (figure 3.34), « Le sélecteur de type d'éditeur » (figures 3.35 et 3.36), « Ranger en catalogues » (figure 3.37), « Décrire un actif » (figure 3.38) et « Appliquer un actif par glisser-déposer » (figure 3.39) :</p>
+<ol>
+<li>Une phrase : « Une équipe CMF réutilise ses matières d'un projet à l'autre, au lieu de les recréer. » La figure 3.33 montre le nuancier de la classe.
+</li>
+<li>Clic droit sur le nom de <code>Alu_Brosse</code>, dans l'onglet <em>Material</em> : <em>Mark as Asset</em>. Une vignette se calcule.
+</li>
+<li>La zone du bas, celle du LISEZ-MOI ou de la Timeline : le sélecteur de type d'éditeur, colonne <em>Data</em>, <em>Asset Browser</em>. Agrandissez la zone. Bibliothèque : <em>Current File</em>.
+</li>
+<li>Le bouton <code>+</code> de la liste des catalogues : <em>Métaux</em>, renommé d'un double-clic. Glissez la vignette dessus.
+</li>
+<li>La barre latérale (<code>N</code>) : une description, par exemple « Aluminium brossé. Bras de lampe ; convient aussi à une main courante ou à une jante. »
+</li>
+<li>La douille est encore nue : glissez sur elle la vignette de <code>Chrome</code>. Blender affiche « Drop Chrome on Douille ». « Un essai : la douille recevra mieux tout à l'heure. »
+</li>
+<li><code>Ctrl + S</code>. L'encart <em>IMPORTANT</em> : les catalogues partent dans un fichier <code>blender_assets.cats.txt</code>, à côté du <code>.blend</code>. « Copiez toujours les deux ensemble. »
+</li>
+</ol>
+<p><strong>Ils font, en guidé (7 min),</strong> d'après § 3 « Recette · Ranger les matières de la lampe », étapes 1 à 5 : <code>Alu_Brosse</code>, <code>Chrome</code> et <code>Peinture_Vert</code> en actifs ; trois catalogues, <em>Métaux</em>, <em>Plastiques et peintures</em> et <em>Verres</em> ; le rangement ; <code>Chrome</code> glissé sur la douille.</p>
+<p><strong>Ils font, seuls (6 min),</strong> d'après § 3 « Consignes · Jusqu'à la dernière matière » : <code>Structure_Vert</code>, <code>ABS_Noir</code>, <code>PVC_Mat_Noir</code> et <code>Verre_Clair</code> marqués et rangés ; un actif décrit, au choix ; <code>Ctrl + S</code>, puis un coup d'œil dans l'Explorateur Windows : <code>blender_assets.cats.txt</code> est apparu.</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le troisième quiz de la section 3, <em>Current File</em>.</p>
+<p><strong>Point de contrôle :</strong> dans <em>Current File</em>, chaque matière de la lampe est rangée dans un catalogue ; <em>Métaux</em> montre l'aluminium brossé et le chrome. La douille est chromée.</p>
+<p><strong>Corrigé :</strong> la bibliothèque CMF elle-même, avec ses actifs, ses catalogues, ses descriptions et ses étiquettes. Les matières <code>_corrige</code> du fichier de secours ne sont pas des actifs.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li><em>Mark as Asset</em> lancé depuis le menu <em>Object</em> marque la pièce, pas sa matière. <code>Ctrl + Z</code>.
+</li>
+<li>Une vignette noire : relancez son calcul avec <em>Generate Preview</em>, dans la barre latérale.
+</li>
+<li>La vignette lâchée à côté de la pièce ne fait rien : relâchez le bouton avec le pointeur sur la pièce.
+</li>
+<li>Une matière introuvable dans les catalogues : elle est dans <em>Unassigned</em>, qui regroupe les actifs non rangés.
+</li>
+<li>Les catalogues ont disparu après une copie du fichier : <code>blender_assets.cats.txt</code> est resté dans l'ancien dossier. Les actifs, eux, sont toujours là. Gardez aussi la lampe hors du dossier <code>PRC02_bibliotheque_CMF</code>, qui a son propre fichier de catalogues.
+</li>
+</ul>
+<h3>3:10 · Réutiliser : récupérer une matière par Append (12 min)</h3>
+<p><strong>Vous montrez (5 min),</strong> d'après § 3 « Récupérer une matière : File &gt; Append » (figure 3.40) et « Un fichier .blend s'ouvre comme un dossier » (figure 3.41) :</p>
+<ol>
+<li>Le nuancier de 0:35 : « La gamme CMF de la classe. » Revenez à la lampe par <em>File &gt; Open Recent</em>.
+</li>
+<li>Le menu <em>File</em> : <em>Link…</em> et <em>Append…</em>. <em>File &gt; Append</em>, le dossier <code>PRC02_bibliotheque_CMF</code>, puis double-clic sur <code>PRC02_ch3_nuancier_cmf.blend</code> : il s'ouvre comme un dossier, avec <em>Collection</em>, <em>Material</em>, <em>Object</em>… Dossier <em>Material</em>, <code>Alu_Naturel</code>, bouton <em>Append</em>.
+</li>
+<li>La matière est dans la liste des matières, modifiable, avec ses images. Elle garde son statut d'actif : sa vignette apparaît dans <em>Current File</em>. Glissez-la sur la douille : elle remplace l'essai en chrome.
+</li>
+<li><em>Link</em>, en une phrase : « Link lie la matière en lecture seule ; on l'utilise pour partager une bibliothèque d'équipe. » Le fichier qui part au chapitre 4 n'en contient aucune.
+</li>
+<li>« Le chapitre 4 reprendra ce geste, dans le dossier <em>Collection</em>, pour amener la lampe dans son studio. »
+</li>
+<li>En option (1 min), d'après § 3 « Option : déclarer une bibliothèque » et « Option : la section Asset Libraries » (figures 3.42 à 3.44) : sur votre poste, la bibliothèque déclarée dans <em>Edit &gt; Preferences &gt; Asset Libraries</em> apparaît dans le menu des bibliothèques de l'Asset Browser. Le menu <em>Import Settings</em> propose <em>Follow Asset or Preferences</em>, <em>Link</em>, <em>Append</em> et <em>Pack</em>. Une bibliothèque déclarée importe en <em>Pack</em> par défaut : pour une matière à modifier, on préfère <em>Append</em>. « C'est l'usage d'une équipe. Aujourd'hui, nous ne touchons pas aux préférences des postes. »
+</li>
+<li><strong>Ailleurs :</strong> la gamme de teintes d'un constructeur automobile, la charte des intérieurs d'une compagnie aérienne, les matières homologuées feu et fumée d'un aménagement ferroviaire.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (6 min),</strong> d'après § 3 « Recette · L'aluminium de la douille », étapes 1 à 4 : <em>File &gt; Append</em> ; <code>Alu_Naturel</code> sur la douille, par sa vignette ou par la liste ; l'actif rangé dans <em>Métaux</em> ; <code>Ctrl + S</code>.</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le premier quiz de la section 3, le chemin de <em>File &gt; Append</em>.</p>
+<p><strong>Point de contrôle :</strong> la douille porte <code>Alu_Naturel</code>, et ses réglages ne sont pas grisés. Aucune matière liée ne reste dans le fichier.</p>
+<p><strong>Corrigé :</strong> <code>Alu_Naturel_corrige</code>, sur <em>Douille_A</em>.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Pas de dossier <em>Material</em> : l'apprenant est resté dans le dossier <code>PRC02_bibliotheque_CMF</code>. Double-clic sur le fichier <code>.blend</code>.
+</li>
+<li>La matière s'appelle <code>Alu_Naturel.001</code> : l'aluminium des bras n'a pas été renommé <code>Alu_Brosse</code> à 1:50. Renommez les deux.
+</li>
+<li>Des réglages grisés : la matière a été liée par <em>File &gt; Link</em>. <code>Ctrl + Z</code>, puis <em>File &gt; Append</em>.
+</li>
+<li>Le dossier introuvable : l'archive n'a pas été décompressée (clic droit &gt; <em>Extraire tout</em>).
+</li>
+</ul>
+<h3>3:22 · Atelier · Le second coloris (20 min)</h3>
+<p>La fiche complète est plus bas. Le lancement dure 2 minutes, l'autonomie 16 minutes et la revue 2 minutes.</p>
+<h3>3:42 · Tour des postes, bilan et passerelle (8 min)</h3>
+<ul>
+<li><strong>Tour des postes (3 min) :</strong> les écrans en <em>Material Preview</em>, les deux coloris côte à côte. Tout le monde fait le tour.
+</li>
+<li><strong>Deux questions (2 min) :</strong>
+<ul>
+<li>« Métal ou plastique : quel réglage décide ? »</li>
+<li>« Pourquoi l'ampoule ne montrait-elle que l'image d'environnement ? »</li>
+</ul>
+</li>
+<li><strong>Quiz (1 min),</strong> ensemble à l'écran : le deuxième quiz de la section 3, <em>Link</em> face à <em>Append</em>. Puis : « Append ou Link, pour envoyer votre fichier à un client ? »
+</li>
+<li><strong>Passerelle (2 min) :</strong> « Au chapitre 4, la lampe sort de la vue de travail. Vous l'amènerez dans un studio par Append, vous l'éclairerez, vous la cadrerez et vous en tirerez des visuels. » Vérifiez que chacun a enregistré <code>lampe_habillage_v002.blend</code>, images empaquetées, avec <code>blender_assets.cats.txt</code> à côté.
+</li>
+<li><strong>Pour aller plus loin :</strong> les défis de « Pour ceux qui avancent vite », et le défi facultatif de la section 4.
+</li>
+</ul>
+<div class="pagebreak"></div>
+<h2>Atelier · Le second coloris</h2>
+<p><strong>Fichier :</strong> <code>lampe_habillage_v001.blend</code>, enregistré sous <code>lampe_habillage_v002.blend</code> · <strong>Durée :</strong> 20 min · <strong>De 3:22 à 3:42</strong></p>
+<p><strong>Situation :</strong> « La revue de design demande une seconde proposition de couleurs : le coloris B. »</p>
+<p><strong>Objectif :</strong> décliner la lampe dans un second coloris, sans toucher au premier.</p>
+<p><strong>Pourquoi il fonctionne :</strong></p>
+<ul>
+<li>Aucune notion nouvelle : l'atelier réinvestit <em>Duplicate Collection</em> (chapitre 1), le compteur d'utilisateurs, les réglages du Principled, les nœuds et la bibliothèque.
+</li>
+<li>Le piège est le vrai sujet : la copie partage les matières de l'original. Rendre une matière indépendante avant de la changer, c'est l'idée du jour, en situation.
+</li>
+<li>Le coloris est un vrai livrable CMF. Le chapitre 4 peut reprendre <code>Lampe_coloris_B</code> pour décliner ses visuels.
+</li>
+</ul>
+<p><strong>Le socle, en 5 étapes :</strong></p>
+<table><thead><tr><th>Étape</th><th>Ce qu'il faut faire</th><th>Gestes réinvestis</th></tr></thead><tbody>
+<tr><td>1</td><td>Clic droit sur <em>Lampe</em> &gt; <em>Duplicate Collection</em> (figure 3.45) ; la copie renommée <code>Lampe_coloris_B</code></td><td><em>Duplicate Collection</em> (chapitre 1)</td></tr>
+<tr><td>2</td><td>Clic droit sur <code>Lampe_coloris_B</code> &gt; <em>Select Objects</em>, puis <code>G X = 750mm</code></td><td>Saisie avec unité (chapitre 1)</td></tr>
+<tr><td>3</td><td>Sur chaque pièce à changer : un clic sur le compteur de sa matière, puis un nouveau nom (<code>Laque_Blanche</code>…)</td><td>Le compteur d'utilisateurs (section 1, initiation)</td></tr>
+<tr><td>4</td><td>Au moins quatre matières changées, dont une peinture et un métal</td><td><em>Base Color</em>, <em>Metallic</em>, <em>Roughness</em>, <em>Coat</em>, le verre ; les nœuds suivent la copie</td></tr>
+<tr><td>5</td><td>Une teinte du coloris B changée : le coloris A ne bouge pas. <em>File &gt; Save As</em>, bouton <code>+</code> : <code>lampe_habillage_v002.blend</code></td><td>L'enregistrement incrémental (initiation)</td></tr>
+</tbody></table>
+<p><strong>Déroulé :</strong></p>
+<ol>
+<li><strong>Lancement (2 min).</strong> Faites les étapes 1 et 2 à l'écran. « Avec moins de 750 mm, le câble de la copie traverserait le socle de l'original. Attention : la copie partage les matières de l'original. » À qui manque d'idée, proposez le coloris B du corrigé : une version claire pour un bureau d'études, avec structure et laque blanches, bras anodisés noirs, articulations et douille en laiton, verre dépoli. Lancez le minuteur.
+</li>
+<li><strong>Autonomie (16 min).</strong> Chacun compose son coloris B, pièce par pièce, d'après § 3 « Consignes · Le coloris B, par paliers ». La collection <em>Lampe</em> garde le coloris A et son nom : le chapitre 4 l'importe sous ce nom. Passez voir chaque poste au moins une fois. Annoncez les 5 dernières minutes.
+</li>
+<li><strong>Revue (2 min).</strong> Chacun change une teinte du coloris B, vérifie que le coloris A ne bouge pas, puis enregistre sous <code>lampe_habillage_v002.blend</code> avec le bouton <code>+</code>.
+</li>
+</ol>
+<p><strong>Paliers :</strong></p>
+<ul>
+<li><strong>★ :</strong> toutes les pièces du coloris B suivent une gamme cohérente. Ses nouvelles matières sont des actifs, rangés dans les catalogues. Une matière au moins vient du nuancier par <em>File &gt; Append</em>, par exemple <code>Laiton</code>.
+</li>
+<li><strong>★★ :</strong> un coloris C « premium » : laiton, carbone en projection triplanaire, verre fumé. Le nuancier propose <code>Carbone_Serge</code> et <code>Verre_Fume</code>.
+</li>
+</ul>
+<p><strong>Points d'observation :</strong></p>
+<ul>
+<li>Les deux lampes changent ensemble : la matière est encore partagée. Un clic sur son compteur la rend indépendante. <em>Duplicate Collection</em> copie les objets et les maillages, mais pas les matières.
+</li>
+<li>Une copie de matière garde ses nœuds : l'aluminium brossé, rendu indépendant puis teinté en noir, reste brossé. Faites-le remarquer : c'est la section 2 réinvestie.
+</li>
+<li>Un verre créé avec <em>New</em>, au lieu d'une copie de <code>Verre_Clair</code>, ne montre que l'image d'environnement : il faut recocher <em>Raytraced Transmission</em> et <em>Thin Wall</em>.
+</li>
+<li><code>ABS_Noir</code> et <code>PVC_Mat_Noir</code> peuvent rester partagées : seule une matière que l'on change doit être rendue indépendante.
+</li>
+<li>La collection <em>Lampe</em> renommée par erreur : redonnez-lui son nom, le chapitre 4 la cherche.
+</li>
+</ul>
+<p><strong>Corrigé :</strong> la collection masquée <em>Corrigé coloris B</em> de <code>PRC02_ch3_lampe_a_habiller.blend</code>, objets suffixés <code>_B</code> : <code>Structure_Blanche_corrige</code>, <code>Laque_Blanche_corrige</code>, <code>Alu_Anodise_Noir_corrige</code> (brossé), <code>Laiton_corrige</code> sur les articulations et la douille, <code>Verre_Depoli_corrige</code>. <code>ABS_Noir_corrige</code> et <code>PVC_Mat_Noir_corrige</code> y restent partagées avec le coloris A. La lampe habillée, <code>PRC02_ch3_lampe_habillage.zip</code>, montre le même résultat sous les vrais noms (figure 3.46).</p>
+<p><strong>Ce que le chapitre 4 attend :</strong> <code>lampe_habillage_v002.blend</code>, avec la collection <em>Lampe</em> en coloris A et <code>Lampe_coloris_B</code> ; des images empaquetées et aucune matière liée ; le verre avec <em>Raytraced Transmission</em> et <em>Thin Wall</em> ; EEVEE, case <em>Raytracing</em> cochée. Un atelier inachevé ne bloque personne : le chapitre 4 a son propre fichier de secours, <code>PRC02_ch4_lampe_en_studio.blend</code>, tiré de la lampe habillée.</p>
+<h2>Le défi facultatif · Matières procédurales</h2>
+<p>La section 4 de l'application, hors programme de base et hors minutage : environ 3 heures, en deux paliers et sept étapes. Vous n'en faites aucune démonstration.</p>
+<p><strong>À qui :</strong> aux apprenants qui parcourent vite le contenu principal, et à ceux qui maîtrisent déjà ces sujets. En cas de doute, les trois quiz de la section 2 servent de test d'entrée.</p>
+<p><strong>Quand le proposer :</strong></p>
+<ul>
+<li>annoncez-le en une phrase à l'ouverture, sans plus ;
+</li>
+<li>pendant l'atelier, une fois le socle du coloris B fait et <code>lampe_habillage_v002.blend</code> enregistré, à la place des paliers ★ et ★★ ;
+</li>
+<li>après la séance : chacun reprend à l'étape où il s'est arrêté.
+</li>
+</ul>
+<p>L'introduction de la section 4 permet aussi de le faire à la place de parties de base. L'apprenant reprend alors le chapitre 4 avec son fichier de secours, avec la lampe habillée ou avec sa propre lampe, gardée dans la collection <em>Lampe</em> de <code>lampe_habillage_v002.blend</code>.</p>
+<p><strong>Le fichier :</strong> <code>PRC02_ch3_defi_procedural.blend</code>, proposé en tête de la section 4 et enregistré sous <code>defi_procedural_v001.blend</code>. Il s'ouvre dans l'espace <em>Shading</em>, sur les rangées des étapes 1 et 2 ; les autres rangées et la copie de la lampe, <code>Lampe_defi</code>, sont masquées. Sa case <em>Raytracing</em> est décochée : l'ampoule de <code>Lampe_defi</code> ne montre que l'environnement, c'est voulu.</p>
+<table><thead><tr><th>Palier</th><th>Étape</th><th>Durée</th><th>Ce que l'on apprend</th></tr></thead><tbody>
+<tr><td></td><td>Avant de commencer</td><td>5 min</td><td>L'aperçu d'un nœud, <code>Ctrl + Maj + clic</code> (figure 3.50)</td></tr>
+<tr><td>1</td><td>1 · Lire les textures de bruit</td><td>20 min</td><td><em>Noise</em>, <em>Voronoi</em>, <em>Wave</em>, <em>Gabor</em></td></tr>
+<tr><td>1</td><td>2 · Remapper les valeurs</td><td>20 min</td><td><em>Color Ramp</em>, <em>Map Range</em>, <em>Math</em></td></tr>
+<tr><td>1</td><td>3 · Masques et couches</td><td>20 min</td><td><em>Mix Color</em>, <em>Mix</em>, <em>Separate XYZ</em></td></tr>
+<tr><td>1</td><td>4 · Le relief procédural</td><td>15 min</td><td>Deux <em>Bump</em> chaînés, <em>Coat Normal</em></td></tr>
+<tr><td>2</td><td>5 · L'usure</td><td>30 min</td><td>Les arêtes par la normale, les creux par <em>Ambient Occlusion</em>, les rayures, les traces de doigts</td></tr>
+<tr><td>2</td><td>6 · Les motifs</td><td>40 min</td><td>Tôle perforée (<em>Alpha</em>), cuir, tissu ; en ★, moletage et carbone</td></tr>
+<tr><td>2</td><td>7 · Les groupes de nœuds</td><td>25 min</td><td><code>Ctrl + G</code> et les paramètres exposés ; le défi final sur <code>Lampe_defi</code></td></tr>
+</tbody></table>
+<p>Chaque étape suit le même ordre : un exemple terminé, une recette guidée, un petit défi. Neuf quiz vérifient les acquis : les quiz 1 à 5 closent le palier 1, les quiz 6 à 9 le palier 2.</p>
+<p><strong>Corrigé :</strong> la collection masquée « Corrigé défi procédural », avec une sous-collection par étape, de « Corrigé étape 1 » à « Corrigé étape 7 » ; objets et matières suffixés <code>_corrige</code>. « Corrigé étape 7 » contient aussi <code>Lampe_defi_corrige</code> et les groupes <code>PRC_Usure_Bords_corrige</code> et <code>PRC_Tole_Perforee_corrige</code>, visibles dans <code>Maj + A &gt; Group</code>. Les pièces <code>…_Exemple_…</code> restent visibles : ce sont des exemples à observer, pas des corrigés.</p>
+<p><strong>L'accompagner sans y passer la séance :</strong></p>
+<ul>
+<li>le groupe passe d'abord : une visite courte, au même rythme que les autres postes ;
+</li>
+<li>demandez l'aperçu (<code>Ctrl + Maj + clic</code>) du nœud qui pose problème : il montre où la chaîne casse ;
+</li>
+<li>renvoyez au corrigé de l'étape et au quiz qui la clôt, plutôt que de dépanner nœud par nœud ;
+</li>
+<li>vérifiez que la lampe du chapitre 4 est enregistrée à part : le défi a son propre fichier.
+</li>
+</ul>
+<p><strong>Pièges principaux :</strong></p>
+<ul>
+<li><strong>Les temps de compilation.</strong> <em>Material Preview</em> calcule chaque matière visible : plus il y en a, plus l'affichage ralentit, et chaque collection rouverte demande un temps de calcul. Une seule collection visible à la fois, celle de l'étape en cours, comme le dit le LISEZ-MOI. Ce temps est à mesurer avant la séance sur le poste le plus modeste.
+</li>
+<li>Une pièce grise et sans reflet : l'aperçu n'a pas été annulé. <code>Ctrl + Maj + clic</code> sur le <em>Principled BSDF</em>.
+</li>
+<li>Une plaquette presque uniforme : <em>Scale</em> est resté à 5. Avec les coordonnées <em>Object</em>, <code>100</code> donne un motif tous les 10 mm environ.
+</li>
+<li>Le blanc de l'aperçu paraît gris clair : c'est la transformation de vue <em>AgX</em>. On lit les contrastes, pas les valeurs.
+</li>
+<li>Un nœud sans effet : <em>Pointiness</em>, le nœud <em>Bevel</em>, <em>Random Per Island</em> et <em>Anisotropic</em> ne marchent que sous Cycles. Les recettes les remplacent.
+</li>
+</ul>
+<h2>Gérer l'hétérogénéité</h2>
+<h3>Le parcours « première fois »</h3>
+<ul>
+<li>Les binômes et les copilotes de l'initiation restent en place.
+</li>
+<li>La section 1 ne montre aucun nœud : rassurez ceux qu'inquiète le Shader Editor, il n'arrive qu'à 1:35, à partir d'une matière déjà connue.
+</li>
+<li>Le LISEZ-MOI de la lampe reprend chaque partie par paliers. Les valeurs restent indicatives : chacun compose sa gamme, seuls les noms comptent pour la suite.
+</li>
+<li>Le socle de chaque séquence suffit : il couvre tous les points du programme.
+</li>
+<li>À chaque point de contrôle, passez d'abord par les postes des débutants.
+</li>
+<li><strong>Un modèle du chapitre 2 abîmé ou absent :</strong> le fichier de secours dès 0:00, enregistré sous <code>lampe_habillage_v001.blend</code>.
+</li>
+<li><strong>Un apprenant très en retard</strong> reprend avec le groupe sur la pièce de l'exercice en cours : chaque exercice porte sur ses propres pièces, les bras, le socle, la douille. Il finit les pièces sautées après la séance, avec la collection <em>Corrigé coloris A</em>.
+</li>
+</ul>
+<h3>Pour ceux qui avancent vite</h3>
+<ul>
+<li>Les paliers ★ et ★★ de l'atelier.
+</li>
+<li><strong>Les défis ★ de l'application :</strong> le verre dépoli et le verre fumé ; l'intérieur blanc de la tête, par un second emplacement et le <em>Material Offset</em> du <em>Solidify</em> (figures 3.16 et 3.17) ; un voyant lumineux par <em>Emission</em> (figure 3.15) ; <em>File &gt; Link</em> d'une matière du nuancier, qui arrive grisée (figure 3.47), puis <code>Ctrl + Z</code> ; <code>Ctrl + L &gt; Link Materials</code>.
+</li>
+<li><strong>La bibliothèque déclarée (★) :</strong> dans <em>Edit &gt; Preferences &gt; Asset Libraries</em>, puis une vignette glissée et le menu <em>Import Method</em>. Elle s'enregistre dans les préférences du poste : prévenez le gestionnaire si la salle est partagée.
+</li>
+<li><strong>Les articulations microbillées (★★ dans le LISEZ-MOI) :</strong> la consigne de 1:50.
+</li>
+<li><strong>Automobile (★★) :</strong> la peinture métallisée du nuancier, <code>Peinture_Metallisee_Bleu</code>, décortiquée dans le Shader Editor, puis reproduite.
+</li>
+<li><strong>Aéronautique (★★) :</strong> l'accoudoir en cuir grainé et le panneau carbone, sur le fichier des finitions triplanaires, d'après son LISEZ-MOI.
+</li>
+<li><strong>Ferroviaire (★★) :</strong> le marchepied en tôle larmée, puis la rangée de sièges de l'initiation, <code>PRC02_init_rangee_sieges.blend</code>, habillée avec la bibliothèque.
+</li>
+<li><strong>Sa propre bibliothèque (★★) :</strong> son dossier de travail déclaré comme bibliothèque, puis un objet habillé dans un nouveau fichier.
+</li>
+<li>Le défi facultatif de la section 4, et le rôle de copilote, comme à l'initiation.
+</li>
+</ul>
+<h2>Animer : ce qui change au chapitre 3</h2>
+<p>Les conseils de l'initiation restent valables : « Regardez, puis à vous », les touches dites à voix haute, les post-it vert et rose, la règle des 3 minutes, la souris qu'on ne prend pas. Ce chapitre en ajoute six :</p>
+<ol>
+<li><strong>Annoncez les attentes.</strong> La première bascule en <em>Material Preview</em> fige l'écran quelques secondes, le temps que Blender prépare ses calculs de matières. Dites-le avant : sinon, les apprenants cliquent partout.
+</li>
+<li><strong>Un nœud à la fois, dit à voix haute.</strong> « La sortie <em>Factor</em> du <em>Noise</em> va dans <em>Height</em> du <em>Bump</em>. » Partez toujours de la matière connue, et complétez la chaîne du paperboard à chaque nœud ajouté.
+</li>
+<li><strong>Jugez aux reflets.</strong> Un métal, une laque ou un brossé se jugent aux reflets, pas à la teinte. Faites tourner l'image d'environnement, ou la vue, avant de valider.
+</li>
+<li><strong>Le compteur avant la modification.</strong> Posez la question à chaque changement de finition ou de coloris : « Cette matière est-elle partagée ? » Elle revient au socle structuré et dans tout l'atelier.
+</li>
+<li><strong>Les valeurs sont des points de départ.</strong> Teintes, <em>Roughness</em>, <em>Scale</em> et <em>Strength</em> se règlent à l'œil. Seuls les noms des matières et de la collection <em>Lampe</em> comptent pour le chapitre 4.
+</li>
+<li><strong>Parlez métier CMF :</strong> teinte, matière, finition, gamme, coloris. « Même teinte, autre finition » est une décision de designer, pas un réglage technique.
+</li>
+</ol>
+<h2>Si vous prenez du retard</h2>
+<p>Raccourcissez dans cet ordre :</p>
+<table><thead><tr><th>Ordre</th><th>Ce que l'on coupe</th><th>Ce que l'on garde</th></tr></thead><tbody>
+<tr><td>D'abord</td><td><em>Coat</em> : démo seule, sans essai</td><td>Le réglage montré, que l'atelier peut réinvestir</td></tr>
+<tr><td>D'abord</td><td>L'option de la bibliothèque déclarée ; les descriptions des actifs</td><td><em>Mark as Asset</em> et les catalogues</td></tr>
+<tr><td>Ensuite</td><td>L'autonomie du verre : un verre dépoli ou fumé</td><td>Les deux interrupteurs et <em>Thin Wall</em></td></tr>
+<tr><td>Ensuite</td><td>L'autonomie du procédural, le grain de l'ABS</td><td>La chaîne du brossé, en trois étapes</td></tr>
+<tr><td>Ensuite</td><td>L'autonomie de la projection, réduite à <em>Pack Resources</em> et à l'enregistrement</td><td>La projection <em>Box</em> sur le socle</td></tr>
+<tr><td>En dernier</td><td>L'atelier réduit à son socle, en 10 minutes ; la suite après la séance, avec le LISEZ-MOI et <em>Corrigé coloris B</em></td><td><code>Lampe_coloris_B</code> et l'enregistrement sous <code>lampe_habillage_v002.blend</code></td></tr>
+</tbody></table>
+<p><strong>Ce qui ne saute jamais,</strong> car le chapitre 4 s'en sert : <em>Material Preview</em> et le Principled (<em>Metallic</em>, <em>Roughness</em>) ; le verre et ses deux interrupteurs ; le Shader Editor et la chaîne du brossé ; la projection <em>Box</em> sur le socle ; <em>Mark as Asset</em> et <em>File &gt; Append</em> ; l'enregistrement final, images empaquetées.</p>
+<h2>Si vous êtes en avance</h2>
+<ul>
+<li><strong>L'atelier s'enrichit :</strong> les paliers ★, puis le coloris C du palier ★★.
+</li>
+<li><strong>La revue s'allonge :</strong> chacun présente son coloris B en une minute, avec sa gamme et une décision CMF.
+</li>
+<li><strong>Les finitions triplanaires :</strong> l'accoudoir, puis la coque (★), puis le marchepied et le carbone (★★), d'après le LISEZ-MOI du fichier.
+</li>
+<li><strong>Le défi facultatif,</strong> pour ceux qui le veulent, à partir de l'étape 1.
+</li>
+</ul>
+<hr>
+<p>Les fichiers du chapitre se reconstruisent avec les scripts de <code>tool/exercices_ch3/</code> : <code>construire.ps1</code> pour la lampe, la bibliothèque et les finitions (option <code>-Textures</code> pour les images), <code>build_defi.py</code> pour le défi facultatif. Les textes LISEZ-MOI se lisent dans les scripts <code>build_*.py</code>. Ce document se convertit en PDF avec <code>tool/deroule_initiation/export_pdf.ps1 -Source _resources\PRC02-deroule-chap3.md</code>.</p>
+</body>
+</html>

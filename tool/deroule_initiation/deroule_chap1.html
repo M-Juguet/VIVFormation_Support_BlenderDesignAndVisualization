@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Chapitre 1 · Environnement et blocage de volumes : déroulé formateur</title>
+<!-- Fichier généré par tool/deroule_initiation/md_to_html.py depuis _resources/PRC02-deroule-chap1.md : ne pas modifier à la main. -->
+<link rel="stylesheet" href="../../viv-formation-design-system/styles.css">
+<style>
+@page { size: A4 portrait; margin: 14mm 15mm 16mm; }
+@page { @bottom-right { content: counter(page) " / " counter(pages); font: 9pt 'Noto Sans', sans-serif; color: #8a7f86; } }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: var(--ink);
+       font-family: var(--font-sans); font-size: 10pt; line-height: 1.45; }
+.top-line { height: 5px; background: var(--gradient-brand); margin: 0 0 14px; border-radius: 3px; }
+header.doc { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+             padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+header.doc img { height: 30px; width: auto; display: block; margin-bottom: 4px; }
+.overline { color: var(--ink-muted); margin: 0 0 4px; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase; }
+h1 { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 25pt; line-height: 1.15; margin: 0; }
+.subtitle { margin: 4px 0 0; font-size: 9.5pt; color: var(--ink-muted); }
+h2 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 15pt; line-height: 1.25;
+     color: var(--accent-deep); margin: 20px 0 8px; padding-top: 8px; border-top: 2px solid var(--brand-rose);
+     break-after: avoid; }
+h3 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 11.5pt; line-height: 1.3;
+     margin: 14px 0 6px; break-after: avoid; }
+p { margin: 0 0 7px; }
+ul, ol { margin: 0 0 8px; padding-left: 20px; }
+li { margin: 0 0 3px; }
+li > ul, li > ol { margin: 3px 0 0; }
+ul.checks { list-style: none; padding-left: 4px; }
+ul.checks li::before { content: "☐"; margin-right: 7px; color: var(--accent-deep); }
+strong { font-weight: 700; }
+code { font-family: var(--font-mono); font-size: 8.6pt; background: var(--surface-code); border: 1px solid var(--border);
+       border-radius: 4px; padding: 0 4px; white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; margin: 4px 0 10px; font-size: 8.8pt; line-height: 1.35; }
+th { text-align: left; font-weight: 700; background: var(--surface-brand); padding: 5px 7px; border-bottom: 1px solid var(--border-strong); }
+td { padding: 5px 7px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr { break-inside: avoid; }
+td code { white-space: normal; }
+blockquote { margin: 8px 0 10px; padding: 8px 12px; background: var(--surface-sunken); border-left: 3px solid var(--action);
+             border-radius: 0 8px 8px 0; break-inside: avoid; }
+blockquote p { margin: 0; }
+hr { border: 0; border-top: 1px solid var(--border); margin: 18px 0 8px; }
+hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
+.pagebreak { break-before: page; }
+.pagebreak + h2 { border-top: 0; margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="top-line"></div><header class="doc"><div>
+<p class="overline">PRC02 · Chapitre 1 · Document formateur</p>
+<h1>Chapitre 1 · Environnement et blocage de volumes : déroulé formateur</h1>
+<p class="subtitle">PRC02 · Design &amp; visualisation temps réel avec Blender · Blender 5.2 LTS, interface en anglais</p>
+<p class="subtitle">Demi-journée 3 sur 6, en présentiel, de 5 à 8 apprenants · Version du 19 novembre 2026, application support 1.0.0</p>
+</div><img src="../../viv-formation-design-system/assets/logos/viv-formation-couleur.svg" alt="VIV Formation"></header>
+<h2>En bref</h2>
+<ul>
+<li><strong>Objectif :</strong> à la fin de la demi-journée, chaque apprenant saisit une cote avec son unité, cale un volume sur un croquis et bloque sa lampe avec des primitives, à ses cotes. Il incline et avance une pièce dans son propre axe, pose une pièce sur une autre par aimantation et contrôle une cote. Il biseaute et extrude au millimètre, puis compare trois pistes par leur silhouette.
+</li>
+<li><strong>Format :</strong> 3 h 50, dont 3 h 30 de contenu et 2 pauses de 10 minutes. Il reste 10 minutes de marge sur 4 heures. Exemple : de 9 h 00 à 12 h 50. Les pauses tombent aux mêmes heures qu'à l'initiation.
+</li>
+<li><strong>Principe :</strong> le même qu'à l'initiation. Une notion à la fois : vous la montrez en quelques minutes, ils la pratiquent en guidé, puis seuls. Personne ne passe plus de 15 minutes sans toucher la souris.
+</li>
+<li><strong>La règle du jour : tapez l'unité.</strong> Dans un champ, <code>25mm</code> est toujours compris. Pendant un geste, on tape d'abord <code>=</code> : <code>G Z = 25mm</code>. Ces deux gestes marchent, que la scène affiche des mètres ou des millimètres. L'affichage en millimètres reste une option, recommandée pour le design produit.
+</li>
+<li><strong>Fil rouge :</strong> la lampe de bureau, déjà vue à l'initiation. Chacun en bloque sa version sur les croquis, puis deux variantes. Le fichier de fin, <code>lampe_blocage_v001.blend</code>, est celui que cite le chapitre 2.
+</li>
+</ul>
+<h3>L'ordre de la séance</h3>
+<p>La séance suit l'ordre de l'application, sauf pour la fin de la section 2 : <em>Comparer des variantes</em> et <em>Juger la silhouette</em> passent après la section 3. C'est l'ordre de la méthode en quatre temps que le chapitre enseigne : l'encombrement, les grands volumes, les proportions, puis la comparaison. Les outils de la section 3 servent à ajuster les proportions ; les variantes arrivent quand la lampe est complète, juste avant l'atelier. Le quiz de la section 2 se fait donc après ceux de la section 3.</p>
+<h3>Ce que l'on survole</h3>
+<p>Ces notions sont dans l'application. Elles ne sont pas exigées en séance, et certaines servent de défi.</p>
+<ul>
+<li><em>Unit Scale</em> : une phrase, celle de l'encart <em>WARNING</em>.
+</li>
+<li><em>Save Startup File</em> et <em>Load Factory Settings</em> : le sous-menu est montré, sans clic. Sur les postes partagés de la salle, on n'enregistre pas de fichier de démarrage.
+</li>
+<li>Les orientations <em>Normal</em>, <em>View</em>, <em>Cursor</em>, <em>Gimbal</em> et <em>Parent</em> : citées.
+</li>
+<li>Plusieurs cibles d'aimantation (<code>Maj + clic</code>) et la touche <code>B</code> pendant le geste : une astuce, puis un défi.
+</li>
+<li>L'édition proportionnelle (<code>O</code>), <code>G G</code> et <code>Alt + S</code> : une minute de démonstration, puis des défis.
+</li>
+<li>Le biseau d'un sommet (<code>Ctrl + Maj + B</code>) et <em>Extrude Individual Faces</em> : cités.
+</li>
+<li><em>Background</em>, l'image toujours derrière : citée à côté de <em>Reference</em>.
+</li>
+</ul>
+<h3>Les fichiers</h3>
+<table><thead><tr><th>Fichier</th><th>Moment</th><th>Contenu</th></tr></thead><tbody>
+<tr><td><code>PRC02_ch1_blocage_lampe.blend</code></td><td>0:25, puis toute la séance</td><td>Les croquis de face et de profil, déjà placés ; trois blocages terminés, masqués, dans les collections <em>Variante A</em>, <em>B</em> et <em>C</em> : c'est le corrigé</td></tr>
+<tr><td><code>PRC02_ch1_croquis_lampe.zip</code></td><td>0:45</td><td>Les deux croquis en PNG, pour replacer celui de profil</td></tr>
+<tr><td>Les consignes par paliers</td><td>Toute la séance</td><td>En annexe de ce document, à projeter ou à imprimer</td></tr>
+</tbody></table>
+<p>L'application propose le fichier en section 2, après « Une méthode en quatre temps », et l'archive des croquis en section 1, sous les réglages de l'image de référence.</p>
+<blockquote><p><strong>À savoir :</strong> le fichier livré n'a pas de texte LISEZ-MOI : les consignes de l'annexe en tiennent lieu. Son corrigé s'appelle <em>Variante A</em>, <em>B</em> et <em>C</em>, et non « Corrigé ». Il est encore réglé sur le moteur Cycles : chacun vérifie le moteur à 0:25. Ce réglage sera corrigé en fin de projet.</p></blockquote>
+<h2>Avant la demi-journée</h2>
+<h3>Les postes des apprenants</h3>
+<ul class="checks">
+<li>L'application support 1.0.0 est installée. Une version plus ancienne propose la mise à jour à son démarrage.
+</li>
+<li>Le dossier de travail contient <code>PRC02_ch1_blocage_lampe.blend</code> et les deux croquis décompressés, <code>croquis_lampe_face.png</code> et <code>croquis_lampe_profil.png</code>. À défaut, chacun les télécharge depuis l'application à 0:25.
+</li>
+<li>Blender 5.2 LTS s'ouvre, avec une souris à trois boutons. <em>Emulate Numpad</em> reste activé sur les portables sans pavé numérique.
+</li>
+<li>Sur un poste de la salle, <code>G Z</code>, <code>=</code>, <code>25mm</code>, Entrée monte bien un objet de 25 mm. Le geste a été vérifié dans Blender par simulation de touches, pas encore sur un clavier français.
+</li>
+<li>Les <em>Quick Favorites</em> et les options essayées à 0:57 s'enregistrent dans les préférences du poste. C'est voulu : ce sont leurs options. Prévenez seulement le gestionnaire des postes si la salle est partagée.
+</li>
+</ul>
+<h3>Votre poste de démonstration</h3>
+<ul>
+<li><strong>Lancez Blender en configuration d'usine</strong> (<code>blender.exe --factory-startup</code>), comme à l'initiation : votre écran correspond à celui des apprenants, et vos préférences ne sont pas touchées. En contrepartie, votre Blender ne garde pas les options de 0:57 : pendant vos démos, tapez toujours <code>=</code> avant une unité.
+</li>
+<li><strong>Agrandissez l'interface</strong> pour le vidéoprojecteur : <em>Resolution Scale</em> à 1,3.
+</li>
+<li><strong>Préparez une copie de travail du fichier,</strong> enregistrée sous un autre nom, pour vos démonstrations : le fichier livré reste intact.
+</li>
+<li><strong>Ne cliquez pas sur <em>Save Startup File</strong></em> pendant la démo de 0:57 : montrez le sous-menu sans l'exécuter.
+</li>
+<li><strong>Gardez l'application ouverte</strong> sur le chapitre 1, pour projeter les quiz.
+</li>
+</ul>
+<h3>Le matériel de la salle</h3>
+<ul>
+<li>Les post-it vert et rose des points de contrôle, et le minuteur.
+</li>
+<li>Le paperboard, préparé avant l'arrivée des apprenants :
+<ul>
+<li>la règle du jour : « Tapez l'unité. Dans un champ : <code>25mm</code>. Pendant un geste : <code>=</code>, puis <code>25mm</code>. » ;</li>
+<li>le corrigé : « collections <em>Variante A</em>, <em>B</em> et <em>C</em>, œil fermé : on compare, on ne copie pas » ;</li>
+<li>le fichier de fin : <code>lampe_blocage_v001.blend</code>, moteur EEVEE ;</li>
+<li>les raccourcis du jour, complétés au fil de la séance : <code>N</code>, <code>Ctrl + Alt + Q</code>, <code>Q</code>, <code>H</code> et <code>Alt + H</code>, <code>/</code>, <code>,</code>, <code>G Z Z</code>, <code>Ctrl</code> pendant un geste, <code>Maj + Tab</code>, <code>Ctrl + B</code>, <code>Alt + E</code>.</li>
+</ul>
+</li>
+<li>Les consignes de l'annexe, projetées ou imprimées, une par apprenant.
+</li>
+</ul>
+<h2>La demi-journée · Du réglage au blocage</h2>
+<p>Les trois sections du chapitre 1. Les apprenants repartent avec leur lampe bloquée, en trois pistes, dans <code>lampe_blocage_v001.blend</code>. Dans la colonne « Modalité », les durées sont en minutes.</p>
+<table><thead><tr><th>Horaire</th><th>Durée</th><th>Séquence</th><th>Section</th><th>Modalité</th></tr></thead><tbody>
+<tr><td>0:00</td><td>10 min</td><td>Ouverture : où l'on en est</td><td></td><td>Collectif 7 + poste 3</td></tr>
+<tr><td>0:10</td><td>15 min</td><td>Les cotes et leur unité</td><td>1</td><td>Démo 5 + guidé 8 + quiz 2</td></tr>
+<tr><td>0:25</td><td>5 min</td><td>Le fichier du fil rouge</td><td>1</td><td>Guidé</td></tr>
+<tr><td>0:30</td><td>15 min</td><td>Lire la forme : affichage, <em>Clip Start</em>, Quad View</td><td>1</td><td>Démo 5 + guidé 8 + autonomie 2</td></tr>
+<tr><td>0:45</td><td>12 min</td><td>Images de référence</td><td>1</td><td>Démo 4 + guidé 3 + autonomie 5</td></tr>
+<tr><td>0:57</td><td>8 min</td><td>À votre main : <em>Quick Favorites</em>, navigation, saisie</td><td>1</td><td>Démo 4 + guidé 2 + autonomie 2</td></tr>
+<tr><td>1:05</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
+<tr><td>1:15</td><td>12 min</td><td>La méthode et l'encombrement</td><td>2</td><td>Démo 4 + guidé 8</td></tr>
+<tr><td>1:27</td><td>25 min</td><td>Les grands volumes</td><td>2</td><td>Démo 6 + guidé 8 + autonomie 11</td></tr>
+<tr><td>1:52</td><td>15 min</td><td>Orienter : la tête</td><td>3</td><td>Démo 5 + guidé 8 + quiz 2</td></tr>
+<tr><td>2:07</td><td>28 min</td><td>Aimanter et mesurer : les articulations</td><td>3</td><td>Démo 9 + guidé 13 + autonomie 5 + quiz 1</td></tr>
+<tr><td>2:35</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
+<tr><td>2:45</td><td>15 min</td><td>Éditer avec précision : biseau et extrusions</td><td>3</td><td>Démo 6 + guidé 6 + autonomie 3</td></tr>
+<tr><td>3:00</td><td>15 min</td><td>Variantes et silhouette</td><td>2</td><td>Démo 5 + guidé 9 + quiz 1</td></tr>
+<tr><td>3:15</td><td>25 min</td><td>Atelier · Trois pistes pour une revue de concept</td><td></td><td>Lancement 2 + autonomie 20 + revue 3</td></tr>
+<tr><td>3:40</td><td>10 min</td><td>Galerie, bilan et passerelle vers le chapitre 2</td><td></td><td>Collectif</td></tr>
+</tbody></table>
+<h3>0:00 · Ouverture : où l'on en est (10 min)</h3>
+<ul>
+<li><strong>Le parcours de la lampe (collectif, 7 min) :</strong> « L'initiation vous a donné les gestes de base. Aujourd'hui commence la formation proprement dite. » La lampe est bloquée aujourd'hui, modélisée au chapitre 2, habillée au chapitre 3, mise en scène et exportée au chapitre 4.
+</li>
+<li><strong>Montrez le but :</strong> sur votre copie du fichier, ouvrez l'œil des trois variantes et passez-les en ombres chinoises, avec le réglage de 3:00. « À la fin de la demi-journée, vous aurez votre lampe, en trois pistes comme celles-ci, et vous en défendrez une. »
+</li>
+<li><strong>Le mot du jour :</strong> le blocage, ou <em>greyboxing</em>, c'est la maquette en mousse du designer. On juge les proportions avant le détail.
+</li>
+<li><strong>La règle :</strong> les réglages de la première heure sont des options ; chacun garde ce qui l'aide. Une seule habitude compte : taper l'unité.
+</li>
+<li><strong>Sur poste (3 min) :</strong> chacun lance Blender et ferme l'écran d'accueil. La scène d'usine et son cube servent à la première séquence.
+</li>
+</ul>
+<p><strong>Point de contrôle :</strong> sur chaque écran, la scène d'usine.</p>
+<h3>0:10 · Les cotes et leur unité (15 min)</h3>
+<p><strong>Vous montrez (5 min),</strong> d'après § 1 « Choisir l'unité d'affichage » (figure 1.1), dans la scène d'usine, qui affiche des mètres :</p>
+<ol>
+<li>Le cube sélectionné, <code>N</code>, onglet <em>Item</em> : <em>Dimensions</em> 2 m.
+</li>
+<li><strong>Dans un champ, l'unité est toujours comprise.</strong> Dans <em>Dimensions</em> X, tapez <code>180mm</code> : le champ affiche 0,18 m. Puis <code>3.5cm</code>, puis <code>1m 20mm</code>.
+</li>
+<li><strong>Pendant un geste, c'est différent.</strong> <code>G Z 25</code> : le cube monte de 25 m. « Un nombre seul s'entend dans l'unité affichée. » <code>Ctrl + Z</code>. Faites deviner : « Et <code>G Z 25mm</code> ? » Essayez : 25 m encore, les lettres sont ignorées. <code>Ctrl + Z</code>. Puis <code>G Z</code>, <code>=</code>, <code>25mm</code>, Entrée : 25 mm. « La touche <code>=</code> ouvre la saisie avancée, qui comprend les unités. Le <code>*</code> du pavé numérique fait de même. »
+</li>
+<li><strong>Une option, recommandée pour le design produit :</strong> onglet <em>Scene</em>, rubrique <em>Units</em>, <em>Length</em> sur <em>Millimeters</em>. Le cube affiche 180 mm, et <code>G Z 25</code> monterait de 25 mm. <em>Unit Scale</em> reste à 1 : une phrase, celle de l'encart <em>WARNING</em>. « Les mètres se valent aussi, tant que vous tapez l'unité. »
+</li>
+<li><strong>Ailleurs :</strong> une planche de bord ou un phare se cote en millimètres, l'implantation d'un tram en mètres. Chacun garde l'affichage de son métier.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (8 min),</strong> dans la scène d'usine :</p>
+<ol>
+<li>Le cube devient une galette de socle : <em>Dimensions</em> <code>180mm</code>, <code>180mm</code>, <code>25mm</code>.
+</li>
+<li><code>G Z</code>, <code>=</code>, <code>12.5mm</code>, Entrée : elle repose sur le sol.
+</li>
+<li><code>Ctrl + A &gt; Scale</code> : l'échelle revient à 1, les cotes restent.
+</li>
+<li>En option, <em>Length</em> sur <em>Millimeters</em>.
+</li>
+</ol>
+<p><strong>Quiz (2 min),</strong> ensemble à l'écran : le quiz de la section 1, sur la saisie de 25 mm pendant un déplacement. Chacun répond pour soi, puis on commente les erreurs.</p>
+<p><strong>Point de contrôle :</strong> dans <code>N &gt; Item</code>, <em>Dimensions</em> 180 × 180 × 25 mm (0,18 × 0,18 × 0,025 m), <em>Location</em> Z 12,5 mm, <em>Scale</em> 1.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>La galette s'envole à 12,5 m : le <code>=</code> a été oublié, dans une scène en mètres. <code>Ctrl + Z</code>.
+</li>
+<li><code>=</code> sans effet : le <code>*</code> du pavé numérique fait l'affaire. Sur un clavier français, <code>=</code> est la touche à gauche de la touche d'effacement.
+</li>
+<li>Un champ qui refuse la valeur : une virgule a été tapée au lieu d'un point (<code>3,5cm</code> au lieu de <code>3.5cm</code>).
+</li>
+</ul>
+<h3>0:25 · Le fichier du fil rouge (5 min)</h3>
+<p><strong>Ils font, pas à pas :</strong></p>
+<ol>
+<li><em>File &gt; Open</em> : <code>PRC02_ch1_blocage_lampe.blend</code> ; <em>Don't Save</em> pour la scène d'usine. Ceux qui n'ont pas le fichier le téléchargent dans l'application, en section 2.
+</li>
+<li><em>File &gt; Save As</em> : <code>lampe_blocage_v001.blend</code>, dans le dossier de travail. Le fichier livré reste intact.
+</li>
+<li>Onglet <em>Render</em> : <em>Render Engine</em> doit indiquer <strong>EEVEE</strong> ; choisissez-le si besoin. « La formation travaille avec EEVEE. En mode <em>Solid</em>, rien ne change à l'écran ; le chapitre 4 en dira plus. » Le fichier livré est encore réglé sur Cycles : ce geste est nécessaire.
+</li>
+<li>Onglet <em>Scene</em>, rubrique <em>Units</em> : ce fichier affiche des millimètres. C'est un réglage du fichier, pas une exigence : chacun peut repasser en mètres. Les consignes donnent toujours l'unité.
+</li>
+<li>Le tour du fichier : la vue de face montre le croquis. Dans l'Outliner, la collection <em>Croquis</em>, puis <em>Variante A</em>, <em>B</em> et <em>C</em>, l'œil fermé : « Trois blocages terminés, votre corrigé. On les ouvre pour comparer, jamais pour copier. »
+</li>
+<li><code>Ctrl + S</code>.
+</li>
+</ol>
+<p><strong>Point de contrôle :</strong> la barre de titre affiche <code>lampe_blocage_v001.blend</code> ; <em>Render Engine</em> indique EEVEE.</p>
+<h3>0:30 · Lire la forme : affichage, <em>Clip Start</em>, Quad View (15 min)</h3>
+<p>D'après § 1 « Lire la forme dans la vue 3D », « Voir de près les petits objets » et « Voir sous tous les angles avec la Quad View » (figures 1.2, 1.3 et 1.6). Chacun ouvre l'œil de <em>Variante A</em>, qui sert de sujet.</p>
+<p><strong>Le menu <em>Viewport Shading</em> (démo 2 min, guidé 3 min).</strong> Vous montrez la flèche à droite des quatre modes d'affichage, puis <em>Lighting</em> (<em>Studio</em>, <em>MatCap</em>, <em>Flat</em>), <em>Color</em> (<em>Random</em>, déjà choisi dans ce fichier), <em>Cavity</em> et <em>Outline</em>. Ils font : <em>Cavity</em> activé, un essai de <em>MatCap</em>, puis retour à <em>Studio</em>. « Regardez la jonction entre le socle et le bras. »</p>
+<p><strong><em>Clip Start</em> (démo 2 min, guidé 3 min).</strong> En perspective (<code>5</code>), sélectionnez <em>Interrupteur_A</em>, cadrez-le (<code>.</code> du pavé numérique) et zoomez au plus près. Le fichier est réglé à 1 mm : tapez <code>10mm</code>, la valeur d'usine, dans <code>N</code>, onglet <em>View</em>, champ <em>Clip Start</em>. L'interrupteur se coupe. Revenez à <code>1mm</code>. Ils font le même essai.</p>
+<p><strong>La Quad View (démo 1 min, guidé 2 min).</strong> <code>Ctrl + Alt + Q</code> : trois vues orthographiques et une perspective. Ils l'ouvrent, déplacent un objet de la variante et le voient bouger dans les quatre vues, puis <code>Ctrl + Z</code> et de nouveau <code>Ctrl + Alt + Q</code> pour revenir.</p>
+<p><strong>En autonomie (2 min) :</strong> chacun choisit l'affichage qui l'aide le plus pour la suite, puis referme l'œil de <em>Variante A</em>.</p>
+<p><strong>Point de contrôle :</strong> <em>Clip Start</em> à 1 mm ; <em>Variante A</em> masquée ; une seule vue 3D.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li><em>Clip Start</em> sans effet visible : la vue est restée orthographique. Passez en perspective (<code>5</code>).
+</li>
+<li>Une Quad View qui ne se referme pas : la souris n'était pas au-dessus de la vue 3D.
+</li>
+<li>Un objet de la variante modifié : <code>Ctrl + Z</code>. Le corrigé doit rester juste.
+</li>
+</ul>
+<h3>0:45 · Images de référence (12 min)</h3>
+<p><strong>Vous montrez (4 min),</strong> d'après § 1 « Travailler avec des images de référence » (figures 1.4 et 1.5) :</p>
+<ol>
+<li>En vue de face (<code>1</code>), le croquis s'affiche ; en tournant la vue, il disparaît. Sélectionnez <em>Croquis_face</em> dans l'Outliner : c'est un <em>Empty</em>, un objet sans géométrie qui porte une image.
+</li>
+<li>Onglet <em>Object Data</em> : <em>Opacity</em>, <em>Depth</em> (<em>Front</em>, <em>Back</em>), <em>Show In</em> (<em>Perspective</em>, <em>Only Axis Aligned</em>).
+</li>
+<li>Comment on en place une : vue de droite (<code>3</code>), <em>Add &gt; Image &gt; Reference</em>, puis l'image. Elle arrive face à la vue, au curseur 3D, et mesure 5 m de large. <em>Background</em> la garde toujours derrière. On peut aussi la faire glisser depuis l'Explorateur Windows.
+</li>
+<li><strong>Ailleurs :</strong> les vues de face et de profil d'un nez de tram, d'un rétroviseur, d'une cabine d'avion d'affaires.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (3 min),</strong> sur <em>Croquis_face</em> : <em>Opacity</em> à 0,2 puis 0,5 ; <em>Depth</em> sur <em>Front</em> puis <em>Back</em> ; <em>Perspective</em> coché puis décoché dans <em>Show In</em>.</p>
+<p><strong>Ils font, en autonomie (5 min) : replacer le croquis de profil.</strong> Ils masquent <em>Croquis_profil</em> (œil), puis :</p>
+<ul>
+<li>vue de droite (<code>3</code>), <em>Add &gt; Image &gt; Reference</em>, <code>croquis_lampe_profil.png</code> ;
+</li>
+<li><em>Object Data</em> : <em>Size</em> <code>560mm</code>, <em>Opacity</em> 0,5, <em>Depth</em> <em>Back</em> ; <em>Show In</em> : <em>Perspective</em> décoché, <em>Only Axis Aligned</em> coché ;
+</li>
+<li><code>N &gt; Item</code>, <em>Location</em> : X <code>-300mm</code>, Z <code>222mm</code>.
+</li>
+</ul>
+<p>Ils rouvrent l'œil de <em>Croquis_profil</em> pour comparer, puis suppriment le leur (<code>X</code>) : le blocage s'appuie sur celui du fichier.</p>
+<p><strong>Point de contrôle :</strong> les deux images se superposent exactement ; ensuite, il ne reste que <em>Croquis_profil</em>, visible.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Une image immense : <em>Size</em> vaut encore 5 m.
+</li>
+<li>Une image couchée : elle a été ajoutée en vue de face ou en perspective. Supprimez-la et recommencez en vue de droite.
+</li>
+<li>Le croquis introuvable : l'archive n'a pas été décompressée (clic droit &gt; <em>Extraire tout</em>). En dernier recours, les réglages seulement, sans replacement.
+</li>
+</ul>
+<h3>0:57 · À votre main : <em>Quick Favorites</em>, navigation, saisie (8 min)</h3>
+<p>Annoncez-le : « Tout ce qui suit est une option. »</p>
+<p><strong>Vous montrez (4 min),</strong> d'après § 1 « Garder ses outils à portée », « Ajuster la navigation » et « Enregistrer son fichier de démarrage » (figures 1.7 à 1.9) :</p>
+<ol>
+<li>Menu <em>View &gt; Area</em>, clic droit sur <em>Toggle Quad View</em>, <em>Add to Quick Favorites</em>. La touche <code>Q</code> ouvre le menu sous la souris.
+</li>
+<li><em>Edit &gt; Preferences &gt; Navigation</em> : <em>Orbit Around Selection</em>, <em>Zoom to Mouse Position</em> et la case <em>Depth</em> de la ligne <em>Auto</em>.
+</li>
+<li><em>Edit &gt; Preferences &gt; Input</em>, rubrique <em>Keyboard</em> : <em>Default to Advanced Numeric Input</em>. Cochée, elle rend le <code>=</code> inutile : <code>G Z 25mm</code> marche directement.
+</li>
+<li><em>File &gt; Defaults</em> : <em>Save Startup File</em> et <em>Load Factory Settings</em>, montrés sans cliquer. « Chez vous, ou pour une équipe, un fichier de démarrage commun garde la même unité pour tous. »
+</li>
+</ol>
+<p><strong>Ils font :</strong> en guidé (2 min), <em>Toggle Quad View</em> dans les <em>Quick Favorites</em>, puis <code>Q</code> ; en autonomie (2 min), une option de navigation ou de saisie à essayer, à garder ou non.</p>
+<p><strong>Point de contrôle :</strong> <code>Q</code> ouvre un menu qui contient au moins une entrée.</p>
+<p><strong>À savoir :</strong> un apprenant qui a cliqué <em>Save Startup File</em> n'a rien cassé sur son poste. Prévenez seulement le gestionnaire des postes.</p>
+<h3>1:05 · Pause (10 min)</h3>
+<h3>1:15 · La méthode et l'encombrement (12 min)</h3>
+<p><strong>Vous montrez (4 min),</strong> d'après § 2 « Une méthode en quatre temps » et « Donner les bonnes dimensions » (figure 1.12) :</p>
+<ol>
+<li>Au paperboard, la méthode en quatre temps : l'encombrement, les grands volumes, les proportions, la silhouette. « Se tromper vite coûte peu. »
+</li>
+<li><code>Maj + A &gt; Mesh &gt; Cube</code> : 2 m de côté. Dans <code>N &gt; Item</code>, <em>Dimensions</em> : <code>420mm</code>, <code>180mm</code>, <code>450mm</code>. Les champs <em>Scale</em> changent en conséquence : cette échelle se remet à 1 avec <code>Ctrl + A &gt; Scale</code> avant certaines opérations, comme le biseau de 2:45.
+</li>
+<li><em>Location</em> : X <code>120mm</code>, Z <code>225mm</code>. Renommez le cube <em>Encombrement</em>.
+</li>
+<li>Vues de face et de droite : le croquis tient dans le cube. <code>H</code> le masque, <code>Alt + H</code> le réaffiche.
+</li>
+<li><strong>Ailleurs :</strong> l'enveloppe d'un siège d'avion, d'un rétroviseur, d'un pupitre de conduite.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (8 min) :</strong> les étapes 2 à 4.</p>
+<p><strong>Point de contrôle :</strong> en vues <code>1</code> et <code>3</code>, le croquis tient dans l'encombrement. <em>Encombrement</em> est rangé dans <em>Scene Collection</em>, puis masqué avec <code>H</code>.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Un cube qui déborde du croquis : <em>Location</em> a été oubliée.
+</li>
+<li><code>Alt + H</code> ne fait pas réapparaître les variantes : c'est normal, elles sont masquées par l'œil de leur collection.
+</li>
+</ul>
+<h3>1:27 · Les grands volumes (25 min)</h3>
+<p>D'après § 2 « Partir des primitives » et « Isoler et masquer » (figures 1.10 et 1.11).</p>
+<p><strong>Le socle et le bras du bas (démo 4 min, guidé 8 min).</strong> Vous montrez :</p>
+<ol>
+<li><strong>La collection active.</strong> Dans l'Outliner, clic droit sur <em>Scene Collection</em> &gt; <em>New Collection</em>, renommez-la <em>Lampe</em>, puis cliquez-la : elle est surlignée, et chaque nouvel objet s'y range.
+</li>
+<li><em>Socle</em> : <code>Maj + A &gt; Mesh &gt; Cylinder</code>, F9 : <em>Vertices</em> 32, <em>Radius</em> <code>90mm</code>, <em>Depth</em> <code>25mm</code>. Puis <code>G Z</code>, <code>=</code>, <code>12.5mm</code>. « Peu de segments suffisent pour un blocage. »
+</li>
+<li><em>Bras_bas</em> : <em>Cylinder</em>, F9 : <em>Vertices</em> 16, <em>Radius</em> <code>8mm</code>, <em>Depth</em> <code>260mm</code>. <code>R Y 15.6</code>, puis en vue de face, <code>G</code> pour le poser sur le croquis. Repère : <em>Location</em> -5, 0, 165 mm.
+</li>
+</ol>
+<p>Ils font, en guidé : <em>Lampe</em> active, puis <em>Socle</em> et <em>Bras_bas</em>, nommés.</p>
+<p><strong>La vue locale (démo 2 min), puis l'autonomie (11 min).</strong> Vous montrez : <em>Bras_bas</em> sélectionné, <code>/</code> du pavé numérique. Seul le bras reste à l'écran ; <code>/</code> ramène la vue complète.</p>
+<p>Ils font, seuls, avec l'étape 7 des consignes :</p>
+<ul>
+<li><em>Interrupteur</em> : <em>Cylinder</em>, <em>Vertices</em> 16, <em>Radius</em> <code>8mm</code>, <em>Depth</em> <code>6mm</code>, <em>Location</em> <code>55mm</code>, <code>0</code>, <code>28mm</code> ;
+</li>
+<li><em>Bras_haut</em> : <em>Cylinder</em>, <em>Vertices</em> 16, <em>Radius</em> <code>7mm</code>, <em>Depth</em> <code>220mm</code>, <code>R Y 50.5</code>, posé sur le croquis (repère : 115, 0, 360 mm) ;
+</li>
+<li>chaque pièce vérifiée en vue locale, puis <code>Ctrl + S</code>.
+</li>
+</ul>
+<p><strong>Point de contrôle :</strong> en vue de face, les quatre volumes suivent le croquis. <em>Socle</em> mesure 180 × 180 × 25 mm. Les quatre pièces sont rangées dans <em>Lampe</em>.</p>
+<p><strong>Corrigé :</strong> dans <em>Variante A</em>, <em>Socle_A</em>, <em>Interrupteur_A</em>, <em>Bras_bas_A</em> et <em>Bras_haut_A</em>.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Une pièce rangée dans <em>Scene Collection</em> ou dans <em>Croquis</em> : la collection active n'était pas <em>Lampe</em>. <code>M &gt; Lampe</code>.
+</li>
+<li>Un cylindre de 2 m : F9 a été oublié, ou le panneau s'est refermé après un autre geste.
+</li>
+<li>Une pièce géante ou minuscule : une valeur tapée sans unité. Lisez l'unité affichée dans le champ.
+</li>
+<li>Une pièce qui n'apparaît pas à l'origine : le curseur 3D a bougé. <code>Maj + C</code>.
+</li>
+<li>Un bras penché du mauvais côté : <code>R Y -15.6</code> au lieu de <code>R Y 15.6</code>.
+</li>
+<li>Un bras juste de face mais décalé en profondeur : la règle de l'initiation, deux vues orthographiques avant de valider.
+</li>
+</ul>
+<h3>1:52 · Orienter : la tête (15 min)</h3>
+<p><strong>Vous montrez (5 min),</strong> d'après § 3 « Choisir l'orientation de transformation » (figures 1.16 et 1.17) :</p>
+<ol>
+<li><em>Tête</em> : <code>Maj + A &gt; Mesh &gt; Cone</code>, F9 : <em>Vertices</em> 24, <em>Radius 1</em> <code>60mm</code>, <em>Radius 2</em> <code>22mm</code>, <em>Depth</em> <code>110mm</code>. <code>R Y -30</code> : la tête s'incline vers le plan de travail.
+</li>
+<li>L'outil <em>Move</em> de la barre d'outils : le gizmo suit les axes du monde, <em>Global</em>. Menu <em>Transform Orientation</em> de l'en-tête, ou <code>,</code> : <em>Local</em>. Le gizmo s'incline avec la tête.
+</li>
+<li>Retour en <em>Global</em>, puis <code>G Z Z</code> : le second <code>Z</code> suit l'axe propre de la tête. Elle avance ou recule sans glisser de côté.
+</li>
+<li><strong>Ailleurs :</strong> un rétroviseur incliné, un volet d'aile, un pare-brise de cabine.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (8 min) :</strong> la tête, avec les valeurs de la démo ; en vue de face, <code>G</code> pour la placer près du haut de <em>Bras_haut</em> ; puis <code>G Z Z</code> pour l'avancer jusqu'à ce que le petit bout touche le bras. Repère : <em>Location</em> 233,5, 0, 372 mm.</p>
+<p><strong>Quiz (2 min),</strong> ensemble à l'écran : le premier quiz de la section 3, <code>G Z Z</code>.</p>
+<p><strong>Point de contrôle :</strong> la tête inclinée de 30°, son petit bout contre le haut du bras, son ouverture vers la table. <code>Ctrl + S</code>.</p>
+<p><strong>Corrigé :</strong> <em>Tête_A</em>, dans <em>Variante A</em>.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li><code>G Z</code> seul fait monter la tête à la verticale : c'est l'axe du monde. Le second <code>Z</code> change d'axe.
+</li>
+<li>Une tête tournée vers le haut : <code>R Y 30</code> au lieu de <code>R Y -30</code>.
+</li>
+<li>Le gizmo reste droit : l'outil actif n'est pas <em>Move</em>, ou l'orientation est restée <em>Global</em>.
+</li>
+</ul>
+<h3>2:07 · Aimanter et mesurer : les articulations (28 min)</h3>
+<p><strong>L'aimantation (démo 6 min, guidé 8 min, autonomie 5 min, quiz 1 min).</strong> Vous montrez, d'après § 3 « L'aimantation » (figure 1.18) :</p>
+<ol>
+<li>L'icône d'aimant de l'en-tête et <code>Maj + Tab</code>. Au quotidien, <code>Ctrl</code> pendant le geste suffit.
+</li>
+<li>Le menu à droite de l'aimant : <em>Snap Base</em> sur <em>Center</em>, <em>Snap Target</em> sur <em>Face Center</em>. Citez aussi <em>Face</em> : l'objet se pose sur une surface. Ils l'essaieront seuls, et le câble du chapitre 2 s'en servira.
+</li>
+<li><em>Articulation_bas</em> : <code>Maj + A &gt; Mesh &gt; UV Sphere</code>, F9 : <em>Segments</em> 16, <em>Ring Count</em> 8, <em>Radius</em> <code>15mm</code>. <code>G</code>, puis <code>Ctrl</code> en survolant le bout inférieur de <em>Bras_bas</em> : la sphère se centre sur la face du bout.
+</li>
+<li>Une astuce : <code>Maj + clic</code> dans <em>Snap Target</em> ajoute une cible ; <code>B</code> pendant le geste choisit le point de base.
+</li>
+<li><strong>Ailleurs :</strong> poser une roue sur son moyeu, un siège sur son rail, un feu dans son logement.
+</li>
+</ol>
+<p>Ils font :</p>
+<ul>
+<li><strong>en guidé :</strong> <em>Articulation_bas</em> (<em>Radius</em> <code>15mm</code>), puis <em>Articulation_milieu</em> (<em>Radius</em> <code>14mm</code>), au bout supérieur de <em>Bras_bas</em> ;
+</li>
+<li><strong>seuls :</strong> <em>Articulation_haut</em> (<em>Radius</em> <code>12mm</code>), au bout supérieur de <em>Bras_haut</em>. La tête doit la toucher, sinon <code>G Z Z</code>. Un gros plan sur une articulation rappelle <em>Clip Start</em> ;
+</li>
+<li><strong>seuls, une pose sur une surface (1 min) :</strong> vue de dessus (<code>7</code>), <em>Snap Target</em> sur <em>Face</em>, <em>Snap Base</em> sur <em>Closest</em>. <em>Interrupteur</em> sélectionné, <code>G</code>, puis <code>Ctrl</code> au-dessus du socle : l'interrupteur s'y pose.
+</li>
+</ul>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le second quiz de la section 3, la touche <code>Ctrl</code>.</p>
+<p><strong>Mesurer (démo 3 min, guidé 5 min).</strong> Vous montrez, d'après § 3 « Mesurer » (figures 1.22 et 1.23) :</p>
+<ol>
+<li>En vue de face, l'outil <em>Measure</em> de la barre d'outils : cliquez-glissez d'un bord à l'autre du dessus du socle en maintenant <code>Ctrl</code>. La règle affiche 180 mm.
+</li>
+<li>En Mode Édition, le menu <em>Mesh Edit Mode</em>, à droite d'<em>Overlays</em> : <em>Measurement &gt; Edge Length</em>.
+</li>
+</ol>
+<p>Ils font : le diamètre du socle (180 mm) ; la hauteur totale, du dessous du socle au sommet de l'articulation du haut (environ 442 mm) ; puis <em>Bras_bas</em> en Mode Édition, <em>Edge Length</em> coché, une arête verticale sélectionnée : 260 mm.</p>
+<p><strong>Point de contrôle :</strong> les trois articulations coiffent les bouts des bras ; l'interrupteur repose sur le socle ; la règle donne 180 mm et environ 440 mm. <code>Ctrl + S</code>.</p>
+<p><strong>Corrigé :</strong> dans <em>Variante A</em>, les trois articulations, aux bouts exacts des bras : (-40, 0, 40), (30, 0, 290) et (200, 0, 430) mm. <em>Interrupteur_A</em> repose sur le socle, son centre à 28 mm de haut.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>La sphère se pose sur un sommet ou sur un bord : <em>Snap Target</em> est resté sur <em>Vertex</em>, le réglage du fichier livré, ou <em>Snap Base</em> sur <em>Closest</em>.
+</li>
+<li>L'interrupteur s'enfonce à moitié dans le socle : <em>Snap Base</em> est resté sur <em>Center</em>. Passez sur <em>Closest</em>.
+</li>
+<li>Tout s'accroche, même sans <code>Ctrl</code> : l'aimant de l'en-tête est allumé. <code>Maj + Tab</code>.
+</li>
+<li>Une règle qui tombe dans le vide : <code>Ctrl</code> a été relâché trop tôt.
+</li>
+<li>Aucune longueur ne s'affiche : <em>Edge Length</em> ne montre que les arêtes sélectionnées, en Mode Édition.
+</li>
+</ul>
+<h3>2:35 · Pause (10 min)</h3>
+<h3>2:45 · Éditer avec précision : biseau et extrusions (15 min)</h3>
+<p>Le travail se fait sur une <strong>pièce d'essai</strong>, pas sur la lampe. L'encart <em>IMPORTANT</em> de l'application le dit : un biseau posé trop tôt alourdit chaque correction. « Ces outils serviront dès que les proportions seront arrêtées. »</p>
+<p><strong>Préparation (guidé, 1 min) :</strong> <em>Socle</em> sélectionné, <code>Maj + D</code>, <code>X</code>, <code>=</code>, <code>-400mm</code>, Entrée. Puis <code>/</code> : la copie seule, en vue locale. <code>Tab</code>.</p>
+<p><strong>Le biseau mesuré (démo 3 min, guidé 2 min, autonomie 2 min).</strong> Vous montrez, d'après § 3 « Des biseaux mesurés » (figure 1.21) : mode arête (<code>2</code>), <code>Alt + clic</code> sur l'arête du haut, <code>Ctrl + B</code>, un petit mouvement de souris, clic. Puis F9 : <em>Width</em> <code>4mm</code> ; <em>Segments</em> 1, un chanfrein, puis 4, un congé ; <em>Profile Shape</em> 0,5, un arc de cercle ; <em>Clamp Overlap</em>. Une phrase sur l'encart <em>WARNING</em> : sur une échelle non appliquée, le biseau est irrégulier. Citez <code>Ctrl + Maj + B</code>, le biseau d'un sommet.</p>
+<p>Ils font : en guidé, le même biseau, puis le passage d'un chanfrein à un congé dans F9 ; seuls, un congé de <code>2mm</code> sur l'arête du dessous.</p>
+<p><strong>Les extrusions (démo 2 min, guidé 3 min, autonomie 1 min).</strong> Vous montrez, d'après § 3 « Des extrusions adaptées à la forme » (figure 1.20), le menu <code>Alt + E</code> :</p>
+<ul>
+<li><em>Extrude Faces Along Normals</em> sur l'anneau de faces du flanc : un bandeau ;
+</li>
+<li><em>Extrude Individual Faces</em> : citée, ce sont les accoudoirs des sièges de l'initiation ;
+</li>
+<li><em>Extrude Manifold</em>, vers l'intérieur : une encoche pour la sortie du câble, sans faces parasites.
+</li>
+</ul>
+<p>Ils font :</p>
+<ul>
+<li><strong>en guidé, l'encoche :</strong> mode face (<code>3</code>), quatre faces du flanc arrière, <code>Alt + E &gt; Extrude Manifold</code>, <code>=</code>, <code>-5mm</code>, Entrée ;
+</li>
+<li><strong>seuls, le bandeau :</strong> toujours en mode face, <code>Alt + clic</code> sur une arête verticale du flanc, <code>Alt + E &gt; Extrude Faces Along Normals</code>, <code>=</code>, <code>2mm</code>, Entrée.
+</li>
+</ul>
+<p><strong>Survol (1 min, démo seule) :</strong> l'édition proportionnelle (<code>O</code>, figure 1.19), <code>G G</code> et <code>Alt + S</code>. Ils sont dans l'application et dans les défis.</p>
+<p><strong>Pour finir :</strong> <code>Tab</code>, <code>/</code>, puis <code>X</code> : la pièce d'essai est supprimée, pour qu'elle ne parte pas dans les variantes.</p>
+<p><strong>Point de contrôle :</strong> avant la suppression, F9 affiche le dernier réglage ; la pièce montre son congé de 4 mm, son encoche de 5 mm et son bandeau.</p>
+<p><strong>Corrigé :</strong> pas de corrigé dans le fichier. Le résultat se lit dans F9, et la figure 1.21 montre le biseau de 4 mm à 4 segments.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Un biseau qui part de travers ou s'arrête net : <em>Clamp Overlap</em> le limite, ou l'arête choisie n'est pas la boucle entière.
+</li>
+<li>Une encoche qui ressort au lieu de rentrer : la valeur était positive. <code>Ctrl + Z</code>, puis <code>-5mm</code>.
+</li>
+<li>Une extrusion de plusieurs mètres : le <code>=</code> a été oublié, dans une scène en mètres. <code>Ctrl + Z</code>.
+</li>
+<li>La copie a été faite en Mode Édition : <code>Maj + D</code> a dupliqué la géométrie dans le socle lui-même. <code>Ctrl + Z</code>, <code>Tab</code>, et recommencez en Mode Objet.
+</li>
+</ul>
+<h3>3:00 · Variantes et silhouette (15 min)</h3>
+<p>Retour à la section 2 : « Comparer des variantes » et « Juger la silhouette » (figures 1.13 à 1.15).</p>
+<p><strong><em>Duplicate Collection</em> (démo 3 min, guidé 6 min).</strong> Vous montrez :</p>
+<ol>
+<li>Clic droit sur la collection <em>Lampe</em> dans l'Outliner, <em>Duplicate Collection</em>. La copie s'appelle <em>Lampe.001</em>, ses pièces <em>Socle.001</em>, <em>Bras_bas.001</em>… Renommez la collection <em>Lampe_B</em>.
+</li>
+<li>Clic droit sur <em>Lampe_B</em> &gt; <em>Select Objects</em>, puis <code>G X</code>, <code>=</code>, <code>550mm</code>, Entrée.
+</li>
+<li>Une variante : <em>Bras_haut.001</em> plus long. <em>Dimensions</em> Z <code>300mm</code>, puis <code>G Z Z</code>, <code>=</code>, <code>40mm</code>, Entrée : le bas du bras revient sur son articulation. <code>Ctrl + A &gt; Scale</code>.
+</li>
+<li><em>Articulation_haut.001</em> : <code>G</code> avec <code>Ctrl</code> sur le nouveau bout du bras (<em>Face Center</em>, <em>Center</em>). <em>Tête.001</em> : <code>G</code> pour la rapprocher, puis <code>G Z Z</code>.
+</li>
+<li><strong>Ailleurs :</strong> trois pistes de calandre, de nez de train ou de winglet, côte à côte.
+</li>
+</ol>
+<p>Ils font, en guidé : la même variante B.</p>
+<p><strong>La silhouette (démo 2 min, guidé 3 min).</strong> Vous montrez : menu <em>Viewport Shading</em>, <em>Lighting</em> sur <em>Flat</em>, <em>Color</em> sur <em>Custom</em> avec du noir, <em>Background</em> sur <em>Custom</em> avec un fond clair. Les deux lampes deviennent des ombres chinoises. Vues <code>1</code>, <code>3</code> et <code>7</code>. Ils font le même réglage, puis les trois vues : « Laquelle se lit le mieux ? »</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le quiz de la section 2, la silhouette.</p>
+<p><strong>Point de contrôle :</strong> deux lampes côte à côte, en ombres chinoises ; la variante B a un bras plus long. <code>Ctrl + S</code>.</p>
+<p><strong>Corrigé :</strong> <em>Variante B</em>, qui allonge elle aussi le bras supérieur, à 300 mm et un peu plus incliné.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li><em>Duplicate Linked</em> choisi au lieu de <em>Duplicate Collection</em> : changer le bras de B change aussi celui de la lampe. <code>Ctrl + Z</code>.
+</li>
+<li>Le bras de B ne touche plus son articulation du bas : <code>G Z Z</code> a été oublié, ou fait dans le mauvais sens.
+</li>
+<li>Des objets restés à la place de l'original : ils n'étaient pas sélectionnés, par exemple parce qu'ils étaient masqués avec <code>H</code>.
+</li>
+<li>L'articulation se pose sur le bord : <em>Snap Target</em> est resté sur <em>Face</em> depuis la pose de l'interrupteur. Revenez à <em>Face Center</em> et <em>Center</em>.
+</li>
+</ul>
+<h3>3:15 · Atelier · Trois pistes pour une revue de concept (25 min)</h3>
+<p>La fiche complète est plus bas. Le lancement dure 2 minutes, l'autonomie 20 minutes et la revue 3 minutes.</p>
+<h3>3:40 · Galerie, bilan et passerelle (10 min)</h3>
+<ul>
+<li><strong>Galerie (4 min) :</strong> chaque écran montre ses trois pistes en ombres chinoises, en vue de face. Tout le monde fait le tour des postes.
+</li>
+<li><strong>Trois questions (3 min) :</strong>
+<ul>
+<li>« Pendant un déplacement, comment taper 25 mm, quelle que soit l'unité affichée ? »</li>
+<li>« Comment avancer la tête dans son propre axe ? »</li>
+<li>« Quel réglage transforme vos lampes en ombres chinoises ? »</li>
+</ul>
+</li>
+<li><strong>Passerelle (2 min) :</strong> « Au chapitre 2, chaque volume devient une pièce propre : un bras à deux tiges, un abat-jour en coque, une grille d'aération, un câble. Votre blocage sert de gabarit. Si votre fichier vous manque, un fichier de départ vous attend. »
+</li>
+<li><strong>Dernier contrôle (1 min) :</strong> chacun a enregistré <code>lampe_blocage_v001.blend</code>, moteur EEVEE.
+</li>
+</ul>
+<div class="pagebreak"></div>
+<h2>Atelier · Trois pistes pour une revue de concept</h2>
+<p><strong>Fichier :</strong> <code>lampe_blocage_v001.blend</code> · <strong>Durée :</strong> 25 min · <strong>De 3:15 à 3:40</strong></p>
+<p><strong>Situation :</strong> « Revue de concept demain matin. Présentez trois pistes de lampe, en silhouette, et défendez celle que vous retenez. »</p>
+<p><strong>Objectif :</strong> décliner une troisième piste, comparer les trois en ombres chinoises, puis retenir la meilleure et la contrôler.</p>
+<p><strong>Pourquoi il fonctionne :</strong></p>
+<ul>
+<li>Aucune notion nouvelle : l'atelier réinvestit les trois sections, dans l'ordre de la méthode en quatre temps.
+</li>
+<li>La silhouette rend la comparaison objective : sans couleur ni détail, seules les proportions parlent.
+</li>
+<li>Le choix argumenté est un vrai geste de designer. Il prépare la revue de design de l'atelier du chapitre 4.
+</li>
+</ul>
+<p><strong>Le socle, en 5 étapes :</strong></p>
+<table><thead><tr><th>Étape</th><th>Ce qu'il faut faire</th><th>Gestes réinvestis</th></tr></thead><tbody>
+<tr><td>1</td><td><em>Duplicate Collection</em> de <em>Lampe</em>, renommée <em>Lampe_C</em>, puis <code>G X = 1100mm</code></td><td><em>Duplicate Collection</em>, <em>Select Objects</em>, saisie avec unité</td></tr>
+<tr><td>2</td><td>Une autre piste. Exemple : <em>Tête.002</em> supprimée, puis un cylindre de 24 côtés, <em>Radius</em> <code>50mm</code>, <em>Depth</em> <code>120mm</code>, <code>R Y -30</code>, posé contre l'articulation et avancé avec <code>G Z Z</code></td><td>Primitives et F9, orientation <em>Local</em>, aimantation</td></tr>
+<tr><td>3</td><td>Les trois pistes comparées en ombres chinoises, en vues de face, de droite et de dessus</td><td>Réglage silhouette, Quad View</td></tr>
+<tr><td>4</td><td>La piste retenue contrôlée : diamètre du socle, hauteur totale</td><td><em>Measure</em></td></tr>
+<tr><td>5</td><td>La piste retenue visible, les deux autres masquées (œil) ; l'échelle appliquée sur les pièces redimensionnées ; <code>Ctrl + S</code></td><td>Outliner, <code>Ctrl + A &gt; Scale</code></td></tr>
+</tbody></table>
+<p><strong>Déroulé :</strong></p>
+<ol>
+<li><strong>Lancement (2 min).</strong> Ouvrez l'œil de <em>Variante C</em> : une tête cylindrique. « La vôtre peut être différente : socle carré, tête plus large, bras plus court. » Lancez le minuteur.
+</li>
+<li><strong>Autonomie (20 min).</strong> Chacun suit l'étape 12 des consignes. Annoncez les 5 dernières minutes : c'est le moment de choisir et d'enregistrer.
+</li>
+<li><strong>Revue (3 min).</strong> Deux volontaires projettent leurs trois silhouettes. « Laquelle retenez-vous, et pourquoi ? »
+</li>
+</ol>
+<p><strong>Paliers :</strong></p>
+<ul>
+<li><strong>★ :</strong> renommer les pièces des variantes sans <code>.001</code>, par exemple <em>Socle_B</em> ; une copie de l'encombrement (<code>Alt + H</code>, <code>Maj + D</code>, <code>X = 550mm</code>) pour voir si la variante B le dépasse ; une quatrième piste.
+</li>
+<li><strong>★★ :</strong> les défis de la partie « Pour ceux qui avancent vite ».
+</li>
+</ul>
+<p><strong>Points d'observation :</strong></p>
+<ul>
+<li>Une troisième piste identique à la deuxième : la copie a été faite à partir de <em>Lampe_B</em>. C'est possible, mais le décalage est alors de 550 mm depuis B.
+</li>
+<li>Une silhouette qui ne dit rien : la vue est restée en perspective. Passez en orthographique.
+</li>
+<li>Un apprenant qui modifie <em>Variante C</em> au lieu de sa propre lampe : <code>Ctrl + Z</code>, et refermez l'œil des variantes du corrigé.
+</li>
+</ul>
+<p><strong>Corrigé :</strong> les collections masquées <em>Variante A</em>, <em>B</em> et <em>C</em>. <em>Variante C</em> remplace la tête conique par une tête cylindrique de 100 mm de diamètre et 120 mm de long.</p>
+<p><strong>Ce que le chapitre 2 attend :</strong> <code>lampe_blocage_v001.blend</code>, moteur EEVEE, la piste retenue visible. Le chapitre 2 part toutefois de son propre fichier de départ, dont le gabarit est la <em>Variante A</em> : un blocage inachevé ne bloque personne.</p>
+<h2>Gérer l'hétérogénéité</h2>
+<h3>Le parcours « première fois »</h3>
+<ul>
+<li>Les binômes et les copilotes de l'initiation restent en place.
+</li>
+<li>Les consignes donnent chaque geste au millimètre, unité comprise. Les valeurs restent indicatives : chacun peut les adapter à son concept.
+</li>
+<li>Chacun garde l'unité d'affichage qu'il préfère : les consignes marchent avec les deux.
+</li>
+<li>Le socle de chaque séquence suffit : il couvre tous les points du programme.
+</li>
+<li>À chaque point de contrôle, passez d'abord par les postes des débutants.
+</li>
+<li><strong>Un apprenant très en retard</strong> ouvre l'œil de <em>Variante A</em>, fait <em>Duplicate Collection</em>, renomme la copie <em>Lampe</em>, puis referme l'œil de <em>Variante A</em>. Il reprend avec le groupe à la séquence suivante, et le corrigé reste intact.
+</li>
+</ul>
+<h3>Pour ceux qui avancent vite</h3>
+<ul>
+<li>Les paliers ★ de l'atelier.
+</li>
+<li><strong>Un socle bombé (★★) :</strong> sur une variante, <code>I</code> trois fois sur le dessus du socle, puis la face centrale, <code>O</code> et <code>G Z = 8mm</code> : l'édition proportionnelle galbe le dessus. La molette règle l'influence, <code>Maj + O</code> le profil.
+</li>
+<li><strong>Une coupe qui glisse (★★) :</strong> <code>G G</code> sur un anneau du socle bombé ; <code>Alt + S</code> sur les faces de la tête pour la gonfler.
+</li>
+<li><strong>Un socle carré aux coins arrondis (★★) :</strong> un cube à 180 × 180 × 25 mm, l'échelle appliquée, puis <code>Ctrl + Maj + B</code> sur les sommets du dessus.
+</li>
+<li><strong>Caler un croquis à l'œil (★★) :</strong> replacer le croquis de profil sans les valeurs, en ajustant <em>Size</em> jusqu'à ce que le socle dessiné mesure 180 mm, contrôlé avec l'outil <em>Measure</em>.
+</li>
+<li><strong>Plusieurs cibles d'aimantation (★) :</strong> <em>Vertex</em> et <em>Face Center</em> ensemble (<code>Maj + clic</code>), et <code>B</code> pendant le geste.
+</li>
+<li><strong>Un objet de leur secteur (★★) :</strong> la même méthode en quatre temps sur un rétroviseur, une liseuse de cabine ou une poignée de maintien de tram. Pas de corrigé : vous le validez à l'écran.
+</li>
+<li>Le rôle de copilote, comme à l'initiation.
+</li>
+</ul>
+<h2>Animer : ce qui change au chapitre 1</h2>
+<p>Les conseils de l'initiation restent valables : « Regardez, puis à vous », les touches dites à voix haute, les post-it vert et rose, la règle des 3 minutes, la souris qu'on ne prend pas. Ce chapitre en ajoute six :</p>
+<ol>
+<li><strong>Dites l'unité à voix haute,</strong> et le <code>=</code> avec : « G, Z, égal, vingt-cinq millimètres ». Sur votre poste en configuration d'usine, le <code>=</code> est toujours nécessaire.
+</li>
+<li><strong>Présentez les options comme des options.</strong> La première heure montre des réglages ; personne n'est obligé de les garder. Seule la saisie de l'unité est exigée.
+</li>
+<li><strong>Le corrigé se compare, il ne se copie pas.</strong> Rappelez-le à chaque ouverture d'une variante, et faites refermer l'œil ensuite.
+</li>
+<li><strong>Faites tourner la vue avant de valider.</strong> Une pièce juste de face peut être décalée en profondeur : deux vues orthographiques, toujours.
+</li>
+<li><strong>Parlez métier :</strong> encombrement, proportions, silhouette, piste retenue. Le blocage est une décision de designer, pas un exercice de modélisation.
+</li>
+<li><strong>Tenez le rythme de la première heure.</strong> La section 1 compte beaucoup de notions, mais chacune tient en un réglage : une case, un champ ou un menu. La charge réelle vient en section 3 : ne prenez pas de retard avant.
+</li>
+</ol>
+<h2>Si vous prenez du retard</h2>
+<p>Raccourcissez dans cet ordre :</p>
+<table><thead><tr><th>Ordre</th><th>Ce que l'on coupe</th><th>Ce que l'on garde</th></tr></thead><tbody>
+<tr><td>D'abord</td><td><em>À votre main</em> : démo de 2 minutes, sans essai ; l'option <em>Length</em> montrée sans essai</td><td>La mention des options</td></tr>
+<tr><td>Ensuite</td><td>Images de référence : réglages sur <em>Croquis_face</em> seulement, sans replacer le croquis de profil</td><td>L'onglet <em>Object Data</em> d'une image, dont le chapitre 2 se sert</td></tr>
+<tr><td>Ensuite</td><td>L'encombrement : vous le montrez, les apprenants ne le font pas</td><td><em>Dimensions</em> et <code>H</code>, repris à la variante B</td></tr>
+<tr><td>Ensuite</td><td>Les extrusions : démo seule ; le biseau reste en guidé</td><td>Le biseau mesuré, point du programme</td></tr>
+<tr><td>En dernier</td><td>L'atelier : deux pistes au lieu de trois (A et B), comparées en silhouette</td><td>Le choix de la piste et l'enregistrement</td></tr>
+</tbody></table>
+<p><strong>Ce qui ne saute jamais,</strong> car les chapitres 2 à 4 s'en servent : la saisie d'une valeur avec son unité ; la vérification du moteur et l'enregistrement sous <code>lampe_blocage_v001.blend</code> ; le menu <em>Viewport Shading</em> ; <em>Clip Start</em> ; la vue locale ; l'orientation <em>Local</em> et <code>G Z Z</code> ; l'aimantation, avec la pose sur une surface (<em>Face</em>) ; la mesure ; <em>Duplicate Collection</em>.</p>
+<h2>Si vous êtes en avance</h2>
+<ul>
+<li><strong>L'atelier s'enrichit :</strong> les paliers ★, puis les défis ★★ de « Pour ceux qui avancent vite », en commençant par le socle bombé.
+</li>
+<li><strong>La revue s'allonge :</strong> chacun présente sa piste retenue en une minute, au lieu de deux volontaires.
+</li>
+</ul>
+<div class="pagebreak"></div>
+<h2>Annexe · Les consignes à projeter ou à imprimer</h2>
+<p>Le fichier livré n'a pas de texte LISEZ-MOI : ces consignes en tiennent lieu. Chaque valeur porte son unité : elles marchent avec un affichage en mètres comme en millimètres. Les valeurs sont indicatives : chacun peut les adapter à son concept.</p>
+<blockquote><p><strong>La règle :</strong> tapez toujours l'unité. Dans un champ : <code>25mm</code>. Pendant un geste : <code>=</code> d'abord, puis la valeur (<code>G Z = 25mm</code>) ; sans <code>=</code>, l'unité est ignorée. <strong>Le corrigé :</strong> collections <em>Variante A</em>, <em>B</em> et <em>C</em>, œil fermé. On compare, on ne copie pas.</p></blockquote>
+<h3>1 · Les cotes (scène d'usine, non enregistrée)</h3>
+<ol>
+<li><code>N &gt; Item &gt; Dimensions</code> : <code>180mm</code>, <code>180mm</code>, <code>25mm</code>.
+</li>
+<li><code>G Z = 12.5mm</code>, Entrée.
+</li>
+<li><code>Ctrl + A &gt; Scale</code>.
+</li>
+<li>Option : <em>Scene &gt; Units &gt; Length</em> : <em>Millimeters</em>.
+</li>
+</ol>
+<p>Contrôle : 180 × 180 × 25 mm ; <em>Location</em> Z 12,5 mm ; <em>Scale</em> 1.</p>
+<h3>2 · Le fichier</h3>
+<ol>
+<li><em>File &gt; Open</em> : <code>PRC02_ch1_blocage_lampe.blend</code> (<em>Don't Save</em>).
+</li>
+<li><em>File &gt; Save As</em> : <code>lampe_blocage_v001.blend</code>. Puis <code>Ctrl + S</code> à chaque contrôle.
+</li>
+<li><em>Render &gt; Render Engine</em> : vérifiez EEVEE, choisissez-le si besoin.
+</li>
+</ol>
+<h3>3 · L'affichage (œil de <em>Variante A</em> ouvert, puis refermé)</h3>
+<ol>
+<li><em>Viewport Shading</em> : <em>Color</em> <em>Random</em>, <em>Cavity</em>. Essayez <em>MatCap</em>.
+</li>
+<li>En perspective (<code>5</code>) : <code>N &gt; View &gt; Clip Start</code> <code>10mm</code>, puis <code>1mm</code>.
+</li>
+<li><code>Ctrl + Alt + Q</code>, puis de nouveau <code>Ctrl + Alt + Q</code>.
+</li>
+</ol>
+<h3>4 · Le croquis de profil</h3>
+<ol>
+<li><em>Croquis_face</em> : <em>Object Data</em> &gt; <em>Opacity</em>, <em>Depth</em>, <em>Show In</em>. Essayez.
+</li>
+<li>Masquez <em>Croquis_profil</em> (œil). Vue de droite (<code>3</code>).
+</li>
+<li><em>Add &gt; Image &gt; Reference</em> : <code>croquis_lampe_profil.png</code>.
+</li>
+<li><em>Object Data</em> : <em>Size</em> <code>560mm</code> ; <em>Opacity</em> 0,5 ; <em>Depth</em> <em>Back</em> ; <em>Show In</em> : <em>Perspective</em> décoché, <em>Only Axis Aligned</em> coché.
+</li>
+<li><code>N &gt; Item &gt; Location</code> : X <code>-300mm</code>, Z <code>222mm</code>.
+</li>
+<li>Rouvrez <em>Croquis_profil</em> : les deux coïncident. Supprimez le vôtre (<code>X</code>).
+</li>
+</ol>
+<h3>5 · À votre main (options)</h3>
+<ul>
+<li>Clic droit &gt; <em>Add to Quick Favorites</em>, puis <code>Q</code>.
+</li>
+<li><em>Edit &gt; Preferences &gt; Navigation</em> ; <em>Input &gt; Default to Advanced Numeric Input</em>.
+</li>
+</ul>
+<h3>6 · L'encombrement</h3>
+<ol>
+<li><code>Maj + A &gt; Mesh &gt; Cube</code>. Renommez-le <em>Encombrement</em>.
+</li>
+<li><em>Dimensions</em> : <code>420mm</code>, <code>180mm</code>, <code>450mm</code>. <em>Location</em> : X <code>120mm</code>, Z <code>225mm</code>.
+</li>
+<li>Vues <code>1</code> et <code>3</code> : le croquis tient dedans. <code>H</code> pour le masquer.
+</li>
+</ol>
+<h3>7 · Les grands volumes</h3>
+<ol>
+<li>Outliner : clic droit sur <em>Scene Collection</em> &gt; <em>New Collection</em>. Renommez-la <em>Lampe</em>, puis cliquez-la : elle reçoit les nouveaux objets.
+</li>
+<li><em>Socle</em> : <em>Cylinder</em>, F9 : <em>Vertices</em> 32, <em>Radius</em> <code>90mm</code>, <em>Depth</em> <code>25mm</code>. <code>G Z = 12.5mm</code>.
+</li>
+<li><em>Bras_bas</em> : <em>Cylinder</em>, F9 : <em>Vertices</em> 16, <em>Radius</em> <code>8mm</code>, <em>Depth</em> <code>260mm</code>. <code>R Y 15.6</code>, puis <code>G</code> sur le croquis (repère : -5, 0, 165 mm).
+</li>
+<li>À vous : <em>Interrupteur</em> : <em>Cylinder</em>, <em>Vertices</em> 16, <em>Radius</em> <code>8mm</code>, <em>Depth</em> <code>6mm</code>, <em>Location</em> <code>55mm</code>, <code>0</code>, <code>28mm</code>.
+</li>
+<li>À vous : <em>Bras_haut</em> : <em>Cylinder</em>, <em>Vertices</em> 16, <em>Radius</em> <code>7mm</code>, <em>Depth</em> <code>220mm</code>, <code>R Y 50.5</code> (repère : 115, 0, 360 mm).
+</li>
+<li><code>/</code> du pavé numérique : vérifiez une pièce seule, puis <code>/</code> pour revenir.
+</li>
+</ol>
+<p>Contrôle : en vue de face (<code>1</code>), les volumes suivent le croquis.</p>
+<h3>8 · La tête (orientation <em>Local</em>)</h3>
+<ol>
+<li><em>Cone</em>, F9 : <em>Vertices</em> 24, <em>Radius 1</em> <code>60mm</code>, <em>Radius 2</em> <code>22mm</code>, <em>Depth</em> <code>110mm</code>. <code>R Y -30</code>.
+</li>
+<li>Vue de face : <code>G</code> près du haut de <em>Bras_haut</em>.
+</li>
+<li><code>G Z Z</code> : avancez-la dans son axe jusqu'au bras (repère : 233,5, 0, 372 mm).
+</li>
+</ol>
+<h3>9 · Les articulations (aimantation) et la mesure</h3>
+<ol>
+<li>Menu de l'aimant : <em>Snap Base</em> <em>Center</em> ; <em>Snap Target</em> <em>Face Center</em>.
+</li>
+<li><em>UV Sphere</em>, F9 : <em>Segments</em> 16, <em>Ring Count</em> 8, <em>Radius</em> <code>15mm</code>. <code>G</code>, puis <code>Ctrl</code> au-dessus du bout bas de <em>Bras_bas</em>. Renommez-la <em>Articulation_bas</em>.
+</li>
+<li><em>Articulation_milieu</em> (<em>Radius</em> <code>14mm</code>) : bout haut de <em>Bras_bas</em>.
+</li>
+<li>À vous : <em>Articulation_haut</em> (<em>Radius</em> <code>12mm</code>) : bout haut de <em>Bras_haut</em>.
+</li>
+<li>À vous : vue de dessus (<code>7</code>), <em>Snap Target</em> <em>Face</em>, <em>Snap Base</em> <em>Closest</em>. <em>Interrupteur</em> : <code>G</code>, puis <code>Ctrl</code> au-dessus du socle : il se pose dessus.
+</li>
+<li>Outil <em>Measure</em>, avec <code>Ctrl</code> : socle 180 mm ; hauteur totale environ 442 mm.
+</li>
+</ol>
+<p>Contrôle : les articulations coiffent les bouts des bras.</p>
+<h3>10 · Biseau et extrusions (pièce d'essai, supprimée à la fin)</h3>
+<ol>
+<li><em>Socle</em> : <code>Maj + D</code>, <code>X</code>, <code>= -400mm</code>, Entrée. <code>/</code>, puis <code>Tab</code>.
+</li>
+<li>Mode arête (<code>2</code>), <code>Alt + clic</code> sur l'arête du haut, <code>Ctrl + B</code>, clic. F9 : <em>Width</em> <code>4mm</code> ; <em>Segments</em> 1, puis 4 ; <em>Profile</em> 0,5.
+</li>
+<li>À vous : un congé de <code>2mm</code> sur l'arête du bas (<em>Width</em> dans F9).
+</li>
+<li>Mode face (<code>3</code>), 4 faces du flanc arrière : <code>Alt + E &gt; Extrude Manifold</code>, <code>= -5mm</code>, Entrée.
+</li>
+<li>À vous : <code>Alt + clic</code> sur une arête verticale du flanc, <code>Alt + E &gt; Extrude Faces Along Normals</code>, <code>= 2mm</code>, Entrée.
+</li>
+<li><code>Tab</code>, <code>/</code>, puis <code>X</code> : supprimez la pièce d'essai.
+</li>
+</ol>
+<h3>11 · La variante B et la silhouette</h3>
+<ol>
+<li>Clic droit sur <em>Lampe</em> &gt; <em>Duplicate Collection</em>. Renommez-la <em>Lampe_B</em>.
+</li>
+<li>Clic droit sur <em>Lampe_B</em> &gt; <em>Select Objects</em>. <code>G X = 550mm</code>.
+</li>
+<li><em>Bras_haut.001</em> : <em>Dimensions</em> Z <code>300mm</code>, puis <code>G Z Z = 40mm</code>. <code>Ctrl + A &gt; Scale</code>.
+</li>
+<li><em>Snap Target</em> <em>Face Center</em>, <em>Snap Base</em> <em>Center</em>. <em>Articulation_haut.001</em> : <code>G</code> + <code>Ctrl</code> sur le nouveau bout. <em>Tête.001</em> : <code>G</code>, puis <code>G Z Z</code>.
+</li>
+<li><em>Viewport Shading</em> : <em>Lighting</em> <em>Flat</em> ; <em>Color</em> <em>Custom</em>, noir ; <em>Background</em> <em>Custom</em>, clair. Vues <code>1</code>, <code>3</code> et <code>7</code>.
+</li>
+</ol>
+<h3>12 · Atelier</h3>
+<ol>
+<li><em>Duplicate Collection</em> de <em>Lampe</em> : <em>Lampe_C</em>. <em>Select Objects</em>, <code>G X = 1100mm</code>.
+</li>
+<li>Une autre piste. Exemple : supprimez <em>Tête.002</em>, puis <em>Cylinder</em>, <em>Vertices</em> 24, <em>Radius</em> <code>50mm</code>, <em>Depth</em> <code>120mm</code>, <code>R Y -30</code>, <code>G</code> et <code>G Z Z</code>.
+</li>
+<li>Comparez les trois silhouettes (vues <code>1</code>, <code>3</code>, <code>7</code> ou Quad View).
+</li>
+<li>Mesurez la piste retenue (<em>Measure</em>).
+</li>
+<li>Laissez-la visible, masquez les deux autres. <code>Ctrl + S</code>.
+</li>
+</ol>
+<p>★ Renommez les pièces sans <code>.001</code> ; copiez l'<em>Encombrement</em> (<code>Alt + H</code>, <code>Maj + D</code>, <code>X = 550mm</code>) pour voir si la variante B le dépasse ; une quatrième piste. ★★ Demandez un défi au formateur : un socle bombé, un socle carré aux coins arrondis, un croquis calé à l'œil…</p>
+<hr>
+<p>Le fichier <code>PRC02_ch1_blocage_lampe.blend</code> est livré tel quel ; son passage sur le moteur EEVEE est prévu avec les corrections de fin de projet. Ce document se convertit en PDF avec <code>tool/deroule_initiation/export_pdf.ps1 -Source _resources\PRC02-deroule-chap1.md</code>.</p>
+</body>
+</html>

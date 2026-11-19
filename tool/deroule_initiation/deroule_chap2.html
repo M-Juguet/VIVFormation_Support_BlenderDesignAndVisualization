@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Chapitre 2 · Modélisation non destructive : déroulé formateur</title>
+<!-- Fichier généré par tool/deroule_initiation/md_to_html.py depuis _resources/PRC02-deroule-chap2.md : ne pas modifier à la main. -->
+<link rel="stylesheet" href="../../viv-formation-design-system/styles.css">
+<style>
+@page { size: A4 portrait; margin: 14mm 15mm 16mm; }
+@page { @bottom-right { content: counter(page) " / " counter(pages); font: 9pt 'Noto Sans', sans-serif; color: #8a7f86; } }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; color: var(--ink);
+       font-family: var(--font-sans); font-size: 10pt; line-height: 1.45; }
+.top-line { height: 5px; background: var(--gradient-brand); margin: 0 0 14px; border-radius: 3px; }
+header.doc { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+             padding-bottom: 12px; border-bottom: 1px solid var(--border); margin-bottom: 14px; }
+header.doc img { height: 30px; width: auto; display: block; margin-bottom: 4px; }
+.overline { color: var(--ink-muted); margin: 0 0 4px; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase; }
+h1 { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 25pt; line-height: 1.15; margin: 0; }
+.subtitle { margin: 4px 0 0; font-size: 9.5pt; color: var(--ink-muted); }
+h2 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 15pt; line-height: 1.25;
+     color: var(--accent-deep); margin: 20px 0 8px; padding-top: 8px; border-top: 2px solid var(--brand-rose);
+     break-after: avoid; }
+h3 { font-family: var(--font-sans); font-style: italic; font-weight: 700; font-size: 11.5pt; line-height: 1.3;
+     margin: 14px 0 6px; break-after: avoid; }
+p { margin: 0 0 7px; }
+ul, ol { margin: 0 0 8px; padding-left: 20px; }
+li { margin: 0 0 3px; }
+li > ul, li > ol { margin: 3px 0 0; }
+ul.checks { list-style: none; padding-left: 4px; }
+ul.checks li::before { content: "☐"; margin-right: 7px; color: var(--accent-deep); }
+strong { font-weight: 700; }
+code { font-family: var(--font-mono); font-size: 8.6pt; background: var(--surface-code); border: 1px solid var(--border);
+       border-radius: 4px; padding: 0 4px; white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; margin: 4px 0 10px; font-size: 8.8pt; line-height: 1.35; }
+th { text-align: left; font-weight: 700; background: var(--surface-brand); padding: 5px 7px; border-bottom: 1px solid var(--border-strong); }
+td { padding: 5px 7px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr { break-inside: avoid; }
+td code { white-space: normal; }
+blockquote { margin: 8px 0 10px; padding: 8px 12px; background: var(--surface-sunken); border-left: 3px solid var(--action);
+             border-radius: 0 8px 8px 0; break-inside: avoid; }
+blockquote p { margin: 0; }
+hr { border: 0; border-top: 1px solid var(--border); margin: 18px 0 8px; }
+hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
+.pagebreak { break-before: page; }
+.pagebreak + h2 { border-top: 0; margin-top: 0; }
+</style>
+</head>
+<body>
+<div class="top-line"></div><header class="doc"><div>
+<p class="overline">PRC02 · Chapitre 2 · Document formateur</p>
+<h1>Chapitre 2 · Modélisation non destructive : déroulé formateur</h1>
+<p class="subtitle">PRC02 · Design &amp; visualisation temps réel avec Blender · Blender 5.2 LTS, interface en anglais</p>
+<p class="subtitle">Demi-journée 4 sur 6, en présentiel, de 5 à 8 apprenants · Version du 19 novembre 2026, application support 1.0.0</p>
+</div><img src="../../viv-formation-design-system/assets/logos/viv-formation-couleur.svg" alt="VIV Formation"></header>
+<h2>En bref</h2>
+<ul>
+<li><strong>Objectif :</strong> à la fin de la demi-journée, chaque apprenant a remplacé les volumes de son blocage par des pièces propres, qui restent modifiables. Il reflète un bras avec <em>Mirror</em>, fait de l'abat-jour une coque avec <em>Solidify</em>, arrondit et lisse ses pièces, puis répète un détail en couronne avec <em>Array</em> et un <em>Empty</em>. Il dessine une courbe de Bézier, en fait un câble, puis tire une ampoule d'un demi-profil avec <em>Screw</em>.
+</li>
+<li><strong>Format :</strong> 3 h 50, dont 3 h 30 de contenu et 2 pauses de 10 minutes. Il reste 10 minutes de marge sur 4 heures. Exemple : de 9 h 00 à 12 h 50.
+</li>
+<li><strong>Principe :</strong> le même qu'à l'initiation et au chapitre 1. Une notion à la fois, en cycles courts : vous la montrez en quelques minutes, ils la pratiquent en guidé, puis seuls. Personne ne passe plus de 15 minutes sans toucher la souris.
+</li>
+<li><strong>La règle du jour : on n'applique aucun modificateur.</strong> Une épaisseur, un nombre de lamelles ou un profil restent des réglages jusqu'au chapitre 4. Seule l'échelle s'applique (<code>Ctrl + A &gt; Scale</code>), et ce n'est pas la même chose. La règle du chapitre 1 continue : chaque valeur se tape avec son unité, <code>3mm</code> dans un champ, <code>G Y = 10mm</code> pendant un geste.
+</li>
+<li><strong>Fil rouge :</strong> la lampe de bureau. Le blocage du chapitre 1 sert de gabarit, et chaque volume devient une pièce : des bras à deux tiges, un abat-jour en coque, une grille d'aération, une molette, un câble, une ampoule. Le fichier de fin, <code>lampe_modele_v001.blend</code>, est celui qu'ouvre le chapitre 3.
+</li>
+<li><strong>Trois ajouts hors du programme officiel :</strong> le modificateur <em>Screw</em>, <em>Shade Auto Smooth</em> et le parentage. Chacun sert un point du programme ; le chapitre 3 dépend du lissage.
+</li>
+</ul>
+<h3>L'ordre de la séance</h3>
+<p>La séance suit l'ordre de l'application, à deux détails près. Dans l'épaisseur, vous montrez <em>Shade Auto Smooth</em> avant le <em>Bevel</em>, que les apprenants découvrent seuls sur le socle ; l'application range le <em>Bevel</em> d'abord (figures 2.10, puis 2.11) pour montrer la pile complète de la tête (figure 2.12). Les quiz se font à la fin de la séquence qu'ils vérifient ; dans l'application, ils sont groupés en fin de section.</p>
+<h3>Ce que l'on survole</h3>
+<p>Ces notions sont dans l'application. Elles ne sont pas exigées en séance, et certaines servent de défi.</p>
+<ul>
+<li>L'ordre de la pile : une remarque de 30 secondes, l'encart <em>NOTE</em> de la tête, sans manipulation. <em>Move to First</em> et <em>Move to Last</em> (figure 2.3) : cités.
+</li>
+<li><em>Clipping</em> et <em>Bisect</em> du <em>Mirror</em> (figure 2.6) : montrés sur le capot du fichier de démos ; ils servent au défi de la chape. <em>Merge</em> : cité.
+</li>
+<li>Les poignées <em>Aligned</em> et <em>Free</em> : citées. On pratique <em>Vector</em> et <em>Automatic</em>.
+</li>
+<li><em>Extrude</em> et <em>Offset</em> d'une courbe : cités, comme pièges.
+</li>
+<li><em>Circle</em>, le cercle de Bézier, et les champs <em>Screw</em> et <em>Iterations</em> du <em>Screw</em> : cités ; ils servent au défi des ressorts.
+</li>
+<li>Le <em>Boolean</em> : seulement en défi (figure 2.31).
+</li>
+<li>La section 4, le défi facultatif : annoncée en une phrase, sans démonstration.
+</li>
+</ul>
+<h3>Les fichiers</h3>
+<table><thead><tr><th>Fichier</th><th>Moment</th><th>Contenu</th></tr></thead><tbody>
+<tr><td><code>PRC02_ch2_lampe_depart.blend</code></td><td>0:00, puis toute la séance</td><td>Le gabarit (la variante A du chapitre 1, en fil de fer, non sélectionnable), les pièces de travail dans <em>Lampe</em>, les croquis et le repère de l'ampoule. Les corrigés : collections masquées <em>Corrigé</em> et <em>Corrigé défis</em>. Enregistré aussitôt sous <code>lampe_modele_v001.blend</code></td></tr>
+<tr><td><code>PRC02_ch2_croquis_ampoule.zip</code></td><td>2:10, si besoin</td><td>Le demi-profil de l'ampoule, déjà placé dans le fichier de départ ; pour ceux qui gardent leur propre blocage</td></tr>
+<tr><td><code>PRC02_ch2_lampe_modele.blend</code></td><td>Fin de séance</td><td>La lampe terminée, noms sans suffixe : le corrigé de l'atelier et le départ du chapitre 3</td></tr>
+<tr><td><code>PRC02_ch2_liseuse_depart.blend</code></td><td>Atelier, pour ceux qui avancent vite</td><td>Le défi ★★ de la liseuse, avec son corrigé masqué <em>Corrigé</em></td></tr>
+<tr><td><code>PRC02_ch2_defi_modelisation.blend</code></td><td>Hors minutage</td><td>Le défi facultatif de la section 4 ; corrigés dans « Corrigé défi modélisation »</td></tr>
+<tr><td><code>PRC02_ch2_demos_secteurs.blend</code></td><td>Moments « Ailleurs »</td><td>Votre poste seulement : un capot, une soufflante, une main courante de tram et une roue ferroviaire, déjà terminés</td></tr>
+</tbody></table>
+<p>L'application propose le fichier de départ en section 1, sous « Du blocage au modèle », et le croquis en section 2, sous « Profil de révolution : l'ampoule ». La lampe modélisée et la liseuse sont en section 3, sous la checklist et dans « Les défis ★★ » ; le défi facultatif, en section 4. Le fichier de démos n'est pas dans l'application : il est dans le dossier <code>_resources/exercices/</code> du dépôt, avec les autres.</p>
+<blockquote><p><strong>À savoir :</strong> chaque fichier s'ouvre sur un texte LISEZ-MOI en bas de l'écran ; <code>Ctrl + Espace</code>, la souris au-dessus, l'agrandit. Celui du fichier de départ suit la séance : une partie par séquence, de « 0 · Repères » à « 6 · Atelier », chacune avec son socle, un palier ★ et un contrôle. Il tient lieu de consignes : ce document n'a pas d'annexe et renvoie à ses parties. Les fichiers sont réglés sur EEVEE et affichent des millimètres : cette fois, pas de moteur à vérifier.</p></blockquote>
+<h2>Avant la demi-journée</h2>
+<h3>Les postes des apprenants</h3>
+<ul class="checks">
+<li>L'application support 1.0.0 est installée. Une version plus ancienne propose la mise à jour à son démarrage.
+</li>
+<li>Le dossier de travail contient <code>PRC02_ch2_lampe_depart.blend</code>. À défaut, chacun le télécharge depuis l'application, en section 1, à 0:00.
+</li>
+<li>Blender 5.2 LTS s'ouvre, avec une souris à trois boutons. <em>Emulate Numpad</em> reste activé sur les portables sans pavé numérique.
+</li>
+<li>Le blocage du chapitre 1, <code>lampe_blocage_v001.blend</code>, n'est pas nécessaire : le fichier de départ le remplace. Ceux qui veulent garder le leur le peuvent ; ils auront besoin de l'archive du croquis de l'ampoule.
+</li>
+</ul>
+<h3>Votre poste de démonstration</h3>
+<ul>
+<li><strong>Lancez Blender en configuration d'usine</strong> (<code>blender.exe --factory-startup</code>), avec <em>Resolution Scale</em> à 1,3, comme au chapitre 1. Pendant vos démos, tapez toujours <code>=</code> avant une unité.
+</li>
+<li><strong>Préparez une copie de travail du fichier de départ,</strong> enregistrée sous un autre nom : le fichier livré reste intact.
+</li>
+<li><strong>Le geste des tiges, à connaître avant la séance :</strong> <code>S</code>, <code>Maj + Z</code> deux fois, puis <code>0.5</code>. Les bras sont inclinés : avec un seul <code>Maj + Z</code>, en orientation <em>Global</em>, l'échelle suit les axes du monde, et la tige se redresse, raccourcit et quitte ses articulations. Le second <code>Maj + Z</code> prend l'axe propre du bras, comme <code>G Z Z</code> au chapitre 1 (vérifié dans Blender 5.2). Si l'application ou le LISEZ-MOI du fichier écrivent encore <code>S Maj + Z 0.5</code>, rectifiez à l'oral.
+</li>
+<li><strong>Ouvrez <code>PRC02_ch2_demos_secteurs.blend</code> dans une seconde fenêtre de Blender,</strong> pour les moments « Ailleurs ». Son LISEZ-MOI dit quoi montrer dans chaque collection. C'est le premier élément coupé en cas de retard.
+</li>
+<li><strong>Ne cliquez jamais <em>Apply</strong></em> : montrez le menu de l'en-tête sans l'exécuter.
+</li>
+<li><strong>Gardez l'application ouverte</strong> sur le chapitre 2, pour projeter les quiz.
+</li>
+</ul>
+<h3>Le matériel de la salle</h3>
+<ul>
+<li>Les post-it vert et rose des points de contrôle, et le minuteur.
+</li>
+<li>Le paperboard, préparé avant l'arrivée des apprenants :
+<ul>
+<li>la règle du jour : « On n'applique aucun modificateur. Seule l'échelle s'applique : <code>Ctrl + A &gt; Scale</code>. » ;</li>
+<li>la règle du chapitre 1, toujours valable : « Tapez l'unité : <code>3mm</code> dans un champ, <code>G Y = 10mm</code> pendant un geste. » ;</li>
+<li>le corrigé : « collection <em>Corrigé</em>, œil fermé : on compare, on ne copie pas. Une pièce manque ? <code>M</code> vers <em>Lampe</em>, puis renommez-la sans <code>_corrige</code>. » ;</li>
+<li>la checklist du modèle propre, pour l'atelier (voir sa fiche) ;</li>
+<li>le fichier de fin : <code>lampe_modele_v001.blend</code> ;</li>
+<li>les raccourcis du jour, complétés au fil de la séance : <code>S</code>, <code>Maj + Z</code> deux fois, <code>X &gt; Faces</code>, <code>Maj + C</code>, <code>Maj + S</code>, <code>Ctrl + P</code>, <code>V</code>, <code>E</code>, <code>Ctrl + clic droit</code>, <code>Ctrl + Espace</code>.</li>
+</ul>
+</li>
+<li>Pas de consignes imprimées : le LISEZ-MOI de chaque fichier en tient lieu.
+</li>
+</ul>
+<h2>La demi-journée · Du blocage au modèle</h2>
+<p>Les trois sections du chapitre 2. Les apprenants repartent avec leur lampe modélisée, modifiable de bout en bout, dans <code>lampe_modele_v001.blend</code>. Dans la colonne « Modalité », les durées sont en minutes.</p>
+<table><thead><tr><th>Horaire</th><th>Durée</th><th>Séquence</th><th>Section</th><th>Modalité</th></tr></thead><tbody>
+<tr><td>0:00</td><td>10 min</td><td>Lancement : du blocage au modèle</td><td>1</td><td>Collectif 4 + poste 6</td></tr>
+<tr><td>0:10</td><td>25 min</td><td>Symétrie : <em>Mirror</em></td><td>1</td><td>Démo 10 + guidé 10 + autonomie 4 + quiz 1</td></tr>
+<tr><td>0:35</td><td>25 min</td><td>Épaisseur : <em>Solidify</em>, puis lissage et <em>Bevel</em></td><td>1</td><td>Démo 8 + guidé 9 + autonomie 7 + quiz 1</td></tr>
+<tr><td>1:00</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
+<tr><td>1:10</td><td>30 min</td><td>Répétition : la grille d'aération</td><td>1</td><td>Démo 10 + guidé 12 + autonomie 8</td></tr>
+<tr><td>1:40</td><td>30 min</td><td>Courbes de Bézier : le câble</td><td>2</td><td>Démo 10 + guidé 10 + autonomie 8 + quiz 2</td></tr>
+<tr><td>2:10</td><td>25 min</td><td>Profil de révolution : l'ampoule</td><td>2</td><td>Démo 10 + guidé 10 + autonomie 5</td></tr>
+<tr><td>2:35</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
+<tr><td>2:45</td><td>50 min</td><td>Atelier · La lampe modélisée</td><td>3</td><td>Lancement 5 + autonomie 40 + retour 5</td></tr>
+<tr><td>3:35</td><td>15 min</td><td>Galerie, bilan et passerelle vers le chapitre 3</td><td>3</td><td>Collectif, dont quiz 2</td></tr>
+</tbody></table>
+<h3>0:00 · Lancement : du blocage au modèle (10 min)</h3>
+<ul>
+<li><strong>Où l'on en est (collectif, 4 min) :</strong> « Au chapitre 1, vous avez arrêté les proportions de la lampe. Aujourd'hui, chaque volume devient une pièce propre, et chaque décision reste modifiable. Au chapitre 3, ces pièces recevront leurs matières. »
+</li>
+<li><strong>Montrez le but :</strong> sur votre copie, fermez l'œil de <em>Lampe</em> et ouvrez celui de <em>Corrigé</em> : la lampe terminée apparaît dans le gabarit (figure 2.28). Sélectionnez <em>Grille_aeration_corrige</em> ; onglet <em>Modifiers</em>, <em>Count</em> 18 : une demi-couronne. Remettez 36. « C'est cela, le non destructif. » Puis refermez l'œil de <em>Corrigé</em> et rouvrez celui de <em>Lampe</em>.
+</li>
+<li><strong>La règle du jour,</strong> au paperboard : « On n'applique aucun modificateur. »
+</li>
+<li><strong>Le défi facultatif, en une phrase :</strong> « Pour ceux qui sont à l'aise, ou qui connaissent déjà ces sujets : un défi facultatif, hors programme, en section 4 de l'application. » Pas de démonstration.
+</li>
+</ul>
+<p><strong>Ils font, sur poste (6 min),</strong> d'après § 1 « Du blocage au modèle » et « Recette · Prendre le fichier en main » (figure 2.1) :</p>
+<ol>
+<li><em>File &gt; Open</em> : <code>PRC02_ch2_lampe_depart.blend</code>. Ceux qui ne l'ont pas le téléchargent dans l'application, en section 1.
+</li>
+<li><em>File &gt; Save As</em> : <code>lampe_modele_v001.blend</code>, dans le dossier de travail. Le fichier de départ reste intact.
+</li>
+<li>Le tour de l'Outliner : <em>Gabarit</em>, le blocage en fil de fer, non sélectionnable ; <em>Lampe</em>, leurs pièces, une par volume ; <em>Croquis</em>, les images de référence et le repère de l'ampoule ; <em>Corrigé</em> et <em>Corrigé défis</em>, œil fermé. « On les ouvre pour comparer, jamais pour copier. »
+</li>
+<li>Le LISEZ-MOI : <code>Ctrl + Espace</code>, la souris au-dessus, l'agrandit, puis le réduit. Ils lisent la partie 0, les repères.
+</li>
+<li>Le fichier affiche des millimètres : c'est un réglage du fichier, pas une exigence. Les valeurs se tapent toujours avec leur unité.
+</li>
+</ol>
+<p><strong>Ce fichier remplace le blocage du chapitre 1 :</strong> il ne demande aucun travail préalable. Proposez-le à tous. Celui qui garde son propre blocage suit les mêmes étapes, avec des valeurs indicatives ; ses corrigés restent dans le fichier de départ, ouvert dans une seconde fenêtre de Blender.</p>
+<p><strong>Point de contrôle :</strong> la barre de titre affiche <code>lampe_modele_v001.blend</code> ; chaque écran montre le gabarit en fil de fer et les pièces en volume.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Un clic sur le gabarit ne sélectionne rien : c'est voulu, il est verrouillé.
+</li>
+<li>Le LISEZ-MOI ne s'agrandit pas : la souris n'est pas au-dessus du texte.
+</li>
+<li>Un apprenant travaille dans le fichier de départ : <em>File &gt; Save As</em> a été oublié. Faites-le tout de suite.
+</li>
+</ul>
+<h3>0:10 · Symétrie : <em>Mirror</em> (25 min)</h3>
+<p><strong>Un autre axe (démo 5 min, guidé 10 min).</strong> Vous montrez, d'après § 1 « La pile de modificateurs » (figures 2.2 et 2.3), « Symétrie : le Mirror sur un autre axe » et « Recette · Des tiges doubles pour les bras » (figures 2.4 et 2.5) :</p>
+<ol>
+<li><strong>La pile, en rappel (1 min).</strong> Onglet <em>Modifiers</em>, <em>Add Modifier &gt; Generate</em> : les premières lettres d'un nom suffisent pour le trouver. La flèche de l'en-tête d'un modificateur : <em>Copy to Selected</em>, <em>Move to First</em>, <em>Move to Last</em>, et <em>Apply</em>, montré sans clic. L'encart <em>WARNING</em> : appliquer un modificateur n'est pas appliquer l'échelle.
+</li>
+<li><em>Bras_bas</em> sélectionné : <code>Tab</code>, <code>A</code>, puis <code>S</code>, <code>Maj + Z</code> deux fois et <code>0.5</code>. La tige passe à 8 mm de diamètre, sans changer de longueur. « Le bras est incliné : le second <code>Maj + Z</code> prend son axe propre, comme <code>G Z Z</code> au chapitre 1. »
+</li>
+<li><code>G Y = 10mm</code> : la tige quitte l'axe de la lampe. <code>Tab</code>.
+</li>
+<li><em>Add Modifier &gt; Generate &gt; Mirror</em>. L'axe X est coché : décochez-le, cochez Y. Deux tiges parallèles apparaissent. « L'axe se lit dans le repère de l'objet ; le reflet se fait autour de son origine. »
+</li>
+<li><strong>Ailleurs :</strong> dans le fichier de démos, <em>Auto_capot</em> : une moitié de capot, et le <em>Mirror</em> construit l'autre. <code>Tab</code>, puis un sommet du bord central déplacé : il reste sur l'axe, c'est <em>Clipping</em>. Même méthode pour un nez de tram ou un fuselage.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (10 min) :</strong> les étapes 2 à 4 sur <em>Bras_bas</em>, avec la partie 1 du LISEZ-MOI, étapes 1 et 2.</p>
+<p><strong>L'origine et <em>Copy to Selected</em> (démo 5 min, autonomie 4 min).</strong> Vous montrez, d'après l'encart <em>WARNING</em> « Le piège de l'origine » (figure 2.5, à droite) :</p>
+<ol>
+<li><strong>Faites deviner.</strong> <em>Bras_haut</em> sélectionné, <code>Maj + D</code>, puis clic droit : une copie, restée en place. Ajoutez-lui un <em>Mirror</em> sur Y seul, puis <code>G Y = 10mm</code> en Mode Objet. Une seule tige : « Où est la seconde ? » L'origine a suivi la tige, et le reflet tombe sur elle.
+</li>
+<li>Deux solutions : décaler la géométrie en Mode Édition, comme sur <em>Bras_bas</em> ; ou choisir <em>Socle</em> dans <em>Mirror Object</em>. Montrez la seconde : la deuxième tige apparaît. Puis <code>X</code> : la copie est supprimée.
+</li>
+<li><strong><em>Copy to Selected</em>.</strong> Sur <em>Bras_haut</em>, refaites vite les étapes 2 et 3. Puis <em>Bras_haut</em> sélectionné, <code>Maj + clic</code> sur <em>Bras_bas</em> : il devient l'objet actif. Menu de l'en-tête du <em>Mirror</em> &gt; <em>Copy to Selected</em> : le modificateur passe sur <em>Bras_haut</em>.
+</li>
+</ol>
+<p><strong>Ils font, en autonomie (4 min) :</strong> <em>Bras_haut</em>, avec la partie 1, étape 3. ★ : le piège sur une copie, puis <em>Mirror Object</em> sur <em>Socle</em>.</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le premier quiz de la section 1, la tige déplacée en Mode Objet. Il est en fin de section dans l'application. Chacun répond pour soi, puis on commente les erreurs.</p>
+<p><strong>Point de contrôle :</strong> en vue de dessus (<code>7</code>), chaque bras montre deux tiges, symétriques par rapport à l'axe du socle. En vue de face (<code>1</code>), les tiges suivent toujours le gabarit. Dans <code>N &gt; Item</code>, <em>Bras_bas</em> est resté à -5, 0, 165 mm. <code>Ctrl + S</code>.</p>
+<p><strong>Corrigé :</strong> <em>Bras_bas_corrige</em> et <em>Bras_haut_corrige</em>, dans <em>Corrigé</em>.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Des tiges qui plongent dans le socle : l'axe X est resté coché.
+</li>
+<li>Le <em>Mirror</em> semble ne rien faire : <code>G Y</code> a été fait en Mode Objet. <code>Ctrl + Z</code>, puis <code>Tab</code> avant <code>G Y = 10mm</code>.
+</li>
+<li><em>Copy to Selected</em> sans effet : l'objet actif doit porter le modificateur. <em>Bras_bas</em> se sélectionne en dernier.
+</li>
+<li>Une tige qui se redresse et quitte ses articulations : un seul <code>Maj + Z</code>, l'échelle a suivi les axes du monde. <code>Ctrl + Z</code>, puis <code>S</code>, <code>Maj + Z</code> deux fois, <code>0.5</code>.
+</li>
+</ul>
+<h3>0:35 · Épaisseur : <em>Solidify</em>, puis lissage et <em>Bevel</em> (25 min)</h3>
+<p><strong>La coque (démo 5 min, guidé 7 min).</strong> Une seule notion : la coque ouverte et son épaisseur. Vous montrez, d'après § 1 « Épaisseur : une coque avec le Solidify » et « Recette · La coque de la tête » (figures 2.7 à 2.9), sur <em>Tête</em> :</p>
+<ol>
+<li><code>Tab</code>, <code>3</code>, clic sur la grande face de l'ouverture, puis <code>X &gt; Faces</code> (figure 2.7). Il reste une surface sans épaisseur. <code>Tab</code>.
+</li>
+<li><em>Add Modifier &gt; Generate &gt; Solidify</em> (figure 2.8) : <em>Thickness</em> <code>1.5mm</code>. Faites varier <em>Offset</em> de <code>-1</code> à <code>1</code> : l'épaisseur passe de l'intérieur à l'extérieur. Remettez <code>-1</code> : la forme extérieure, validée au blocage, ne change pas. <em>Even Thickness</em> coché.
+</li>
+<li><em>Fill</em>, dans la rubrique <em>Rim</em>, ferme le bord de la coque : comparez, case cochée puis décochée.
+</li>
+<li><strong>Ailleurs :</strong> un carénage d'avion, une coque de rétroviseur, un panneau d'habillage intérieur de train. On dessine la surface extérieure ; le <em>Solidify</em> donne l'épaisseur.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (7 min) :</strong> les étapes 1 à 3, avec la partie 2 du LISEZ-MOI, étapes 1 et 2.</p>
+<p><strong>Le lissage (démo 3 min, guidé 2 min), puis la découverte du <em>Bevel</em> (autonomie 7 min).</strong> Vous montrez, d'après § 1 « Lisser l'affichage : Shade Auto Smooth » et « Recette · Lisser la tête, le socle et les bras » (figures 2.11 et 2.12) :</p>
+<ol>
+<li><em>Tête</em> sélectionnée, <em>Object &gt; Shade Auto Smooth</em>. Les 24 côtés paraissent lisses ; le bord reste net. Le modificateur <em>Smooth by Angle</em> s'ajoute en bas de la pile.
+</li>
+<li><strong>L'ordre de la pile (30 secondes, sans manipulation),</strong> l'encart <em>NOTE</em> : Blender calcule la pile de haut en bas, et l'ordre peut changer le résultat. <em>Smooth by Angle</em> fait exception : l'épingle de son en-tête le garde en dernier.
+</li>
+</ol>
+<p>Ils font :</p>
+<ul>
+<li><strong>en guidé :</strong> <em>Shade Auto Smooth</em> sur <em>Tête</em> ;
+</li>
+<li><strong>en autonomie, la découverte du <em>Bevel</em> sur <em>Socle</em>,</strong> d'après § 1 « Arrondir les arêtes : le Bevel en modificateur » et « Recette · Le Bevel du socle » (figure 2.10). Annoncez-la en une phrase : « Le <em>Bevel</em> que vous connaissez en outil existe aussi en modificateur. » Partie 2 du LISEZ-MOI, étapes 4 et 5 : <em>Amount</em> <code>3mm</code>, <em>Segments</em> 3, <em>Limit Method</em> sur <em>Angle</em>, déjà réglé ; <em>Shade Auto Smooth</em> sur <em>Socle</em> ; puis sur <em>Bras_bas</em> et <em>Bras_haut</em>, sélectionnés ensemble : leurs tiges seront en métal au chapitre 3 ;
+</li>
+<li><strong>★ :</strong> <em>Offset</em> à <code>1</code>, puis <code>-1</code> ; <em>Thickness</em> <code>1mm</code>, puis <code>3mm</code> ; le <em>Bevel</em> de la tête (<code>0.5mm</code>, 2 segments), prévu à l'atelier.
+</li>
+</ul>
+<p>Passez d'abord par les postes qui découvrent le <em>Bevel</em> : c'est la seule notion nouvelle pratiquée sans démo.</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le second quiz de la section 1, l'épaisseur qui part vers l'extérieur.</p>
+<p><strong>Point de contrôle :</strong> en vue de dessous (<code>Ctrl + 7</code>), le bord de la tête montre une épaisseur régulière. Les piles se lisent, de haut en bas : <em>Tête</em> = <em>Solidify</em>, <em>Smooth by Angle</em> ; <em>Socle</em> = <em>Bevel</em>, <em>Smooth by Angle</em>. Les arêtes du dessus et du dessous du socle sont arrondies. <code>Ctrl + S</code>.</p>
+<p><strong>Corrigé :</strong> <em>Tête_corrige</em>, <em>Socle_corrige</em> et les deux bras, dans <em>Corrigé</em>. La tête du corrigé porte déjà le <em>Bevel</em> de l'atelier : sa pile compte trois modificateurs.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li><code>X</code> en Mode Objet supprime toute la tête : <code>Ctrl + Z</code>, puis <code>Tab</code>.
+</li>
+<li>L'épaisseur part vers l'extérieur : <em>Offset</em> vaut <code>1</code>, ou les normales sont inversées. <em>Face Orientation</em> (Basics 103) tranche : une face rouge regarde vers l'intérieur.
+</li>
+<li>Un arrondi à grosses facettes : <em>Segments</em> est resté à 1.
+</li>
+<li>Un socle déformé : <em>Amount</em> est trop grand. Lisez la valeur affichée dans le champ, avec son unité.
+</li>
+<li><em>Amount</em> introuvable : l'apprenant a pris l'outil <code>Ctrl + B</code>, qui affiche <em>Width</em>. Le modificateur est dans l'onglet <em>Modifiers</em>.
+</li>
+</ul>
+<h3>1:00 · Pause (10 min)</h3>
+<h3>1:10 · Répétition : la grille d'aération (30 min)</h3>
+<p>Le socle cache l'électronique de la lampe : il lui faut une grille d'aération, une couronne de lamelles sur le dessus.</p>
+<p><strong>La couronne (démo 7 min, guidé 10 min).</strong> Vous montrez, d'après § 1 « Répétition : une couronne avec un Empty » et « Recette · La grille d'aération » (figures 2.13 à 2.15) :</p>
+<ol>
+<li><strong>Rappel (1 min) :</strong> <em>Relative Offset</em> et <em>Constant Offset</em> répétaient les sièges en ligne. Pour une couronne, il faut un repère qui tourne : un <em>Empty</em>, un objet sans géométrie, comme celui qui porte un croquis.
+</li>
+<li><code>Maj + C</code> : le curseur revient au centre, sous l'axe du socle. <code>Maj + A &gt; Mesh &gt; Cube</code>, F9 : <em>Size</em> <code>2mm</code>.
+</li>
+<li><code>Tab</code>, <code>S X 6</code> : une lamelle de 12 mm. <code>G X = 76mm</code>, puis <code>G Z = 25mm</code> : elle se pose sur le dessus du socle, près du bord. <code>Tab</code>. L'origine reste au centre du socle. Renommez-la <em>Grille_aeration</em>.
+</li>
+<li><code>Maj + A &gt; Empty &gt; Plain Axes</code> (figure 2.13), au même endroit, puis <code>R Z 10</code>. Renommez-le <em>Grille_pivot</em>.
+</li>
+<li>Sur la lamelle, <em>Add Modifier &gt; Generate &gt; Array (Legacy)</em> : l'encart <em>NOTE</em> explique les deux entrées <em>Array</em>. Décochez <em>Relative Offset</em> ; cochez <em>Object Offset</em>, dépliez sa rubrique et choisissez <em>Grille_pivot</em> (figure 2.14). <em>Count</em> 36 : « 36 fois 10°, un tour complet. »
+</li>
+<li><strong>Ailleurs :</strong> <em>Aero_soufflante</em>, dans le fichier de démos : <em>Count</em> de 18 à 20, puis l'<em>Empty</em> tourné de 18°, soit 360° divisé par 20. Évitez 24 : c'est la réponse de la molette. Les rayons d'une jante et les boulons d'une roue de bogie suivent la même règle.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (10 min) :</strong> les étapes 2 à 5, avec la partie 3 du LISEZ-MOI, étapes 1 à 4.</p>
+<p><strong>L'<em>Empty</em> suit la pièce (démo 3 min, guidé 2 min, autonomie 8 min).</strong> Vous montrez, d'après § 1 « Le parentage : l'Empty suit la pièce » (figures 2.16 et 2.17) :</p>
+<ol>
+<li>Déplacez la lamelle seule : la couronne se déforme, car l'<em>Empty</em> est resté en place. <code>Ctrl + Z</code>. « Comment la garder entière ? »
+</li>
+<li>Clic sur <em>Grille_pivot</em>, <code>Maj + clic</code> sur <em>Grille_aeration</em> : sélectionnée en dernier, elle est active. <code>Ctrl + P &gt; Object</code> (figure 2.16). Dans l'Outliner, l'<em>Empty</em> se range sous la lamelle. Déplacez la lamelle : la couronne suit. <code>Ctrl + Z</code>.
+</li>
+</ol>
+<p>Ils font :</p>
+<ul>
+<li><strong>en guidé :</strong> le parentage, puis un essai de déplacement, annulé avec <code>Ctrl + Z</code> (partie 3, étape 5) ;
+</li>
+<li><strong>en autonomie, la molette de l'interrupteur,</strong> avec l'encart <em>CAUTION</em> « À vous : la molette de l'interrupteur » (figure 2.17) et la partie 3, étape 6. Le curseur sur l'interrupteur (<code>Maj + S &gt; Cursor to Selected</code>) ; un cran de 1,5 × 1,5 × 6 mm, à 8 mm de l'axe ; 24 crans ; <em>Interrupteur_crans</em> et <em>Interrupteur_pivot</em>. L'angle de l'<em>Empty</em> se cherche : ne le donnez pas ;
+</li>
+<li><strong>★ :</strong> 30 crans ; une demi-couronne de lamelles à l'arrière du socle.
+</li>
+</ul>
+<p>Un repère, si un apprenant bloque sur le cran : un cube, F9 <em>Size</em> <code>1.5mm</code>, puis <code>Tab</code>, <code>S Z 4</code>, <code>G X = 8mm</code>, <code>Tab</code>. La réponse attendue pour l'<em>Empty</em> : 15°.</p>
+<p><strong>Point de contrôle :</strong> 36 lamelles régulières sur le socle et 24 crans autour de l'interrupteur. Un déplacement de <em>Grille_aeration</em> emporte toute la couronne ; <code>Ctrl + Z</code>. <code>Ctrl + S</code>.</p>
+<p><strong>Corrigé :</strong> <em>Grille_aeration_corrige</em> et <em>Grille_pivot_corrige</em> ; <em>Interrupteur_crans_corrige</em> et <em>Interrupteur_pivot_corrige</em>, tourné de 15°.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Un cube de 2 m : F9 a été oublié ; Blender ajoute ses primitives à leur taille d'origine.
+</li>
+<li>Une spirale : <em>Relative Offset</em> est resté coché.
+</li>
+<li>Une couronne décentrée : le curseur n'était pas au bon endroit au moment d'ajouter l'<em>Empty</em>, ou la lamelle a été déplacée en Mode Objet. <code>Ctrl + Z</code>, puis <code>Tab</code> avant <code>G X</code>.
+</li>
+<li><code>Ctrl + P</code> dans le mauvais ordre : la lamelle suit l'<em>Empty</em>. Le parent est l'objet actif, sélectionné en dernier.
+</li>
+</ul>
+<h3>1:40 · Courbes de Bézier : le câble (30 min)</h3>
+<p><strong>Points et poignées (démo 4 min, guidé 6 min).</strong> Vous montrez, d'après § 2 « Courbe et maillage », « L'anatomie d'une courbe de Bézier » et « Recette · Tracer le câble » (figures 2.18 à 2.20) :</p>
+<ol>
+<li>« Un maillage, ce sont des sommets, des arêtes et des faces. Une courbe, c'est quelques points de contrôle : Blender en calcule la forme lisse. »
+</li>
+<li>Vue de dessus (<code>7</code>). <code>Maj + A &gt; Curve &gt; Bézier</code> (figure 2.18), F9 : <em>Radius</em> <code>50mm</code>. Sans ce réglage, la courbe mesure 2 m. Renommez-la <em>Câble</em>.
+</li>
+<li><code>Tab</code> : chaque point de contrôle porte deux poignées (figure 2.19). <code>G</code> sur un point, puis sur une poignée. <code>V</code> (figure 2.20) : <em>Vector</em> casse l'angle, <em>Automatic</em> l'adoucit.
+</li>
+<li>Le point d'une extrémité sélectionné, <code>E</code> : la courbe se prolonge. <code>Ctrl + clic droit</code> pose un point sous la souris.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (6 min) :</strong> un tracé de 4 ou 5 points, de l'arrière du socle (à gauche en vue de face) vers le bord de la table, avec la partie 4 du LISEZ-MOI, étapes 1 et 2.</p>
+<p><strong>Le volume (démo 3 min, guidé 4 min).</strong> Vous montrez, d'après § 2 « Donner du volume au câble » et « Recette · Le câble rond » (figures 2.22 à 2.24) :</p>
+<ol>
+<li>Onglet <em>Object Data</em>, l'icône de courbe. Rubrique <em>Geometry &gt; Bevel</em> (figure 2.23) : <em>Round</em>, <em>Depth</em> <code>2.5mm</code> pour un câble de 5 mm, <em>Resolution</em> 4, <em>Fill Caps</em>. « Ce <em>Bevel</em> donne une section à la courbe : rien à voir avec le modificateur. »
+</li>
+<li>Rubrique <em>Shape</em> (figure 2.22) : <em>Resolution Preview U</em>, à monter si le câble paraît anguleux.
+</li>
+<li>En vue de face (<code>1</code>), le câble doit reposer sur la table, au niveau du dessous du socle. S'il flotte ou s'enfonce, en Mode Objet : <code>N &gt; Item</code>, <em>Location</em> Z <code>2.5mm</code>, son rayon.
+</li>
+<li>Avec l'aimantation <em>Face</em> du chapitre 1 (§ 3 « L'aimantation », figure 1.18), le premier point se pose contre le flanc du socle. Les suivants restent sur la table.
+</li>
+<li><strong>Ailleurs :</strong> <em>Ferro_main_courante</em>, dans le fichier de démos : <code>Tab</code>, un point déplacé, puis <em>Depth</em> changé. Une durite, un faisceau électrique de cabine.
+</li>
+</ol>
+<p><strong>Ils font, en guidé (4 min) :</strong> le câble rond de 5 mm, posé sur la table, son premier point contre le socle (partie 4, étapes 3 et 4).</p>
+<p><strong><em>Curve Pen</em> (démo 3 min, autonomie 8 min).</strong> Vous montrez, d'après § 2 « L'outil Curve Pen » (figure 2.21) : en Mode Édition, l'outil <em>Curve Pen</em>, en bas de la barre d'outils. Un clic pose un point anguleux (<em>Vector</em>) ; un cliquer-glisser tire ses poignées et pose un point arrondi (<em>Aligned</em>). Il prolonge la courbe depuis le point d'extrémité sélectionné. Pour revenir à la sélection, reprenez l'outil du haut de la barre.</p>
+<p><strong>Ils font, en autonomie (8 min) :</strong> un second tracé avec <em>Curve Pen</em>, avec une boucle posée sur la table (partie 4, étape 5). Chacun garde le tracé qu'il préfère. ★ : <em>Resolution Preview U</em> à 24. Une astuce à souffler : <code>Maj + D</code> sur le câble, puis, sur la copie en Mode Édition, ne garder que le premier point (<code>X &gt; Vertices</code> sur les autres) : le nouveau tracé garde son épaisseur.</p>
+<p><strong>Quiz (2 min),</strong> ensemble à l'écran : les deux quiz de la section 2, le type de poignée <em>Vector</em> et la section ronde.</p>
+<p><strong>Point de contrôle :</strong> en vue de face (<code>1</code>), le câble repose sur la table. Il est rond et lisse ; en Mode Édition, il ne compte que 4 à 6 points. <code>Ctrl + S</code>.</p>
+<p><strong>Corrigé :</strong> <em>Câble_corrige</em> : cinq points à poignées <em>Aligned</em>, à 2,5 mm du sol, le premier enfoncé dans le flanc du socle.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Des points partis en profondeur : ils ont été posés en perspective. Travaillez en vue de dessus (<code>7</code>).
+</li>
+<li>Un câble plat : <em>Extrude</em> a été réglé à la place de <em>Depth</em>. Un câble à facettes : <em>Resolution</em> ou <em>Resolution Preview U</em> est trop basse.
+</li>
+<li>Un câble qui flotte : la courbe est apparue au curseur, resté sur l'interrupteur depuis la molette. <em>Location</em> Z <code>2.5mm</code>.
+</li>
+<li>Un câble qui s'enfonce par endroits : une poignée descend sous la table. Remontez-la en vue de face.
+</li>
+<li>Le premier point se pose sur le dessus du socle : l'aimantation a été faite en vue de dessus. Passez en vue de face (<code>1</code>).
+</li>
+</ul>
+<h3>2:10 · Profil de révolution : l'ampoule (25 min)</h3>
+<p><strong>Vous montrez (10 min),</strong> d'après § 2 « Profil de révolution : l'ampoule » et « Recette · L'ampoule » (figures 2.25 à 2.27) :</p>
+<ol>
+<li><strong>Le principe :</strong> on dessine la moitié du profil, et Blender le fait tourner autour d'un axe. C'est la révolution des logiciels de CAO. Le croquis est déjà placé : en vue de face, à droite de la lampe, cinq points numérotés du culot au sommet.
+</li>
+<li>Clic sur <em>Repere_ampoule</em>, dans l'Outliner (collection <em>Croquis</em>), puis <code>Maj + S &gt; Cursor to Selected</code> (figure 2.25) : le curseur se pose à la base de l'axe.
+</li>
+<li><code>Maj + A &gt; Curve &gt; Bézier</code>, renommée <em>Ampoule</em>. <code>Tab</code>. Le point de droite : <code>X &gt; Vertices</code>. Le point restant : <code>Maj + S &gt; Selection to Cursor</code>, c'est le point 1, sur l'axe. Puis <code>V &gt; Vector</code>.
+</li>
+<li>Vue de face (<code>1</code>). <em>Curve Pen</em> : un clic sur les points 2 et 3 (le culot, anguleux), un cliquer-glisser vertical sur le point 4 (le globe), un cliquer-glisser horizontal sur le point 5 (le sommet, sur l'axe).
+</li>
+<li><code>Tab</code>. <em>Add Modifier &gt; Generate &gt; Screw</em> (figure 2.26) : <em>Axis</em> Z, <em>Steps</em> 32. Cochez <em>Merge</em> : le sommet s'aplatit, car la distance d'origine, 10 mm, soude tout ce qui passe près de l'axe (figure 2.27, à droite). Tapez <code>0.1mm</code> dans le champ à droite de la case.
+</li>
+<li><code>Tab</code>, une poignée déplacée : toute l'ampoule suit. Le profil reste modifiable.
+</li>
+<li><strong>Ailleurs :</strong> <em>Ferro_roue</em>, dans le fichier de démos : <code>Tab</code>, retouchez le boudin, toute la roue suit. L'optique d'un phare, le cône d'une hélice.
+</li>
+</ol>
+<p><strong>Ils font :</strong></p>
+<ul>
+<li><strong>en guidé (10 min) :</strong> les étapes 2 à 5, avec la partie 5 du LISEZ-MOI, étapes 1 à 4 ;
+</li>
+<li><strong>en autonomie (5 min) :</strong> placer l'ampoule dans la tête, <code>N &gt; Item</code> : <em>Location</em> <code>211mm</code>, <code>0</code>, <code>411mm</code> ; <em>Rotation</em> Y <code>150</code> (étape 5). Puis ★ : retoucher le profil, un globe plus rond ou un culot plus long ; comparer 16 et 48 <em>Steps</em>.
+</li>
+</ul>
+<p><strong>Point de contrôle :</strong> une ampoule lisse, fermée en haut et en bas, logée au fond de la tête. <code>Ctrl + S</code>.</p>
+<p><strong>Corrigé :</strong> <em>Ampoule_corrige</em>. Son profil est rangé du sommet vers la base, dans l'ordre où <em>Curve Pen</em> pose les points : c'est le sens qui tourne les normales vers l'extérieur.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Un sommet aplati : la distance de <em>Merge</em> est restée à 10 mm. Tapez <code>0.1mm</code>.
+</li>
+<li>Un trou au sommet : le point 5 ne touche pas l'axe, ou <em>Merge</em> n'est pas coché. Un sommet pointu : le point 5 a été posé d'un simple clic ; ses poignées doivent être horizontales.
+</li>
+<li>Un disque à la place d'une ampoule : le mauvais axe est choisi.
+</li>
+<li>Une ampoule rouge avec <em>Face Orientation</em> : cochez <em>Flip</em>, dans la rubrique <em>Normals</em> du <em>Screw</em>.
+</li>
+<li>Le croquis n'apparaît pas : la vue est en perspective. Il ne s'affiche qu'en vue de face orthographique (<code>1</code>).
+</li>
+</ul>
+<h3>2:35 · Pause (10 min)</h3>
+<h3>2:45 · Atelier · La lampe modélisée (50 min)</h3>
+<p>La fiche complète est plus bas. Le lancement dure 5 minutes, l'autonomie 40 minutes et le retour 5 minutes.</p>
+<h3>3:35 · Galerie, bilan et passerelle (15 min)</h3>
+<ul>
+<li><strong>Galerie (6 min) :</strong> chaque lampe à l'écran, sous son meilleur angle, en <em>Solid</em> avec <em>Cavity</em>. Tout le monde fait le tour des postes.
+</li>
+<li><strong>Trois questions (4 min) :</strong>
+<ul>
+<li>« Pourquoi le <em>Mirror</em> n'a-t-il rien fait, quand la tige avait été déplacée en Mode Objet ? »</li>
+<li>« Quel réglage donne son épaisseur à un câble ? »</li>
+<li>« Que se passe-t-il si l'on déplace la lamelle sans son <em>Empty</em> ? »</li>
+</ul>
+</li>
+<li><strong>Quiz (2 min),</strong> ensemble à l'écran : le quiz de la section 3, quand appliquer les modificateurs. Chacun répond pour soi, puis on commente les erreurs.
+</li>
+<li><strong>Passerelle (2 min) :</strong> « Au chapitre 3, chaque pièce reçoit sa matière : un plastique laqué pour la tête, un métal pour les tiges, du verre pour l'ampoule. Vos pièces sont séparées : c'est ce qui rend l'habillage simple. Si votre lampe n'est pas finie, la lampe modélisée vous attend dans l'application, en section 3. »
+</li>
+<li><strong>Dernier contrôle (1 min) :</strong> chacun a enregistré <code>lampe_modele_v001.blend</code>, <em>Gabarit</em> masqué, aucun modificateur appliqué.
+</li>
+</ul>
+<div class="pagebreak"></div>
+<h2>Atelier · La lampe modélisée</h2>
+<p><strong>Fichier :</strong> <code>lampe_modele_v001.blend</code> · <strong>Durée :</strong> 50 min · <strong>De 2:45 à 3:35</strong></p>
+<p><strong>Situation :</strong> « Le concept a passé la revue de blocage. Préparez la maquette numérique de la revue de design. Le client demandera sûrement des retouches : tout doit rester modifiable. »</p>
+<p><strong>Objectif :</strong> terminer les pièces de la lampe, l'assembler, la contrôler, puis l'enregistrer.</p>
+<p><strong>Pourquoi il fonctionne :</strong></p>
+<ul>
+<li>Aucune notion nouvelle : l'atelier réinvestit les sections 1 et 2, avec la méthode de § 3 « Remplacer le blocage pièce par pièce ».
+</li>
+<li>Le gabarit rend le contrôle objectif : chaque pièce se compare à son volume, en vue de face (<code>1</code>) et de profil (<code>3</code>).
+</li>
+<li>La checklist est celle d'un fichier qu'on transmet : le chapitre 3 ouvre ce fichier tel quel.
+</li>
+<li>La question du client, au retour, montre ce que vaut le non destructif.
+</li>
+</ul>
+<p><strong>Le socle, en 7 étapes,</strong> d'après § 3 « Consignes · La lampe modélisée » (figure 2.28) et la partie 6 du LISEZ-MOI :</p>
+<table><thead><tr><th>Étape</th><th>Ce qu'il faut faire</th><th>Gestes réinvestis</th></tr></thead><tbody>
+<tr><td>1</td><td><em>Articulation_bas</em>, <em>_milieu</em> et <em>_haut</em> : le curseur sur chaque sphère, puis <code>X</code>. <em>Cylinder</em>, F9 : <em>Vertices</em> 32, <em>Radius</em> <code>15mm</code>, <code>14mm</code> ou <code>12mm</code>, <em>Depth</em> <code>36mm</code>. <code>R X 90</code>. <em>Bevel</em> (<code>2mm</code>, 2 segments, <em>Angle</em>) et <em>Shade Auto Smooth</em>. Renommer</td><td><code>Maj + S &gt; Cursor to Selected</code>, F9, <em>Bevel</em>, lissage</td></tr>
+<tr><td>2</td><td><em>Douille</em> : le curseur sur <em>Tête</em>. <em>Cylinder</em>, F9 : <em>Radius</em> <code>15mm</code>, <em>Depth</em> <code>20mm</code>, <em>Rotation</em> Y <code>-30</code>. Puis <code>G Z Z = 45mm</code> : elle glisse le long de son axe, au fond de la tête. <em>Bevel</em> (<code>1mm</code>, 2 segments) et <em>Shade Auto Smooth</em></td><td><code>G Z Z</code> et l'orientation <em>Local</em> (chapitre 1)</td></tr>
+<tr><td>3</td><td><em>Tête</em> : <em>Bevel</em> de <code>0.5mm</code>, 2 segments. Il se range de lui-même au-dessus de <em>Smooth by Angle</em></td><td><em>Bevel</em>, l'épingle de la pile</td></tr>
+<tr><td>4</td><td><em>Interrupteur</em> : <em>Bevel</em> de <code>0.5mm</code>, 2 segments, et <em>Shade Auto Smooth</em></td><td><em>Bevel</em>, lissage</td></tr>
+<tr><td>5</td><td><em>Ampoule</em> : la placer, si ce n'est pas fait</td><td><code>N &gt; Item</code></td></tr>
+<tr><td>6</td><td><em>Câble</em> : il touche le socle et repose sur la table</td><td>Aimantation, vues orthographiques</td></tr>
+<tr><td>7</td><td>La checklist, <em>Gabarit</em> masqué, puis <code>Ctrl + S</code></td><td>Basics 103 § 4</td></tr>
+</tbody></table>
+<p><strong>La checklist,</strong> au paperboard et dans « Consignes · La checklist du modèle propre » (figures 2.29 et 2.30) :</p>
+<ul>
+<li>chaque pièce porte un nom clair et se range dans la collection <em>Lampe</em> ;
+</li>
+<li>les échelles valent 1 (<code>Ctrl + A &gt; Scale</code> si besoin) ;
+</li>
+<li><em>Face Orientation</em> ne montre aucune face rouge ;
+</li>
+<li>les modificateurs sont tous actifs, aucun n'est appliqué ;
+</li>
+<li>la silhouette suit le gabarit, en vue de face et de profil ;
+</li>
+<li>la collection <em>Gabarit</em> est masquée, et <code>lampe_modele_v001.blend</code> est enregistré (<code>Ctrl + S</code>).
+</li>
+</ul>
+<p><strong>Déroulé :</strong></p>
+<ol>
+<li><strong>Lancement (5 min).</strong> Sur votre copie, fermez l'œil de <em>Lampe</em> et ouvrez celui de <em>Corrigé</em> : la lampe terminée, dans le gabarit (figure 2.28). Rappelez la règle du jour : rien n'est appliqué, sauf l'échelle. Montrez la checklist, puis lancez le minuteur.
+</li>
+<li><strong>Autonomie (40 min).</strong> Chacun suit la partie 6 du LISEZ-MOI. Annoncez les 10 dernières minutes : c'est le moment de la checklist et de l'enregistrement.
+</li>
+<li><strong>Retour (5 min).</strong> Un volontaire projette sa lampe et change une valeur en direct : l'épaisseur de la tête, le nombre de lamelles ou le tracé du câble. « Le client veut une tête 20 % plus grande. Combien de temps vous faut-il ? »
+</li>
+</ol>
+<p><strong>Paliers :</strong></p>
+<ul>
+<li><strong>★ :</strong> l'encart <em>CAUTION</em> « Les paliers ★ de l'atelier ». Des molettes de serrage sur les articulations : l'interrupteur, ses crans et son <em>Empty</em> sélectionnés ensemble, <code>Alt + D</code>, la copie tournée de X -90° et posée contre l'articulation. Une rainure sur le pourtour du socle : deux boucles (<em>Loop Cut</em>), puis la bande entre elles extrudée de 1 mm vers l'intérieur. Une collection par sous-ensemble, <em>Pied</em>, <em>Bras</em> et <em>Tête</em>, dans <em>Lampe</em>.
+</li>
+<li><strong>★★ :</strong> les défis de la partie « Pour ceux qui avancent vite », puis le défi facultatif de la section 4.
+</li>
+</ul>
+<p><strong>Points d'observation :</strong></p>
+<ul>
+<li>Trois articulations de diamètres différents : des copies simples (<code>Maj + D</code>) redimensionnées en Mode Édition, ou trois cylindres. Une copie redimensionnée en Mode Objet garde une échelle différente de 1.
+</li>
+<li><code>Ctrl + A</code> ouvre le menu d'application des transformations : rien à voir avec <em>Apply</em>, dans l'en-tête d'un modificateur. Seule l'échelle s'applique : le chapitre 3 se sert de la rotation des bras pour orienter le brossé du métal.
+</li>
+<li>Une douille qui monte à la verticale : <code>G Z</code> seul suit l'axe du monde. Le second <code>Z</code> suit l'axe de la douille.
+</li>
+<li>Un <em>Bevel</em> plus large que l'épaisseur croise la géométrie : sur la tête, 0,5 mm pour 1,5 mm d'épaisseur.
+</li>
+<li>Palier ★ : les molettes en copie liée partagent leur maillage, pas leurs modificateurs ; changer le nombre de crans de l'une ne change pas les autres. <code>Alt + D</code> sur le cran seul garde l'ancien <em>Empty</em> : les trois objets se copient ensemble.
+</li>
+<li>Palier ★ : le <em>Bevel</em> de 3 mm du socle adoucit aussi la rainure. C'est voulu ; pour une rainure plus nette, réduisez <em>Amount</em>.
+</li>
+</ul>
+<p><strong>Corrigé :</strong> la collection masquée <em>Corrigé</em> : toute la lampe, chaque nom suffixé <code>_corrige</code>, à la place des pièces de travail. Les paliers ★ et les défis ★★ : <em>Corrigé défis</em>, une sous-collection chacun, à côté de la lampe. Pour en voir un : œil de <em>Corrigé défis</em> ouvert, une pièce sélectionnée, puis <code>.</code> du pavé numérique. La lampe terminée existe aussi en fichier séparé, <code>PRC02_ch2_lampe_modele.blend</code>.</p>
+<p><strong>Ce que le chapitre 3 attend :</strong> <code>lampe_modele_v001.blend</code>, ses pièces nommées dans <em>Lampe</em>, les échelles à 1, les modificateurs actifs. Le chapitre 3 l'ouvre, l'enregistre sous <code>lampe_habillage_v001.blend</code> et vérifie cinq points : les noms, l'échelle, les normales, le lissage et le moteur EEVEE. Une lampe inachevée ne bloque personne : <code>PRC02_ch2_lampe_modele.blend</code> la remplace, comme le fichier de secours du chapitre 3, <code>PRC02_ch3_lampe_a_habiller.blend</code>.</p>
+<h2>Le défi facultatif · Modélisation avancée</h2>
+<p>La section 4 de l'application. Un complément hors programme et hors minutage : vous n'en faites aucune démonstration.</p>
+<p><strong>Pour qui :</strong> ceux qui parcourent vite le contenu principal, et ceux qui maîtrisent déjà ces sujets. Le défi apprend à poser des détails sur des surfaces courbes et à garder ces surfaces propres : le quotidien du design de carrosserie, de cabine et de fuselage.</p>
+<p><strong>Quand le proposer :</strong> annoncez-le en une phrase à 0:00. Proposez-le pendant l'atelier, à qui a fini le socle et enregistré <code>lampe_modele_v001.blend</code> : le défi se fait dans un autre fichier, et la lampe du chapitre 3 n'est pas touchée. La suite se fait après la séance ; chaque étape se termine par un quiz et une comparaison avec le corrigé. Celui qui maîtrise déjà le chapitre 2 peut le faire à la place : il reprend alors le chapitre 3 avec <code>PRC02_ch2_lampe_modele.blend</code> ou avec le fichier de secours du chapitre 3.</p>
+<p><strong>Le fichier :</strong> <code>PRC02_ch2_defi_modelisation.blend</code>, en section 4, enregistré sous <code>defi_modelisation_v001.blend</code>. Une collection par étape ; gris clair pour les carrosseries, gris sombre pour les détails finis, orange pour les pièces à travailler. Son LISEZ-MOI résume les recettes.</p>
+<table><thead><tr><th>Étape</th><th>Ce qu'on apprend</th><th>Sur quelle pièce</th></tr></thead><tbody>
+<tr><td>1</td><td>Tendre une arête en subdivision : boucles de maintien, <em>Crease</em>. Facultative</td><td>Un carter de projecteur ; un capot</td></tr>
+<tr><td>2</td><td><em>Shrinkwrap</em> : <em>Target</em>, <em>Offset</em> <code>0.2mm</code>, puis <em>Solidify</em> en dessous</td><td>Une plaque sur un nez de tram</td></tr>
+<tr><td>3</td><td><em>Snap Mode</em>, le mode <em>Project</em>, le <em>Vertex Group</em></td><td>Un cadre de hublot, un bandeau de tram, une prise d'air</td></tr>
+<tr><td>4</td><td>Les quatre modes ; l'ordre <em>Subdivision</em>, <em>Shrinkwrap</em>, <em>Solidify</em></td><td>Un cadre de hublot à 8 côtés</td></tr>
+<tr><td>5</td><td>Le <em>Boolean</em> et son objet de coupe</td><td>Une découpe de hublot</td></tr>
+<tr><td>6 ★★</td><td><em>Data Transfer</em> et <em>Weighted Normal</em></td><td>Le hublot découpé ; une platine percée</td></tr>
+<tr><td>Atelier</td><td>Tout</td><td>Un rétroviseur extérieur</td></tr>
+</tbody></table>
+<p>Le palier 1, les étapes 1 à 4, dure environ 90 minutes ; le palier 2, 55 minutes ; l'atelier, 35 minutes. Huit quiz servent de points d'arrêt.</p>
+<p><strong>Le corrigé :</strong> la collection masquée « Corrigé défi modélisation », avec une sous-collection par étape, de « Corrigé étape 1 » à « Corrigé étape 6 », et « Corrigé atelier ». Les pièces corrigées sont à la place de celles à travailler : on affiche la sous-collection, puis on masque sa pièce (<code>H</code>). Les variantes ★★ de l'atelier n'ont pas de corrigé.</p>
+<p><strong>L'accompagner sans y passer la séance :</strong> renvoyez à la recette, au quiz et au corrigé de l'étape. Conseillez d'afficher seulement la collection de l'étape en cours, et la vue locale (<code>/</code> du pavé numérique). Qui connaît la subdivision commence à l'étape 2. Le groupe passe d'abord : le défi attend vos tours de postes.</p>
+<p><strong>Pièges principaux :</strong></p>
+<ul>
+<li>Un détail qui scintille par plaques : il est exactement sur la surface. <em>Offset</em> <code>0.2mm</code>.
+</li>
+<li>Un détail qui disparaît dans la carrosserie : il partait de l'intérieur. <em>Snap Mode</em> sur <em>Above Surface</em>.
+</li>
+<li>Une épaisseur qui disparaît : le <em>Solidify</em> est au-dessus du <em>Shrinkwrap</em>.
+</li>
+<li>Un <em>Boolean</em> sans effet : l'objet de coupe est conformé sur la pièce qu'il découpe. Il doit viser la copie <code>_reference</code>.
+</li>
+<li>★★ Des plaques et de grands triangles : <em>Smooth by Angle</em> est resté sous <em>Data Transfer</em>. Désactivez son épingle, puis <em>Move to Last</em> sur <em>Data Transfer</em>.
+</li>
+</ul>
+<h2>Gérer l'hétérogénéité</h2>
+<h3>Le parcours « première fois »</h3>
+<ul>
+<li>Les binômes et les copilotes de l'initiation restent en place.
+</li>
+<li>Tous partent du fichier de départ : aucun blocage personnel à réparer.
+</li>
+<li>Le LISEZ-MOI donne chaque geste et chaque valeur avec son unité. Les valeurs restent indicatives : chacun peut les adapter à son concept.
+</li>
+<li>Le socle de chaque séquence suffit : il couvre tous les points du programme. Les ★ restent des options.
+</li>
+<li>À chaque point de contrôle, passez d'abord par les postes des débutants.
+</li>
+<li>Les termes de l'interface restent en anglais : traduisez-les à l'oral la première fois (<em>Thickness</em>, l'épaisseur ; <em>Count</em>, le nombre de copies).
+</li>
+<li><strong>Un apprenant très en retard</strong> prend la pièce qui lui manque dans <em>Corrigé</em>. Il supprime sa version, sélectionne la pièce corrigée, fait <code>M</code> vers <em>Lampe</em>, puis la renomme sans <code>_corrige</code>. Pour la grille ou la molette, il sélectionne aussi son <em>Empty</em>. Il reprend avec le groupe à la séquence suivante.
+</li>
+</ul>
+<h3>Pour ceux qui avancent vite</h3>
+<ul>
+<li>Les paliers ★ de chaque séquence, dans le LISEZ-MOI, puis ceux de l'atelier.
+</li>
+<li><strong>La chape (★★) :</strong> une chape en U pour l'articulation du haut, modélisée par moitié avec <em>Mirror</em>, <em>Clipping</em> et <em>Bisect</em> (figure 2.6). Elle prend la place de la molette du haut : c'est l'une ou l'autre.
+</li>
+<li><strong>La tête tulipe (★★) :</strong> le cône remplacé par un profil de Bézier, puis <em>Screw</em> et <em>Solidify</em>. La pile la plus complète du chapitre.
+</li>
+<li><strong>Les ressorts (★★) :</strong> un cercle de Bézier décalé de l'axe, et un <em>Screw</em> avec une valeur de <em>Screw</em> et plusieurs <em>Iterations</em>, comme sur les lampes d'architecte. Un <em>Mirror</em> donne le second.
+</li>
+<li><strong>Percer la grille (★★) :</strong> un <em>Boolean</em> en <em>Difference</em> sur le socle, avec la grille comme objet (figure 2.31). La lamelle, prolongée vers le bas sur 6 mm de haut, donne des fentes de 3 mm. La grille passe en <em>Wire</em>, <em>Renders</em> décoché. Changer <em>Count</em> change le nombre de fentes.
+</li>
+<li><strong>Une grille au dos de l'abat-jour (★★) :</strong> la même couronne, sur l'axe incliné de la tête.
+</li>
+<li>Leurs solutions : <em>Corrigé défis</em>, sous-collections <em>Chape</em>, <em>Tulipe</em>, <em>Ressorts</em>, <em>Perçage</em> et <em>Grille tête</em>.
+</li>
+<li><strong>La liseuse de cabine (★★) :</strong> <code>PRC02_ch2_liseuse_depart.blend</code> (figure 2.32), enregistré sous <code>liseuse_modele_v001.blend</code>. Six étapes dans son LISEZ-MOI : la platine, les vis en symétrie, le bouton moleté, le col de cygne, la tête en coque et le diffuseur. Son corrigé est dans sa collection masquée <em>Corrigé</em>. Le bouton a 16 crans : son <em>Empty</em> tourne de 22,5° autour de Y.
+</li>
+<li>Le défi facultatif de la section 4.
+</li>
+<li>Le rôle de copilote, comme à l'initiation.
+</li>
+</ul>
+<h2>Animer : ce qui change au chapitre 2</h2>
+<p>Les conseils de l'initiation restent valables : « Regardez, puis à vous », les touches dites à voix haute, les post-it vert et rose, la règle des 3 minutes, la souris qu'on ne prend pas. Ceux du chapitre 1 aussi : l'unité dite avec le <code>=</code>, le corrigé qu'on compare sans le copier. Ce chapitre en ajoute six :</p>
+<ol>
+<li><strong>Faites vivre la règle du jour.</strong> À chaque modificateur, ouvrez le menu de son en-tête et montrez <em>Apply</em> sans cliquer. Dites la différence à voix haute : appliquer l'échelle, oui ; appliquer un modificateur, non.
+</li>
+<li><strong>Prouvez le non destructif.</strong> En fin de séquence, changez une valeur en direct : l'épaisseur, <em>Count</em>, une poignée. Le client de l'atelier posera la même question.
+</li>
+<li><strong>Annoncez le mode.</strong> « Tab : Mode Édition. » Les pièges du jour viennent souvent d'un geste fait dans le mauvais mode : la tige décalée en Mode Objet, <code>X</code> qui supprime toute la tête, la lamelle dont l'origine quitte le centre.
+</li>
+<li><strong>Dites où est le curseur 3D.</strong> Chaque nouvelle pièce y apparaît : <code>Maj + C</code> ou <code>Maj + S &gt; Cursor to Selected</code> avant <code>Maj + A</code>. La grille, la molette, l'ampoule et les articulations en dépendent.
+</li>
+<li><strong>Laissez chercher les angles.</strong> La règle « 360° divisé par le nombre de copies » se dit ; l'angle de la molette et celui du bouton de la liseuse se trouvent. Évitez 24 copies dans vos démos.
+</li>
+<li><strong>Tenez les cycles courts.</strong> C'est le chapitre le plus chargé de la formation : une notion, puis la souris. Si une démo déborde, coupez l'« Ailleurs » plutôt que le guidé.
+</li>
+</ol>
+<h2>Si vous prenez du retard</h2>
+<p>Raccourcissez dans cet ordre :</p>
+<table><thead><tr><th>Ordre</th><th>Ce que l'on coupe</th><th>Ce que l'on garde</th></tr></thead><tbody>
+<tr><td>D'abord</td><td>Le fichier de démos : chaque « Ailleurs » se dit en une phrase, sans ouvrir le fichier</td><td>Le lien avec les métiers, à l'oral</td></tr>
+<tr><td>Ensuite</td><td>Les autonomies de la répétition et du câble : la molette passe en palier ★ de l'atelier ; le second tracé du câble saute</td><td>Les cycles guidés ; la découverte du <em>Bevel</em> sur le socle, faite en guidé, pas à pas, si le temps manque</td></tr>
+<tr><td>Ensuite</td><td>L'ampoule : démo seule. Les apprenants prennent celle du corrigé (<code>M</code> vers <em>Lampe</em>, renommée <em>Ampoule</em>) et retouchent son profil</td><td>Le principe de la révolution</td></tr>
+<tr><td>En dernier</td><td>L'atelier : les articulations restent les sphères du blocage</td><td>La checklist et l'enregistrement</td></tr>
+</tbody></table>
+<p><strong>Ce qui ne saute jamais :</strong> <em>Mirror</em>, <em>Solidify</em>, la grille d'aération en <em>Array</em> et le câble en Bézier, car ils portent les points du programme. Ni <em>Shade Auto Smooth</em>, dont le chapitre 3 dépend, ni l'enregistrement sous <code>lampe_modele_v001.blend</code>. Si le retard est important, <code>PRC02_ch2_lampe_modele.blend</code> garantit à tous le même départ au chapitre 3.</p>
+<h2>Si vous êtes en avance</h2>
+<ul>
+<li><strong>L'atelier s'enrichit :</strong> les paliers ★, puis les défis ★★, en commençant par la chape ou la tête tulipe. La liseuse, pour qui veut un objet de son secteur.
+</li>
+<li><strong>Le retour s'allonge :</strong> chacun change une valeur en direct sur sa lampe, au lieu d'un seul volontaire.
+</li>
+<li><strong>Le défi facultatif :</strong> son palier 1, pour les plus à l'aise.
+</li>
+</ul>
+<hr>
+<p>Les fichiers du chapitre se reconstruisent avec les scripts de <code>tool/exercices_ch2/</code> (<code>croquis_ampoule.py</code>, <code>build_lampe.py</code>, <code>build_liseuse.py</code>, <code>build_demos.py</code>, puis <code>finish_ui.py</code>) et de <code>tool/exercices_ch2_defi/</code> (<code>build_defi_modelisation.py</code>, puis <code>finish_ui_defi.py</code>), dans Blender 5.2 en arrière-plan. Ce document se convertit en PDF avec <code>tool/deroule_initiation/export_pdf.ps1 -Source _resources\PRC02-deroule-chap2.md</code>.</p>
+</body>
+</html>
