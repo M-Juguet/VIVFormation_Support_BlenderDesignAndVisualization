@@ -830,53 +830,57 @@ Socle · L'accoudoir
 
 ## Captures Blender à prévoir
 
-Une capture pour chaque menu, bouton ou panneau cité. Numérotation provisoire, « Figure 3.N » sur tout le chapitre. Côte à côte : environ 600 × 400 px ; pleine largeur pour les vues larges. Les figures 3.3 et 3.12 portent les noms de fichier prévus par le plan du chapitre 4 : une seule capture sert aux deux chapitres.
+Une capture pour chaque menu, bouton, panneau ou nœud cité : 47 figures, toutes produites. Les légendes ci-dessous sont celles du texte. L'échelle est celle de l'affichage dans l'application (colonne de 715 px : une figure pleine largeur tient dans 715 × 450 px, une figure côte à côte dans 345 × 300 px). Toutes les figures qui montrent l'interface s'affichent à 0,5 au moins ; le script `tool/exercices_ch3/echelles.py` les recalcule. Les figures 3.3 et 3.13 portent les noms de fichier prévus par le plan du chapitre 4 : une seule capture sert aux deux chapitres.
 
-| Figure | Fichier | Ce qu'elle montre | Format |
-|---|---|---|---|
-| 3.1 | `lamp_cmf_target_blender.jpg` | La lampe habillée, en deux coloris, en *Material Preview* | Pleine largeur |
-| 3.2 | `material_preview_button_blender.jpg` | Les quatre boutons de mode d'affichage, *Material Preview* actif, la lampe sans matières | Côte à côte |
-| 3.3 | `material_preview_popover_blender.jpg` | Le menu *Viewport Shading* en *Material Preview* : images d'environnement, rotation, *Scene Lights*, *Scene World*, *World Opacity* | Côte à côte |
-| 3.4 | `material_tab_new_blender.jpg` | L'onglet *Material* d'un objet sans matière : la liste, le bouton *New* | Côte à côte |
-| 3.5 | `material_tab_surface_blender.jpg` | La rubrique *Surface* : *Principled BSDF* et ses réglages (*Base Color*, *Metallic*, *Roughness*, *IOR*, *Alpha*, *Thin Wall*, puis les rubriques repliées) | Côte à côte |
-| 3.6 | `material_browse_list_blender.jpg` | La liste des matières existantes et le compteur d'utilisateurs | Côte à côte |
-| 3.7 | `metallic_roughness_grid_blender.jpg` | La grille du nuancier : *Metallic* 0 et 1, *Roughness* de 0 à 1 | Pleine largeur |
-| 3.8 | `principled_coat_panel_blender.jpg` | La rubrique *Coat* dépliée, avec la laque de la tête | Côte à côte |
-| 3.9 | `principled_transmission_blender.jpg` | La rubrique *Transmission* dépliée : *Weight* | Côte à côte |
-| 3.10 | `glass_raytracing_comparison_blender.jpg` | Trois ampoules : sans les interrupteurs, avec, puis avec *Thin Wall* | Pleine largeur |
-| 3.11 | `render_raytracing_checkbox_blender.jpg` | L'onglet *Render*, case *Raytracing* | Côte à côte |
-| 3.12 | `material_settings_transmission_blender.jpg` | L'onglet *Material*, rubrique *Settings* : *Render Method*, *Raytraced Transmission*, *Thickness* | Côte à côte |
-| 3.13 | `principled_thin_wall_blender.jpg` | La case *Thin Wall* cochée | Côte à côte |
-| 3.14 | `principled_emission_panel_blender.jpg` | La rubrique *Emission* : *Color*, *Strength* | Côte à côte |
-| 3.15 | `material_slots_two_blender.jpg` | Option : deux emplacements de matière sur la tête | Côte à côte |
-| 3.16 | `solidify_material_offset_blender.jpg` | Option : le modificateur Solidify, rubrique *Materials*, *Material Offset* | Côte à côte |
-| 3.17 | `link_materials_menu_blender.jpg` | Astuce : `Ctrl + L`, le menu *Link/Transfer Data*, *Link Materials* | Côte à côte |
-| 3.18 | `shading_workspace_blender.jpg` | L'espace *Shading* : vue en *Material Preview*, Shader Editor, éditeur de propriétés | Pleine largeur |
-| 3.19 | `principled_node_vs_tab_blender.jpg` | Le nœud *Principled BSDF* relié à *Material Output*, à côté de l'onglet *Material* : les mêmes valeurs | Pleine largeur |
-| 3.20 | `shader_editor_add_menu_blender.jpg` | `Maj + A` dans le Shader Editor, sous-menu *Texture* | Côte à côte |
-| 3.21 | `node_link_noise_base_color_blender.jpg` | Un lien de *Noise Texture* vers *Base Color*, et le bras couvert de nuages | Côte à côte |
-| 3.22 | `texture_coordinate_node_blender.jpg` | Le nœud *Texture Coordinate*, sortie *Object* reliée ; le motif régulier | Côte à côte |
-| 3.23 | `noise_bump_chain_blender.jpg` | La chaîne *Texture Coordinate*, *Noise*, *Bump*, *Principled* | Pleine largeur |
-| 3.24 | `brushed_aluminium_blender.jpg` | Le nœud *Mapping* étiré et les tiges brossées | Côte à côte |
-| 3.25 | `image_texture_projection_menu_blender.jpg` | Le menu *Projection* du nœud *Image Texture*, *Box* survolé | Côte à côte |
-| 3.26 | `image_texture_box_node_blender.jpg` | Le nœud *Image Texture* réglé : *Box*, *Blend*, *Non-Color* | Côte à côte |
-| 3.27 | `box_blend_comparison_blender.jpg` | Le socle avec *Blend* à 0, puis à 0,25 | Pleine largeur |
-| 3.28 | `image_color_space_menu_blender.jpg` | Le menu *Color Space*, *Non-Color* | Côte à côte |
-| 3.29 | `texture_scale_not_applied_blender.jpg` | Les deux accoudoirs : échelle non appliquée et appliquée | Pleine largeur |
-| 3.30 | `preferences_node_wrangler_blender.jpg` | Option : *Preferences > Add-ons*, Node Wrangler | Côte à côte |
-| 3.31 | `material_mark_as_asset_blender.jpg` | Le clic droit sur le nom de la matière, *Mark as Asset* | Côte à côte |
-| 3.32 | `asset_browser_editor_type_blender.jpg` | Le sélecteur de type d'éditeur, *Asset Browser* | Côte à côte |
-| 3.33 | `asset_browser_overview_blender.jpg` | L'Asset Browser : bibliothèques, catalogues, vignettes, barre latérale | Pleine largeur |
-| 3.34 | `asset_catalog_new_blender.jpg` | Le bouton `+` des catalogues et un catalogue renommé | Côte à côte |
-| 3.35 | `asset_metadata_sidebar_blender.jpg` | La barre latérale : description, auteur, *Tags*, *Preview* | Côte à côte |
-| 3.36 | `preferences_asset_libraries_blender.jpg` | Option : *Preferences > File Paths > Asset Libraries*, la bibliothèque CMF ajoutée | Côte à côte |
-| 3.37 | `asset_library_selector_blender.jpg` | Option : le menu des bibliothèques, avec *Current File*, *Essentials* et la bibliothèque CMF | Côte à côte |
-| 3.38 | `asset_drag_drop_material_blender.jpg` | Une vignette de *Current File* glissée sur la douille | Pleine largeur |
-| 3.39 | `asset_import_method_menu_blender.jpg` | Option : le menu *Import Method* | Côte à côte |
-| 3.40 | `file_menu_link_append_blender.jpg` | Le menu *File*, entrées *Link* et *Append* | Côte à côte |
-| 3.41 | `file_append_blend_folders_blender.jpg` | La fenêtre *Append*, dans le `.blend` : les dossiers *Collection*, *Material*, *Object*… | Côte à côte |
-| 3.42 | `linked_material_readonly_blender.jpg` | Défi ★ : une matière liée, avec son icône de lien et ses champs grisés | Côte à côte |
-| 3.43 | `lamp_two_colorways_blender.jpg` | L'atelier : les coloris A et B côte à côte | Pleine largeur |
+| Figure | Fichier | Ce qu'elle montre | Format | Taille (px) | Échelle dans l'application |
+|---|---|---|---|---|---|
+| 3.1 | `lamp_cmf_target_blender.jpg` | Le but du chapitre : la lampe habillée en deux coloris, en Material Preview. À gauche, le coloris A (laque verte, aluminium brossé, chrome) ; à droite, le coloris B de l'atelier. | Pleine largeur | 828 × 356 | 0,86 |
+| 3.2 | `material_preview_button_blender.jpg` | Les boutons de mode d'affichage, en haut à droite de la vue 3D (agrandis dans le médaillon) : Material Preview est actif. La lampe n'a pas encore de matière : elle reste blanche. | Côte à côte | 593 × 593 | 0,51 |
+| 3.3 | `material_preview_popover_blender.jpg` | Le menu Viewport Shading en Material Preview : l'image d'environnement, sa rotation, World Opacity, et les cases Scene Lights et Scene World. | Côte à côte | 320 × 333 | 0,90 |
+| 3.4 | `material_tab_new_blender.jpg` | L'onglet Material d'une pièce sans matière : la liste des emplacements, vide, et le bouton New. | Côte à côte | 542 × 190 | 0,64 |
+| 3.5 | `material_tab_surface_blender.jpg` | La rubrique Surface d'une nouvelle matière : Principled BSDF, puis Base Color, Metallic, Roughness, IOR, Alpha, Thin Wall, Normal, et les rubriques repliées. | Côte à côte | 542 × 590 | 0,51 |
+| 3.6 | `material_browse_list_blender.jpg` | La liste des matières existantes, ouverte à gauche du nom. Le chiffre 2 à droite du nom : deux pièces partagent Peinture_Vert. | Côte à côte | 540 × 342 | 0,64 |
+| 3.7 | `link_materials_menu_blender.jpg` | Astuce : Ctrl + L dans la vue 3D ouvre le menu Link/Transfer Data ; Link Materials donne la matière de l'objet actif à toute la sélection. | Côte à côte | 501 × 544 | 0,55 |
+| 3.8 | `metallic_roughness_grid_blender.jpg` | La grille du nuancier, en Material Preview. Rangée arrière : Metallic 1 ; rangée avant : Metallic 0. De gauche à droite : Roughness 0, 0,1, 0,2, 0,4, 0,6 et 1. | Pleine largeur | 920 × 213 | 0,78 |
+| 3.9 | `principled_coat_panel_blender.jpg` | À gauche, la rubrique Coat dépliée sur Peinture_Vert : Weight 1, Roughness 0,03. À droite, la tête prend un reflet net de laque. | Pleine largeur | 1156 × 720 | 0,62 |
+| 3.10 | `principled_transmission_blender.jpg` | La rubrique Transmission dépliée sur Verre_Clair : Weight 1. Roughness est à 0 et Thin Wall est coché. | Côte à côte | 542 × 598 | 0,50 |
+| 3.11 | `glass_raytracing_comparison_blender.jpg` | L'ampoule vue par l'ouverture de la tête. À gauche, sans les deux cases : une boule sombre qui reflète l'environnement. Au milieu, avec les deux cases : le verre réfracte, comme une boule de cristal. À droite, avec Thin Wall en plus : une paroi fine, qui laisse voir la douille sans la déformer. | Pleine largeur | 1200 × 327 | 0,60 |
+| 3.12 | `render_raytracing_checkbox_blender.jpg` | L'onglet Render : le moteur EEVEE et la case Raytracing, cochée. | Côte à côte | 542 × 590 | 0,51 |
+| 3.13 | `material_settings_transmission_blender.jpg` | L'onglet Material, rubrique Settings : Render Method, la case Raytraced Transmission cochée, et Thickness. | Côte à côte | 542 × 390 | 0,64 |
+| 3.14 | `principled_thin_wall_blender.jpg` | La case Thin Wall cochée, dans la rubrique Surface de Verre_Clair. | Côte à côte | 542 × 530 | 0,57 |
+| 3.15 | `principled_emission_panel_blender.jpg` | Défi : la rubrique Emission dépliée, Color vert et Strength 6. En dessous, l'interrupteur devient un voyant. | Côte à côte | 528 × 353 | 0,65 |
+| 3.16 | `material_slots_two_blender.jpg` | Option : deux emplacements de matière sur la tête, Peinture_Vert et Blanc_Interieur. L'intérieur de l'abat-jour devient blanc. | Pleine largeur | 1166 × 600 | 0,61 |
+| 3.17 | `solidify_material_offset_blender.jpg` | Option : le modificateur Solidify de la tête, rubrique Materials : Material Offset à 1. | Côte à côte | 542 × 530 | 0,57 |
+| 3.18 | `shading_workspace_blender.jpg` | L'espace de travail Shading : le navigateur de fichiers en haut à gauche (flouté ici), la vue 3D en Material Preview, le Shader Editor en bas, l'Outliner et l'éditeur de propriétés à droite. | Pleine largeur | 1200 × 720 | 0,60 |
+| 3.19 | `principled_node_vs_tab_blender.jpg` | À gauche, la matière Alu_Naturel en nœuds : Principled BSDF relié à Material Output. À droite, l'onglet Material affiche les mêmes valeurs. | Pleine largeur | 1132 × 683 | 0,63 |
+| 3.20 | `shader_editor_add_menu_blender.jpg` | Maj + A dans le Shader Editor : le menu Add, puis son sous-menu Texture, avec Noise Texture et Image Texture. | Côte à côte | 498 × 374 | 0,69 |
+| 3.21 | `node_link_noise_base_color_blender.jpg` | Une Noise Texture reliée par sa sortie Color à l'entrée Base Color. À droite, la tige se couvre de nuages gris, étirés sur toute sa longueur. | Pleine largeur | 1150 × 723 | 0,62 |
+| 3.22 | `texture_coordinate_node_blender.jpg` | Étape 1 : Texture Coordinate, sortie Object, reliée à l'entrée Vector du Noise (Scale 1000). À droite, le motif devient fin et régulier sur toute la tige. | Pleine largeur | 1200 × 558 | 0,60 |
+| 3.23 | `noise_bump_chain_blender.jpg` | Étape 2 : la sortie Factor du Noise va dans Height du Bump, la sortie Normal du Bump va dans Normal du Principled. Strength est à 0,2. À droite, le motif devient un relief. | Pleine largeur | 1200 × 634 | 0,60 |
+| 3.24 | `brushed_aluminium_blender.jpg` | Étape 3 : le nœud Mapping, Scale (1, 1, 0,02), entre Texture Coordinate et Noise ; Strength du Bump à 0,15. À droite, les rayures suivent la longueur de la tige. | Pleine largeur | 1196 × 560 | 0,60 |
+| 3.25 | `image_texture_projection_menu_blender.jpg` | Le nœud Image Texture et son menu de projection : Flat, Box, Sphere, Tube. | Côte à côte | 262 × 254 | 1,18 |
+| 3.26 | `image_texture_box_node_blender.jpg` | Le nœud Image Texture réglé : projection Box, Blend 0,3, Color Space Non-Color. | Côte à côte | 262 × 254 | 1,18 |
+| 3.27 | `leather_chain_armrest_blender.jpg` | La chaîne du cuir grainé : Texture Coordinate (Object), Mapping (Scale 25), Image Texture en Box avec Blend 0,3 et Non-Color, Bump (Strength 0,3), dont la sortie va dans Normal du Principled. | Pleine largeur | 1050 × 539 | 0,68 |
+| 3.28 | `box_blend_comparison_blender.jpg` | Une image contrastée (la tôle larmée) projetée en Box sur une coque de rétroviseur, au raccord de deux projections. À gauche, Blend 0 : les larmes sont coupées net. À droite, Blend 0,2 : la transition se fond. | Pleine largeur | 808 × 260 | 0,88 |
+| 3.29 | `image_color_space_menu_blender.jpg` | Le menu Color Space du nœud Image Texture : Non-Color pour une image de relief, sRGB pour une image de couleur. | Côte à côte | 262 × 304 | 0,99 |
+| 3.30 | `texture_scale_not_applied_blender.jpg` | Les deux accoudoirs du fichier de démonstration. À gauche, l'accoudoir du fond a une échelle X de 2 non appliquée : son grain s'étire en longueur. À droite, après Ctrl + A > Scale : les deux grains sont identiques. | Pleine largeur | 1200 × 380 | 0,60 |
+| 3.31 | `file_external_data_pack_blender.jpg` | File > External Data : Pack Resources range les images dans le fichier .blend. | Côte à côte | 280 × 293 | 1,02 |
+| 3.32 | `preferences_node_wrangler_blender.jpg` | Option : Edit > Preferences > Add-ons, l'extension Node Wrangler, livrée avec Blender. | Côte à côte | 600 × 276 | 0,57 |
+| 3.33 | `cmf_swatch_library_blender.jpg` | Le nuancier de la bibliothèque CMF, en Material Preview : une rangée par catalogue (métaux, plastiques, peintures, verres, finitions texturées), et la grille Metallic / Roughness au fond. | Pleine largeur | 934 × 794 | 0,57 |
+| 3.34 | `material_mark_as_asset_blender.jpg` | Le clic droit sur le nom de la matière, dans l'onglet Material : Mark as Asset. | Côte à côte | 594 × 242 | 0,58 |
+| 3.35 | `asset_browser_editor_type_blender.jpg` | Le sélecteur de type d'éditeur, ouvert sur la zone du bas : Asset Browser se trouve dans la colonne Data. | Pleine largeur | 950 × 284 | 0,75 |
+| 3.36 | `asset_browser_overview_blender.jpg` | L'Asset Browser, bibliothèque Current File : les catalogues à gauche, les vignettes du catalogue Métaux au centre, et la barre latérale de l'actif sélectionné à droite. | Pleine largeur | 1011 × 430 | 0,71 |
+| 3.37 | `asset_catalog_new_blender.jpg` | La liste des catalogues : le bouton + pour en créer un, et les trois catalogues de la lampe. Unassigned regroupe les actifs sans catalogue. | Côte à côte | 298 × 195 | 1,16 |
+| 3.38 | `asset_metadata_sidebar_blender.jpg` | La barre latérale de l'Asset Browser pour Alu_Brosse : Description, License, Author, et la vignette (Preview). | Côte à côte | 297 × 393 | 0,76 |
+| 3.39 | `asset_drag_drop_material_blender.jpg` | La vignette Chrome, glissée de la bibliothèque Current File sur la douille. Blender affiche la pièce visée : « Drop Chrome on Douille ». | Pleine largeur | 1010 × 620 | 0,71 |
+| 3.40 | `file_menu_link_append_blender.jpg` | Le menu File : Link… et Append…, juste au-dessus de Data Previews. | Côte à côte | 263 × 566 | 0,53 |
+| 3.41 | `file_append_blend_folders_blender.jpg` | La fenêtre File > Append, à l'intérieur du fichier du nuancier : ses dossiers Collection, Material, Object… Le chemin du poste est flouté. | Pleine largeur | 1025 × 430 | 0,70 |
+| 3.42 | `preferences_asset_libraries_blender.jpg` | Option : Edit > Preferences > Asset Libraries, la bibliothèque CMF ajoutée, avec son chemin (Path, flouté) et sa méthode d'import (Import Method : Pack). | Pleine largeur | 993 × 314 | 0,72 |
+| 3.43 | `asset_library_selector_blender.jpg` | Option : le menu des bibliothèques de l'Asset Browser : All Libraries, Current File, Essentials, User Library et la bibliothèque CMF déclarée. | Côte à côte | 296 × 234 | 1,17 |
+| 3.44 | `asset_import_method_menu_blender.jpg` | Option : Import Settings, dans l'en-tête de l'Asset Browser : Import Method propose Follow Asset or Preferences, Link, Append et Pack. | Côte à côte | 430 × 200 | 0,80 |
+| 3.45 | `outliner_collection_menu_blender.jpg` | Le clic droit sur la collection Lampe, dans l'Outliner : Duplicate Collection. | Côte à côte | 317 × 277 | 1,08 |
+| 3.46 | `lamp_two_colorways_blender.jpg` | L'atelier terminé : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, décalé de 750 mm. | Pleine largeur | 752 × 288 | 0,95 |
+| 3.47 | `linked_material_readonly_blender.jpg` | Défi : une matière liée par File > Link. Son nom porte l'icône de lien, et ses réglages sont grisés : elle se modifie dans son fichier source. | Côte à côte | 542 × 530 | 0,57 |
 
 **Méthode :** celle du chapitre 1 (note de passation) : *Resolution Scale* à 1,25, onglets d'extensions tierces hors champ, chemins personnels floutés dans le navigateur de fichiers de l'espace *Shading*. Les vues en *Material Preview* se capturent dans une fenêtre Blender courte, lancée à part, en ouvrant un fichier `.blend` pour éviter l'écran d'accueil ; la comparaison 3.10 a déjà été prototypée ainsi.
 
@@ -990,3 +994,17 @@ Vérifiés le 18 novembre 2026, dans un Blender lancé à part, sans toucher à 
 4. **Mémo imprimé :** reporté, hors de ce plan.
 5. **Plus d'autonomie :** Link réduit à une phrase, sa manipulation en défi ★, *Pack* cité de même ; les 8 minutes gagnées à 3:10 passent à l'atelier ; une partie de la pratique guidée de la section 3 devient autonome ; le quiz de la section 3 ne porte plus sur la manipulation de Link ni sur la bibliothèque déclarée.
 6. **Corrigés :** la convention commune aux chapitres 2 à 4. Le corrigé est dans le fichier de travail, en collection masquée dont le nom commence par « Corrigé », et le LISEZ-MOI le signale en une ligne. Un fichier séparé n'existe que s'il est justifié : ici, seulement la lampe habillée, point de départ du chapitre 4. Les fichiers déjà livrés (Basics, initiation, chapitre 1) ne sont pas retouchés.
+
+## Décisions de production, 19 novembre 2026
+
+Prises par délégation pendant la production des fichiers, du texte et des captures, à confirmer par le formateur.
+
+1. **Le relief se règle avec *Strength*, pas avec *Distance*.** Dans Blender 5.2, le champ *Distance* du nœud *Bump* affiche trois décimales : 0,0002 s'y lit « 0.000 », ce qui égarerait un débutant. *Distance* garde sa valeur par défaut (0,001) et *Strength* porte le réglage, avec le même rendu : brossé 0,15, peinture structurée 0,2, grain de l'ABS 0,05, microbillé 0,03, cuir 0,3, coque 0,1, carbone 0,1, tôle larmée 0,8. Le message pédagogique ne change pas : la valeur par défaut est trop forte pour un si petit objet. Les fichiers, les LISEZ-MOI et le texte suivent ces valeurs.
+2. **Les préférences des bibliothèques :** dans Blender 5.2, la section est *Edit > Preferences > Asset Libraries*, et non *File Paths*. Le texte, les LISEZ-MOI et la figure 3.42 suivent.
+3. **La méthode d'import :** le menu *Import Settings* de l'Asset Browser propose *Follow Asset or Preferences*, *Link*, *Append* et *Pack*. Une bibliothèque déclarée importe en *Pack* par défaut (vérifié dans Blender 5.2.1). Le texte le dit dans l'option « déclarer une bibliothèque », et conseille *Append* pour une matière à modifier.
+4. **Les images de finition font 512 × 512 px**, et non 1024 : la projection *Box* en *Material Preview* n'en demande pas plus, et les fichiers restent légers (0,2 à 0,8 Mo).
+5. **Les livrables en zip :** `PRC02_ch3_textures_cmf.zip` (le dossier `textures_cmf`), `PRC02_bibliotheque_CMF.zip` (le nuancier et son fichier de catalogues) et `PRC02_ch3_lampe_habillage.zip` (la lampe habillée et son fichier de catalogues). La lampe à habiller et les finitions triplanaires se distribuent seules.
+6. **La grille *Metallic* / *Roughness*** est faite de sphères de 44 mm, plus lisibles que des plaquettes ; les plaquettes du nuancier sont couchées à 25° de l'horizontale, pour refléter le haut clair de l'image d'environnement. Le support mesure 1,05 × 0,95 m.
+7. **La figure de *Blend*** (3.28) montre une coque de rétroviseur en carbone, et non le socle : sur la peinture structurée, le raccord se lit à peine.
+8. **Le panneau carbone** est construit debout dans son repère local, puis couché par sa rotation : le *Bend* du *Simple Deform* sur l'axe Y ne courbe pas un plan couché en XY (vérifié).
+9. **Dans le fichier de démonstration des finitions,** le LISEZ-MOI occupe la zone du navigateur de fichiers de l'espace *Shading* : ce navigateur aurait enregistré le chemin absolu du dossier.

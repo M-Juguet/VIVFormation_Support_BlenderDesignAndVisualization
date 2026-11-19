@@ -192,6 +192,7 @@ class CourseData {
         ChapterPoint(label: 'Principled BSDF : métal, plastique, verre', targetModuleId: 'ch3_sec1_title'),
         ChapterPoint(label: 'Finitions CMF en projection triplanaire', targetModuleId: 'ch3_sec2_title'),
         ChapterPoint(label: 'Bibliothèque d\'actifs (Asset Browser)', targetModuleId: 'ch3_sec3_title'),
+        ChapterPoint(label: 'Atelier : le second coloris', targetModuleId: 'ch3_atelier'),
       ],
     ),
     CourseChapter(
