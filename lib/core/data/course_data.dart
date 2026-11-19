@@ -168,8 +168,6 @@ class CourseData {
           'Modéliser un objet industriel de façon non destructive avec les modificateurs de symétrie, d\'épaisseur et de répétition, et dessiner profils et détails organiques avec les courbes de Bézier.',
       icon: LucideIcons.spline,
       modules: chapter2Modules,
-      // Seul le défi facultatif (section 4) est rédigé : à retirer avec le contenu de base.
-      baseContentPending: true,
       points: [
         ChapterPoint(label: 'Modificateurs : symétrie, épaisseur, répétition', targetModuleId: 'ch2_sec1_title'),
         ChapterPoint(label: 'Courbes de Bézier : profils et détails', targetModuleId: 'ch2_sec2_title'),

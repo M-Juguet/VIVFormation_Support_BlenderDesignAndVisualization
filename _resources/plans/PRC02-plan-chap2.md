@@ -239,7 +239,7 @@ Ancre : `ch2_sec2_title`.
 | 1. L'objet courbe : points de contrôle, poignées et leurs types (`V`) ; `E` et `Ctrl + clic droit` sur une courbe | Câble, cycle A |
 | 2. La rubrique *Geometry* de la courbe : *Bevel*, *Depth*, *Resolution*, *Fill Caps* | Câble, cycle B |
 | 3. L'outil *Curve Pen* : un clic pour un angle, un cliquer-glisser pour une courbe | Câble, cycle C |
-| 4. `Maj + S > Selection to Cursor` ; le modificateur *Screw* et sa *Merge Distance* | Ampoule |
+| 4. `Maj + S > Selection to Cursor` ; le modificateur *Screw* et sa distance de soudure (*Merge*) | Ampoule |
 
 ### Notions
 
@@ -247,7 +247,7 @@ Ancre : `ch2_sec2_title`.
 - **Anatomie d'un point :** le point de contrôle et ses deux poignées. Les types de poignée, avec `V` : *Automatic*, *Vector*, *Aligned* et *Free*.
 - **Dessiner :** *Add > Curve > Bézier* ; en Mode Édition, `E` prolonge la courbe depuis un point, `Ctrl + clic droit` ajoute un point sous la souris. L'outil *Curve Pen* de la barre d'outils pose un point anguleux d'un clic et un point arrondi d'un cliquer-glisser, comme en dessin vectoriel.
 - **Donner du volume :** onglet *Object Data* de la courbe. Rubrique *Shape* : *Resolution Preview U*. Rubrique *Geometry* : *Bevel* en mode *Round*, avec *Depth*, *Resolution* et *Fill Caps*. *Extrude* et *Offset*, voisins, sont seulement cités.
-- **Profil de révolution :** le modificateur *Screw* (*Axis*, *Angle* 360°, *Steps*, *Merge Vertices*, *Merge Distance*), sur une courbe ou un maillage.
+- **Profil de révolution :** le modificateur *Screw* (*Axis*, *Angle* 360°, *Steps*, *Merge* et sa distance), sur une courbe ou un maillage.
 
 **Dans l'application**, la section commencera par l'anatomie d'une courbe, avec une capture annotée. Viendront ensuite le dessin, le volume, puis la révolution.
 
@@ -294,7 +294,7 @@ Ils font, en autonomie : un second tracé du câble avec *Curve Pen*, avec une b
 2. Clic sur *Repere_ampoule*, à droite de la lampe, puis `Maj + S > Cursor to Selected` : le curseur se pose sur l'axe de l'ampoule, à sa base.
 3. `Maj + A > Curve > Bézier`, renommée *Ampoule*. `Tab`. Supprimez le point de droite (`X > Vertices`). Sélectionnez celui qui reste, puis `Maj + S > Selection to Cursor` : c'est le point 1 du croquis, sur l'axe. `V > Vector`.
 4. Vue de face (`1`). Avec *Curve Pen* : un clic sur les points 2 et 3 du croquis (le culot, anguleux), un cliquer-glisser vertical sur le point 4 (le globe), un cliquer-glisser horizontal sur le point 5 (le sommet, sur l'axe).
-5. `Tab`. *Add Modifier > Generate > Screw* : *Axis* Z, *Steps* 32, *Merge Vertices* coché, *Merge Distance* `0.1mm`. L'ampoule apparaît.
+5. `Tab`. *Add Modifier > Generate > Screw* : *Axis* Z, *Steps* 32, *Merge* coché, distance `0.1mm`. L'ampoule apparaît.
 6. `Tab`, puis déplacez une poignée du profil : toute l'ampoule suit. C'est un profil qui reste modifiable.
 7. **Ailleurs :** le profil d'une roue ferroviaire, l'optique d'un phare, le cône d'une hélice.
 
@@ -307,13 +307,13 @@ Ils font, en autonomie : un second tracé du câble avec *Curve Pen*, avec une b
 **Corrigé :** collection masquée *Corrigé*, *Ampoule_corrige*.
 
 **Points d'observation :**
-- Un sommet aplati : *Merge Distance* vaut 10 mm par défaut. Tout ce qui passe à moins de 10 mm de l'axe est soudé. Ramenez-la à 0,1 mm.
-- Un trou au sommet : le dernier point ne touche pas l'axe, ou *Merge Vertices* n'est pas coché.
+- Un sommet aplati : la distance de *Merge* vaut 10 mm par défaut. Tout ce qui passe à moins de 10 mm de l'axe est soudé. Ramenez-la à 0,1 mm.
+- Un trou au sommet : le dernier point ne touche pas l'axe, ou *Merge* n'est pas coché.
 - Un disque à la place d'une ampoule : le mauvais axe est choisi.
 - Un sommet pointu : le point 5 a été posé d'un simple clic. Ses poignées doivent être horizontales.
 
-> **À tester lors de la construction des fichiers :**
-> - l'enchaînement de l'étape 4 : *Curve Pen* prolonge-t-il bien la courbe depuis le point 1 sélectionné ? Sinon, `Ctrl + clic droit` pour les points 2 à 4, puis *Curve Pen* pour le point 5 ;
+> **Testé lors de la construction des fichiers (19 novembre 2026) :**
+> - l'enchaînement de l'étape 4 fonctionne : *Curve Pen* prolonge la courbe depuis le point 1 sélectionné, dans la même spline ; un clic pose un point *Vector*, un cliquer-glisser un point *Aligned*. Il ajoute chaque point **avant** le point sélectionné : le profil est parcouru du sommet vers la base, et c'est dans ce sens que les normales du *Screw* regardent vers l'extérieur (dans l'autre sens, elles regardent toutes vers l'intérieur). Le corrigé suit le même ordre. Le texte signale *Flip* (rubrique *Normals* du *Screw*) pour une ampoule rouge avec *Face Orientation* ;
 > - une valeur tapée pendant un geste : point tranché au plan du chapitre 1. Un nombre seul suit l'unité affichée, et une unité n'est lue qu'après `=`, la saisie avancée. Les valeurs à taper pendant un geste s'écrivent donc avec `=` et leur unité (`G X = 76mm`). Ainsi, chacun suit, que son fichier affiche des mètres ou des millimètres.
 
 ### 2:35 · Pause (10 min)
@@ -639,7 +639,7 @@ D'abord : File > Save As, sous liseuse_modele_v001.blend.
    3 points jusqu'au dos de la tête. Geometry > Bevel : Round, Depth 4 mm, Fill Caps.
 5. Tête_liseuse : X > Faces sur la grande face, Solidify 1.5 mm, Shade Auto Smooth.
 6. Diffuseur : sur Repere_diffuseur, comme l'ampoule, un demi-profil en vue de face :
-   l'axe, le bord à 17.5 mm, un dôme de 4 mm. Screw : Axis Z, Merge Distance 0.1 mm.
+   l'axe, le bord à 17.5 mm, un dôme de 4 mm. Screw : Axis Z, Merge coché à 0.1 mm.
    N > Item : Location 0, -276.1, 150.2 mm ; Rotation X -36.87°.
 Contrôle : le col part de la platine et entre dans le dos de la tête ;
 rien ne traverse la paroi ni l'accoudoir. Ctrl + S.
@@ -722,7 +722,7 @@ Contrôle : vue de face (1), le câble repose sur la table.
 3. Vue de face (1), outil Curve Pen : clic sur les points 2 et 3,
    cliquer-glisser vertical sur le point 4, cliquer-glisser horizontal sur le point 5.
 4. Tab. Add Modifier > Generate > Screw : Axis Z, Steps 32,
-   Merge Vertices coché, Merge Distance 0.1 mm.
+   Merge coché, distance 0.1 mm (le champ à droite de la case).
 5. N > Item : Location 211, 0, 411 mm ; Rotation Y 150°.
 ★ Retouchez une poignée : l'ampoule suit. Comparez Steps 16 et 48.
 Contrôle : une ampoule lisse et fermée, au fond de la tête.
@@ -776,8 +776,8 @@ Une capture par menu, bouton ou panneau cité. Les figures sont numérotées « 
 | 2.23 | 2 | La rubrique *Geometry* : *Bevel* (*Round*, *Depth*, *Resolution*, *Fill Caps*) | Côte à côte | `curve_geometry_bevel_panel_blender.jpg` |
 | 2.24 | 2 | Le câble posé, de l'arrière du socle à la table | Pleine largeur | `cable_bezier_lamp_blender.jpg` |
 | 2.25 | 2 | Le menu `Maj + S`, avec *Cursor to Selected* et *Selection to Cursor* | Côte à côte | `snap_pie_menu_blender.jpg` |
-| 2.26 | 2 | Le panneau *Screw* : *Angle*, *Screw*, *Iterations*, *Steps*, *Axis*, *Merge Vertices*, *Merge Distance* | Côte à côte | `screw_modifier_panel_blender.jpg` |
-| 2.27 | 2 | Le demi-profil de l'ampoule et l'ampoule obtenue ; à côté, le sommet aplati par une *Merge Distance* de 10 mm | Pleine largeur | `bulb_profile_screw_blender.jpg` |
+| 2.26 | 2 | Le panneau *Screw* : *Angle*, *Screw*, *Iterations*, *Steps*, *Axis*, *Merge* et sa distance | Côte à côte | `screw_modifier_panel_blender.jpg` |
+| 2.27 | 2 | Le demi-profil de l'ampoule et l'ampoule obtenue ; à côté, le sommet aplati par une distance de *Merge* de 10 mm | Pleine largeur | `bulb_profile_screw_blender.jpg` |
 | 2.28 | 3 | La lampe modélisée, superposée au gabarit en fil de fer | Pleine largeur | `lamp_model_vs_gabarit_blender.jpg` |
 | 2.29 | 3 | L'Outliner du fichier final : collections, pièces et icônes des modificateurs | Côte à côte | `outliner_lamp_model_blender.jpg` |
 | 2.30 | 3 | La lampe modélisée, en *Solid* avec *Cavity* | Pleine largeur | `lamp_model_final_blender.jpg` |
@@ -870,4 +870,21 @@ Ce plan a été relu face au découpage validé (`PRC02-decoupage-formation.md`,
 6. **L'épaisseur, cycle A :** il ne garde que la suppression d'une face et le *Solidify*. Le *Bevel* en modificateur se découvre sur le socle, en autonomie, au cycle B ; il est déclaré comme nouveauté. Le *Bevel* de la tête passe à l'atelier. L'ordre de la pile devient une remarque du formateur (encart *NOTE*). Le minutage reste à 25 minutes, et le total à 3 h 30.
 7. **Les corrigés,** selon la convention commune aux chapitres 2 à 4 : dans le fichier de travail, une collection masquée dont le nom commence par « Corrigé » (*Corrigé*, *Corrigé défis*), signalée en une ligne dans le LISEZ-MOI. Un fichier séparé n'existe que s'il est justifié : ici, seul `PRC02_ch2_lampe_modele.blend`, départ et secours du chapitre 3. Un tableau récapitule, pour chaque exercice et l'atelier, le fichier de travail et l'endroit du corrigé. Les fichiers déjà livrés (Basics, initiation, chapitre 1) ne sont pas retouchés.
 
-**Encore à tester lors de la construction :** l'enchaînement *Curve Pen* depuis un point sélectionné, et l'unité d'une valeur tapée pendant un geste (encadré de la séquence de l'ampoule).
+**Testés lors de la construction :** l'enchaînement *Curve Pen* depuis un point sélectionné, et l'unité d'une valeur tapée pendant un geste (encadré de la séquence de l'ampoule).
+
+## Construction et rédaction (19 novembre 2026)
+
+Les fichiers d'exercice, les sections 1 à 3 de l'application et leurs 32 figures ont été produits d'après ce plan, la nuit du 18 au 19 novembre. Les scripts sont dans `tool/exercices_ch2/` : `croquis_ampoule.py` (fichier 3), `build_lampe.py` (fichiers 1 et 2), `build_liseuse.py` (fichier 4), `build_demos.py` (fichier 5), `finish_ui.py` (zone LISEZ-MOI et Outliner), `verifier_blend.py`, `rendus_controle.py`, `captures_brutes.py`, `recadrer.py` et `md_vers_dart.py`.
+
+**Écarts et décisions, par délégation, à confirmer par le formateur :**
+1. **L'Outliner à l'ouverture :** il est agrandi à 340 px, et seule la collection de travail est dépliée (*Lampe* ; *Liseuse* pour le fichier 4). Dépliées toutes les trois, *Gabarit*, *Lampe* et *Croquis* repoussaient les collections *Corrigé* hors de vue.
+2. **La vue d'ouverture :** *Clip Start* à 1 mm, comme prévu, et *Clip End* ramené à 50 m, pour garder la précision de la profondeur.
+3. **Le sens des profils de révolution :** l'ampoule du corrigé est rangée du sommet vers la base, comme la pose *Curve Pen* (voir l'encadré de la séquence de l'ampoule). Le ressort et la roue du fichier de démos sont parcourus dans le sens qui met les normales du *Screw* vers l'extérieur. Vérifié sur tous les fichiers : aucune normale tournée vers l'intérieur.
+4. **Le libellé du *Screw* :** le panneau affiche *Merge*, une case et sa distance. Le plan, les LISEZ-MOI et le texte de l'application l'écrivent ainsi (au lieu de *Merge Vertices* et *Merge Distance*, les noms des infobulles).
+5. **L'ordre de l'épaisseur dans l'application :** le *Bevel* (figure 2.10) vient avant *Shade Auto Smooth* (figure 2.11), pour garder la numérotation des figures et montrer le *Bevel* dans la pile de la figure 2.12. L'ordre de la séance ne change pas.
+6. **Les figures :** le sous-menu *Generate* (2.2) est présenté en deux colonnes, pour rester lisible ; la figure 2.9 passe en pleine largeur (la tête vue de dessous et le gros plan du bord) ; la figure 2.12 range la pile sous les deux vues ; la figure 2.19 porte des étiquettes (types de poignée, point de contrôle, poignée).
+7. **Le croquis de l'ampoule** reprend les couleurs des croquis du chapitre 1 (fond blanc cassé, trait bleu nuit). Il est aussi offert en téléchargement, `PRC02_ch2_croquis_ampoule.zip`, pour ceux qui gardent leur propre fichier.
+8. **Les ressources de l'application :** le fichier de départ (section 1), le croquis (section 2), le fichier modèle et la liseuse (section 3). Le fichier de démos reste au poste du formateur : il n'est pas proposé dans l'application.
+9. **Les couleurs des corrigés :** gris clair (#C8C8C8) pour toutes les pièces, orange (#E8913A) pour les pièces ajoutées des défis. Le fichier 1 s'ouvre en couleur *Random*, le fichier 2 en couleur *Object*.
+
+**Contrôles faits :** les cinq fichiers ont été relus après décompression (aucun chemin absolu, aucune bibliothèque ni référence faible, aucun texte d'extension, échelles à 1, EEVEE, millimètres) ; chaque fichier et chaque corrigé a son rendu EEVEE de contrôle, regardé. Les contacts entre pièces sont ceux de la liste ci-dessus, plus deux contacts cachés : la douille touche l'articulation du haut au fond de la tête, et les jambes de la chape s'appuient sur les faces de l'articulation.
