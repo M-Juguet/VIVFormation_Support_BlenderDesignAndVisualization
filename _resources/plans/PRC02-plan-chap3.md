@@ -271,7 +271,7 @@ Ancre `ch3_sec2_title` · 65 minutes, de 1:35 à 2:40 · Espace de travail *Shad
 | Ajouter un nœud et le relier | `Maj + A` ; glisser d'une sortie vers une entrée ; glisser un lien hors de son entrée pour le défaire | 3.20, 3.21 |
 | Une texture procédurale : Noise | Une texture calculée, sans image, sans raccord ; *Scale* compte les motifs par mètre | 3.21 |
 | Les coordonnées de texture | Le nœud *Texture Coordinate* : *Generated* étire la texture selon la boîte de l'objet ; *Object* garde la même taille partout ; *UV* n'est pas utilisé ici | 3.22 |
-| Du motif au relief : Bump | *Height* vers *Normal* du Principled ; *Distance* adaptée à un petit objet | 3.23 |
+| Du motif au relief : Bump | *Height* vers *Normal* du Principled ; *Strength* adaptée à un petit objet | 3.23 |
 | Étirer pour brosser : Mapping | *Scale* du nœud *Mapping*, dans l'axe de la pièce | 3.24 |
 | Une image projetée sur trois axes : Box | *Image Texture*, menu *Projection*, *Box*, puis *Blend* pour fondre les raccords | 3.25, 3.26, 3.27 |
 | Les images de données : Non-Color | Une image de relief n'est pas une couleur : *Color Space* sur *Non-Color* ; une image de couleur reste en *sRGB* | 3.28 |
@@ -313,17 +313,17 @@ Ancre `ch3_sec2_title` · 65 minutes, de 1:35 à 2:40 · Espace de travail *Shad
 
 **Étape 1 · Les coordonnées (démo 3 min + guidée 3 min).** Reliez de nouveau *Noise* à *Base Color* : le motif est étiré sur la longueur du bras. `Maj + A > Input > Texture Coordinate`, sortie *Object* vers l'entrée *Vector* du *Noise* : le motif garde la même taille partout. La lampe est petite : *Scale* du *Noise* passe de 5 à 1000, soit environ un motif par millimètre.
 
-**Étape 2 · Le relief (démo 3 min + guidée 4 min).** Défaites le lien vers *Base Color*. `Maj + A > Displacement > Bump` : *Factor* du *Noise* vers *Height*, *Normal* du *Bump* vers *Normal* du Principled. Le motif devient un relief. *Distance* passe de 0,001 à 0,0002 : la valeur par défaut est trop forte pour un si petit objet.
+**Étape 2 · Le relief (démo 3 min + guidée 4 min).** Défaites le lien vers *Base Color*. `Maj + A > Displacement > Bump` : *Factor* du *Noise* vers *Height*, *Normal* du *Bump* vers *Normal* du Principled. Le motif devient un relief. *Strength* passe de 1 à 0,2 ; *Distance* garde sa valeur : la force par défaut est trop forte pour un si petit objet.
 
-**Étape 3 · Le brossé (démo 2 min + guidée 4 min).** `Maj + A > Utilities > Vector > Mapping`, entre *Texture Coordinate* et *Noise*. *Scale* Z à 0,02 : le grain s'étire en fines rayures dans l'axe du bras. *Distance* du *Bump* à 0,00015. Renommez la matière `Alu_Brosse`.
+**Étape 3 · Le brossé (démo 2 min + guidée 4 min).** `Maj + A > Utilities > Vector > Mapping`, entre *Texture Coordinate* et *Noise*. *Scale* Z à 0,02 : le grain s'étire en fines rayures dans l'axe du bras. *Strength* du *Bump* à 0,15. Renommez la matière `Alu_Brosse`.
 
-**Ils font, en autonomie (6 min) :** la même chaîne, sans *Mapping*, sur `ABS_Noir` : un grain fin pour l'interrupteur et la grille (*Noise Scale* 1500, *Distance* 0,00005). Les plus rapides microbillent les articulations.
+**Ils font, en autonomie (6 min) :** la même chaîne, sans *Mapping*, sur `ABS_Noir` : un grain fin pour l'interrupteur et la grille (*Noise Scale* 1500, *Strength* 0,05). Les plus rapides microbillent les articulations.
 
 **Point de contrôle :** sur chaque tige, les rayures suivent la longueur du bras ; le grain de l'interrupteur est régulier.
 
 **Points d'observation :**
 - Rien ne se voit : *Scale* du *Noise* est resté trop faible, un seul motif couvre la pièce.
-- Un relief qui scintille : *Distance* trop forte. Divisez-la par deux.
+- Un relief qui scintille : *Strength* trop forte. Divisez-la par deux.
 - Les rayures sont en travers : l'axe étiré dans *Mapping* n'est pas le bon. Les axes *Object* sont ceux de la pièce : la rotation des bras n'est pas appliquée au chapitre 2, c'est voulu.
 
 ### 2:15 · Projection triplanaire d'images (25 min)
@@ -340,7 +340,7 @@ Ancre `ch3_sec2_title` · 65 minutes, de 1:35 à 2:40 · Espace de travail *Shad
 1. rendre la laque du socle indépendante : un clic sur son compteur, puis la renommer `Structure_Vert`. Même teinte, autre finition : c'est une décision CMF ;
 2. *Coat Weight* à 0, *Roughness* à 0,6 ;
 3. ajouter *Image Texture*, *Open*, puis `textures_cmf/grain_structure.png` ; *Non-Color* ; projection *Box*, *Blend* 0,25 ;
-4. relier *Texture Coordinate* (*Object*), *Mapping* (*Scale* 50 sur les trois axes), l'image, *Bump* (*Distance* 0,0002) et *Normal*.
+4. relier *Texture Coordinate* (*Object*), *Mapping* (*Scale* 50 sur les trois axes), l'image, *Bump* (*Strength* 0,2) et *Normal*.
 
 **Ils font, en autonomie (8 min) :**
 - faire le tour du socle et régler *Blend* et *Scale* jusqu'à ne plus voir de raccord ;
@@ -637,13 +637,13 @@ Socle
 SECTION 2 · Les finitions (espace Shading)
 Socle
 - Bras brossés : Texture Coordinate (Object) > Mapping (Scale Z 0,02) > Noise Texture (Scale 1000)
-  > Bump (Distance 0,00015) > Normal du Principled.
+  > Bump (Strength 0,15) > Normal du Principled.
 - Socle : rendez sa matière indépendante (compteur), Coat 0, Roughness 0,6.
   Image Texture : textures_cmf/grain_structure.png, Non-Color, Box, Blend 0,25.
-  Mapping Scale 50, Bump Distance 0,0002.
+  Mapping Scale 50, Bump Strength 0,2.
 - File > External Data > Pack Resources, puis enregistrez.
-★  ABS grainé : Noise Scale 1500, Bump Distance 0,00005.
-★★ Articulations microbillées : Noise Scale 2000, Bump Distance 0,00003, Roughness 0,5.
+★  ABS grainé : Noise Scale 1500, Bump Strength 0,05.
+★★ Articulations microbillées : Noise Scale 2000, Bump Strength 0,03, Roughness 0,5.
 
 SECTION 3 · La bibliothèque
 Socle
@@ -676,8 +676,8 @@ Enregistrez sous lampe_habillage_v002.blend (bouton +).
 | Matière | Pièces | Réglages |
 |---|---|---|
 | `Peinture_Vert` | *Tête* | #2F5D3A, *Roughness* 0,4, *Coat* *Weight* 1, *Roughness* 0,03 |
-| `Structure_Vert` | *Socle* | Copie de `Peinture_Vert` : *Coat Weight* 0, *Roughness* 0,6 ; `grain_structure.png` (*Non-Color*, *Box*, *Blend* 0,25), *Mapping* *Scale* 50, *Bump* *Distance* 0,0002 |
-| `ABS_Noir` | *Interrupteur*, *Grille_aeration* | #1A1A1A, *Roughness* 0,15 ; grain : *Texture Coordinate* (*Object*), *Noise* *Scale* 1500, *Bump* *Distance* 0,00005, sans *Mapping* |
+| `Structure_Vert` | *Socle* | Copie de `Peinture_Vert` : *Coat Weight* 0, *Roughness* 0,6 ; `grain_structure.png` (*Non-Color*, *Box*, *Blend* 0,25), *Mapping* *Scale* 50, *Bump* *Strength* 0,2 |
+| `ABS_Noir` | *Interrupteur*, *Grille_aeration* | #1A1A1A, *Roughness* 0,15 ; grain : *Texture Coordinate* (*Object*), *Noise* *Scale* 1500, *Bump* *Strength* 0,05, sans *Mapping* |
 | `Alu_Brosse` | *Bras_bas*, *Bras_haut* | Chaîne du brossé de la fiche B |
 | `Chrome` | Les trois articulations | Fiche B |
 | `PVC_Mat_Noir` | *Câble* | Fiche B |
@@ -728,8 +728,8 @@ Le résultat attendu en fin de chapitre (lampe_habillage_v002.blend) : coloris A
 | Catalogue | Matière | Base Color | Metallic | Roughness | Autres réglages | Étiquettes |
 |---|---|---|---|---|---|---|
 | Métaux | `Alu_Naturel` | #E6E7E8 | 1 | 0,3 | | aluminium, automobile, aéronautique |
-| Métaux | `Alu_Brosse` | #E6E7E8 | 1 | 0,3 | Chaîne du brossé : *Mapping* Scale (1, 1, 0,02), *Noise* Scale 1000, Detail 4, *Bump* Distance 0,00015 | aluminium, brossé, ferroviaire |
-| Métaux | `Alu_Microbille` | #D9DADB | 1 | 0,5 | *Noise* Scale 2000, *Bump* Distance 0,00003 | aluminium, microbillé |
+| Métaux | `Alu_Brosse` | #E6E7E8 | 1 | 0,3 | Chaîne du brossé : *Mapping* Scale (1, 1, 0,02), *Noise* Scale 1000, Detail 4, *Bump* Strength 0,15 | aluminium, brossé, ferroviaire |
+| Métaux | `Alu_Microbille` | #D9DADB | 1 | 0,5 | *Noise* Scale 2000, *Bump* Strength 0,03 | aluminium, microbillé |
 | Métaux | `Alu_Anodise_Bronze` | #8C6A4A | 1 | 0,35 | | aluminium, anodisé |
 | Métaux | `Alu_Anodise_Noir` | #2A2A2C | 1 | 0,35 | | aluminium, anodisé |
 | Métaux | `Inox_Poli` | #C8C8C6 | 1 | 0,08 | | inox, ferroviaire |
@@ -737,23 +737,23 @@ Le résultat attendu en fin de chapitre (lampe_habillage_v002.blend) : coloris A
 | Métaux | `Laiton` | #E0C27A | 1 | 0,25 | | laiton |
 | Métaux | `Titane_Satine` | #A9A49C | 1 | 0,4 | | titane, aéronautique |
 | Plastiques | `ABS_Brillant_Noir` | #1A1A1A | 0 | 0,15 | | ABS, brillant |
-| Plastiques | `ABS_Graine_Noir` | #1A1A1A | 0 | 0,45 | *Noise* Scale 1500, *Bump* Distance 0,00005 | ABS, grainé, automobile |
+| Plastiques | `ABS_Graine_Noir` | #1A1A1A | 0 | 0,45 | *Noise* Scale 1500, *Bump* Strength 0,05 | ABS, grainé, automobile |
 | Plastiques | `PP_Mat_Gris` | #6E7072 | 0 | 0,6 | | polypropylène, mat |
 | Plastiques | `PVC_Mat_Noir` | #161616 | 0 | 0,7 | | PVC, câble |
 | Plastiques | `Caoutchouc_Noir` | #121212 | 0 | 0,85 | | caoutchouc, joint |
 | Peintures | `Laque_Rouge` | #A3161A | 0 | 0,4 | *Coat* Weight 1, Roughness 0,03 | laque, automobile |
 | Peintures | `Laque_Blanche` | #EDEDE8 | 0 | 0,4 | *Coat* Weight 1, Roughness 0,03 | laque, ferroviaire |
-| Peintures | `Peinture_Structuree_Gris` | #4A4D50 | 0 | 0,6 | `grain_structure.png`, *Non-Color*, *Box*, *Blend* 0,25, *Mapping* Scale 50, *Bump* Distance 0,0002 | structurée, ferroviaire |
-| Peintures | `Peinture_Metallisee_Bleu` | #1C3F7A | 1 | 0,35 | Paillettes : *Voronoi Texture* Scale 3000 vers *Bump* (Distance 0,00002) sur *Normal* seulement ; *Coat* Weight 1, Roughness 0,02 | métallisée, automobile |
+| Peintures | `Peinture_Structuree_Gris` | #4A4D50 | 0 | 0,6 | `grain_structure.png`, *Non-Color*, *Box*, *Blend* 0,25, *Mapping* Scale 50, *Bump* Strength 0,2 | structurée, ferroviaire |
+| Peintures | `Peinture_Metallisee_Bleu` | #1C3F7A | 1 | 0,35 | Paillettes : *Voronoi Texture* Scale 3000 vers *Bump* (Strength 0,02) sur *Normal* seulement ; *Coat* Weight 1, Roughness 0,02 | métallisée, automobile |
 | Verres | `Verre_Clair` | #FFFFFF | 0 | 0 | *Transmission* Weight 1, IOR 1,5, *Thin Wall* ; *Raytraced Transmission* | verre, vitrage |
 | Verres | `Verre_Depoli` | #FFFFFF | 0 | 0,4 | Idem | verre, dépoli |
 | Verres | `Verre_Fume` | #5A5A5A | 0 | 0,02 | Idem | verre, teinté, aéronautique |
 | Verres | `Polycarbonate_Rouge` | #C0141A | 0 | 0,05 | *Transmission* Weight 1, IOR 1,58, sans *Thin Wall* ; *Raytraced Transmission* | polycarbonate, feu, automobile |
-| Finitions texturées | `Cuir_Graine_Noir` | #1E1B19 | 0 | 0,55 | `grain_cuir.png`, *Non-Color*, *Box*, *Blend* 0,3, *Mapping* Scale 25, *Bump* Distance 0,0003 | cuir, sellerie, aéronautique |
-| Finitions texturées | `Carbone_Serge` | image | 0 | 0,25 | `carbone_serge_couleur.png` (*sRGB*) vers *Base Color* ; `carbone_serge_relief.png` (*Non-Color*) vers *Bump* (Distance 0,0001) ; *Box*, *Blend* 0,2, *Mapping* Scale 62,5 ; *Coat* Weight 1, Roughness 0,02 | carbone, aéronautique, automobile |
-| Finitions texturées | `Tole_Larmee` | #9A9C9E | 1 | 0,35 | `tole_larmee.png`, *Non-Color*, *Box*, *Blend* 0,1, *Mapping* Scale 8,33, *Bump* Distance 0,0008 | tôle, marchepied, ferroviaire |
+| Finitions texturées | `Cuir_Graine_Noir` | #1E1B19 | 0 | 0,55 | `grain_cuir.png`, *Non-Color*, *Box*, *Blend* 0,3, *Mapping* Scale 25, *Bump* Strength 0,3 | cuir, sellerie, aéronautique |
+| Finitions texturées | `Carbone_Serge` | image | 0 | 0,25 | `carbone_serge_couleur.png` (*sRGB*) vers *Base Color* ; `carbone_serge_relief.png` (*Non-Color*) vers *Bump* (Strength 0,1) ; *Box*, *Blend* 0,2, *Mapping* Scale 62,5 ; *Coat* Weight 1, Roughness 0,02 | carbone, aéronautique, automobile |
+| Finitions texturées | `Tole_Larmee` | #9A9C9E | 1 | 0,35 | `tole_larmee.png`, *Non-Color*, *Box*, *Blend* 0,1, *Mapping* Scale 8,33, *Bump* Strength 0,8 | tôle, marchepied, ferroviaire |
 
-Chaque matière porte une description d'une phrase : son usage et ses secteurs. Exemple : « Aluminium brossé. Main courante, jante, bras de lampe. » Toutes les chaînes partent de *Texture Coordinate*, sortie *Object*. Les valeurs de *Scale* et de *Distance* ont été calées sur des pièces de la taille de la lampe, en *Material Preview* ; elles se retouchent à l'œil.
+Chaque matière porte une description d'une phrase : son usage et ses secteurs. Exemple : « Aluminium brossé. Main courante, jante, bras de lampe. » Toutes les chaînes partent de *Texture Coordinate*, sortie *Object*. Les valeurs de *Scale* et de *Strength* ont été calées sur des pièces de la taille de la lampe, en *Material Preview* ; elles se retouchent à l'œil.
 
 **Catalogues** (`blender_assets.cats.txt`, version 1, un UUID par ligne) : *Métaux*, *Plastiques*, *Peintures*, *Verres*, *Finitions texturées*.
 
@@ -785,7 +785,7 @@ Toutes les valeurs sont indicatives. Les images sont créées par VIV Formation 
 | *Panneau_carbone* | Aéronautique, automobile | Plan de 0,300 × 0,200 m subdivisé, Simple Deform (*Bend*, 45°), Solidify 0,003 m | (0,45 ; 0,35 ; 0,05) | `Carbone_Serge`, à compléter |
 
 - « À compléter » : la matière n'a que son Principled réglé (teinte, *Metallic*, *Roughness*) et un nœud *Image Texture* déjà chargé avec son image, non relié. La démo gagne ainsi le temps de chercher le fichier.
-- Collection *Corrigé*, masquée : une copie de chaque pièce, suffixée `_corrige`, décalée de Y − 0,60 m. Chaque copie porte sa propre matière, suffixée `_corrige` elle aussi (`Cuir_Graine_Noir_corrige`…), avec la chaîne complète : valeurs de la fiche B ; pour la coque, celles du LISEZ-MOI ci-dessous (*Mapping* *Scale* 100, *Bump* *Distance* 0,0001, *Blend* 0,3). La copie de l'accoudoir jumeau a son échelle appliquée. C'est le corrigé de la démo et du défi ★★.
+- Collection *Corrigé*, masquée : une copie de chaque pièce, suffixée `_corrige`, décalée de Y − 0,60 m. Chaque copie porte sa propre matière, suffixée `_corrige` elle aussi (`Cuir_Graine_Noir_corrige`…), avec la chaîne complète : valeurs de la fiche B ; pour la coque, celles du LISEZ-MOI ci-dessous (*Mapping* *Scale* 100, *Bump* *Strength* 0,1, *Blend* 0,3). La copie de l'accoudoir jumeau a son échelle appliquée. C'est le corrigé de la démo et du défi ★★.
 - Images empaquetées : `grain_cuir.png`, `grain_structure.png`, `tole_larmee.png`, `carbone_serge_couleur.png`, `carbone_serge_relief.png`.
 
 **Vue d'ouverture :** espace *Shading* ; *Accoudoir* sélectionné, sa matière visible dans le Shader Editor ; vue 3D en *Material Preview* avec l'image *studio*, de trois quarts, les cinq pièces cadrées ; le LISEZ-MOI en bas.
@@ -797,14 +797,14 @@ PRC02 · Chapitre 3 · Finitions triplanaires (défi)
 Aucune pièce n'a de dépliage UV. Corrigé : collection « Corrigé » (œil fermé).
 
 Socle · L'accoudoir
-- Texture Coordinate (Object) > Mapping (Scale 25) > Image Texture (grain_cuir) > Bump (Distance 0,0003) > Normal.
+- Texture Coordinate (Object) > Mapping (Scale 25) > Image Texture (grain_cuir) > Bump (Strength 0,3) > Normal.
 - Image Texture : Non-Color, projection Box, Blend 0,3.
 - L'accoudoir jumeau a un grain étiré : trouvez pourquoi, puis soignez-le.
 ★  La coque de rétroviseur
-- Même chaîne avec grain_structure (Mapping Scale 100, Bump Distance 0,0001).
+- Même chaîne avec grain_structure (Mapping Scale 100, Bump Strength 0,1).
 - Réglez Blend jusqu'à ne plus voir de raccord sur les flancs courbes.
 ★★ Le marchepied et le panneau carbone
-- Tôle larmée : relief marqué, Bump Distance 0,0008, Mapping Scale 8,33.
+- Tôle larmée : relief marqué, Bump Strength 0,8, Mapping Scale 8,33.
 - Carbone : deux images. La couleur (sRGB) va dans Base Color, le relief (Non-Color) dans Bump.
   Ajoutez un vernis : Coat Weight 1.
 ```
@@ -982,7 +982,7 @@ Vérifiés le 18 novembre 2026, dans un Blender lancé à part, sans toucher à 
 - le catalogue où apparaît une matière récupérée du nuancier par Append, puisque l'identifiant de son catalogue d'origine est inconnu dans le fichier de la lampe ;
 - la génération des vignettes d'actifs dans une construction en arrière-plan, sinon dans la fenêtre courte ;
 - une image empaquetée dans la bibliothèque reste empaquetée après un Append ;
-- les valeurs des images (fiche D) une fois les images créées : *Mapping Scale* et *Distance* se retouchent à l'œil ;
+- les valeurs des images (fiche D) une fois les images créées : *Mapping Scale* et *Strength* se retouchent à l'œil ;
 - la connexion faite par `Ctrl + T` de Node Wrangler (sortie *UV* ou *Generated*), à reconnecter sur *Object* si besoin ;
 - *Shade Auto Smooth* sur une courbe avec Screw (l'ampoule) et sur le câble.
 
@@ -1005,6 +1005,6 @@ Prises par délégation pendant la production des fichiers, du texte et des capt
 4. **Les images de finition font 512 × 512 px**, et non 1024 : la projection *Box* en *Material Preview* n'en demande pas plus, et les fichiers restent légers (0,2 à 0,8 Mo).
 5. **Les livrables en zip :** `PRC02_ch3_textures_cmf.zip` (le dossier `textures_cmf`), `PRC02_bibliotheque_CMF.zip` (le nuancier et son fichier de catalogues) et `PRC02_ch3_lampe_habillage.zip` (la lampe habillée et son fichier de catalogues). La lampe à habiller et les finitions triplanaires se distribuent seules.
 6. **La grille *Metallic* / *Roughness*** est faite de sphères de 44 mm, plus lisibles que des plaquettes ; les plaquettes du nuancier sont couchées à 25° de l'horizontale, pour refléter le haut clair de l'image d'environnement. Le support mesure 1,05 × 0,95 m.
-7. **La figure de *Blend*** (3.28) montre une coque de rétroviseur en carbone, et non le socle : sur la peinture structurée, le raccord se lit à peine.
+7. **La figure de *Blend*** (3.28) montre la tôle larmée projetée sur une coque de rétroviseur, cadrée serré sur le raccord, et non le socle : sur la peinture structurée, le raccord se lit à peine.
 8. **Le panneau carbone** est construit debout dans son repère local, puis couché par sa rotation : le *Bend* du *Simple Deform* sur l'axe Y ne courbe pas un plan couché en XY (vérifié).
 9. **Dans le fichier de démonstration des finitions,** le LISEZ-MOI occupe la zone du navigateur de fichiers de l'espace *Shading* : ce navigateur aurait enregistré le chemin absolu du dossier.
