@@ -32,7 +32,7 @@ const List<ContentModule> chapter4Modules = [
   ResourceModule(
     id: 'ch4_sec1_res1',
     title: 'Fichier d\'exercice : le studio',
-    description: 'Le studio du chapitre : un fond courbe, un nuancier, un plateau de bureau masqué, quatre mondes (trois HDRI et un gris neutre) et une caméra de travail. Vous y amenez votre lampe par File > Append. Les corrigés sont dans les collections masquées « Corrigé éclairage », « Corrigé caméras » et « Corrigé paliers ». Le texte LISEZ-MOI donne les consignes de chaque partie et une ligne « Corrigé » par partie.',
+    description: 'Le studio du chapitre : un fond courbe, un nuancier, un plateau de bureau en chêne masqué, quatre mondes (trois HDRI et un gris neutre) et une caméra de travail. Vous y amenez votre lampe par File > Append. Les corrigés sont dans les collections masquées « Corrigé éclairage », « Corrigé caméras » et « Corrigé paliers ». Le texte LISEZ-MOI donne les consignes de chaque partie et une ligne « Corrigé » par partie.',
     fileName: 'PRC02_ch4_studio.blend (11.5 Mo)',
     downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch4_studio.blend',
   ),
@@ -317,7 +317,7 @@ const List<ContentModule> chapter4Modules = [
   InfoModule(
     id: 'ch4_sec2_info2',
     type: InfoType.info,
-    text: '**Les licences.** Les HDRI du studio sont sous licence CC0 : tout usage est permis, y compris commercial, sans attribution obligatoire. `studio.exr` est fournie avec Blender. `artist_workshop`, d\'Oliksiy Yakovlyev, et `docklands_01`, de Savva Zakharov, viennent de Poly Haven (polyhaven.com), en définition 2K.',
+    text: '**Les licences.** Les HDRI du studio sont sous licence CC0 : tout usage est permis, y compris commercial, sans attribution obligatoire. `studio.exr` est fournie avec Blender. `artist_workshop`, d\'Oliksiy Yakovlyev, et `docklands_01`, de Savva Zakharov, viennent de Poly Haven (polyhaven.com), en définition 2K. Le placage de chêne du plateau de bureau, `oak_veneer_01`, vient aussi de Poly Haven, sous la même licence.',
   ),
   ListModule(
     id: 'ch4_sec2_list1',
@@ -722,7 +722,7 @@ const List<ContentModule> chapter4Modules = [
     title: 'Consignes · Le concept final, par paliers',
     items: [
       '**Lumière.** Réglez la lumière définitive de la vue héros et du détail.',
-      '**Situation.** Rendez visible la collection *Mise_en_situation* (œil et appareil photo), masquez *Studio* et *Nuancier*, choisissez une HDRI d\'intérieur ou d\'extérieur, éteignez `Eclairage_studio` si besoin. Créez `CAM_situation`, par exemple à 35 mm, à hauteur d\'yeux d\'une personne assise.',
+      '**Situation.** Rendez visible la collection *Mise_en_situation* (œil et appareil photo), masquez *Studio* et *Nuancier*, choisissez une HDRI d\'intérieur ou d\'extérieur, éteignez `Eclairage_studio` si besoin. Créez `CAM_situation`, par exemple à 35 mm, à hauteur d\'yeux d\'une personne assise. Le plateau est en chêne plaqué, posé en projection *Box* comme les finitions du chapitre 3 : sélectionnez-le, puis ouvrez le *Shader Editor* pour lire sa matière.',
       '**Socle.** Les trois vues exportées et bien nommées ; le fichier empaqueté, puis enregistré.',
       '**★** Une version de la vue héros à fond transparent (*Film > Transparent*, *RGBA*). Une vue technique de profil, avec une caméra *Orthographic* face à la lampe et `Monde_Neutre`. La gamme : *File > Append* de la collection `Lampe_coloris_B` de `lampe_habillage_v002.blend` (dans le fichier de secours, elle est déjà là : ouvrez son œil et son appareil photo), puis une caméra `CAM_gamme` qui cadre les deux lampes : `lampe_gamme_<initiales>_v001.png`.',
       '**★★** La lampe allumée pour la vue de situation : un *Spot* dans la tête, *Temperature* à 2700 K, `Eclairage_studio` éteint ; sur l\'ampoule, la matière fournie `Ampoule_allumee`, choisie dans la liste des matières (figure 3.6). Ou le même studio pour un autre objet : la liseuse de cabine du chapitre 2, la maquette en kit ou la rangée de sièges de l\'initiation.',
@@ -733,7 +733,7 @@ const List<ContentModule> chapter4Modules = [
   FullMediaModule(
     id: 'ch4_sec4_media1',
     imagePath: 'assets/images/atelier_situation_blender.jpg',
-    caption: 'Figure 4.39 : La vue de situation du corrigé : le plateau de bureau, le carnet et la lampe, sous Monde_Interieur (rotation 135°), vus par CAM_situation_corrige à 35 mm. Le studio et ses lumières sont masqués.',
+    caption: 'Figure 4.39 : La vue de situation du corrigé : le plateau de bureau en chêne plaqué, le carnet et la lampe, sous Monde_Interieur (rotation 135°), vus par CAM_situation_corrige à 35 mm. Le studio et ses lumières sont masqués.',
   ),
   FullMediaModule(
     id: 'ch4_sec4_media2',
@@ -781,7 +781,7 @@ const List<ContentModule> chapter4Modules = [
   TextModule(
     id: 'ch4_sec4_txt4',
     title: 'Bilan de la formation',
-    content: '**Les six demi-journées.** Le formateur projette une vignette par demi-journée ; pour chacune, le groupe nomme un geste clé :\n- prendre ses repères : la maquette en kit ;\n- modéliser : la rangée de sièges et la clinique du fichier ;\n- chapitre 1 : le blocage de la lampe ;\n- chapitre 2 : la lampe remodelée, avec ses modificateurs et ses courbes ;\n- chapitre 3 : la lampe habillée, ses matières rangées en bibliothèque ;\n- chapitre 4 : un visuel de la galerie.\n\n**Pour continuer :**\n- cette application : les chapitres, les quiz et les défis ;\n- les fichiers de la formation : chaque LISEZ-MOI garde ses consignes par paliers, et les collections « Corrigé » montrent le résultat attendu ;\n- votre bibliothèque CMF du chapitre 3 et le studio de ce chapitre, à réutiliser pour vos projets ;\n- Poly Haven, pour des HDRI sous licence CC0 ;\n- le manuel officiel de Blender, en anglais, avec les mêmes libellés que l\'interface.\n\n**Questions.** Le temps qui reste sert à vos questions. Pour finir, chacun dit en une phrase ce qu\'il appliquera dès la semaine prochaine.',
+    content: '**Les six demi-journées.** Le formateur projette une vignette par demi-journée ; pour chacune, le groupe nomme un geste clé :\n- prendre ses repères : la maquette en kit ;\n- modéliser : la rangée de sièges et la clinique du fichier ;\n- chapitre 1 : le blocage de la lampe ;\n- chapitre 2 : la lampe remodelée, avec ses modificateurs et ses courbes ;\n- chapitre 3 : la lampe habillée, ses matières rangées en bibliothèque ;\n- chapitre 4 : un visuel de la galerie.\n\n**Pour continuer :**\n- cette application : les chapitres, les quiz et les défis ;\n- les fichiers de la formation : chaque LISEZ-MOI garde ses consignes par paliers, et les collections « Corrigé » montrent le résultat attendu ;\n- votre bibliothèque CMF du chapitre 3 et le studio de ce chapitre, à réutiliser pour vos projets ;\n- Poly Haven, pour des HDRI et des textures sous licence CC0 ;\n- le manuel officiel de Blender, en anglais, avec les mêmes libellés que l\'interface.\n\n**Questions.** Le temps qui reste sert à vos questions. Pour finir, chacun dit en une phrase ce qu\'il appliquera dès la semaine prochaine.',
   ),
   TextModule(
     id: 'ch4_sec4_txt5',

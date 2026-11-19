@@ -9,7 +9,8 @@
 #
 # La lampe est lue dans _resources/exercices/PRC02_ch3_lampe_habillage.zip, décompressé dans
 # tool/exercices_ch4/_construction/, sans modifier le zip. Les HDRI de Poly Haven sont lues dans
-# tool/exercices_ch4/hdri/ ; studio.exr vient de l'installation de Blender. Toutes sont empaquetées.
+# tool/exercices_ch4/hdri/ ; studio.exr vient de l'installation de Blender. Le bois du plateau
+# (oak_veneer_01, Poly Haven) est lu dans tool/exercices_ch4/textures/. Toutes les images sont empaquetées.
 #
 # Usage, depuis la racine du dépôt :
 #   powershell -NoProfile -ExecutionPolicy Bypass -File tool\blender\blender_cli.ps1 -Script tool\exercices_ch4\build_studio.py
@@ -29,6 +30,13 @@ import commun as C   # noqa: E402
 ROT_INTERIEUR = 135      # rotation Z (degrés) du Mapping de Monde_Interieur, donnée par la ligne « Corrigé » de l'HDRI
 
 AUTEURS_HDRI = "studio.exr (fournie avec Blender), artist_workshop (Oliksiy Yakovlyev) et docklands_01 (Savva Zakharov), Poly Haven, licence CC0"
+
+# Le plateau de bureau : oak_veneer_01 de Poly Haven (CC0), lu dans tool/exercices_ch4/textures/ (non suivi
+# par git) et empaqueté. L'image couvre 1,83 m de côté.
+TEXTURES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "textures")
+BOIS = "oak_veneer_01"
+BOIS_LARGEUR = 1.83
+BOIS_RELIEF = 0.15
 
 LISEZ_MOI = """PRC02 · Chapitre 4 · Mettre en scène et exporter
 Blender 5.2 LTS. Corrigés : collections « Corrigé éclairage », « Corrigé caméras » et « Corrigé paliers », œil fermé dans l'Outliner. Pour en voir une au rendu, ouvrez son œil et son appareil photo.
@@ -99,6 +107,7 @@ PERDU EN COURS DE ROUTE ?
 Ouvrez PRC02_ch4_lampe_en_studio.blend, enregistrez-le sous lampe_rendu_v001.blend, puis suivez les lignes « Corrigé ».
 
 HDRI : {hdri}.
+Plateau de bureau : oak_veneer_01 (Poly Haven, licence CC0), en projection Box comme au chapitre 3 : sélectionnez-le, puis ouvrez le Shader Editor.
 """
 
 DEMARRER_STUDIO = """- Votre lampe du chapitre 3 : File > Append, lampe_habillage_v002.blend, dossier Collection, collection Lampe.
@@ -245,6 +254,54 @@ def world_neutre():
     return w
 
 
+# ---------------------------------------------------------------------------- le plateau en bois
+def bois_plateau(mat):
+    """Le plateau en chêne plaqué, sans UV : la chaîne de la projection Box du chapitre 3.
+    Texture Coordinate (Object) > Mapping (Scale 1/1,83 : l'image couvre 1,83 m ; Rotation Z 90° : le fil
+    suit la longueur du plateau) > trois Image Texture en Box, Blend 0,25 : la couleur (sRGB) dans
+    Base Color, la rugosité (Non-Color) dans Roughness, le relief (Non-Color) dans un Bump."""
+    nt = mat.node_tree
+    p = next(n for n in nt.nodes if n.type == 'BSDF_PRINCIPLED')
+    x0, y0 = p.location
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    tc.location = (x0 - 1150, y0 - 150)
+    mp = nt.nodes.new("ShaderNodeMapping")
+    mp.location = (x0 - 950, y0 - 150)
+    mp.inputs["Rotation"].default_value[2] = math.radians(90)
+    mp.inputs["Scale"].default_value = [1 / BOIS_LARGEUR] * 3
+    nt.links.new(tc.outputs["Object"], mp.inputs["Vector"])
+    images = {}
+    for i, (carte, espace) in enumerate((("diff_2k", 'sRGB'), ("rough_1k", 'Non-Color'), ("disp_2k", 'Non-Color'))):
+        fichier = "%s_%s.jpg" % (BOIS, carte)
+        it = nt.nodes.new("ShaderNodeTexImage")
+        it.location = (x0 - 700, y0 + 50 - 300 * i)
+        it.image = C.pack_image(os.path.join(TEXTURES_DIR, fichier), "textures/" + fichier)
+        it.image.colorspace_settings.name = espace
+        it.projection = 'BOX'
+        it.projection_blend = 0.25
+        nt.links.new(mp.outputs["Vector"], it.inputs["Vector"])
+        images[carte] = it
+    bump = nt.nodes.new("ShaderNodeBump")
+    bump.location = (x0 - 300, y0 - 600)
+    bump.inputs["Strength"].default_value = BOIS_RELIEF
+    nt.links.new(images["diff_2k"].outputs["Color"], p.inputs["Base Color"])
+    nt.links.new(images["rough_1k"].outputs["Color"], p.inputs["Roughness"])
+    nt.links.new(images["disp_2k"].outputs["Color"], bump.inputs["Height"])
+    nt.links.new(bump.outputs["Normal"], p.inputs["Normal"])
+
+
+def chanfrein(ob, largeur=0.003, segments=3):
+    """Un chant arrondi qui accroche la lumière : Bevel (Amount 3 mm), normales durcies."""
+    for poly in ob.data.polygons:
+        poly.use_smooth = True
+    md = ob.modifiers.new("Bevel", 'BEVEL')
+    md.width = largeur
+    md.segments = segments
+    md.limit_method = 'ANGLE'
+    md.harden_normals = True
+    return md
+
+
 # ---------------------------------------------------------------------------- la bande de reflet
 def place_strip(strip, cam, tete_name="Tête", dist=0.6):
     """Place la bande lumineuse pour que son reflet passe sur la tête laquée, vue depuis cam :
@@ -313,9 +370,11 @@ def build():
         m, _ = C.material(mname, col, rough, metal)
         sphere(name, nuancier, (x, -0.15, 0.03), 0.03, m)
 
-    bois, _ = C.material("Bois_clair", "B89268", 0.45)
+    bois, _ = C.material("Bois_clair", "B89268", 0.45)      # B89268 : la couleur en mode Solid
+    bois_plateau(bois)
     pl = box("Plateau_bureau", situ, (1.4, 0.8, 0.03), (0.10, 0.0, -0.015))
     pl.data.materials.append(bois)
+    chanfrein(pl)
     papier, _ = C.material("Papier", "E9E4D8", 0.8)
     ca = box("Carnet", situ, (0.21, 0.148, 0.012), (0.24, -0.14, 0.006), rot_z=-15)
     ca.data.materials.append(papier)
