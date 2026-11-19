@@ -688,7 +688,7 @@ La 2.35 montre une boucle déjà sélectionnée, pas son glissement : `loopcut_s
 | 2.40 | `add_modifier_deform_menu_blender.jpg` | *Add Modifier > Deform*, *Shrinkwrap* en surbrillance | Côte à côte |
 | 2.41 | `shrinkwrap_panel_default_blender.jpg` | Le panneau *Shrinkwrap* : *Wrap Method*, *Snap Mode*, *Target*, *Offset*, *Vertex Group* | Côte à côte |
 | 2.42 | `shrinkwrap_offset_z_fighting_blender.jpg` | Le scintillement à *Offset* 0, puis la plaque nette à 0,2 mm | Pleine largeur |
-| 2.43 | `shrinkwrap_solidify_stack_order_blender.jpg` | La pile *Shrinkwrap* puis *Solidify*, et l'inverse, avec l'épaisseur perdue | Côte à côte |
+| 2.43 | `shrinkwrap_solidify_stack_order_blender.jpg` | La pile *Shrinkwrap* puis *Solidify*, et l'inverse, avec l'épaisseur perdue | Pleine largeur (image large, lisible à 0,6) |
 | 2.44 | `shrinkwrap_snap_mode_menu_blender.jpg` | Le menu *Snap Mode* : *On Surface*, *Inside*, *Outside*, *Outside Surface*, *Above Surface* | Côte à côte |
 | 2.45 | `porthole_frame_fuselage_blender.jpg` | Le cadre de hublot, en *On Surface* (à moitié caché) puis en *Above Surface* | Pleine largeur |
 | 2.46 | `shrinkwrap_project_panel_blender.jpg` | Les réglages de *Project* : *Limit*, *Subdivision Levels*, *Axis*, *Negative*, *Positive*, *Face Cull*, *Invert Cull*, *Auxiliary Target* | Côte à côte |
@@ -702,7 +702,7 @@ La 2.35 montre une boucle déjà sélectionnée, pas son glissement : `loopcut_s
 | 2.54 | `object_viewport_display_as_blender.jpg` | Onglet *Object*, rubrique *Viewport Display*, *Display As* | Côte à côte |
 | 2.55 | `object_visibility_renders_blender.jpg` | Onglet *Object*, rubrique *Visibility*, *Renders* décoché | Côte à côte |
 | 2.56 | `boolean_bevel_order_blender.jpg` | La découpe de hublot, bord vif (*Bevel* au-dessus) puis arrondi (*Bevel* en dessous) | Pleine largeur |
-| 2.57 | `boolean_cutter_reference_surface_blender.jpg` | L'objet de coupe de la ligne de joint, conformé sur la référence masquée, et l'Outliner | Côte à côte |
+| 2.57 | `boolean_cutter_reference_surface_blender.jpg` | L'objet de coupe de la ligne de joint, conformé sur la référence masquée, et l'Outliner | Pleine largeur (image large, lisible à 0,6) |
 | 2.58 | `boolean_shading_vs_data_transfer_blender.jpg` | La découpe en *MatCap* de contrôle : traînées, puis reflets propres | Pleine largeur |
 | 2.59 | `matcap_reflection_check_blender.jpg` | Option : *Viewport Shading*, *MatCap*, `check_reflection_horizontal` | Côte à côte |
 | 2.60 | `add_modifier_edit_menu_blender.jpg` | *Add Modifier > Edit*, *Data Transfer* | Côte à côte |
@@ -711,7 +711,7 @@ La 2.35 montre une boucle déjà sélectionnée, pas son glissement : `loopcut_s
 | 2.63 | `weighted_normal_plate_blender.jpg` | La platine percée, sans puis avec *Weighted Normal* | Pleine largeur |
 | 2.64 | `side_mirror_workshop_blender.jpg` | Le rétroviseur terminé, vu de l'arrière et de l'avant | Pleine largeur |
 | 2.65 | `side_mirror_convex_reference_blender.jpg` | Le miroir et sa calotte de référence en fil de fer | Côte à côte |
-| 2.66 | `side_mirror_indicator_recess_blender.jpg` | ★★ Le logement du clignotant, sans puis avec *Data Transfer* | Côte à côte |
+| 2.66 | `side_mirror_indicator_recess_blender.jpg` | ★★ Le logement du clignotant, sans puis avec *Data Transfer* | Pleine largeur (image large, lisible à 0,6) |
 
 **Méthode :** celle des chapitres précédents. *Resolution Scale* à 1,25, onglets d'extensions tierces hors champ, interface en anglais. Les menus et les panneaux se capturent dans une fenêtre Blender courte, lancée à part avec `--factory-startup`, jamais dans la session du formateur. Les comparaisons se rendent sous EEVEE, avec l'image *studio* de *Material Preview*.
 

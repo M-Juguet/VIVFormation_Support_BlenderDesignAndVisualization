@@ -819,14 +819,10 @@ Toujours sur la plaque :
 - **2.** *Thickness* : `2mm` ; *Offset* : `1`. L'épaisseur part vers l'extérieur, perpendiculaire à la courbe.
 - **3.** Option : faites glisser le *Solidify* au-dessus du *Shrinkwrap*, par la poignée à droite de son en-tête. L'épaisseur disparaît : ses deux faces sont posées sur le nez. Remettez-le en dessous.
 
-```side-by-side
-layout: "textLeft"
-imagePath: "assets/images/shrinkwrap_solidify_stack_order_blender.jpg"
-caption: "Figure 2.43 : Solidify sous le Shrinkwrap, la plaque a 2 mm d'épaisseur (à gauche) ; Solidify au-dessus, ses deux faces sont posées sur le nez et l'épaisseur disparaît (à droite)."
-title: "Le Solidify en dessous"
----
+### Le Solidify en dessous
 Chaque modificateur travaille sur le résultat du précédent. Placé après le Shrinkwrap, le Solidify épaissit une plaque déjà courbée. Placé avant, il épaissit une plaque plane, puis le Shrinkwrap pose ses deux faces sur la même surface.
-```
+
+![Figure 2.43 : Solidify sous le Shrinkwrap, la plaque a 2 mm d'épaisseur (à gauche) ; Solidify au-dessus, ses deux faces sont posées sur le nez et l'épaisseur disparaît (à droite).](assets/images/shrinkwrap_solidify_stack_order_blender.jpg)
 
 ### Option : la cible change, le détail suit
 Sélectionnez le nez `E2_Nez`, `Tab`, puis déplacez un sommet de la cage au centre : `G Y = -30mm`. La plaque suit la nouvelle forme, sans rien refaire. `Ctrl + Z` pour revenir. C'est tout l'intérêt du shrinkwrap pendant les revues de design.
@@ -1102,14 +1098,10 @@ Rendu attendu : un fuselage percé d'une découpe de hublot aux bords arrondis d
 > [!CAUTION]
 > **Petit défi · La ligne de joint d'une trappe de visite (ferroviaire).** Sur le nez `E5_Defi_Nez`, dont la peau fait 6 mm, creusez la ligne de joint d'une trappe de 300 × 200 mm : une rainure de 4 mm de large et 3 mm de profondeur. L'objet de coupe `E5_Defi_Coupe_Joint` est l'anneau de la rainure, dessiné de face, à plat. Conformez-le avec *Project* suivant Y, *Offset* `0`, puis donnez-lui son volume : *Solidify* `6mm`, *Offset* `0`. Il déborde de 3 mm de chaque côté de la surface : la rainure a partout la même profondeur, même là où le nez tourne. Faites ensuite la découpe, sans *Bevel* : une ligne de joint reste vive. Le corrigé est dans la sous-collection « Corrigé étape 5 ».
 
-```side-by-side
-layout: "textRight"
-imagePath: "assets/images/boolean_cutter_reference_surface_blender.jpg"
-caption: "Figure 2.57 : L'anneau de la ligne de joint, conformé en Project sur E5_Nez_reference, la copie du nez non découpée."
-title: "Le piège de la dépendance circulaire"
----
+### Le piège de la dépendance circulaire
 Conformez l'objet de coupe sur E5_Nez_reference, la copie du nez masquée et non découpée, jamais sur le nez qu'il découpe. Sinon, le nez dépend de l'objet de coupe, qui dépend du nez : Blender ne peut pas calculer une pièce qui dépend d'elle-même, et le Boolean ne fait rien.
-```
+
+![Figure 2.57 : L'anneau de la ligne de joint, conformé en Project sur E5_Nez_reference, la copie du nez non découpée.](assets/images/boolean_cutter_reference_surface_blender.jpg)
 
 ```quiz
 question: "Votre objet de coupe est conformé par Shrinkwrap sur le nez même qu'il découpe. Le Boolean ne fait rien. Pourquoi ?"
@@ -1244,14 +1236,10 @@ title: "Un miroir convexe par shrinkwrap"
 La glace est dessinée à plat ; le Shrinkwrap la pose sur une calotte de sphère, la surface de référence. Pour un miroir plus ou moins bombé, il suffit de changer le rayon de la calotte, sans toucher à la glace.
 ```
 
-```side-by-side
-layout: "textRight"
-imagePath: "assets/images/side_mirror_indicator_recess_blender.jpg"
-caption: "Figure 2.66 : ★★ Le logement du clignotant en MatCap de contrôle : traînées autour du logement sans Data Transfer (à gauche), reflets continus avec (à droite)."
-title: "Le logement du clignotant"
----
+### Le logement du clignotant
 Le logement est creusé par un objet de coupe tiré du clignotant et conformé sur la copie de référence de la coque. Data Transfer, depuis la même référence, rend aux reflets leur continuité autour du logement.
-```
+
+![Figure 2.66 : ★★ Le logement du clignotant en MatCap de contrôle : traînées autour du logement sans Data Transfer (à gauche), reflets continus avec (à droite).](assets/images/side_mirror_indicator_recess_blender.jpg)
 
 > [!CAUTION]
 > **Variantes ★★, sans corrigé, pour retrouver votre métier.**

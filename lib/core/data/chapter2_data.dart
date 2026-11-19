@@ -876,16 +876,18 @@ const List<ContentModule> chapter2Modules = [
       '**3.** Option : faites glisser le *Solidify* au-dessus du *Shrinkwrap*, par la poignée à droite de son en-tête. L\'épaisseur disparaît : ses deux faces sont posées sur le nez. Remettez-le en dessous.',
     ],
   ),
-  SideBySideModule(
-    id: 'ch2_sec4_e2_side3',
-    title: 'Le Solidify en dessous',
-    content: 'Chaque modificateur travaille sur le résultat du précédent. Placé après le Shrinkwrap, le Solidify épaissit une plaque déjà courbée. Placé avant, il épaissit une plaque plane, puis le Shrinkwrap pose ses deux faces sur la même surface.',
-    imagePath: 'assets/images/shrinkwrap_solidify_stack_order_blender.jpg',
-    caption: 'Figure 2.43 : Solidify sous le Shrinkwrap, la plaque a 2 mm d\'épaisseur (à gauche) ; Solidify au-dessus, ses deux faces sont posées sur le nez et l\'épaisseur disparaît (à droite).',
-    layout: ContentLayout.textLeft,
-  ),
   TextModule(
     id: 'ch2_sec4_e2_txt3',
+    title: 'Le Solidify en dessous',
+    content: 'Chaque modificateur travaille sur le résultat du précédent. Placé après le Shrinkwrap, le Solidify épaissit une plaque déjà courbée. Placé avant, il épaissit une plaque plane, puis le Shrinkwrap pose ses deux faces sur la même surface.',
+  ),
+  FullMediaModule(
+    id: 'ch2_sec4_e2_media3',
+    imagePath: 'assets/images/shrinkwrap_solidify_stack_order_blender.jpg',
+    caption: 'Figure 2.43 : Solidify sous le Shrinkwrap, la plaque a 2 mm d\'épaisseur (à gauche) ; Solidify au-dessus, ses deux faces sont posées sur le nez et l\'épaisseur disparaît (à droite).',
+  ),
+  TextModule(
+    id: 'ch2_sec4_e2_txt4',
     title: 'Option : la cible change, le détail suit',
     content: 'Sélectionnez le nez `E2_Nez`, `Tab`, puis déplacez un sommet de la cage au centre : `G Y = -30mm`. La plaque suit la nouvelle forme, sans rien refaire. `Ctrl + Z` pour revenir. C\'est tout l\'intérêt du shrinkwrap pendant les revues de design.\n\nRendu attendu : une plaque de 2 mm d\'épaisseur, posée sur le nez sans scintiller, sans bord qui décolle.',
   ),
@@ -1207,13 +1209,15 @@ const List<ContentModule> chapter2Modules = [
     type: InfoType.challenge,
     text: '**Petit défi · La ligne de joint d\'une trappe de visite (ferroviaire).** Sur le nez `E5_Defi_Nez`, dont la peau fait 6 mm, creusez la ligne de joint d\'une trappe de 300 × 200 mm : une rainure de 4 mm de large et 3 mm de profondeur. L\'objet de coupe `E5_Defi_Coupe_Joint` est l\'anneau de la rainure, dessiné de face, à plat. Conformez-le avec *Project* suivant Y, *Offset* `0`, puis donnez-lui son volume : *Solidify* `6mm`, *Offset* `0`. Il déborde de 3 mm de chaque côté de la surface : la rainure a partout la même profondeur, même là où le nez tourne. Faites ensuite la découpe, sans *Bevel* : une ligne de joint reste vive. Le corrigé est dans la sous-collection « Corrigé étape 5 ».',
   ),
-  SideBySideModule(
-    id: 'ch2_sec4_e5_side4',
+  TextModule(
+    id: 'ch2_sec4_e5_txt3',
     title: 'Le piège de la dépendance circulaire',
     content: 'Conformez l\'objet de coupe sur E5_Nez_reference, la copie du nez masquée et non découpée, jamais sur le nez qu\'il découpe. Sinon, le nez dépend de l\'objet de coupe, qui dépend du nez : Blender ne peut pas calculer une pièce qui dépend d\'elle-même, et le Boolean ne fait rien.',
+  ),
+  FullMediaModule(
+    id: 'ch2_sec4_e5_media2',
     imagePath: 'assets/images/boolean_cutter_reference_surface_blender.jpg',
     caption: 'Figure 2.57 : L\'anneau de la ligne de joint, conformé en Project sur E5_Nez_reference, la copie du nez non découpée.',
-    layout: ContentLayout.textRight,
   ),
   QuizModule(
     id: 'ch2_sec4_quiz7',
@@ -1365,13 +1369,15 @@ const List<ContentModule> chapter2Modules = [
     caption: 'Figure 2.65 : Le miroir conformé et, derrière lui, sa calotte de référence de 1 400 mm de rayon, en fil de fer.',
     layout: ContentLayout.textLeft,
   ),
-  SideBySideModule(
-    id: 'ch2_sec4_atelier_side2',
+  TextModule(
+    id: 'ch2_sec4_atelier_txt2',
     title: 'Le logement du clignotant',
     content: 'Le logement est creusé par un objet de coupe tiré du clignotant et conformé sur la copie de référence de la coque. Data Transfer, depuis la même référence, rend aux reflets leur continuité autour du logement.',
+  ),
+  FullMediaModule(
+    id: 'ch2_sec4_atelier_media2',
     imagePath: 'assets/images/side_mirror_indicator_recess_blender.jpg',
     caption: 'Figure 2.66 : ★★ Le logement du clignotant en MatCap de contrôle : traînées autour du logement sans Data Transfer (à gauche), reflets continus avec (à droite).',
-    layout: ContentLayout.textRight,
   ),
   InfoModule(
     id: 'ch2_sec4_atelier_chal1',
@@ -1379,7 +1385,7 @@ const List<ContentModule> chapter2Modules = [
     text: '**Variantes ★★, sans corrigé, pour retrouver votre métier.**\n- **Ferroviaire, le cadre de vitre frontale :** sur le nez `E3_Nez`, dessinez de face le cadre d\'une vitre frontale de tram, avec son joint, et posez-le avec *Project*.\n- **Aéronautique, le hublot complet :** sur `E3_Fuselage`, découpez le hublot avec un *Boolean*, posez son cadre avec un *Shrinkwrap* en *Above Surface*, puis une vitre en retrait de 8 mm.',
   ),
   TextModule(
-    id: 'ch2_sec4_atelier_txt2',
+    id: 'ch2_sec4_atelier_txt3',
     title: 'Pour aller plus loin',
     content: 'Le modificateur *Lattice* déforme d\'un coup tout un ensemble de pièces avec une cage simple. Il sert à essayer une proportion, par exemple étirer tout le rétroviseur, détails compris.',
   ),
