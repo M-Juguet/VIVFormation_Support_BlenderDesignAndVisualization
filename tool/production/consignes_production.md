@@ -65,7 +65,7 @@ Ce sont celles du formateur, à appliquer sans exception :
 - **Avant de rendre la main, vérifiez :**
   - `flutter analyze` : 27 avertissements au plus, tous dus à `material.dart`, déprécié ;
   - `flutter build windows --release` doit réussir ;
-  - Flutter se trouve dans `C:\Users\mjugu\develop\flutter`.
+  - Flutter se trouve dans `%USERPROFILE%\develop\flutter`.
 - **Pour les captures,** utilisez une fenêtre Blender courte, lancée à part, comme pour les fichiers de l'initiation et du défi de modélisation. Si vous simulez des clics, vérifiez qu'aucune autre session n'est en train de capturer : le fichier `tool/production/capture.lock` sert de verrou. Créez-le avant de capturer et supprimez-le après.
 
 ## Le compte rendu de fin
