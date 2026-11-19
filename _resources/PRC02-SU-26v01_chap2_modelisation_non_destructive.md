@@ -82,7 +82,7 @@ Par défaut, le *Mirror* reflète sur X. Pour les bras, décochez X et cochez Y 
 
 ### Recette · Des tiges doubles pour les bras
 Sur *Bras_bas*, puis sur *Bras_haut* :
-- **1.** Sélectionnez *Bras_bas*. `Tab`, `A`, puis `S Maj + Z 0.5` : la tige passe à 8 mm de diamètre, sans changer de longueur.
+- **1.** Sélectionnez *Bras_bas*. `Tab`, `A`, puis `S`, `Maj + Z` deux fois et `0.5` : la tige passe à 8 mm de diamètre, sans changer de longueur. Le bras est incliné : le second `Maj + Z` prend son axe propre, comme `G Z Z` au chapitre 1. Avec un seul, la tige se redresserait et quitterait ses articulations.
 - **2.** `G Y = 10mm` : la tige quitte l'axe de la lampe. `Tab`.
 - **3.** *Add Modifier > Generate > Mirror*. Décochez X, cochez Y : deux tiges parallèles apparaissent.
 - **4.** Sur *Bras_haut*, refaites les étapes 1 et 2.

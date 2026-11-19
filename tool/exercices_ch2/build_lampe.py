@@ -46,9 +46,9 @@ Corrigé : collection « Corrigé », masquée (œil fermé) ; défis : « Corri
 Une pièce vous manque ? Prenez-la dans « Corrigé » : M vers Lampe, puis renommez-la.
 
 1 · SYMÉTRIE (Bras_bas, Bras_haut)
-1. Bras_bas : Tab, A, S Maj+Z 0.5, G Y = 10mm, Tab.
+1. Bras_bas : Tab, A, S Maj+Z Maj+Z 0.5 (deux fois : l'axe du bras), G Y = 10mm, Tab.
 2. Modifiers > Add Modifier > Generate > Mirror : décochez X, cochez Y.
-3. Bras_haut : Tab, A, S Maj+Z 0.5, G Y = 10mm, Tab. Puis Bras_haut sélectionné,
+3. Bras_haut : Tab, A, S Maj+Z Maj+Z 0.5, G Y = 10mm, Tab. Puis Bras_haut sélectionné,
    Bras_bas actif : menu du Mirror > Copy to Selected.
 ★ Sur une copie, G Y = 10mm en Mode Objet : que fait le Mirror ? Réglez Mirror Object sur Socle.
 Contrôle : vue de dessus (7), deux tiges par bras.
