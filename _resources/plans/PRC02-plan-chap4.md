@@ -286,7 +286,7 @@ La section se joue en deux temps, de part et d'autre de la première pause : l'H
 **Notions**
 - **Placer une caméra :**
   - *Add > Camera* ; `0` du pavé numérique pour voir à travers la caméra active ;
-  - *View > Cameras > Align Active Camera to View* (`Ctrl + Alt + 0` du pavé numérique) ;
+  - *View > Align View > Align Active Camera to View* (`Ctrl + Alt + 0` du pavé numérique) ;
   - *Lock Camera to View*, dans la barre latérale (`N`), onglet *View*, rubrique *View Lock* : on cadre en naviguant ;
   - plusieurs caméras : `Ctrl + 0` du pavé numérique fait de la caméra sélectionnée la caméra active. Les nommer : `CAM_heros`, `CAM_detail`, `CAM_situation`.
 - **La focale** (*Focal Length*, onglet *Camera*), au-delà de la valeur d'usine :
@@ -298,7 +298,7 @@ La section se joue en deux temps, de part et d'autre de la première pause : l'H
 - **Le format de sortie** : onglet *Output*, panneau *Format* : *Resolution X* et *Y*, *Resolution Scale* (%), et le menu des préréglages. Le ratio suit l'usage : 16:9 pour une diapositive, 1:1 ou 4:5 pour un réseau social, A4 pour une impression.
 - **Rendre et enregistrer** :
   - `F12` (*Render > Render Image*) ne crée aucun fichier ;
-  - *Image > Save As* (`Maj + Alt + S`) : *PNG*, *RGB* ou *RGBA*, *Color Depth* 8, *Save as Render* coché ;
+  - *Image > Save As* (`Maj + Alt + S`) : *PNG*, *RGB* ou *RGBA*, *Color Depth* 8, *Color Management* sur *Follow Scene* ;
   - *Film > Transparent* (onglet *Render*) et *RGBA* donnent un PNG sans fond ;
   - option : *View > Viewport Render Image*, une capture rapide de la vue pour une revue ;
   - option : `Ctrl + B` en vue caméra (*Render Region*) limite le rendu à une zone, pour tester vite un détail ; `Ctrl + Alt + B` l'efface.
@@ -316,7 +316,7 @@ La section se joue en deux temps, de part et d'autre de la première pause : l'H
 **Vous montrez · démo B (6 min) : détail et export**
 1. *Depth of Field* : *Focus Object* sur un *Empty* `Mise_au_point` posé sur l'interrupteur, *F-Stop* à 1,4 puis à 8.
 2. L'onglet *Output* : *Resolution X* et *Y*, *Resolution Scale*, le menu des préréglages.
-3. `F12`, puis *Image > Save As* : le dossier `rendus/`, le nom, *PNG* et *Save as Render*. En une phrase : *Film > Transparent* et *RGBA* pour un fond transparent.
+3. `F12`, puis *Image > Save As* : le dossier `rendus/`, le nom, *PNG* et *Color Management* sur *Follow Scene*. En une phrase : *Film > Transparent* et *RGBA* pour un fond transparent.
 
 **Ils font · guidé 2 (13 min) : le détail et le premier export**
 1. Créer `CAM_detail`, à 100 mm, sur un détail : l'interrupteur cranté et la grille d'aération, une articulation, ou l'ampoule dans la tête.
@@ -334,7 +334,7 @@ La section se joue en deux temps, de part et d'autre de la première pause : l'H
 **Points d'observation**
 - La résolution appartient à la scène, pas à la caméra. Avant de rendre `CAM_detail` en 1080 × 1080, il faut changer *Resolution X* et *Y*, puis les remettre pour les autres vues.
 - Tant que *Lock Camera to View* est actif, chaque geste de navigation déplace la caméra : un coup d'orbite défait le cadrage. Déverrouillez dès que le cadrage est bon.
-- Un PNG plus sombre ou plus terne que le rendu : *Save as Render* était décoché.
+- Un PNG aux couleurs différentes du rendu : la rubrique *Color Management* de la fenêtre d'enregistrement est passée sur *Override*.
 - Une profondeur de champ sans effet : *Focus Object* est vide, ou la mise au point tombe sur le fond.
 - Le détail lui-même est flou : *F-Stop* trop petit pour un gros plan. Le remonter vers 8.
 - Un détail coupé net par un plan invisible : la caméra est à moins de 0,1 m de l'objet, sa distance minimale d'affichage par défaut (*Clip Start*, panneau *Lens*). Reculer la caméra et allonger la focale. C'est le même phénomène que le *Clip Start* de la vue, au chapitre 1.
@@ -369,7 +369,7 @@ Voir « L'atelier final » plus bas pour la situation, les livrables et les pali
 - À 3:15, les trois PNG de chacun sont dans `Galerie_PRC02`, bien nommés.
 
 **Quiz prévu (1, récapitulatif, pour l'application)**
-- « Avant d'envoyer vos visuels, que vérifiez-vous ? » Plusieurs bonnes réponses : le nom des fichiers, le format de chaque vue, *Save as Render*, et un fichier `.blend` empaqueté. Distracteur : « la focale de 50 mm sur toutes les vues ».
+- « Avant d'envoyer vos visuels, que vérifiez-vous ? » Plusieurs bonnes réponses : le nom des fichiers, le format de chaque vue, la gestion des couleurs à l'enregistrement, et un fichier `.blend` empaqueté. Distracteur : « la focale de 50 mm sur toutes les vues ».
 
 ### 3:20 · Galerie et restitution (15 min)
 
@@ -539,15 +539,15 @@ Les cadrages ci-dessous ont été vérifiés dans Blender 5.2.1, par projection 
 
 | Collection | Objet | Type et réglages | Position | Visée |
 |---|---|---|---|---|
-| « Corrigé éclairage » | `Key_corrige` | *Area* *Square*, *Size* 0,5, 40 W, *Temperature* 5000 K | (−0,60 ; −0,90 ; 0,90) | `T` |
-| « Corrigé éclairage » | `Fill_corrige` | *Area* *Square*, *Size* 0,8, 10 W, *Temperature* 5500 K | (1,00 ; −0,60 ; 0,45) | `T` |
-| « Corrigé éclairage » | `Rim_corrige` | *Area* *Square*, *Size* 0,3, 25 W, *Temperature* 6500 K | (0,30 ; 0,80 ; 0,90) | La tête, (0,23 ; 0 ; 0,38) |
-| « Corrigé éclairage » | `Reflet_bande_corrige` | *Area* *Rectangle*, *Size X* 1,0, *Size Y* 0,06, 15 W | (0,15 ; −0,35 ; 0,95) | Vers le bas, orientée au montage pour que la ligne de reflet passe sur la tête laquée, vue depuis `CAM_heros_corrige` |
+| « Corrigé éclairage » | `Key_corrige` | *Area* *Square*, *Size* 0,5, 20 W, *Temperature* 5500 K | (−0,60 ; −0,90 ; 0,90) | `T` |
+| « Corrigé éclairage » | `Fill_corrige` | *Area* *Square*, *Size* 0,8, 5 W, *Temperature* 6000 K | (1,00 ; −0,60 ; 0,45) | `T` |
+| « Corrigé éclairage » | `Rim_corrige` | *Area* *Square*, *Size* 0,3, 15 W, *Temperature* 6500 K | (0,30 ; 0,80 ; 0,90) | La tête, (0,23 ; 0 ; 0,38) |
+| « Corrigé éclairage » | `Reflet_bande_corrige` | *Area* *Rectangle*, *Size X* 1,0, *Size Y* 0,06, 10 W | (0,15 ; −0,35 ; 0,95) | Vers le bas, orientée au montage pour que la ligne de reflet passe sur la tête laquée, vue depuis `CAM_heros_corrige` |
 | « Corrigé caméras » | `CAM_heros_corrige` | Focale 85 mm, *Composition Guides* *Thirds* | (1,60 ; −2,10 ; 0,65) | `T` |
 | « Corrigé caméras » | `CAM_detail_corrige` | Focale 100 mm, *Depth of Field* actif, *Focus Object* `Mise_au_point_corrige`, *F-Stop* 8 | (0,33 ; −0,22 ; 0,20) | (0,035 ; −0,01 ; 0,03) : l'interrupteur cranté et l'arc de la grille d'aération ; l'articulation et les tiges du bras du bas, floues, à l'arrière-plan |
 | « Corrigé caméras » | `Mise_au_point_corrige` | *Empty* *Plain Axes*, taille 0,02 | Sur l'interrupteur, (0,055 ; 0 ; 0,031) | — |
 | « Corrigé caméras » | `CAM_situation_corrige` | Focale 35 mm | (−0,30 ; −0,85 ; 0,45) : le regard d'une personne assise au bureau | (0 ; 0 ; 0,21) |
-| « Corrigé paliers » | `Spot_lampe_corrige` | *Spot*, *Beam Angle* 70°, *Spot Blend* 0,3, 8 W, *Temperature* 2700 K, *Radius* 0 (valeur d'usine) | (0,254 ; 0 ; 0,338) : dans la tête, juste devant la pointe de l'ampoule | Rotation Y −30°, comme la tête : le faisceau sort par l'ouverture |
+| « Corrigé paliers » | `Spot_lampe_corrige` | *Spot*, *Beam Shape* : *Angle* 70°, *Blend* 0,3, 12 W, *Temperature* 2700 K, *Radius* 0 (valeur d'usine) | (0,254 ; 0 ; 0,338) : dans la tête, juste devant la pointe de l'ampoule | Rotation Y −30°, comme la tête : le faisceau sort par l'ouverture |
 | « Corrigé paliers » | `CAM_gamme_corrige` | Focale 70 mm | (0,85 ; −3,00 ; 0,70) | (0,37 ; 0 ; 0,20) : la lampe et `Lampe_coloris_B`, décalée de 0,75 m en X |
 | « Corrigé paliers » | `CAM_profil_ortho_corrige` | *Type* *Orthographic*, *Orthographic Scale* 0,95 | (−0,01 ; −2,00 ; 0,40) | Rotation X 85° : vue de face, dans l'axe Y, qui montre le profil des bras ; 5° de plongée font apparaître le sol sous la lampe |
 
@@ -688,7 +688,7 @@ Une capture par menu, bouton ou panneau cité, numérotée « Figure 4.N » sur 
 | `output_format_panel_blender.jpg` | L'onglet *Output*, panneau *Format* : résolution, *Resolution Scale*, bouton des préréglages | Côte à côte |
 | `format_presets_menu_blender.jpg` | Le menu des préréglages de format | Côte à côte |
 | `render_menu_blender.jpg` | Le menu *Render* : *Render Image*, *View Render* | Côte à côte |
-| `image_save_as_blender.jpg` | La fenêtre *Save As* : *PNG*, *RGB*/*RGBA*, *Color Depth*, *Save as Render* | Pleine largeur |
+| `image_save_as_blender.jpg` | La fenêtre *Save As* : *PNG*, *RGB*/*RGBA*, *Color Depth*, *Color Management* (*Follow Scene*) | Pleine largeur |
 | `eevee_film_panel_blender.jpg` | Le panneau *Film* : *Filter Size*, *Transparent* | Côte à côte |
 | `viewport_render_menu_blender.jpg` | Option : *View > Viewport Render Image* | Côte à côte |
 | `render_region_blender.jpg` | Option : une *Render Region* tracée en vue caméra | Côte à côte |
@@ -702,7 +702,7 @@ Une capture par menu, bouton ou panneau cité, numérotée « Figure 4.N » sur 
 | `ortho_camera_profile_blender.jpg` | Palier ★ : la vue technique orthographique | Côte à côte |
 | `lamp_gamme_two_colorways_blender.jpg` | Palier ★ : les coloris A et B côte à côte, dans le studio | Pleine largeur |
 | `lamp_on_situation_blender.jpg` | Palier ★★ : la lampe allumée, le *Spot* dans la tête, `Ampoule_allumee` sur l'ampoule | Pleine largeur |
-| `spot_light_beam_angle_blender.jpg` | Défi : l'onglet *Light* d'un *Spot*, *Beam Angle* et *Spot Blend* | Côte à côte |
+| `spot_light_beam_angle_blender.jpg` | Défi : l'onglet *Light* d'un *Spot*, rubrique *Beam Shape* : *Angle* et *Blend* | Côte à côte |
 | `principled_emission_panel_blender.jpg` | Défi : la rubrique *Emission* de la matière. Produite par le chapitre 3 (figure 3.14), réutilisée ici | Côte à côte |
 | `compositor_glare_bloom_blender.jpg` | Défi : le nœud *Glare* en *Bloom* | Pleine largeur |
 | `timeline_bind_camera_blender.jpg` | Défi : les marqueurs liés aux caméras dans la *Timeline* | Pleine largeur |
@@ -726,7 +726,7 @@ Raccourcissez dans cet ordre. On ne sacrifie jamais l'export des trois vues ni l
 ## Si vous êtes en avance
 
 D'abord les paliers ★ et ★★ de l'atelier. Ensuite, des défis qui ajoutent une notion nouvelle, chacun avec sa fiche dans le LISEZ-MOI :
-- **Le spot réglé finement :** *Beam Angle* et *Spot Blend*, pour un cône de lumière net ou doux sur le plateau.
+- **Le spot réglé finement :** *Angle* et *Blend*, rubrique *Beam Shape*, pour un cône de lumière net ou doux sur le plateau.
 - **Sa propre ampoule allumée :** la rubrique *Emission* de la matière (*Color*, *Strength*), vue en défi au chapitre 3, au lieu de la matière fournie.
 - **L'éclat de l'ampoule :** un nœud *Glare* de type *Bloom* dans le compositeur.
 - **Toutes les vues en un seul lancement :** un marqueur par caméra dans la *Timeline*, *Marker > Bind Camera to Markers* (`Ctrl + B`), le chemin de sortie de l'onglet *Output*, puis *Render > Render Animation*.
@@ -797,6 +797,24 @@ La grille d'aération, signalée comme absente dans la version précédente de c
 - le décalage de `Lampe_coloris_B` : 0,75 m en X, harmonisé avec le chapitre 3 (point 1 ci-dessus) ;
 - le fichier de secours est renommé `PRC02_ch4_lampe_en_studio.blend`, pour ne pas le confondre avec `PRC02_ch3_lampe_habillage.blend`. Il est tiré de ce dernier par Append.
 
+## Décisions de production, 19 novembre 2026
+
+Prises par délégation pendant la production des fichiers, du texte et des captures, à confirmer par le formateur.
+
+1. **Les objets du coloris B** gardent dans le fichier de secours les noms que donne *Duplicate Collection* (`Socle.001`…), comme dans la lampe habillée du chapitre 3 (fiche A2), et non un suffixe `_B` : le fichier de secours reflète exactement `lampe_habillage_v002.blend`. Les matières de la lampe restent des actifs, comme après un Append ; le fichier de catalogues n'est pas livré, le chapitre 4 n'utilise pas l'Asset Browser.
+2. **Les puissances du corrigé, calées au premier rendu** (*Khronos PBR Neutral*, `Monde_Neutre`) : `Key` 20 W à 5500 K, `Fill` 5 W à 6000 K, `Rim` 15 W à 6500 K, la bande 10 W, le *Spot* 12 W. Les valeurs de départ du plan (40, 10, 25, 15 et 8 W) brûlaient le fond. Les températures sont un peu plus neutres, pour un fond moins rosé.
+3. **La bande de reflet** est placée par le calcul : la face de la tête qui renvoie le regard de `CAM_heros_corrige` vers le haut, à 45° environ. Elle se trouve en (0,36 ; 0,42 ; 0,805), hors du cadre de la vue héros, sa longueur dans l'axe de la tête.
+4. **La rotation de `Monde_Interieur`** vaut 135° : choisie parmi huit rendus, de 0 à 315°, pour le reflet de la fenêtre sur la tête et le fond de la vue de situation.
+5. **La vue « lampe allumée »** du corrigé se rend sous `Monde_Interieur` baissé à 0,12, réglage fait en mémoire seulement, et non sous `Monde_Neutre` : la pièce reste lisible autour du cône de lumière.
+6. **L'enregistrement de l'image.** Dans Blender 5.2, la fenêtre *Save As* d'un rendu n'a plus de case *Save as Render* : la rubrique *Color Management* y vaut *Follow Scene*, et l'image garde la transformation de vue de la scène (vérifié). Le texte, le quiz et le LISEZ-MOI suivent.
+7. **Les libellés de Blender 5.2.1 :** *Align Active Camera to View* est sous *View > Align View*, et non *View > Cameras* ; le cône du *Spot* se règle dans la rubrique *Beam Shape*, champs *Angle* et *Blend* ; l'onglet *Light* affiche aussi *Tint*, *Exposure* et *Normalize*. Une lumière neuve fait 10 W, une *Area* neuve mesure 1 m, et la case *Temperature* est décochée.
+8. **Les images du corrigé** sont livrées dans un zip, `PRC02_ch4_images_corrige.zip` (9,2 Mo) : héros, détail, situation, situation allumée et comparatif des moteurs. Le comparatif n'a pas de légende incrustée : la légende de la figure 4.6 donne les moteurs et les temps.
+9. **Les temps du comparatif,** mesurés en 1280 × 720 : EEVEE 1,0 s ; Cycles, 128 échantillons débruités, 2,8 s sur la carte graphique (RTX 5070 Ti) et 10,9 s sur le processeur (Core Ultra 7 265KF). Le texte dit que l'écart grandit sur une scène lourde ou un poste moins puissant, sans promettre de minutes.
+10. **Les figures :** 41, dont 26 captures d'interface ; l'échelle minimale est 0,54 (le graphe du monde). Trois captures trop larges pour le côte à côte passent en pleine largeur : la fenêtre *Append*, la fenêtre de rendu et la vue de dessus des trois lumières. Les captures d'interface gardent leur résolution d'origine.
+11. **Les défis sans figure :** le nœud *Glare*, les marqueurs liés aux caméras et la contrainte *Damped Track* sont cités en défi, avec leur chemin dans le LISEZ-MOI, sans capture. Le *Spot* a la sienne (figure 4.41).
+12. **La planche du bilan,** `PRC02_ch4_recapitulatif.png`, n'est pas produite : elle dépend des visuels des six demi-journées. Le texte demande au formateur de projeter une vignette par demi-journée ; la planche reste à faire.
+13. **Le *Fond_cyclo*** est lissé par le lissage des faces (*Shade Smooth*), avec deux arêtes de raccord serrées, et non par *Shade Auto Smooth* : aucun groupe de nœuds lié n'entre dans le studio.
+
 ## Annexe · Les textes LISEZ-MOI
 
 ### Le studio et le fichier de secours
@@ -852,7 +870,7 @@ combinaison que vous préférez.
   Key à 4500 K, Rim à 7000 K.
 
 4 · CAMÉRA ET EXPORT
-1. Add > Camera. View > Cameras > Align Active Camera to View
+1. Add > Camera. View > Align View > Align Active Camera to View
    (Ctrl + Alt + 0 du pavé). Nommez-la CAM_heros.
 2. Focal Length : 85 mm. N > View > Lock Camera to View : cadrez en
    naviguant, puis décochez.
@@ -863,7 +881,7 @@ combinaison que vous préférez.
 5. Masquez la collection Nuancier (œil et appareil photo).
    CAM_heros active (Ctrl + 0 du pavé). Format 1920 × 1080. F12.
    Image > Save As : rendus/lampe_heros_<initiales>_v001.png,
-   PNG, Save as Render coché.
+   PNG, Color Management sur Follow Scene.
 Seul : CAM_detail active, résolution 1080 × 1080, F12,
 rendus/lampe_detail_<initiales>_v001.png.
 
@@ -891,7 +909,7 @@ Avant d'envoyer : nuancier masqué (œil et appareil photo), bonne
 résolution pour chaque vue, noms vérifiés.
 
 POUR ALLER PLUS LOIN (notions nouvelles)
-- Spot : Beam Angle et Spot Blend.
+- Spot : rubrique Beam Shape, Angle et Blend.
 - Votre propre ampoule allumée : rubrique Emission de la matière.
 - L'éclat de l'ampoule : nœud Glare, type Bloom, dans le compositeur.
 - Toutes les vues d'un coup : marqueurs, Marker > Bind Camera to Markers,
