@@ -145,17 +145,44 @@ def parse(text):
 
 
 def assign_ids_sec4(mods):
-    """Section 4 (défi facultatif) : numérotation générique, en attendant les identifiants de son plan."""
+    """Section 4 (défi facultatif), identifiants du plan PRC02-plan-chap3-complement-procedural.md :
+    ch3_sec4_title ; dans l'en-tête, ch3_sec4_info_intro (premier encart), ch3_sec4_info_eevee (second
+    encart), ch3_sec4_res1 ; ch3_sec4_palier1 et ch3_sec4_palier2 ; puis, par étape (0 pour l'en-tête
+    et « Avant de commencer », 1 à 7 ensuite), ch3_sec4_eN_<type><n> ; les quiz, ch3_sec4_quiz1 à quiz9."""
     out = []
+    step = 0
     counters = {}
+    infos = 0
+    res = 0
+    quiz = 0
     for kind, d in mods:
         if kind == "title":
             out.append(("ch3_sec4_title", kind, d))
             continue
-        short = {"text": "txt", "list": "list", "side": "side", "media": "media", "quiz": "quiz",
-                 "resource": "res"}.get(kind) or SHORT[d["type"]]
-        counters[short] = counters.get(short, 0) + 1
-        out.append(("ch3_sec4_%s%d" % (short, counters[short]), kind, d))
+        title = (d.get("title") or "") if kind == "text" else ""
+        m = re.match(r"^Étape (\d) ·", title)
+        if m:
+            step = int(m.group(1))
+        m = re.match(r"^Palier (\d) ·", title)
+        if m:
+            out.append(("ch3_sec4_palier%s" % m.group(1), kind, d))
+            continue
+        if kind == "quiz":
+            quiz += 1
+            out.append(("ch3_sec4_quiz%d" % quiz, kind, d))
+            continue
+        if kind == "resource":
+            res += 1
+            out.append(("ch3_sec4_res%d" % res, kind, d))
+            continue
+        if kind == "info" and step == 0 and infos < 2:
+            out.append(("ch3_sec4_info_" + ("intro", "eevee")[infos], kind, d))
+            infos += 1
+            continue
+        short = {"text": "txt", "list": "list", "side": "side", "media": "media"}.get(kind) or SHORT[d["type"]]
+        key = (step, short)
+        counters[key] = counters.get(key, 0) + 1
+        out.append(("ch3_sec4_e%d_%s%d" % (step, short, counters[key]), kind, d))
     return out
 
 

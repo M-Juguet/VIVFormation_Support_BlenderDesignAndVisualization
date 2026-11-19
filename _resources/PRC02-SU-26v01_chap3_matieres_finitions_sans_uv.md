@@ -192,6 +192,7 @@ Si votre ampoule ne montre alors que le paysage de l'image d'environnement, c'es
 Sous EEVEE, un verre ne montre ce qui se trouve derrière lui que si deux cases sont cochées :
 - la case *Raytracing*, dans l'onglet *Render* : sans elle, le verre ne réfracte pas ; le chapitre 4 explique ce réglage ;
 - la case *Raytraced Transmission*, dans l'onglet *Material*, rubrique *Settings*.
+
 Une seule case cochée ne change rien : il faut les deux.
 
 ![Figure 3.11 : L'ampoule vue par l'ouverture de la tête. À gauche, sans les deux cases : une boule sombre qui reflète l'environnement. Au milieu, avec les deux cases : le verre réfracte, comme une boule de cristal. À droite, avec Thin Wall en plus : une paroi fine, qui laisse voir la douille sans la déformer.](assets/images/glass_raytracing_comparison_blender.jpg)
@@ -350,6 +351,7 @@ Le Shader Editor se manie comme la vue 3D :
 - `Origine` cadre tous les nœuds ;
 - `G` déplace un nœud, `X` le supprime ;
 - `Maj + A` ouvre le menu d'ajout.
+
 Le Shader Editor est vide ? L'objet actif n'a pas de matière, ou ce n'est pas le bon objet.
 
 ### Ajouter un nœud et le relier
@@ -816,11 +818,13 @@ Les défis ★ :
 - *Emission* : un voyant lumineux sur l'interrupteur (figure 3.15) ;
 - *File > Link* d'une matière du nuancier : elle arrive grisée, en lecture seule (figure 3.47), puis `Ctrl + Z` ;
 - la bibliothèque CMF déclarée dans vos préférences : glissez une vignette de la gamme sur une pièce, puis essayez le menu *Import Method*.
+
 Les défis ★★ :
 - **Automobile :** la peinture métallisée de la bibliothèque, décortiquée dans le Shader Editor, puis reproduite ;
 - **Aéronautique :** l'accoudoir en cuir grainé et le panneau carbone, sur le fichier des finitions triplanaires ;
 - **Ferroviaire :** le marchepied en tôle larmée, puis la rangée de sièges de l'initiation (`PRC02_init_rangee_sieges.blend`) habillée avec la bibliothèque ;
 - **Votre bibliothèque :** déclarez votre dossier de travail comme bibliothèque, puis habillez un objet dans un nouveau fichier.
+
 Pour aller plus loin, la section 4 propose le « Défi facultatif : matières procédurales ».
 
 ```side-by-side
@@ -832,4 +836,721 @@ title: "Défi : une matière liée"
 Une matière liée appartient à son fichier source : elle s'affiche, mais ne se modifie pas ici. Si la bibliothèque change, la matière suit à la prochaine ouverture.
 
 C'est l'intérêt de *Link* pour une équipe, et sa limite pour un fichier envoyé seul : préférez alors *Append*.
+```
+
+## 4. Défi facultatif · Matières procédurales
+
+> [!NOTE]
+> **Un complément facultatif, hors programme de base.** Cette section ajoute des connaissances utiles que la formation initiale ne prévoit pas. Elle s'adresse à ceux qui sont à l'aise avec les sections 1 à 3, ou qui connaissent déjà ces sujets.
+>
+> Faites-la à la suite des parties de base, s'il vous reste du temps, ou à leur place, pour un complément et des défis plus poussés. Elle part des acquis de la section 2 : le Shader Editor, *Texture Coordinate*, *Bump* et *Mapping*. En cas de doute, les trois quiz de la section 2 servent de test d'entrée.
+>
+> Vous faites ce défi à la place de l'atelier ? Pour le chapitre 4, repartez de son fichier de secours, de la lampe habillée (`PRC02_ch3_lampe_habillage.zip`) ou de votre propre lampe, gardée dans la collection *Lampe* et enregistrée sous `lampe_habillage_v002.blend`. C'est une option, pas une obligation.
+
+### Ce que vous allez construire
+Le chapitre a couvert les cas courants : des matières simples, un grain, un brossé, des images projetées. Ici, vous construisez vous-même des matières **procédurales** plus riches : Blender les calcule, sans image et sans dépliage UV.
+
+Le défi compte sept étapes, en deux paliers :
+- palier 1 : lire les textures de bruit, remapper les valeurs, masquer et superposer, mettre en relief ;
+- palier 2 : user une pièce, construire un motif régulier, regrouper une chaîne de nœuds.
+
+Comptez environ 3 heures. Chaque étape suit le même ordre : un exemple terminé à observer, une recette guidée, puis un petit défi. Un quiz clôt chaque étape.
+
+![Figure 3.48 : Le banc d'échantillons du défi, terminé : une rangée par étape, des bruits aux groupes de nœuds, et la lampe usée du défi final.](assets/images/procedural_challenge_overview_blender.jpg)
+
+```resource
+title: "Le banc d'échantillons du défi"
+description: "Une rangée de pièces par étape, des trois secteurs : un exemple terminé, les pièces à compléter, et une copie de la lampe pour le défi final. Corrigés : collection « Corrigé défi procédural », œil fermé, une sous-collection par étape."
+fileName: "PRC02_ch3_defi_procedural.blend (0.5 Mo)"
+downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch3_defi_procedural.blend"
+```
+
+> [!IMPORTANT]
+> **Tout fonctionne sous EEVEE.** Quelques nœuds ne marchent que sous Cycles : *Geometry > Pointiness*, le nœud *Bevel*, *Random Per Island* et *Anisotropic* du Principled. Ce défi les remplace par des alternatives vérifiées sous EEVEE et en *Material Preview* : la normale de la pièce pour repérer les arêtes, le nœud *Ambient Occlusion* pour les creux, un relief étiré pour le brossé.
+
+### Les menus utiles du Shader Editor
+Le menu `Maj + A` range les nœuds par familles (figure 3.20). Ce défi en utilise six :
+- *Input* : *Texture Coordinate*, *Ambient Occlusion* ;
+- *Texture* : *Noise*, *Voronoi*, *Wave*, *Gabor*, *Gradient*, *Checker* ;
+- *Color* : *Color Ramp*, *Mix Color* ;
+- *Utilities > Math* : *Map Range*, *Math*, *Mix* ;
+- *Utilities > Vector* : *Mapping*, *Separate XYZ*, *Vector Math* ;
+- *Displacement* : *Bump*.
+
+La recherche va souvent plus vite : `Maj + A`, puis tapez le nom du nœud, ou celui d'une opération de *Math*, comme « Ping-Pong ».
+
+![Figure 3.49 : Quatre sous-menus de Maj + A dans Blender 5.2 : Color, Utilities > Math, Utilities > Vector et Displacement.](assets/images/shader_add_submenus_blender.jpg)
+
+### Les repères d'échelle
+Toutes les recettes partent de *Texture Coordinate*, sortie *Object* : la texture se mesure en mètres, quelle que soit la pièce.
+- *Noise* et *Voronoi* : *Scale* donne à peu près le nombre de motifs par mètre. Avec *Scale* 100, un motif tous les 10 mm environ.
+- *Wave* : une bande tous les 0,314 / *Scale* mètre. Avec *Scale* 40, une bande tous les 7,9 mm.
+- *Bump* : comme dans la section 2, le relief se règle avec *Strength*, entre 0 et 1, et *Distance* garde sa valeur.
+
+Toutes les valeurs sont des points de départ, vérifiés sous EEVEE : retouchez-les à l'œil.
+
+### Avant de commencer
+Ouvrez `PRC02_ch3_defi_procedural.blend`, puis enregistrez-le sous `defi_procedural_v001.blend`. Le fichier s'ouvre dans l'espace *Shading*, sur les rangées des étapes 1 et 2.
+
+Dans l'Outliner, gardez visible seulement la collection de l'étape en cours. *Material Preview* calcule chaque matière visible : moins il y en a, plus l'affichage reste fluide.
+
+### Voir le résultat d'un nœud : l'aperçu
+`Ctrl + Maj + clic` sur un nœud relie sa sortie directement à l'entrée *Surface* du *Material Output*. La pièce affiche alors la valeur brute du nœud : en niveaux de gris, du noir pour 0 au blanc pour 1, ou en couleurs pour une sortie *Color*.
+
+Un nouveau `Ctrl + Maj + clic` sur le même nœud passe à sa sortie suivante. `Ctrl + Maj + clic` sur le *Principled BSDF* rétablit la matière. Ce geste est natif dans Blender 5.2 : Node Wrangler n'est pas nécessaire.
+
+![Figure 3.50 : L'aperçu par Ctrl + Maj + clic : la sortie Factor du Noise reliée directement à Surface. Le Principled BSDF reste en place, sans lien. À droite, la plaquette en niveaux de gris.](assets/images/node_preview_ctrl_shift_click_blender.jpg)
+
+> [!WARNING]
+> Le blanc de l'aperçu paraît gris clair : c'est la transformation de vue *AgX*, réglée par défaut. Lisez les contrastes, pas les valeurs. La pièce reste grise et sans reflet ? L'aperçu n'a pas été annulé : `Ctrl + Maj + clic` sur le *Principled BSDF*.
+
+### Palier 1 · Lire et combiner
+Le palier 1 compte quatre étapes, pour environ 80 minutes : lire les textures de bruit, remapper les valeurs, masquer et superposer, puis mettre en relief. Les quiz 1 à 5 en vérifient les acquis.
+
+### Étape 1 · Lire les textures de bruit
+**Nouveau :** les réglages d'une texture procédurale, puis trois textures de plus. **Déjà vu :** *Noise Texture*, *Scale*, *Texture Coordinate* (*Object*), l'aperçu. Comptez 20 minutes.
+
+**Exemple :** les quatre plaquettes `E1_Exemple_Noise`, `_Voronoi`, `_Wave` et `_Gabor`, chacune en aperçu de sa texture. Observez-les, puis entrez dans leurs nœuds.
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/noise_texture_node_blender.jpg"
+caption: "Figure 3.51 : Le nœud Noise Texture et le menu de son type : fBM par défaut, Multifractal, Ridged Multifractal, Hybrid Multifractal, Hetero Terrain."
+title: "Les réglages du Noise"
+---
+- *Scale* : la taille du motif.
+- *Detail* : le nombre de couches de bruit superposées.
+- *Roughness* : le poids des couches fines.
+- *Lacunarity* : l'écart de taille d'une couche à la suivante.
+- *Distortion* : un motif tordu.
+- Le menu du type : *Ridged Multifractal* donne des veines.
+```
+
+### Recette · Le Noise, réglage par réglage
+Sur la plaquette `E1_Pratique`, une ligne à la fois :
+- **1.** `Maj + A > Input > Texture Coordinate`, puis `Maj + A > Texture > Noise Texture`. Reliez *Object* à *Vector*. Aperçu sur la sortie *Factor* : la plaquette paraît uniforme.
+- **2.** *Scale* 100 : des nuages doux, environ huit sur la largeur.
+- **3.** *Detail* 8, *Roughness* 0,7 : un grain plus fin, plus riche.
+- **4.** *Detail* 2, *Distortion* 2 : des tourbillons.
+- **5.** Le type *Ridged Multifractal*, *Scale* 60, *Detail* 4, *Distortion* 0 : des veines nettes, pour un plastique marbré ou une pierre.
+La sortie *Color* donne des nuages de couleurs pastel : elle sert rarement.
+
+![Figure 3.52 : Le Noise sur une plaquette de 80 mm : Scale 5 par défaut, Scale 100, Detail 8, Distortion 2, puis Ridged Multifractal.](assets/images/noise_settings_comparison_blender.jpg)
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/voronoi_texture_node_blender.jpg"
+caption: "Figure 3.53 : Le nœud Voronoi Texture et le menu de ses réglages : F1, F2, Smooth F1, Distance to Edge, N-Sphere Radius."
+title: "Le Voronoi : des cellules"
+---
+Le *Voronoi* découpe l'espace en cellules.
+- *F1*, sortie *Distance* : une tache sombre au centre de chaque cellule.
+- *Distance to Edge* : de fins sillons sombres entre les cellules. C'est la base du cuir et des craquelures.
+- Sortie *Color* : une couleur au hasard par cellule.
+- *Randomness* : le désordre des cellules ; à 0, une grille parfaite.
+```
+
+### Recette · Le Voronoi
+Sur `E1_Pratique`, remplacez le *Noise* par `Maj + A > Texture > Voronoi Texture`, relié de la même façon :
+- **1.** *Scale* 100, aperçu sur *Distance* : des taches sombres au centre des cellules.
+- **2.** Le réglage *Distance to Edge* : des sillons entre les cellules.
+- **3.** Aperçu sur la sortie *Color* : une couleur par cellule. Elle sert à faire varier légèrement chaque cellule.
+
+![Figure 3.54 : Le Voronoi à Scale 100 : F1, Distance to Edge, puis la sortie Color.](assets/images/voronoi_comparison_blender.jpg)
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/wave_texture_node_blender.jpg"
+caption: "Figure 3.55 : Le nœud Wave Texture : Bands ou Rings, la direction, le profil Sine, puis Scale, Distortion et Detail."
+title: "Le Wave : des bandes"
+---
+Le *Wave* dessine des bandes régulières.
+- *Bands* : des bandes droites ; *Rings* : des anneaux.
+- La direction : *X*, *Y*, *Z* ou *Diagonal*.
+- Le profil : *Sine*, *Saw* ou *Triangle*.
+- *Distortion* et *Detail* ondulent les bandes.
+```
+
+### Recette · Le Wave
+Sur `E1_Pratique`, `Maj + A > Texture > Wave Texture`, *Scale* 40 :
+- **1.** *Bands*, direction *X*, profil *Sine* : des bandes droites, une tous les 7,9 mm.
+- **2.** *Distortion* 4, *Detail* 4 : des bandes ondulées.
+- **3.** *Rings*, direction *Z* : des cercles concentriques, comme l'usinage d'un bouton ou d'un enjoliveur.
+
+![Figure 3.56 : Le Wave à Scale 40 : des bandes, des bandes ondulées, puis des anneaux.](assets/images/wave_comparison_blender.jpg)
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/gabor_texture_node_blender.jpg"
+caption: "Figure 3.57 : Le nœud Gabor Texture : le type 2D ou 3D, Scale, Frequency, Anisotropy et Orientation."
+title: "Le Gabor : des stries"
+---
+Le *Gabor* dessine des stries orientées, comme un brossé.
+- *Frequency* : des stries plus ou moins serrées.
+- *Anisotropy* : à 1, des stries nettes ; à 0, un motif sans direction.
+- *Orientation* : l'angle des stries, en radians ; 0,785 vaut 45°, 1,571 vaut 90°.
+- Le type *2D* ne lit que X et Y : gardez-le pour les faces planes et horizontales.
+```
+
+### Recette · Le Gabor
+Sur `E1_Pratique`, `Maj + A > Texture > Gabor Texture`, *Scale* 100, type *2D*. Aperçu sur *Value* :
+- **1.** Les réglages par défaut : des stries fines, orientées à 45°.
+- **2.** *Frequency* 6 : des stries plus serrées.
+- **3.** *Frequency* 2, *Anisotropy* 0 : le motif devient vermiculé.
+- **4.** *Frequency* 6, *Anisotropy* 1, *Orientation* 1,571 (90°) : des stries serrées dans l'axe X.
+Contrôle : la plaquette montre des stries fines dans l'axe X ; avec *Orientation* 0, elles suivent l'axe Y. Corrigé : `E1_Pratique_corrige`.
+
+![Figure 3.58 : Le Gabor à Scale 100 : par défaut, Frequency 6, puis Anisotropy 0.](assets/images/gabor_comparison_blender.jpg)
+
+> [!WARNING]
+> Une plaquette presque uniforme : *Scale* est resté à 5, sa valeur par défaut ; un seul motif couvre 20 cm. Un motif étiré ou qui glisse avec la pièce : *Texture Coordinate* n'est pas relié. Un dégradé de couleurs : l'aperçu montre la sortie *Color* ; refaites `Ctrl + Maj + clic` pour passer à *Factor* ou *Distance*. Un *Gabor* étiré sur les flancs : le type *2D* ne lit que X et Y.
+
+> [!CAUTION]
+> **Petit défi.** Reproduisez ces trois plaquettes cibles, sur `E1_Defi_A`, `_B` et `_C`, d'après la figure 3.59 : A, des cellules séparées par des sillons, comme le cuir d'un accoudoir d'avion ; B, les cercles d'usinage d'un bouton de commande automobile ; C, le brossé fin et serré d'une main courante de train, dans l'axe X. Corrigés : sous-collection « Corrigé étape 1 ».
+
+![Figure 3.59 : Le petit défi de l'étape 1 : les plaquettes cibles A, B et C, de gauche à droite.](assets/images/step1_target_tiles_blender.jpg)
+
+```quiz
+question: "Une Noise Texture, reliée en coordonnées Object, couvre une plaquette de 80 mm d'une teinte presque uniforme. Que faites-vous ?"
+options:
+  - "Augmenter Scale, vers 100"
+  - "Augmenter Detail"
+  - "Augmenter Distortion"
+  - "Passer le type en Ridged Multifractal"
+correctIndices:
+  - 0
+explanation: "Avec les coordonnées Object, Scale compte à peu près les motifs par mètre. À 5, sa valeur par défaut, un seul motif couvre 20 cm."
+```
+
+```quiz
+question: "Quelle texture et quel réglage donnent des cellules séparées par de fins sillons, comme un grain de cuir ?"
+options:
+  - "Voronoi, réglage F1"
+  - "Voronoi, réglage Distance to Edge"
+  - "Wave, type Rings"
+  - "Noise, type Ridged Multifractal"
+correctIndices:
+  - 1
+explanation: "Distance to Edge mesure la distance au bord de chaque cellule : les bords deviennent des sillons sombres. F1 marque au contraire le centre des cellules."
+```
+
+### Étape 2 · Remapper les valeurs
+**Nouveau :** transformer une valeur en une autre, avec trois nœuds, l'un après l'autre : *Color Ramp*, *Map Range*, puis *Math*. **Déjà vu :** *Noise*, l'aperçu. Comptez 20 minutes.
+
+**Exemple :** `E2_Exemple_Coque`, une coque de siège ferroviaire en plastique recyclé moucheté.
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/color_ramp_node_blender.jpg"
+caption: "Figure 3.60 : Le nœud Color Ramp et le menu de son interpolation : Ease, Cardinal, Linear, B-Spline, Constant."
+title: "Le Color Ramp"
+---
+Le *Color Ramp* (`Maj + A > Color`) change une valeur en couleur, d'après ses curseurs.
+- Rapprochez deux curseurs : le contraste monte.
+- Les boutons `+` et `−` ajoutent et retirent un curseur.
+- L'interpolation *Constant* donne des aplats francs, sans dégradé.
+- La flèche, à côté des boutons, propose *Flip Color Ramp* pour inverser les curseurs.
+```
+
+### Recette · Le moucheté
+Sur la plaquette `E2_Pratique_Mouchete` :
+- **1.** *Texture Coordinate* (*Object*), puis *Noise* (*Scale* 100). Sortie *Factor* vers `Maj + A > Color > Color Ramp`. Aperçu sur *Color*.
+- **2.** Curseur noir à 0,45, curseur blanc à 0,55 : des taches nettes.
+- **3.** Interpolation *Constant*, noir à 0, blanc à 0,5 : deux tons francs.
+- **4.** *Noise* : *Scale* 1500, *Detail* 0. *Color Ramp* : curseur 0 en #2B2D2F (anthracite), curseur 0,74 en #D8D6D0 (blanc cassé).
+- **5.** Reliez *Color* à *Base Color*, puis rétablissez le Principled (`Ctrl + Maj + clic`). *Roughness* 0,5.
+Contrôle : de fines mouchetures claires, environ une pour vingt, sur un fond anthracite. Avec le curseur clair à 0,70, elles deviennent trop denses ; à 0,62, la pièce paraît granitée.
+
+![Figure 3.61 : Le bruit brut, puis contrasté par deux curseurs rapprochés, puis en interpolation Constant.](assets/images/color_ramp_comparison_blender.jpg)
+
+![Figure 3.62 : La chaîne du moucheté : Texture Coordinate, Noise (Scale 1500, Detail 0), Color Ramp en Constant, Base Color. À droite, la coque de siège.](assets/images/speckled_plastic_blender.jpg)
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/map_range_node_blender.jpg"
+caption: "Figure 3.63 : Le nœud Map Range : From Min et From Max, To Min et To Max, la case Clamp et le menu d'interpolation."
+title: "Le Map Range"
+---
+Le *Map Range* (`Maj + A > Utilities > Math`) fait passer une plage de valeurs à une autre.
+- *From Min* et *From Max* : les valeurs qui entrent.
+- *To Min* et *To Max* : celles qui sortent, par exemple de vraies valeurs de *Roughness*.
+- *Clamp* empêche de sortir de cette plage.
+```
+
+### Recette · La brillance irrégulière
+Sur `E2_Pratique_Planche`, une plaquette noire de planche de bord automobile (#151515) :
+- **1.** *Texture Coordinate* (*Object*), puis *Noise*, *Scale* 40, *Detail* 3.
+- **2.** `Maj + A > Utilities > Math > Map Range`. Reliez *Factor* à *Value*.
+- **3.** *From Min* 0,35, *From Max* 0,65, *To Min* 0,08, *To Max* 0,35. *Clamp* reste coché.
+- **4.** Reliez *Result* à *Roughness*.
+Contrôle : des reflets nets par endroits, voilés ailleurs, comme sur un plastique injecté. Faites tourner l'image d'environnement pour les voir (menu *Viewport Shading*, section 1).
+
+![Figure 3.64 : La chaîne de la brillance irrégulière : Noise, Map Range (0,35 à 0,65 vers 0,08 à 0,35), Roughness. À droite, la planche de bord.](assets/images/uneven_gloss_dashboard_blender.jpg)
+
+### Recette · Un seuil en chiffres : Math
+Sur `E2_Pratique_Mouchete`, à côté du *Color Ramp*, sans toucher au Principled :
+- **1.** `Maj + A > Utilities > Math > Math`. Choisissez l'opération *Greater Than*.
+- **2.** Reliez la sortie *Factor* du *Noise* à sa première entrée. *Threshold* 0,74.
+- **3.** Aperçu sur *Value* : les mêmes mouchetures, en blanc sur noir.
+*Greater Than* rend 1 au-dessus du seuil, 0 en dessous. Le *Color Ramp* se règle à l'œil ; *Map Range* et *Math* se règlent en chiffres, et leurs chiffres pourront devenir les paramètres d'un groupe (étape 7). Corrigés : `E2_Pratique_Mouchete_corrige` et `E2_Pratique_Planche_corrige`.
+
+![Figure 3.65 : Le nœud Math et le menu de ses opérations : Add, Multiply, Power, Absolute, Minimum, Maximum, Less Than, Greater Than, Floor… La liste continue plus bas, avec Floored Modulo et Ping-Pong.](assets/images/math_node_operations_blender.jpg)
+
+> [!WARNING]
+> Le masque est inversé : les curseurs du *Color Ramp* sont dans le mauvais ordre ; utilisez *Flip Color Ramp*. *Map Range* ne change rien : les valeurs *From* et *To* ont été confondues. *Math* rend une pièce blanche : l'opération est restée sur *Add*, sa valeur par défaut.
+
+> [!CAUTION]
+> **Petit défi.** Des mouchetures en deux couleurs, pour une coque de siège ferroviaire, sur `E2_Defi`. Ajoutez un troisième curseur avec le bouton `+` : à 0,82, en #9B6B43 (terre cuite). Entre 0,74 et 0,82, les mouchetures restent claires ; au-dessus, elles sont terre cuite, et plus rares. Corrigé : `E2_Defi_corrige`.
+
+```quiz
+question: "Vous voulez que la Roughness varie entre 0,08 et 0,35 selon un bruit. Quel nœud règle ces deux valeurs en chiffres ?"
+options:
+  - "Color Ramp"
+  - "Map Range"
+  - "Mix Color"
+  - "Bump"
+correctIndices:
+  - 1
+explanation: "Map Range fait passer les valeurs de From Min et From Max à To Min et To Max. Ici, To Min 0,08 et To Max 0,35 sont de vraies valeurs de Roughness."
+```
+
+### Étape 3 · Masques et couches
+**Nouveau :** un masque qui choisit entre deux couches, puis la superposition de deux masques. **Déjà vu :** *Color Ramp*, *Map Range*, *Math*. Comptez 20 minutes.
+
+**Exemple :** `E3_Exemple_Main_courante`, une main courante en laiton patiné, celle d'une voiture-bar ou d'un train historique. Le même masque pilote trois entrées du Principled.
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/mix_color_and_float_nodes_blender.jpg"
+caption: "Figure 3.66 : Le nœud Mix Color (Factor, A, B et le menu de mélange), puis le nœud Mix en Float."
+title: "Les nœuds Mix"
+---
+Un *Mix* choisit entre *A* et *B* selon son *Factor* : 0 donne *A*, 1 donne *B*. Le masque se branche sur *Factor*.
+- *Mix Color* (`Maj + A > Color`) mélange deux couleurs.
+- *Mix* (`Maj + A > Utilities > Math`) mélange deux nombres, en type *Float*.
+Le type se change en haut du nœud.
+```
+
+### Recette · Un masque, trois Mix
+Sur `E3_Pratique_Main_courante`, un tube de Ø 32 × 300 mm en laiton neuf, couché sur X. Sa rotation n'est pas appliquée : son axe local Z suit le tube.
+- **1.** *Texture Coordinate* (*Object*), puis *Noise* : *Scale* 40, *Detail* 6, *Roughness* 0,6.
+- **2.** *Color Ramp* : noir à 0,50, blanc à 0,60. Aperçu : les taches blanches sont la patine. C'est le masque.
+- **3.** `Maj + A > Color > Mix Color` : *A* #E0C27A (laiton), *B* #3A3B2C (patine). Masque vers *Factor*, *Result* vers *Base Color*.
+- **4.** `Maj + A > Utilities > Math > Mix`, en *Float* : *A* 1, *B* 0. Masque vers *Factor*, *Result* vers *Metallic*.
+- **5.** Un second *Mix* en *Float* : *A* 0,25, *B* 0,7. Masque vers *Factor*, *Result* vers *Roughness*.
+Contrôle : un laiton poli et brillant, avec des taches sombres, mates et non métalliques.
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/separate_xyz_node_blender.jpg"
+caption: "Figure 3.67 : Le nœud Separate XYZ : une entrée Vector, trois sorties X, Y et Z."
+title: "Separate XYZ"
+---
+*Separate XYZ* (`Maj + A > Utilities > Vector`) sépare un vecteur en trois nombres. Sur les coordonnées *Object*, la sortie *Z* donne la position le long de l'axe local Z de la pièce : ici, la longueur du tube.
+```
+
+### Recette · Superposer deux masques
+La patine ne reste qu'aux extrémités, là où les mains ne passent pas :
+- **6.** *Texture Coordinate* (*Object*), puis `Maj + A > Utilities > Vector > Separate XYZ`.
+- **7.** *Math*, opération *Absolute*, sur la sortie *Z*.
+- **8.** *Map Range* : *From Min* 0,08, *From Max* 0,14. Aperçu : noir au centre, blanc aux deux bouts.
+- **9.** *Math*, opération *Multiply* : le masque de patine (étape 2) fois le masque des extrémités (étape 8). Reliez son résultat aux trois *Factor* des *Mix*.
+Contrôle : de la patine aux deux extrémités seulement ; au centre, le laiton reste poli. Corrigé : `E3_Pratique_Main_courante_corrige`.
+
+![Figure 3.68 : La chaîne du laiton patiné : le masque de patine (Noise, Color Ramp) multiplié par le masque des extrémités (Separate XYZ, Absolute, Map Range), puis trois Mix vers Base Color, Metallic et Roughness.](assets/images/one_mask_three_mixes_blender.jpg)
+
+![Figure 3.69 : La main courante patinée partout, puis seulement aux extrémités.](assets/images/patina_handrail_comparison_blender.jpg)
+
+> [!NOTE]
+> Multiplier deux masques garde ce qu'ils ont en commun ; *Maximum* les additionne ; *Subtract* retire l'un de l'autre. On peut aussi mélanger deux Principled avec *Mix Shader*, mais un seul Principled, dont on mélange les entrées, reste plus léger et plus simple à régler.
+
+> [!WARNING]
+> La patine ne se voit pas : le masque n'est relié qu'à *Base Color*, et le laiton garde ses reflets métalliques. Reliez aussi *Metallic* et *Roughness*. La patine est partout et le laiton nulle part : *A* et *B* sont inversés. La patine se trouve au centre : échangez *From Min* et *From Max* du masque des extrémités.
+
+> [!CAUTION]
+> **Petit défi.** Une main courante de quai en inox (#C8C8C6, *Metallic* 1, *Roughness* 0,15), entartrée de calcaire blanc (#D9D4C7, *Metallic* 0, *Roughness* 0,8), sur `E3_Defi_Main_courante`. Les nœuds sont les mêmes : seules les valeurs changent. Corrigé : `E3_Defi_Main_courante_corrige`.
+
+```quiz
+question: "Sur la main courante patinée, un même masque pilote les entrées du Principled. Lesquelles faut-il relier pour passer du laiton à la patine ?"
+options:
+  - "Base Color"
+  - "Metallic"
+  - "Roughness"
+  - "IOR"
+correctIndices:
+  - 0
+  - 1
+  - 2
+explanation: "La patine change la teinte, n'est plus métallique et devient mate : Base Color, Metallic et Roughness suivent le même masque, par trois Mix."
+```
+
+### Étape 4 · Le relief procédural
+**Nouveau :** enchaîner des reliefs, et donner son propre relief au vernis. **Déjà vu :** *Bump* (section 2), le masque de l'étape 3, *Coat* (section 1). Comptez 15 minutes.
+
+**Exemple :** `E4_Exemple_Coque`, une coque de rétroviseur en laque rouge, avec une légère peau d'orange.
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/bump_node_settings_blender.jpg"
+caption: "Figure 3.70 : Le nœud Bump : la case Invert, Strength, Distance, Filter Width, puis les entrées Height et Normal."
+title: "Le Bump, entrée par entrée"
+---
+- *Strength* : la force du relief, de 0 à 1 ; c'est elle que l'on règle.
+- *Distance* : garde sa valeur.
+- *Filter Width* : garde sa valeur par défaut, 0,1.
+- *Invert* : les bosses deviennent des creux.
+- L'entrée *Normal* reçoit un autre relief : c'est ce qui permet d'en enchaîner deux.
+```
+
+### Recette · Deux reliefs chaînés
+Sur `E4_Pratique_Boitier`, un boîtier d'avionique en aluminium (#D9DADB, *Metallic* 1, *Roughness* 0,45) :
+- **1.** *Texture Coordinate* (*Object*), puis un *Noise* A : *Scale* 2000, *Detail* 0. Sa sortie *Factor* vers *Height* d'un *Bump* A, *Strength* 0,1.
+- **2.** Un *Noise* B : *Scale* 150, *Detail* 4. Sa sortie *Factor* vers *Height* d'un *Bump* B, *Strength* 0,2.
+- **3.** La sortie *Normal* du *Bump* A vers l'entrée *Normal* du *Bump* B.
+- **4.** La sortie *Normal* du *Bump* B vers *Normal* du Principled.
+Contrôle : un grain microbillé et des ondulations douces, un aspect martelé. Le dernier *Bump* de la chaîne va au Principled. Corrigé : `E4_Pratique_Boitier_corrige`.
+
+![Figure 3.71 : Deux Bump chaînés : le Bump A (grain fin) entre dans l'entrée Normal du Bump B (ondulations), qui va au Principled. À droite, le boîtier martelé.](assets/images/chained_bump_nodes_blender.jpg)
+
+### Le relief du vernis : Coat Normal
+Le vernis a son propre relief : l'entrée *Normal* de la rubrique *Coat*. Une peau d'orange se voit dans le reflet du vernis, pas dans la teinte : son *Bump* va donc dans *Coat Normal*.
+
+![Figure 3.72 : La peau d'orange : Noise (Scale 600, Detail 1), Bump (Strength 0,15), puis l'entrée Normal de la rubrique Coat, dépliée, du Principled BSDF.](assets/images/principled_coat_normal_blender.jpg)
+
+### Recette · La peau d'orange
+Sur `E4_Pratique_Coque`, une coque de rétroviseur en laque rouge (#A3161A, *Roughness* 0,4, *Coat Weight* 1, *Coat Roughness* 0,03) :
+- **1.** *Texture Coordinate* (*Object*), puis *Noise* : *Scale* 600, *Detail* 1.
+- **2.** *Factor* vers *Height* d'un *Bump*, *Strength* 0,15.
+- **3.** Dépliez la rubrique *Coat* du Principled. La sortie *Normal* du *Bump* va dans son entrée *Normal*.
+Contrôle : les reflets du vernis ondulent légèrement, comme sur une carrosserie. Avec *Strength* 0,3, le défaut devient visible, comme une retouche ; à 0,05, il disparaît presque. Corrigé : `E4_Pratique_Coque_corrige`.
+
+![Figure 3.73 : Le reflet sur la coque laquée : lisse, puis avec la peau d'orange à Strength 0,15, puis à 0,3.](assets/images/orange_peel_comparison_blender.jpg)
+
+### Recette · Un masque en relief
+Sur la main courante patinée de l'étape 3 : le masque de patine vers *Height* d'un nouveau *Bump*, *Strength* 0,1, puis vers *Normal* du Principled. La patine forme une couche en léger relief. La case *Invert* du *Bump* la met en creux. Corrigé : `E4_Relief_Main_courante_corrige`.
+
+> [!NOTE]
+> Le nœud *Normal Map* lit des images de normales, qui demandent un dépliage UV. Avec des textures procédurales, *Bump* suffit.
+
+> [!WARNING]
+> Seul le grain fin se voit : la sortie *Normal* du *Bump* A n'entre pas dans le *Bump* B. Un relief qui scintille : *Strength* est trop forte ; divisez-la par deux. La peau d'orange trouble la teinte, mais le vernis reste lisse : elle est branchée sur *Normal* et non sur *Coat Normal*.
+
+> [!CAUTION]
+> **Petit défi.** Une peinture métallisée automobile, sur `E4_Defi_Coque` (#1C3F7A, *Metallic* 1). Gardez la peau d'orange sur *Coat Normal*. Ajoutez des paillettes sous le vernis : *Voronoi* (*Scale* 3000), sortie *Distance*, vers un *Bump* (*Strength* 0,1), puis vers *Normal*. Comparez avec `Peinture_Metallisee_Bleu` du nuancier, récupérée par *File > Append* (section 3). Corrigé : `E4_Defi_Coque_corrige`.
+
+```quiz
+question: "La peau d'orange d'une laque se voit dans le reflet du vernis. Où branchez-vous son Bump ?"
+options:
+  - "Dans l'entrée Normal du Principled"
+  - "Dans l'entrée Normal de la rubrique Coat"
+  - "Dans Base Color"
+  - "Dans Displacement du Material Output"
+correctIndices:
+  - 1
+explanation: "Le vernis a son propre relief, Coat Normal. Branché sur Normal, le relief trouble la teinte, mais le vernis reste lisse."
+```
+
+### Palier 2 · Usure, motifs, groupes
+Le palier 2 compte trois étapes, pour environ 95 minutes : user une pièce, construire un motif régulier, puis regrouper une chaîne de nœuds. Les quiz 6 à 9 en vérifient les acquis.
+
+### Étape 5 · L'usure
+**Nouveau :** des masques tirés de la forme de la pièce : la normale, puis l'occlusion. Les rayures et les traces de doigts réemploient des nœuds connus. **Déjà vu :** *Separate XYZ*, *Math*, *Color Ramp*, *Mix*, *Mapping*, *Coat*. Comptez 30 minutes.
+
+**Exemple :** `E5_Exemple_Coffret`, un coffret électrique de quai, peint en vert, aux arêtes usées et sali au pied.
+
+### Pourquoi la normale repère les arêtes
+La normale est la direction vers laquelle regarde la surface. Sur le socle, elle pointe vers le haut sur le dessus, vers le côté sur le flanc, et entre les deux dans le biseau. En gardant seulement l'entre-deux, on obtient un liseré sur les arêtes.
+
+Cette méthode demande une pièce biseautée par le modificateur *Bevel*, d'au moins 3 segments, puis lissée par *Shade Auto Smooth* (chapitre 2). L'usure n'est jamais plus large que le biseau.
+
+### Recette · Les bords usés
+Sur `E5_Pratique_Socle`, un cylindre de Ø 180 × 25 mm, biseauté de 3 mm, peint en #2F5D3A :
+- **1.** `Maj + A > Input > Texture Coordinate`. Sa sortie **Normal** vers *Separate XYZ*.
+- **2.** La sortie *Z* vers *Math*, opération *Absolute*.
+- **3.** *Color Ramp* à trois curseurs : noir à 0,10, blanc à 0,50 (bouton `+`), noir à 0,90. Aperçu : un liseré blanc sur les arêtes du dessus et du dessous.
+- **4.** *Texture Coordinate* (*Object*) vers un *Noise* : *Scale* 400, *Detail* 8, *Roughness* 0,7.
+- **5.** *Math*, opération *Multiply* : le *Color Ramp* fois le *Noise*.
+- **6.** *Map Range* : *From Min* 0,30, *From Max* 0,40. C'est le masque d'usure.
+- **7.** *Mix Color* : *A* #2F5D3A (peinture), *B* #B8B9BA (métal). Masque vers *Factor*, *Result* vers *Base Color*.
+- **8.** Le masque vers *Metallic*. Un *Map Range* (*To Min* 0,45, *To Max* 0,30) vers *Roughness*.
+Contrôle : un liseré métallique irrégulier sur les arêtes. Corrigé : `E5_Pratique_Socle_corrige`.
+
+![Figure 3.74 : La chaîne des bords usés : Texture Coordinate (Normal), Separate XYZ, Absolute, Color Ramp à trois curseurs, multiplié par un Noise, puis Map Range, vers Mix Color, Metallic et Roughness.](assets/images/edge_wear_normal_chain_blender.jpg)
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/vector_math_node_blender.jpg"
+caption: "Figure 3.75 : Le nœud Vector Math, ici en Absolute ; son menu propose aussi Dot Product."
+title: "Option : Vector Math"
+---
+*Vector Math* (`Maj + A > Utilities > Vector`) calcule sur des vecteurs entiers. *Absolute* rend les trois composantes positives d'un coup ; *Dot Product* compare deux directions (étape 7).
+```
+
+### Consignes · ★ Une pièce prismatique
+Sur un boîtier, toutes les arêtes doivent s'user, verticales comprises :
+- la normale passe par *Vector Math* (*Absolute*), puis *Separate XYZ* ;
+- deux *Math* *Maximum* gardent la plus grande des trois composantes ;
+- un *Color Ramp* : blanc à 0,80, noir à 0,97.
+N'utilisez pas cette variante sur un cylindre : son flanc s'userait par bandes (figure 3.76, à droite).
+
+![Figure 3.76 : Le masque des arêtes en aperçu sur le socle, le socle usé, puis le boîtier usé par la variante prismatique, et le faux positif de cette variante sur un cylindre.](assets/images/edge_wear_mask_comparison_blender.jpg)
+
+> [!WARNING]
+> Rien ne s'use : la pièce n'a pas de biseau, ou elle n'est pas lissée. L'usure est trop fine : élargissez le *Bevel* du modificateur ; le shader ne peut pas aller au-delà. Toute une surface s'use : la pièce est bombée, comme la tête de la lampe ou une coque ; la méthode ne convient qu'aux pièces à faces planes ou cylindriques. L'usure est sur le flanc et pas sur le dessus : la rotation de la pièce a été appliquée ; prenez la sortie *X* ou *Y* de *Separate XYZ*.
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/ambient_occlusion_node_blender.jpg"
+caption: "Figure 3.77 : Le nœud Ambient Occlusion : les sorties Color et AO, les entrées Distance et Normal, les réglages Samples, Inside et Only Local."
+title: "Ambient Occlusion"
+---
+Le nœud *Ambient Occlusion* (`Maj + A > Input`) mesure si la surface est entourée de géométrie : sa sortie *AO* vaut 1 à découvert et baisse dans les creux.
+
+Sous EEVEE, il se calcule à partir de l'image affichée : il change un peu quand on tourne autour, et ne tient compte que de ce qui est à l'écran. *Only Local* n'y est pas pris en charge.
+```
+
+### Recette · La saleté dans les creux
+Sur `E5_Pratique_Marchepied`, une plaque de 200 × 200 mm à trois nervures, en aluminium (#9A9C9E, *Metallic* 1, *Roughness* 0,35) :
+- **1.** `Maj + A > Input > Ambient Occlusion`. *Distance* `20mm` ; *Inside* et *Only Local* restent décochés.
+- **2.** Sortie *AO* vers un *Color Ramp* : blanc à 0,85, noir à 0,99. Aperçu : un trait sombre au pied des nervures.
+- **3.** *Texture Coordinate* (*Object*), puis *Noise* (*Scale* 200, *Detail* 6), puis un *Color Ramp* : noir à 0,35, blanc à 0,65.
+- **4.** *Math* *Multiply* des deux rampes : le masque de saleté.
+- **5.** *Mix Color* : *A* #9A9C9E, *B* #3B342C, vers *Base Color*. Un *Mix* en *Float* (*A* 1, *B* 0) vers *Metallic*. Un *Map Range* (*To Min* 0,35, *To Max* 0,9) vers *Roughness*.
+Contrôle : une crasse mate et irrégulière au pied des nervures. Corrigé : `E5_Pratique_Marchepied_corrige`.
+
+![Figure 3.78 : Le marchepied : l'occlusion brute, presque blanche ; la même, resserrée par le Color Ramp ; puis la saleté.](assets/images/dirt_crevices_comparison_blender.jpg)
+
+> [!WARNING]
+> Rien ne se voit : la rampe est restée entre 0 et 1. Sous EEVEE, les valeurs de l'occlusion restent très proches de 1 : resserrez-la entre 0,85 et 0,99. Toute la pièce s'assombrit, avec des halos : *Distance* est trop grande ; gardez l'ordre de grandeur du creux. La saleté se met sur les arêtes : *Inside* est coché.
+
+### Recette · Les rayures
+Sur `E5_Pratique_Main_courante`, un tube inox (#C8C8C6, *Metallic* 1) d'axe local Z. C'est le brossé de la section 2, avec un seuil :
+- **1.** *Texture Coordinate* (*Object*), puis *Mapping* : *Scale* X 1, Y 1, Z 0,02.
+- **2.** *Noise* : *Scale* 2000, *Detail* 2.
+- **3.** *Color Ramp* : noir à 0,68, blanc à 0,70. Aperçu : de rares traits blancs dans la longueur.
+- **4.** *Map Range* (*To Min* 0,05, *To Max* 0,5) vers *Roughness*.
+Contrôle : de fines rayures mates dans la longueur, visibles dans les reflets. Corrigé : `E5_Pratique_Main_courante_corrige`.
+
+![Figure 3.79 : Le masque des rayures en aperçu, puis la main courante en inox rayé.](assets/images/scratches_handrail_blender.jpg)
+
+### Recette · Les traces de doigts
+Sur `E5_Pratique_Console`, une console noir piano de planche de bord (#0A0A0A, *Roughness* 0,3, *Coat Weight* 1, *Coat Roughness* 0,02) :
+- **1.** *Texture Coordinate* (*Object*), puis *Noise* : *Scale* 25, *Detail* 6, *Roughness* 0,7, *Distortion* 0,3.
+- **2.** *Map Range* : *From Min* 0,55, *From Max* 0,75, *To Min* 0,02, *To Max* 0,4.
+- **3.** *Result* vers **Coat Roughness**, dans la rubrique *Coat* du Principled.
+Contrôle : des halos voilés dans le reflet du vernis. Une trace de doigt ne change pas la couleur : seulement la brillance du vernis. Corrigé : `E5_Pratique_Console_corrige`.
+
+![Figure 3.80 : La console noir piano, neuve, puis avec des traces de doigts dans le reflet du vernis.](assets/images/fingerprints_piano_black_blender.jpg)
+
+> [!WARNING]
+> Les rayures sont en travers : l'axe étiré dans *Mapping* n'est pas le bon. Il y en a trop : montez les deux curseurs, par exemple à 0,72 et 0,74. Les traces sont branchées sur *Base Color* : la pièce devient grise par plaques. Elles sont branchées sur *Roughness* : sous un vernis brillant, elles ne se voient presque pas. Elles ne se voient qu'à un endroit : il faut un reflet ; faites tourner l'image d'environnement.
+
+> [!CAUTION]
+> **Petit défi.** `E5_Defi_Coffret`, un coffret de quai de 200 × 120 × 80 mm posé sur sa plinthe `E5_Defi_Plinthe`. Usez ses arêtes avec la variante prismatique, puis salissez son pied, avec deux couches successives : un premier *Mix Color* passe de la peinture au métal, un second passe de ce résultat à la saleté. Salissez aussi la plinthe. Corrigés : `E5_Defi_Coffret_corrige` et `E5_Defi_Plinthe_corrige`.
+
+```quiz
+question: "Sous EEVEE, comment repérer les arêtes d'une pièce biseautée pour les user ?"
+options:
+  - "Avec Geometry > Pointiness"
+  - "Avec le nœud Bevel"
+  - "Avec la normale de la pièce, triée par un Color Ramp"
+  - "Avec Ambient Occlusion, case Inside cochée"
+correctIndices:
+  - 2
+explanation: "Pointiness et le nœud Bevel ne fonctionnent que sous Cycles. Sous EEVEE, Inside ne donne presque rien à cette échelle. Dans un biseau lissé, la normale passe d'une direction à l'autre : c'est elle que l'on trie."
+```
+
+```quiz
+question: "Votre masque de saleté, tiré du nœud Ambient Occlusion, ne montre presque rien. Que faites-vous ?"
+options:
+  - "Cocher Only Local"
+  - "Resserrer le Color Ramp près de 1, par exemple de 0,85 à 0,99"
+  - "Passer Distance à 1 m"
+  - "Augmenter Detail du bruit"
+correctIndices:
+  - 1
+explanation: "Sous EEVEE, les valeurs de l'occlusion restent très proches de 1 : il faut une rampe très serrée. Only Local n'est pas pris en charge, et une grande Distance assombrit toute la pièce."
+```
+
+### Étape 6 · Les motifs
+**Nouveau :** un motif régulier, construit à partir des coordonnées. Les sous-notions arrivent une par une : la grille, puis le perçage, puis le croisement de deux motifs. **Déjà vu :** *Voronoi*, *Wave*, *Math*, *Mix*, *Bump*, *Alpha* (section 1). Comptez 40 minutes.
+
+**Exemple :** `E6_Exemple_Dalle`, une dalle à pastilles en relief, comme un plancher antidérapant ou une dalle podotactile de quai : *Voronoi* en **2D**, *Scale* 125, *Randomness* **0**, sortie *Distance* vers un *Color Ramp* (blanc à 0,28, noir à 0,32), puis un *Bump* (*Strength* 0,5). Avec *Randomness* 0, les cellules forment une grille parfaite : des pastilles de Ø 4,8 mm au pas de 8 mm.
+
+![Figure 3.81 : Les motifs de l'étape 6 : la dalle à pastilles, la tôle perforée, le cuir grainé, le tissu de siège, puis, en défi, le moletage et le carbone sergé.](assets/images/procedural_patterns_overview_blender.jpg)
+
+### Recette · La tôle perforée
+Sur `E6_Pratique_Grille`, une plaque de 120 × 80 × 1,5 mm posée au-dessus d'un fond orange : une grille de haut-parleur automobile ou un plafond perforé de voiture ferroviaire (#B8B9BA, *Metallic* 1, *Roughness* 0,35).
+- **1.** *Texture Coordinate* (*Object*), puis *Voronoi* : type **2D**, *Scale* 250, *Randomness* 0.
+- **2.** Sortie *Distance* vers *Math*, opération *Greater Than*, *Threshold* 0,3.
+- **3.** *Value* vers **Alpha** du Principled.
+Contrôle : des trous ronds de Ø 2,4 mm au pas de 4 mm ; on voit le fond à travers, et l'ombre est percée. *Render Method* reste sur *Dithered*, sa valeur par défaut (figure 3.13). Corrigé : `E6_Pratique_Grille_corrige`.
+
+![Figure 3.82 : La chaîne de la tôle perforée : Voronoi 2D (Scale 250, Randomness 0), Greater Than 0,3, Alpha. À droite, la grille au-dessus de son fond orange.](assets/images/perforated_sheet_alpha_blender.jpg)
+
+> [!TIP]
+> Deux formules pour régler la tôle en millimètres : *Scale* = 1000 / pas en mm ; seuil = diamètre / (2 × pas). L'étape 7 les range dans un groupe.
+
+> [!WARNING]
+> Les trous manquent ou n'ont pas tous la même taille : le *Voronoi* est en 3D, et le plan coupe la grille entre deux rangées de points ; passez-le en 2D. Les trous sont en désordre : *Randomness* est resté à 1. Il ne reste que des pastilles qui flottent : l'opération est *Less Than*. Les trous sont étirés sur une plaque dressée : le type 2D ne lit que X et Y ; ajoutez un *Mapping*, *Rotation* X 90°.
+
+### Recette · Le cuir grainé
+Sur `E6_Pratique_Accoudoir`, un accoudoir d'avion de 300 × 60 × 50 mm (#1E1B19, *Roughness* 0,55) :
+- **1.** *Texture Coordinate* (*Object*), puis *Voronoi* : type 3D, *Scale* 500, *Distance to Edge*.
+- **2.** *Distance* vers un *Color Ramp* : noir à 0, blanc à 0,08.
+- **3.** *Color* vers *Height* d'un *Bump*, *Strength* 0,2, puis vers *Normal*.
+Contrôle : un grain fin et régulier, des cellules de 2 mm aux sillons creusés. La section 2 utilisait une image ; ici, tout est calculé, sans aucun raccord. Option : *Detail* 2 rend le grain irrégulier. Corrigé : `E6_Pratique_Accoudoir_corrige`.
+
+![Figure 3.83 : La chaîne du cuir : Voronoi (Distance to Edge, Scale 500), Color Ramp, Bump. À droite, l'accoudoir grainé.](assets/images/leather_grain_procedural_blender.jpg)
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/checker_texture_node_blender.jpg"
+caption: "Figure 3.84 : Le nœud Checker Texture : Color1, Color2, Scale, et les sorties Color et Factor."
+title: "Le Checker : un damier"
+---
+Le *Checker* (`Maj + A > Texture`) dessine un damier : sa sortie *Factor* vaut 0 sur une case, 1 sur la suivante. Il sert ici de masque, pour alterner deux motifs case par case.
+```
+
+### Recette · Le tissu de siège
+Sur `E6_Pratique_Assise`, un échantillon d'assise ferroviaire de 120 × 120 × 40 mm :
+- **1.** *Texture Coordinate* (*Object*), puis `Maj + A > Texture > Checker Texture`, *Scale* 500. Sa sortie *Factor* vers *Factor* d'un *Mix* en *Float*.
+- **2.** Un *Wave* A : *Bands*, direction *X*, *Scale* 157. Sa sortie *Factor* vers *A* du *Mix*.
+- **3.** Un *Wave* B : *Bands*, direction *Y*, *Scale* 157. Sa sortie *Factor* vers *B* du *Mix*.
+- **4.** *Result* vers *Height* d'un *Bump* (*Strength* 0,4), puis vers *Normal*.
+- **5.** Le même *Result* vers *Factor* d'un *Mix Color* : *A* #141C30, *B* #2E3D63, vers *Base Color*.
+- **6.** Principled : *Roughness* 0,8, *Sheen Weight* 0,5.
+La règle : le *Scale* des *Wave* vaut 0,314 fois celui du *Checker* ; on obtient une bosse de fil par case. Contrôle : une armure toile bleu marine, aux fils de 2 mm. Corrigé : `E6_Pratique_Assise_corrige`.
+
+![Figure 3.85 : La chaîne du tissu : un Checker (Scale 500) choisit, case par case, entre deux Wave (Scale 157) en X et en Y ; le résultat va au Bump et à Mix Color.](assets/images/seat_fabric_weave_blender.jpg)
+
+> [!WARNING]
+> Les fils sont décalés ou moirés : la règle des 0,314 n'est pas respectée. Un moiré à distance : les fils sont trop fins pour l'écran ; il disparaît de près. Un tissu trop brillant : *Roughness* est trop basse ; un tissu reste mat. *Sheen* n'est qu'approché sous EEVEE : le relief du tissage fait l'essentiel.
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/gradient_texture_radial_blender.jpg"
+caption: "Figure 3.86 : Le nœud Gradient Texture et le menu de son type, avec Radial."
+title: "Le Gradient en Radial"
+---
+Le *Gradient Texture* (`Maj + A > Texture`) en type *Radial* donne l'angle autour de l'axe Z, de 0 à 1 sur un tour. Sur une pièce de révolution, il permet de « dérouler » la surface : c'est l'indice du moletage.
+```
+
+### Consignes · ★ Deux motifs avancés
+Deux défis facultatifs, avec leur recette complète. Essayez d'abord avec l'indice.
+- **Le moletage**, sur `E6_Defi_Molette`, un bouton de commande de Ø 30 × 40 mm d'axe local Z, pour l'automobile ou un cockpit (#C8C8C6, *Metallic* 1, *Roughness* 0,35). Indice : on déroule le cylindre. *Gradient Texture* (*Radial*) fois 60 dents donne u ; *Separate XYZ*, sortie *Z*, fois 636,6, soit 60 / (2π × 0,015), donne v. Calculez u + v et u − v, passez chacun dans un *Math* *Ping-Pong* (*Scale* 0,5), gardez le *Minimum* des deux, puis un *Bump* (*Strength* 0,3).
+- **Le carbone sergé 2/2**, sur `E6_Defi_Panneau`, un panneau galbé de 300 × 200 mm (*Roughness* 0,3, *Coat Weight* 1). Indice : on numérote les cases. *Separate XYZ* ; X et Y fois 250, puis *Floor* : le numéro de colonne et de rangée. Leur somme, *Floored Modulo* 4, puis *Less Than* 2 : le masque du sergé. Deux *Wave* (*Scale* 78,5, en X et en Y) choisis par ce masque dans un *Mix* en *Float*, vers un *Bump* (*Strength* 0,1). Le masque choisit aussi la teinte : *Mix Color*, *A* #0B0B0C, *B* #26262A.
+Contrôle : des pointes de diamant de 1,6 mm sans couture ; un sergé en diagonale aux mèches de 4 mm. Le nombre de dents doit être entier, sinon une couture apparaît. Sur une pièce très galbée, le carbone s'étire : préférez alors l'image en projection *Box* de la section 2. Corrigés : `E6_Defi_Molette_corrige` et `E6_Defi_Panneau_corrige`.
+
+![Figure 3.87 : La chaîne du moletage : Gradient Radial et Separate XYZ donnent u et v ; Add, Subtract, deux Ping-Pong et Minimum dessinent les pointes ; puis Bump.](assets/images/knurling_procedural_blender.jpg)
+
+![Figure 3.88 : La chaîne du carbone sergé : les numéros de case (Multiply, Floor, Add, Floored Modulo, Less Than) choisissent entre deux Wave, vers Bump et Mix Color.](assets/images/carbon_twill_procedural_blender.jpg)
+
+```quiz
+question: "Pour percer une tôle sans modéliser les trous, sur quelle entrée du Principled branchez-vous le masque ?"
+options:
+  - "Transmission Weight"
+  - "Normal"
+  - "Alpha"
+  - "Coat Weight"
+correctIndices:
+  - 2
+explanation: "Alpha à 0 rend la surface invisible : on voit au travers, et l'ombre est percée. Transmission ferait un verre, pas un trou."
+```
+
+### Étape 7 · Les groupes de nœuds
+**Nouveau :** le groupe de nœuds et ses paramètres exposés. **Déjà vu :** la chaîne des bords usés (étape 5), *Map Range* et *Math* (étape 2), le compteur d'utilisateurs, *Mark as Asset* (section 3). Comptez 25 minutes.
+
+**Exemple :** `E7_Exemple_Grain`. Sa matière contient un seul nœud de groupe, `PRC_Grain_Fin`, qui regroupe un *Noise* et un *Bump*. Il a deux entrées, *Échelle* et *Relief*, et une sortie *Normal*. `Tab` entre dans le groupe, `Tab` en sort.
+
+### Préparer : des chiffres à la place des curseurs
+Les curseurs d'un *Color Ramp* ne peuvent pas devenir des paramètres d'un groupe. Sur `E7_Pratique_Socle`, le socle de l'étape 5 avec sa chaîne des bords usés, remplacez le *Color Ramp* à trois curseurs par trois nœuds :
+- *Math* *Ping-Pong*, *Scale* 0,5 ;
+- *Math* *Multiply*, par 2 ;
+- *Map Range*, *From Min* 0,2, *From Max* 1.
+
+L'aperçu montre le même liseré : c'est le même calcul, écrit en chiffres.
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/node_make_group_menu_blender.jpg"
+caption: "Figure 3.89 : Le menu Node du Shader Editor : Make Group (Ctrl + G) et Ungroup."
+title: "Make Group"
+---
+Sélectionnez des nœuds, puis `Ctrl + G` ou *Node > Make Group* : ils deviennent un seul nœud de groupe. `Tab` entre dans le groupe et en sort ; `Ctrl + Alt + G` défait le groupe.
+```
+
+### Recette · Créer le groupe et exposer ses paramètres
+Sur `E7_Pratique_Socle` :
+- **1.** Sélectionnez les nœuds du masque, de *Texture Coordinate* au dernier *Map Range*, sans le Principled ni les *Mix*. `Ctrl + G`.
+- **2.** `Tab` : l'intérieur du groupe, avec *Group Input* à gauche et *Group Output* à droite. Le lien qui sortait de la sélection est devenu la sortie du groupe.
+- **3.** Ajoutez un *Math* *Subtract* dont la première valeur vaut 1. Glissez la prise vide de *Group Input* vers sa seconde entrée : c'est le paramètre *Largeur*. Reliez son résultat à *From Min* du premier *Map Range*.
+- **4.** Exposez de même *Quantité*, le seuil du dernier *Map Range* : *From Min* = 0,7 − *Quantité*, *From Max* = *From Min* + 0,1, avec deux *Math*. Puis *Échelle du bruit*, le *Scale* du *Noise*.
+- **5.** Barre latérale (`N`), onglet *Group* : nommez le groupe `PRC_Usure_Bords`. Dans la liste des entrées et des sorties, renommez chaque prise. *Largeur* : 0,8 par défaut ; *Quantité* : 0,4 ; toutes deux entre 0 et 1, au sous-type *Factor*. *Échelle du bruit* : 400. La sortie : *Masque*.
+- **6.** `Tab` pour sortir. Sur le nœud de groupe, *Largeur* et *Quantité* se règlent comme des réglages de Blender.
+Contrôle : le socle s'use comme à l'étape 5, et *Largeur* et *Quantité* se règlent sans entrer dans le groupe. Avec les valeurs par défaut, le groupe refait exactement la chaîne de l'étape 5. Corrigé : `E7_Pratique_Socle_corrige`, avec le groupe `PRC_Usure_Bords_corrige`.
+
+![Figure 3.90 : L'intérieur du groupe PRC_Usure_Bords : Group Input à gauche, avec Largeur, Quantité et Échelle du bruit, plus l'entrée Axe du petit défi ; le masque calculé en chiffres ; Group Output à droite.](assets/images/node_group_inside_blender.jpg)
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/node_group_sidebar_interface_blender.jpg"
+caption: "Figure 3.91 : La barre latérale du Shader Editor, onglet Group : le nom du groupe, sa description, la liste des entrées et des sorties, et les réglages de la prise Largeur."
+title: "L'onglet Group"
+---
+L'onglet *Group* de la barre latérale (`N`) décrit le groupe ouvert : son nom, sa description, puis la liste de ses entrées et de ses sorties.
+
+Le bouton `+` ajoute une entrée, une sortie ou un panneau. Sous la liste, la prise sélectionnée se règle : valeur par défaut, minimum, maximum et sous-type.
+```
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/add_menu_group_list_blender.jpg"
+caption: "Figure 3.92 : Maj + A > Group : New Group, puis les groupes du fichier."
+title: "Réutiliser un groupe"
+---
+Sur une autre pièce, `Maj + A > Group` liste tous les groupes du fichier. Choisissez `PRC_Usure_Bords`, puis reliez *Masque* à un *Mix Color* et à *Metallic*, comme à l'étape 5.
+
+Les groupes suffixés « _corrige » sont ceux du corrigé.
+```
+
+![Figure 3.93 : Le groupe en service sur le socle : un seul nœud, avec ses paramètres Largeur, Quantité et Échelle du bruit, relié à Mix Color et Metallic.](assets/images/node_group_in_use_blender.jpg)
+
+> [!WARNING]
+> Le groupe sort un shader : le Principled était dans la sélection ; `Ctrl + Z`, puis resélectionnez sans lui. Le groupe ne rend rien : rien n'est relié au *Group Output*. Un paramètre accepte des valeurs absurdes : son minimum et son maximum n'ont pas été réglés. Modifier le groupe change toutes les pièces qui l'utilisent : c'est voulu, comme une matière partagée ; pour une variante, rendez le groupe indépendant par son compteur.
+
+### Option : ranger et partager
+- `Ctrl + J` encadre les nœuds sélectionnés dans un *Frame*. Son nom se règle dans la barre latérale, onglet *Node*, champ *Label*.
+- `Maj + clic droit` glissé sur un lien ajoute un *Reroute*, pour plier les liens. `Ctrl + clic droit` glissé coupe des liens.
+- Dans l'Outliner, en mode *Blender File*, rubrique *Node Groups* : clic droit sur le groupe, puis *Mark as Asset*. Le groupe rejoint la bibliothèque, comme les matières de la section 3.
+
+![Figure 3.94 : Option : les nœuds du masque d'usure encadrés dans un Frame intitulé « Masque d'usure » ; à droite, son Label dans l'onglet Node de la barre latérale.](assets/images/node_frame_label_blender.jpg)
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/node_group_mark_as_asset_blender.jpg"
+caption: "Figure 3.95 : Option : l'Outliner en mode Blender File, rubrique Node Groups, et le clic droit sur le groupe, avec Mark as Asset."
+title: "Option : le groupe en actif"
+---
+Marqué comme actif, le groupe se range dans un catalogue de la bibliothèque, comme une matière. On le retrouve dans un autre fichier par *File > Append*, dossier *NodeTree*.
+```
+
+### Consignes · Petit défi et défi final
+- **★ Un axe au choix.** Ajoutez une entrée *Axe* (*Vector*, par défaut 0, 0, 1). Remplacez *Separate XYZ* (Z) par *Vector Math* *Dot Product*, entre la normale et *Axe*. Le même groupe use alors une pièce couchée sur Y, même si sa rotation a été appliquée.
+- **★★ La tôle perforée en millimètres.** Un groupe `PRC_Tole_Perforee`, avec deux entrées, *Pas (mm)* (4) et *Diamètre (mm)* (2,4), et une sortie *Alpha*. À l'intérieur : *Math* *Divide* (1000 / *Pas*) vers *Scale* du *Voronoi* 2D ; *Math* *Divide* (*Diamètre* / *Pas*), puis *Multiply* 0,5, vers *Threshold* du *Greater Than*. Le designer règle des millimètres, pas des échelles.
+- **Le défi final · La lampe d'atelier.** Rendez visible la collection `Lampe_defi`, une copie de la lampe en coloris A, puis donnez-lui dix ans de service : `PRC_Usure_Bords` sur le socle, qui laisse voir l'aluminium, et sur les articulations, dont le chrome s'use jusqu'au laiton ; la saleté au pied des lamelles de la grille, avec *Distance* `5mm` ; les rayures sur les bras ; les traces de doigts sur la laque de la tête, par son *Coat Roughness*. Pas d'usure des bords sur la tête : elle est bombée.
+Corrigés : sous-collection « Corrigé étape 7 » : le groupe `PRC_Usure_Bords_corrige`, avec son entrée *Axe* ; `E7_Grille_mm_corrige`, avec `PRC_Tole_Perforee_corrige` ; et `Lampe_defi_corrige`.
+
+![Figure 3.96 : Le défi final : la lampe neuve, la lampe d'atelier, puis son socle vu de près, à l'arête usée jusqu'à l'aluminium.](assets/images/workshop_lamp_wear_blender.jpg)
+
+```quiz
+question: "Pourquoi remplacer le Color Ramp par Map Range et Math avant de créer le groupe ?"
+options:
+  - "Un Color Ramp ne fonctionne pas dans un groupe"
+  - "Les curseurs d'un Color Ramp ne peuvent pas devenir des paramètres du groupe"
+  - "Map Range est plus rapide sous EEVEE"
+  - "Ctrl + G supprime les Color Ramp"
+correctIndices:
+  - 1
+explanation: "Un groupe expose des entrées de nœuds. Les curseurs d'un Color Ramp n'en sont pas, alors que From Min ou Threshold en sont."
 ```

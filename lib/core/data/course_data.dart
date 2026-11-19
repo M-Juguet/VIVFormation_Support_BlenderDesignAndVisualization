@@ -193,6 +193,7 @@ class CourseData {
         ChapterPoint(label: 'Finitions CMF en projection triplanaire', targetModuleId: 'ch3_sec2_title'),
         ChapterPoint(label: 'Bibliothèque d\'actifs (Asset Browser)', targetModuleId: 'ch3_sec3_title'),
         ChapterPoint(label: 'Atelier : le second coloris', targetModuleId: 'ch3_atelier'),
+        ChapterPoint(label: 'Défi facultatif : matières procédurales', targetModuleId: 'ch3_sec4_title'),
       ],
     ),
     CourseChapter(

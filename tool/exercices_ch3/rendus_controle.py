@@ -119,6 +119,32 @@ PRESETS = {
         ("c_corrige_coque", ["Corrigé"], ["Coque_retroviseur_corrige"], (0.6, -1, 0.5), 50, 1.0),
         ("c_corrige_carbone", ["Corrigé"], ["Panneau_carbone_corrige", "Marchepied_corrige"], (0.3, -1, 0.9), 50, 0.9),
     ],
+    # défi facultatif « matières procédurales » (fiche F) : chaque étape, son corrigé, puis des vues proches
+    "PRC02_ch3_defi_procedural.blend": [
+        ("f_e%d_%s" % (n, k), [col], None, (0.15, -1, 0.9), 50, 1.0)
+        for n, c in ((1, "Etape_1_Bruits"), (2, "Etape_2_Remapper"), (3, "Etape_3_Masques"), (4, "Etape_4_Relief"),
+                     (5, "Etape_5_Usure"), (6, "Etape_6_Motifs"), (7, "Etape_7_Groupes"))
+        for k, col in (("travail", c), ("corrige", "Corrigé défi procédural/Corrigé étape %d" % n))
+    ] + [
+        ("f_lampe", ["Lampe_defi"], None, AV, 50, 1.0),
+        ("f_lampe_corrigee", ["Corrigé défi procédural/Corrigé étape 7"],
+         ["Socle_defi_corrige", "Tête_defi_corrige", "Bras_bas_defi_corrige", "Articulation_haut_defi_corrige"], AV, 50, 1.0),
+        ("f_lampe_socle", ["Corrigé défi procédural/Corrigé étape 7"], ["Socle_defi_corrige"], (0.4, -1, 0.6), 50, 0.6),
+        ("f_e5_socle", ["Corrigé défi procédural/Corrigé étape 5"], ["E5_Pratique_Socle_corrige"], (0.4, -1, 0.6), 50, 0.8),
+        ("f_e5_marchepied", ["Corrigé défi procédural/Corrigé étape 5"], ["E5_Pratique_Marchepied_corrige"], (0.3, -1, 0.7), 50, 0.9),
+        ("f_e5_coffret", ["Corrigé défi procédural/Corrigé étape 5"], ["E5_Defi_Coffret_corrige", "E5_Defi_Plinthe_corrige"], (0.6, -1, 0.5), 50, 0.9),
+        ("f_e5_rayures", ["Corrigé défi procédural/Corrigé étape 5"], ["E5_Pratique_Main_courante_corrige"], (0.2, -1, 0.3), 50, 0.6),
+        ("f_e5_traces", ["Corrigé défi procédural/Corrigé étape 5"], ["E5_Pratique_Console_corrige"], (0.3, -1, 0.5), 50, 0.9),
+        ("f_e4_coque", ["Corrigé défi procédural/Corrigé étape 4"], ["E4_Pratique_Coque_corrige"], (0.6, -1, 0.35), 50, 1.0),
+        ("f_e4_boitier", ["Corrigé défi procédural/Corrigé étape 4"], ["E4_Pratique_Boitier_corrige"], (0.5, -1, 0.6), 50, 0.9),
+        ("f_e6_grille", ["Corrigé défi procédural/Corrigé étape 6"], ["E6_Pratique_Grille_corrige"], (0.3, -1, 1.0), 50, 0.8),
+        ("f_e6_cuir", ["Corrigé défi procédural/Corrigé étape 6"], ["E6_Pratique_Accoudoir_corrige"], (0.3, -1, 0.6), 50, 0.45),
+        ("f_e6_tissu", ["Corrigé défi procédural/Corrigé étape 6"], ["E6_Pratique_Assise_corrige"], (0.4, -1, 0.7), 50, 0.6),
+        ("f_e6_molette", ["Corrigé défi procédural/Corrigé étape 6"], ["E6_Defi_Molette_corrige"], (0.4, -1, 0.3), 50, 0.9),
+        ("f_e6_carbone", ["Corrigé défi procédural/Corrigé étape 6"], ["E6_Defi_Panneau_corrige"], (0.3, -1, 0.9), 50, 0.6),
+        ("f_e3_patine", ["Corrigé défi procédural/Corrigé étape 3"], ["E3_Pratique_Main_courante_corrige"], (0.2, -1, 0.35), 50, 0.7),
+        ("f_e7_socle", ["Corrigé défi procédural/Corrigé étape 7"], ["E7_Pratique_Socle_corrige"], (0.4, -1, 0.6), 50, 0.8),
+    ],
 }
 
 base = os.path.basename(bpy.data.filepath)

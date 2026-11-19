@@ -16,7 +16,7 @@ import bpy
 
 TARGET_H = 180       # hauteur de la zone LISEZ-MOI, en pixels
 BASE = os.path.basename(bpy.data.filepath)
-SHADING = BASE == "PRC02_ch3_finitions_triplanaires.blend"
+SHADING = BASE in ("PRC02_ch3_finitions_triplanaires.blend", "PRC02_ch3_defi_procedural.blend")
 OPEN = {"PRC02_ch3_lampe_a_habiller.blend": ["Lampe"]}
 TRI_X = 30
 LOG = os.environ.get("UI_LOG")

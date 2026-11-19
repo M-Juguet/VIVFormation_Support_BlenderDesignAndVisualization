@@ -272,12 +272,13 @@ def build(key):
     return save(fig, fname, max_w)
 
 
-for key in FIGS:
-    if ONLY and key not in ONLY:
-        continue
-    try:
-        build(key)
-    except Exception as e:
-        import traceback
-        traceback.print_exc()
-        print("ECHEC", key, repr(e))
+if __name__ == "__main__":       # importé par recadrer_defi.py pour ses outils, sans rien recadrer
+    for key in FIGS:
+        if ONLY and key not in ONLY:
+            continue
+        try:
+            build(key)
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            print("ECHEC", key, repr(e))
