@@ -29,6 +29,11 @@ Ce sont celles du formateur, à appliquer sans exception :
 - **aucune grille d'autoévaluation.** La vérification des acquis passe uniquement par les quiz de l'application ;
 - **les corrigés** sont dans le fichier de travail, dans une collection masquée dont le nom commence par « Corrigé ». Un fichier séparé n'existe que s'il est justifié, et le plan donne sa raison ;
 - **les captures avant tout.** C'est une formation à un logiciel : chaque menu, bouton ou panneau cité a sa capture, lisible dans l'application. Pour les captures côte à côte, comptez environ 600 × 400 px ; les captures riches en texte passent en pleine largeur. Ne sacrifiez pas les captures pour gagner du temps.
+- **l'échelle d'affichage.** La colonne de l'application fait 715 px de large :
+  - une figure pleine largeur s'affiche dans 715 × 450 px au plus, à l'échelle min(715/L, 450/H) ;
+  - une figure côte à côte s'affiche dans 345 × 300 px au plus, à l'échelle min(345/L, 300/H).
+
+  Toute figure qui montre l'interface doit s'afficher à 0,5 au moins : les libellés des nœuds et les valeurs des champs se lisent sans cliquer. Une image large ne va jamais en côte à côte. Pour un graphe de nœuds, capturez une bande large, nœuds zoomés, et montrez la vue 3D à côté ou dans une autre figure, pas en dessous. Calculez l'échelle de chaque figure avant de rendre la main.
 - **les libellés de Blender 5.2.1**, interface en anglais :
   - *Array (Legacy)* pour le modificateur classique ;
   - *Amount* dans le panneau du modificateur *Bevel* ;
