@@ -71,10 +71,11 @@ Seul : Monde_Studio à Strength 0,3, lumières allumées. Gardez la combinaison 
 Corrigé : collection « Corrigé éclairage », avec Monde_Neutre.
 
 4 · CAMÉRA ET EXPORT
-- Add > Camera. View > Cameras > Align Active Camera to View (Ctrl + Alt + 0 du pavé). Nommez-la CAM_heros.
+- Add > Camera, nommée CAM_heros, puis Ctrl + 0 du pavé : elle devient la caméra active.
+- View > Align View > Align Active Camera to View (Ctrl + Alt + 0 du pavé).
 - Focal Length : 85mm. N > View > Lock Camera to View : cadrez en naviguant, puis décochez.
 - Viewport Display > Composition Guides > Thirds.
-- CAM_detail : 100mm, sur un détail (interrupteur et grille, articulation ou ampoule). Un Empty Mise_au_point sur ce détail. Depth of Field : Focus Object, F-Stop entre 5,6 et 8.
+- CAM_detail : Add > Camera, Ctrl + 0, 100mm, alignée sur un détail (interrupteur et grille, articulation ou ampoule). Un Empty Mise_au_point sur ce détail. Depth of Field : Focus on Object, F-Stop entre 5,6 et 8.
 - Masquez la collection Nuancier (œil et appareil photo). CAM_heros active (Ctrl + 0 du pavé). Format 1920 × 1080. F12.
 - Image > Save As : rendus/lampe_heros_<initiales>_v001.png, PNG, Color Management sur Follow Scene.
 Seul : CAM_detail active, résolution 1080 × 1080, F12, rendus/lampe_detail_<initiales>_v001.png.

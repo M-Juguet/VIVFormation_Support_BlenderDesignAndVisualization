@@ -294,7 +294,7 @@ La section se joue en deux temps, de part et d'autre de la première pause : l'H
   - une longue focale (85 à 100 mm), avec du recul, restitue des proportions fidèles : c'est la focale de la photo de produit ;
   - une caméra de *Type* *Orthographic* donne une vue technique, sans perspective.
 - **La composition** : *Viewport Display > Composition Guides* (*Thirds*, *Golden Ratio*, *Center Diagonal*), et le *Passepartout* qui assombrit l'extérieur du cadre.
-- **La profondeur de champ** : *Depth of Field*, avec *Focus Object* (un *Empty* ou une pièce de la lampe) et *F-Stop*. Plus le nombre est petit, plus le fond est flou. En gros plan, la zone nette ne mesure que quelques millimètres : partir de 5,6 à 8. L'effet n'est crédible que si la scène est à l'échelle réelle.
+- **La profondeur de champ** : *Depth of Field*, avec *Focus on Object* (un *Empty* ou une pièce de la lampe) et *F-Stop*. Plus le nombre est petit, plus le fond est flou. En gros plan, la zone nette ne mesure que quelques millimètres : partir de 5,6 à 8. L'effet n'est crédible que si la scène est à l'échelle réelle.
 - **Le format de sortie** : onglet *Output*, panneau *Format* : *Resolution X* et *Y*, *Resolution Scale* (%), et le menu des préréglages. Le ratio suit l'usage : 16:9 pour une diapositive, 1:1 ou 4:5 pour un réseau social, A4 pour une impression.
 - **Rendre et enregistrer** :
   - `F12` (*Render > Render Image*) ne crée aucun fichier ;
@@ -304,7 +304,7 @@ La section se joue en deux temps, de part et d'autre de la première pause : l'H
   - option : `Ctrl + B` en vue caméra (*Render Region*) limite le rendu à une zone, pour tester vite un détail ; `Ctrl + Alt + B` l'efface.
 
 **Vous montrez · démo A (6 min) : cadrer**
-1. *Add > Camera*, *Align Active Camera to View*, puis *Lock Camera to View* : cadrage en naviguant. Décochez le verrou une fois le cadrage trouvé.
+1. *Add > Camera*, `Ctrl + 0` (elle devient la caméra active, sinon l'alignement déplace `CAM_banc_essai`), *Align Active Camera to View*, puis *Lock Camera to View* : cadrage en naviguant. Décochez le verrou une fois le cadrage trouvé.
 2. Le même cadrage à 24, 50 et 100 mm, en reculant la caméra à chaque fois. « Laquelle respecte votre dessin ? » Puis *Type* sur *Orthographic*, en une phrase : la vue technique.
 3. *Composition Guides > Thirds* et le *Passepartout*.
 
@@ -314,13 +314,13 @@ La section se joue en deux temps, de part et d'autre de la première pause : l'H
 3. Guides *Thirds* : la tête de la lampe sur un point fort.
 
 **Vous montrez · démo B (6 min) : détail et export**
-1. *Depth of Field* : *Focus Object* sur un *Empty* `Mise_au_point` posé sur l'interrupteur, *F-Stop* à 1,4 puis à 8.
+1. *Depth of Field* : *Focus on Object* sur un *Empty* `Mise_au_point` posé sur l'interrupteur, *F-Stop* à 1,4 puis à 8.
 2. L'onglet *Output* : *Resolution X* et *Y*, *Resolution Scale*, le menu des préréglages.
 3. `F12`, puis *Image > Save As* : le dossier `rendus/`, le nom, *PNG* et *Color Management* sur *Follow Scene*. En une phrase : *Film > Transparent* et *RGBA* pour un fond transparent.
 
 **Ils font · guidé 2 (13 min) : le détail et le premier export**
 1. Créer `CAM_detail`, à 100 mm, sur un détail : l'interrupteur cranté et la grille d'aération, une articulation, ou l'ampoule dans la tête.
-2. Ajouter l'*Empty* `Mise_au_point` sur ce détail. Activer *Depth of Field*, régler *Focus Object*, puis *F-Stop*, entre 5,6 et 8.
+2. Ajouter l'*Empty* `Mise_au_point` sur ce détail. Activer *Depth of Field*, régler *Focus on Object*, puis *F-Stop*, entre 5,6 et 8.
 3. Masquer la collection `Nuancier` (œil et appareil photo). Repasser sur `CAM_heros` (`Ctrl + 0`), vérifier le format 1920 × 1080, puis `F12`.
 4. Enregistrer `rendus/lampe_heros_<initiales>_v001.png`.
 5. Ouvrir le fichier dans l'Explorateur Windows : l'image doit être identique au rendu.
@@ -335,7 +335,7 @@ La section se joue en deux temps, de part et d'autre de la première pause : l'H
 - La résolution appartient à la scène, pas à la caméra. Avant de rendre `CAM_detail` en 1080 × 1080, il faut changer *Resolution X* et *Y*, puis les remettre pour les autres vues.
 - Tant que *Lock Camera to View* est actif, chaque geste de navigation déplace la caméra : un coup d'orbite défait le cadrage. Déverrouillez dès que le cadrage est bon.
 - Un PNG aux couleurs différentes du rendu : la rubrique *Color Management* de la fenêtre d'enregistrement est passée sur *Override*.
-- Une profondeur de champ sans effet : *Focus Object* est vide, ou la mise au point tombe sur le fond.
+- Une profondeur de champ sans effet : *Focus on Object* est vide, ou la mise au point tombe sur le fond.
 - Le détail lui-même est flou : *F-Stop* trop petit pour un gros plan. Le remonter vers 8.
 - Un détail coupé net par un plan invisible : la caméra est à moins de 0,1 m de l'objet, sa distance minimale d'affichage par défaut (*Clip Start*, panneau *Lens*). Reculer la caméra et allonger la focale. C'est le même phénomène que le *Clip Start* de la vue, au chapitre 1.
 
@@ -544,7 +544,7 @@ Les cadrages ci-dessous ont été vérifiés dans Blender 5.2.1, par projection 
 | « Corrigé éclairage » | `Rim_corrige` | *Area* *Square*, *Size* 0,3, 15 W, *Temperature* 6500 K | (0,30 ; 0,80 ; 0,90) | La tête, (0,23 ; 0 ; 0,38) |
 | « Corrigé éclairage » | `Reflet_bande_corrige` | *Area* *Rectangle*, *Size X* 1,0, *Size Y* 0,06, 10 W | (0,15 ; −0,35 ; 0,95) | Vers le bas, orientée au montage pour que la ligne de reflet passe sur la tête laquée, vue depuis `CAM_heros_corrige` |
 | « Corrigé caméras » | `CAM_heros_corrige` | Focale 85 mm, *Composition Guides* *Thirds* | (1,60 ; −2,10 ; 0,65) | `T` |
-| « Corrigé caméras » | `CAM_detail_corrige` | Focale 100 mm, *Depth of Field* actif, *Focus Object* `Mise_au_point_corrige`, *F-Stop* 8 | (0,33 ; −0,22 ; 0,20) | (0,035 ; −0,01 ; 0,03) : l'interrupteur cranté et l'arc de la grille d'aération ; l'articulation et les tiges du bras du bas, floues, à l'arrière-plan |
+| « Corrigé caméras » | `CAM_detail_corrige` | Focale 100 mm, *Depth of Field* actif, *Focus on Object* `Mise_au_point_corrige`, *F-Stop* 8 | (0,33 ; −0,22 ; 0,20) | (0,035 ; −0,01 ; 0,03) : l'interrupteur cranté et l'arc de la grille d'aération ; l'articulation et les tiges du bras du bas, floues, à l'arrière-plan |
 | « Corrigé caméras » | `Mise_au_point_corrige` | *Empty* *Plain Axes*, taille 0,02 | Sur l'interrupteur, (0,055 ; 0 ; 0,031) | — |
 | « Corrigé caméras » | `CAM_situation_corrige` | Focale 35 mm | (−0,30 ; −0,85 ; 0,45) : le regard d'une personne assise au bureau | (0 ; 0 ; 0,21) |
 | « Corrigé paliers » | `Spot_lampe_corrige` | *Spot*, *Beam Shape* : *Angle* 70°, *Blend* 0,3, 12 W, *Temperature* 2700 K, *Radius* 0 (valeur d'usine) | (0,254 ; 0 ; 0,338) : dans la tête, juste devant la pointe de l'ampoule | Rotation Y −30°, comme la tête : le faisceau sort par l'ouverture |
@@ -683,7 +683,7 @@ Une capture par menu, bouton ou panneau cité, numérotée « Figure 4.N » sur 
 | `focal_length_comparison_blender.jpg` | Le même cadrage à 24, 50 et 100 mm | Pleine largeur |
 | `composition_guides_menu_blender.jpg` | *Viewport Display > Composition Guides* ouvert | Côte à côte |
 | `camera_thirds_overlay_blender.jpg` | La vue caméra avec les tiers, la tête sur un point fort | Côte à côte |
-| `camera_dof_panel_blender.jpg` | Le panneau *Depth of Field* : *Focus Object*, *F-Stop* | Côte à côte |
+| `camera_dof_panel_blender.jpg` | Le panneau *Depth of Field* : *Focus on Object*, *F-Stop* | Côte à côte |
 | `dof_comparison_blender.jpg` | L'interrupteur et la grille à *F-Stop* 1,4 puis 8 | Pleine largeur |
 | `output_format_panel_blender.jpg` | L'onglet *Output*, panneau *Format* : résolution, *Resolution Scale*, bouton des préréglages | Côte à côte |
 | `format_presets_menu_blender.jpg` | Le menu des préréglages de format | Côte à côte |
@@ -872,14 +872,15 @@ combinaison que vous préférez.
   Key à 4500 K, Rim à 7000 K.
 
 4 · CAMÉRA ET EXPORT
-1. Add > Camera. View > Align View > Align Active Camera to View
-   (Ctrl + Alt + 0 du pavé). Nommez-la CAM_heros.
+1. Add > Camera, nommée CAM_heros, puis Ctrl + 0 du pavé : elle devient
+   la caméra active. View > Align View > Align Active Camera to View
+   (Ctrl + Alt + 0 du pavé).
 2. Focal Length : 85 mm. N > View > Lock Camera to View : cadrez en
    naviguant, puis décochez.
 3. Viewport Display > Composition Guides > Thirds.
-4. CAM_detail : 100 mm, sur un détail (interrupteur et grille,
-   articulation ou ampoule). Un Empty Mise_au_point sur ce détail.
-   Depth of Field : Focus Object, F-Stop entre 5,6 et 8.
+4. CAM_detail : Add > Camera, Ctrl + 0, 100 mm, alignée sur un détail
+   (interrupteur et grille, articulation ou ampoule). Un Empty Mise_au_point sur ce détail.
+   Depth of Field : Focus on Object, F-Stop entre 5,6 et 8.
 5. Masquez la collection Nuancier (œil et appareil photo).
    CAM_heros active (Ctrl + 0 du pavé). Format 1920 × 1080. F12.
    Image > Save As : rendus/lampe_heros_<initiales>_v001.png,

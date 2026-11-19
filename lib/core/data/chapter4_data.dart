@@ -33,14 +33,14 @@ const List<ContentModule> chapter4Modules = [
     id: 'ch4_sec1_res1',
     title: 'Fichier d\'exercice : le studio',
     description: 'Le studio du chapitre : un fond courbe, un nuancier, un plateau de bureau en chêne masqué, quatre mondes (trois HDRI et un gris neutre) et une caméra de travail. Vous y amenez votre lampe par File > Append. Les corrigés sont dans les collections masquées « Corrigé éclairage », « Corrigé caméras » et « Corrigé paliers ». Le texte LISEZ-MOI donne les consignes de chaque partie et une ligne « Corrigé » par partie.',
-    fileName: 'PRC02_ch4_studio.blend (11.5 Mo)',
+    fileName: 'PRC02_ch4_studio.blend (15.2 Mo)',
     downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch4_studio.blend',
   ),
   ResourceModule(
     id: 'ch4_sec1_res2',
     title: 'Fichier de secours : la lampe en studio',
     description: 'Le même studio, avec la lampe habillée du chapitre 3 déjà en place : le coloris A dans la collection Lampe, le coloris B masqué dans Lampe_coloris_B. Ouvrez-le si votre lampe du chapitre 3 n\'est pas utilisable, ou si vous êtes perdu en cours de route, puis enregistrez-le sous lampe_rendu_v001.blend.',
-    fileName: 'PRC02_ch4_lampe_en_studio.blend (11.8 Mo)',
+    fileName: 'PRC02_ch4_lampe_en_studio.blend (15.5 Mo)',
     downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch4_lampe_en_studio.blend',
   ),
   ListModule(
@@ -752,7 +752,7 @@ const List<ContentModule> chapter4Modules = [
     id: 'ch4_sec4_res1',
     title: 'Les images du corrigé',
     description: 'Les visuels attendus, en PNG : la vue héros (1920 × 1080), le détail (1080 × 1080), la situation (1920 × 1080), la variante lampe allumée du palier ★★, et l\'image comparative Material Preview, EEVEE et Cycles de la section 1.',
-    fileName: 'PRC02_ch4_images_corrige.zip (9.2 Mo)',
+    fileName: 'PRC02_ch4_images_corrige.zip (8.8 Mo)',
     downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch4_images_corrige.zip',
   ),
   InfoModule(
