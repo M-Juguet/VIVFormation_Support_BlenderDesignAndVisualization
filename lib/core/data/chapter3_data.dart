@@ -1249,7 +1249,7 @@ const List<ContentModule> chapter3Modules = [
   SideBySideModule(
     id: 'ch3_sec4_e3_side1',
     title: 'Les nœuds Mix',
-    content: 'Un *Mix* choisit entre *A* et *B* selon son *Factor* : 0 donne *A*, 1 donne *B*. Le masque se branche sur *Factor*.\n- *Mix Color* (`Maj + A > Color`) mélange deux couleurs.\n- *Mix* (`Maj + A > Utilities > Math`) mélange deux nombres, en type *Float*.\nLe type se change en haut du nœud.',
+    content: 'Un *Mix* choisit entre *A* et *B* selon son *Factor* : 0 donne *A*, 1 donne *B*. Le masque se branche sur *Factor*.\n- *Mix Color* (`Maj + A > Color`) mélange deux couleurs.\n- *Mix* (`Maj + A > Utilities > Math`) mélange deux nombres, en type *Float*.\n\nLe type se change en haut du nœud.',
     imagePath: 'assets/images/mix_color_and_float_nodes_blender.jpg',
     caption: 'Figure 3.66 : Le nœud Mix Color (Factor, A, B et le menu de mélange), puis le nœud Mix en Float.',
     layout: ContentLayout.textLeft,

@@ -192,6 +192,7 @@ Avant de considérer un objet comme « terminé », prenez le réflexe de vérif
 - L'**échelle est appliquée** (`Ctrl + A > Scale`), affichant des valeurs de 1,000.
 - Le **point d'origine** est placé de façon cohérente (souvent au centre ou à la base de l'objet).
 - Les éventuels **sommets en double** ont été fusionnés (*Merge by Distance*).
+
 Cette hygiène évite l'écrasante majorité des problèmes rencontrés plus tard.
 
 > [!IMPORTANT]

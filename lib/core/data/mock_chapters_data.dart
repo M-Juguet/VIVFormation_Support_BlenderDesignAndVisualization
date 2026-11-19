@@ -209,7 +209,7 @@ const List<ContentModule> basics101Modules = [
   TextModule(
     id: 'basics101_sec4_txt3',
     title: 'Les vues prédéfinies du pavé numérique',
-    content: 'Le pavé numérique offre des raccourcis de vue extrêmement efficaces, à mémoriser en priorité :\n- `1` : vue de face ; `Ctrl + 1` : vue de derrière.\n- `3` : vue de droite ; `Ctrl + 3` : vue de gauche.\n- `7` : vue de dessus ; `Ctrl + 7` : vue de dessous.\n- `0` : vue à travers la caméra active.\n- `5` : bascule entre projection perspective et orthographique.\n- `.` (point) : recadre la vue sur l\'objet sélectionné.\nCes raccourcis font gagner un temps considérable dès qu\'on cherche à se positionner précisément.',
+    content: 'Le pavé numérique offre des raccourcis de vue extrêmement efficaces, à mémoriser en priorité :\n- `1` : vue de face ; `Ctrl + 1` : vue de derrière.\n- `3` : vue de droite ; `Ctrl + 3` : vue de gauche.\n- `7` : vue de dessus ; `Ctrl + 7` : vue de dessous.\n- `0` : vue à travers la caméra active.\n- `5` : bascule entre projection perspective et orthographique.\n- `.` (point) : recadre la vue sur l\'objet sélectionné.\n\nCes raccourcis font gagner un temps considérable dès qu\'on cherche à se positionner précisément.',
   ),
   TextModule(
     id: 'basics101_sec4_txt4',
@@ -453,7 +453,7 @@ const List<ContentModule> basics102Modules = [
   TextModule(
     id: 'basics102_sec4_txt3',
     title: 'Sauvegarder un fichier .blend',
-    content: 'Le travail se sauvegarde dans un fichier `.blend`, qui contient toute la scène. Quelques pratiques essentielles :\n- `Ctrl + S` enregistre le fichier courant ; `Maj + Ctrl + S` ouvre *Save As* pour enregistrer sous un nouveau nom.\n- Dans la fenêtre *Save As*, un bouton `+` **incrémente** automatiquement le numéro du fichier (projet_001, projet_002…), pour garder un historique de versions.\n- En cas de plantage, Blender conserve des sauvegardes temporaires : on récupère son travail via *File > Recover > Auto Save*.\nPrendre l\'habitude de sauvegarder souvent et par versions met votre travail définitivement à l\'abri.',
+    content: 'Le travail se sauvegarde dans un fichier `.blend`, qui contient toute la scène. Quelques pratiques essentielles :\n- `Ctrl + S` enregistre le fichier courant ; `Maj + Ctrl + S` ouvre *Save As* pour enregistrer sous un nouveau nom.\n- Dans la fenêtre *Save As*, un bouton `+` **incrémente** automatiquement le numéro du fichier (projet_001, projet_002…), pour garder un historique de versions.\n- En cas de plantage, Blender conserve des sauvegardes temporaires : on récupère son travail via *File > Recover > Auto Save*.\n\nPrendre l\'habitude de sauvegarder souvent et par versions met votre travail définitivement à l\'abri.',
   ),
   TextModule(
     id: 'basics102_sec4_txt4',
@@ -727,7 +727,7 @@ const List<ContentModule> basics103Modules = [
   TextModule(
     id: 'basics103_sec4_txt5',
     title: 'La checklist des bonnes pratiques',
-    content: 'Avant de considérer un objet comme « terminé », prenez le réflexe de vérifier ces points :\n- La géométrie privilégie les **quads**, surtout sur les zones courbes.\n- Les **normales** sont recalculées vers l\'extérieur (`Maj + N`).\n- L\'**échelle est appliquée** (`Ctrl + A > Scale`), affichant des valeurs de 1,000.\n- Le **point d\'origine** est placé de façon cohérente (souvent au centre ou à la base de l\'objet).\n- Les éventuels **sommets en double** ont été fusionnés (*Merge by Distance*).\nCette hygiène évite l\'écrasante majorité des problèmes rencontrés plus tard.',
+    content: 'Avant de considérer un objet comme « terminé », prenez le réflexe de vérifier ces points :\n- La géométrie privilégie les **quads**, surtout sur les zones courbes.\n- Les **normales** sont recalculées vers l\'extérieur (`Maj + N`).\n- L\'**échelle est appliquée** (`Ctrl + A > Scale`), affichant des valeurs de 1,000.\n- Le **point d\'origine** est placé de façon cohérente (souvent au centre ou à la base de l\'objet).\n- Les éventuels **sommets en double** ont été fusionnés (*Merge by Distance*).\n\nCette hygiène évite l\'écrasante majorité des problèmes rencontrés plus tard.',
   ),
   InfoModule(
     id: 'basics103_sec4_info1',
@@ -816,7 +816,7 @@ const List<ContentModule> chapter1Modules = [
   TextModule(
     id: 'ch1_sec1_txt4',
     title: 'Lire la forme dans la vue 3D',
-    content: 'Le mode d\'affichage *Solid*, celui par défaut, propose plusieurs options pour mieux lire les volumes. Elles se trouvent dans le menu *Viewport Shading*, ouvert par la petite flèche à droite des quatre boutons de mode d\'affichage, en haut à droite de la vue 3D :\n- *Lighting* : *Studio* éclaire les volumes comme en studio photo, *MatCap* (*material capture*, une image de matière qui simule éclairage et reflets) révèle les courbures, *Flat* supprime tout éclairage.\n- *Color* : *Random* donne une couleur différente à chaque objet, pratique pour distinguer des volumes qui se touchent.\n- *Cavity* : souligne les arêtes saillantes et les creux.\n- *Outline* : trace le contour de chaque objet.\nCes réglages ne changent que l\'affichage dans la vue : ils n\'ont aucun effet sur le rendu final.',
+    content: 'Le mode d\'affichage *Solid*, celui par défaut, propose plusieurs options pour mieux lire les volumes. Elles se trouvent dans le menu *Viewport Shading*, ouvert par la petite flèche à droite des quatre boutons de mode d\'affichage, en haut à droite de la vue 3D :\n- *Lighting* : *Studio* éclaire les volumes comme en studio photo, *MatCap* (*material capture*, une image de matière qui simule éclairage et reflets) révèle les courbures, *Flat* supprime tout éclairage.\n- *Color* : *Random* donne une couleur différente à chaque objet, pratique pour distinguer des volumes qui se touchent.\n- *Cavity* : souligne les arêtes saillantes et les creux.\n- *Outline* : trace le contour de chaque objet.\n\nCes réglages ne changent que l\'affichage dans la vue : ils n\'ont aucun effet sur le rendu final.',
   ),
   SideBySideModule(
     id: 'ch1_sec1_side2',
@@ -880,7 +880,7 @@ const List<ContentModule> chapter1Modules = [
   TextModule(
     id: 'ch1_sec1_txt8',
     title: 'Ajuster la navigation',
-    content: 'L\'onglet *Navigation* des préférences (*Edit > Preferences*) contient trois options désactivées par défaut, qui changent nettement le confort de travail autour d\'un objet :\n- *Orbit Around Selection* : la vue tourne autour de la sélection plutôt qu\'autour du centre de l\'écran.\n- *Zoom to Mouse Position* : le zoom se dirige vers le curseur de la souris.\n- *Auto Depth*, la case *Depth* de la ligne *Auto* : la navigation s\'adapte à la profondeur de la surface pointée, utile pour tourner autour d\'un détail.\nTestez-les et gardez celles qui vous conviennent.',
+    content: 'L\'onglet *Navigation* des préférences (*Edit > Preferences*) contient trois options désactivées par défaut, qui changent nettement le confort de travail autour d\'un objet :\n- *Orbit Around Selection* : la vue tourne autour de la sélection plutôt qu\'autour du centre de l\'écran.\n- *Zoom to Mouse Position* : le zoom se dirige vers le curseur de la souris.\n- *Auto Depth*, la case *Depth* de la ligne *Auto* : la navigation s\'adapte à la profondeur de la surface pointée, utile pour tourner autour d\'un détail.\n\nTestez-les et gardez celles qui vous conviennent.',
   ),
   FullMediaModule(
     id: 'ch1_sec1_media3',
@@ -974,7 +974,7 @@ const List<ContentModule> chapter1Modules = [
   TextModule(
     id: 'ch1_sec2_txt5',
     title: 'Isoler et masquer',
-    content: 'Quand les volumes se multiplient, quelques raccourcis aident à se concentrer :\n- `/` du pavé numérique bascule en **vue locale** : seuls les objets sélectionnés restent affichés ; le même raccourci ramène la vue complète.\n- `H` masque la sélection, `Maj + H` masque tout le reste, `Alt + H` réaffiche tout.\nCes commandes ne changent que l\'affichage dans la vue 3D : rien n\'est supprimé.',
+    content: 'Quand les volumes se multiplient, quelques raccourcis aident à se concentrer :\n- `/` du pavé numérique bascule en **vue locale** : seuls les objets sélectionnés restent affichés ; le même raccourci ramène la vue complète.\n- `H` masque la sélection, `Maj + H` masque tout le reste, `Alt + H` réaffiche tout.\n\nCes commandes ne changent que l\'affichage dans la vue 3D : rien n\'est supprimé.',
   ),
   TextModule(
     id: 'ch1_sec2_txt6',
@@ -1043,7 +1043,7 @@ const List<ContentModule> chapter1Modules = [
   TextModule(
     id: 'ch1_sec3_txt2',
     title: 'Choisir l\'orientation de transformation',
-    content: 'Une transformation contrainte à un axe, `G` puis `Z` par exemple, suit par défaut les axes du monde : c\'est l\'orientation *Global*. Dès qu\'un élément est incliné, comme la tête d\'une lampe tournée vers le plan de travail, ces axes ne correspondent plus à sa forme. Le menu *Transform Orientation* de l\'en-tête, ou le menu circulaire `,` (virgule), propose notamment ces repères :\n- *Global* : les axes du monde.\n- *Local* : les axes propres de l\'objet, qui tournent avec lui.\n- *Normal* : en Mode Édition, l\'axe perpendiculaire à la face ou à l\'arête sélectionnée.\n- *View* : les axes de l\'écran.\n- *Cursor* : les axes du curseur 3D.\nUn raccourci évite de passer par le menu : appuyer deux fois sur la touche d\'axe. Avec l\'orientation *Global*, `G Z Z` déplace l\'objet le long de son propre axe Z.',
+    content: 'Une transformation contrainte à un axe, `G` puis `Z` par exemple, suit par défaut les axes du monde : c\'est l\'orientation *Global*. Dès qu\'un élément est incliné, comme la tête d\'une lampe tournée vers le plan de travail, ces axes ne correspondent plus à sa forme. Le menu *Transform Orientation* de l\'en-tête, ou le menu circulaire `,` (virgule), propose notamment ces repères :\n- *Global* : les axes du monde.\n- *Local* : les axes propres de l\'objet, qui tournent avec lui.\n- *Normal* : en Mode Édition, l\'axe perpendiculaire à la face ou à l\'arête sélectionnée.\n- *View* : les axes de l\'écran.\n- *Cursor* : les axes du curseur 3D.\n\nUn raccourci évite de passer par le menu : appuyer deux fois sur la touche d\'axe. Avec l\'orientation *Global*, `G Z Z` déplace l\'objet le long de son propre axe Z.',
   ),
   SideBySideModule(
     id: 'ch1_sec3_side5',
@@ -1092,7 +1092,7 @@ const List<ContentModule> chapter1Modules = [
   TextModule(
     id: 'ch1_sec3_txt5',
     title: 'Des extrusions adaptées à la forme',
-    content: 'Au-delà de l\'extrusion simple (`E`), le menu `Alt + E` propose des variantes utiles en Mode Édition :\n- *Extrude Faces Along Normals* : chaque face avance perpendiculairement à elle-même, pour épaissir une surface courbe.\n- *Extrude Individual Faces* : chaque face s\'extrude séparément, par exemple pour une série de plots.\n- *Extrude Manifold* : en extrudant vers l\'intérieur, l\'outil découpe et supprime automatiquement les faces voisines, pour creuser proprement un logement ou une rainure.\nUne *normale* est la direction perpendiculaire à une face, qui indique son côté extérieur.',
+    content: 'Au-delà de l\'extrusion simple (`E`), le menu `Alt + E` propose des variantes utiles en Mode Édition :\n- *Extrude Faces Along Normals* : chaque face avance perpendiculairement à elle-même, pour épaissir une surface courbe.\n- *Extrude Individual Faces* : chaque face s\'extrude séparément, par exemple pour une série de plots.\n- *Extrude Manifold* : en extrudant vers l\'intérieur, l\'outil découpe et supprime automatiquement les faces voisines, pour creuser proprement un logement ou une rainure.\n\nUne *normale* est la direction perpendiculaire à une face, qui indique son côté extérieur.',
   ),
   SideBySideModule(
     id: 'ch1_sec3_side6',
@@ -1105,7 +1105,7 @@ const List<ContentModule> chapter1Modules = [
   TextModule(
     id: 'ch1_sec3_txt6',
     title: 'Des biseaux mesurés',
-    content: 'Le biseau (`Ctrl + B`) se règle avec précision juste après l\'opération, dans le panneau *Ajuster la dernière opération* :\n- *Width* : la largeur, que vous pouvez saisir avec son unité (`2mm`).\n- *Segments* : un segment donne un chanfrein (coupe plate), plusieurs segments un congé arrondi.\n- *Profile Shape* : le profil de l\'arrondi ; la valeur 0,5 donne un arc de cercle.\n- *Clamp Overlap* : empêche des biseaux voisins de se chevaucher.\n`Ctrl + Maj + B` biseaute un sommet seul, pour arrondir un coin sans toucher aux arêtes.',
+    content: 'Le biseau (`Ctrl + B`) se règle avec précision juste après l\'opération, dans le panneau *Ajuster la dernière opération* :\n- *Width* : la largeur, que vous pouvez saisir avec son unité (`2mm`).\n- *Segments* : un segment donne un chanfrein (coupe plate), plusieurs segments un congé arrondi.\n- *Profile Shape* : le profil de l\'arrondi ; la valeur 0,5 donne un arc de cercle.\n- *Clamp Overlap* : empêche des biseaux voisins de se chevaucher.\n\n`Ctrl + Maj + B` biseaute un sommet seul, pour arrondir un coin sans toucher aux arêtes.',
   ),
   SideBySideModule(
     id: 'ch1_sec3_side3',

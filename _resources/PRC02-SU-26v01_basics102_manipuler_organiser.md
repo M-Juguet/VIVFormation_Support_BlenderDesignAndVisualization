@@ -160,6 +160,7 @@ Le travail se sauvegarde dans un fichier `.blend`, qui contient toute la scène.
 - `Ctrl + S` enregistre le fichier courant ; `Maj + Ctrl + S` ouvre *Save As* pour enregistrer sous un nouveau nom.
 - Dans la fenêtre *Save As*, un bouton `+` **incrémente** automatiquement le numéro du fichier (projet_001, projet_002…), pour garder un historique de versions.
 - En cas de plantage, Blender conserve des sauvegardes temporaires : on récupère son travail via *File > Recover > Auto Save*.
+
 Prendre l'habitude de sauvegarder souvent et par versions met votre travail définitivement à l'abri.
 
 ### Chemins de fichiers et packing des textures

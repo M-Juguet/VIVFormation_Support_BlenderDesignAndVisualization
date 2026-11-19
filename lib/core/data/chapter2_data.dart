@@ -88,7 +88,7 @@ const List<ContentModule> chapter2Modules = [
   TextModule(
     id: 'ch2_sec1_txt3',
     title: 'Symétrie : le Mirror sur un autre axe',
-    content: 'Le *Mirror* reflète la géométrie d\'un objet. Vous l\'avez vu sur l\'axe X avec la rangée de sièges. Deux points comptent ici :\n- l\'axe se lit dans le repère de l\'objet ;\n- le reflet se fait autour de l\'origine de l\'objet, ou autour d\'un autre objet choisi dans *Mirror Object*.\nSur la lampe, le *Mirror* transforme chaque bras plein en une paire de tiges parallèles, de part et d\'autre de l\'axe de la lampe.',
+    content: 'Le *Mirror* reflète la géométrie d\'un objet. Vous l\'avez vu sur l\'axe X avec la rangée de sièges. Deux points comptent ici :\n- l\'axe se lit dans le repère de l\'objet ;\n- le reflet se fait autour de l\'origine de l\'objet, ou autour d\'un autre objet choisi dans *Mirror Object*.\n\nSur la lampe, le *Mirror* transforme chaque bras plein en une paire de tiges parallèles, de part et d\'autre de l\'axe de la lampe.',
   ),
   SideBySideModule(
     id: 'ch2_sec1_side3',
@@ -137,7 +137,7 @@ const List<ContentModule> chapter2Modules = [
   TextModule(
     id: 'ch2_sec1_txt4',
     title: 'Épaisseur : une coque avec le Solidify',
-    content: 'L\'abat-jour du blocage est un cône plein. Pour en faire une coque, on enlève sa grande face, puis le modificateur *Solidify* lui donne une épaisseur régulière, qui reste réglable.\n\nSes réglages principaux :\n- *Thickness* : l\'épaisseur ;\n- *Offset* : le côté de l\'épaisseur, de `-1` (vers l\'intérieur) à `1` (vers l\'extérieur), `0` la répartissant de part et d\'autre ;\n- *Even Thickness* : une épaisseur constante, même dans les angles ;\n- *Fill* (rubrique *Rim*) : ferme le bord de la coque.\nLe côté intérieur ou extérieur se lit d\'après les normales des faces : si elles sont inversées, l\'épaisseur part du mauvais côté.',
+    content: 'L\'abat-jour du blocage est un cône plein. Pour en faire une coque, on enlève sa grande face, puis le modificateur *Solidify* lui donne une épaisseur régulière, qui reste réglable.\n\nSes réglages principaux :\n- *Thickness* : l\'épaisseur ;\n- *Offset* : le côté de l\'épaisseur, de `-1` (vers l\'intérieur) à `1` (vers l\'extérieur), `0` la répartissant de part et d\'autre ;\n- *Even Thickness* : une épaisseur constante, même dans les angles ;\n- *Fill* (rubrique *Rim*) : ferme le bord de la coque.\n\nLe côté intérieur ou extérieur se lit d\'après les normales des faces : si elles sont inversées, l\'épaisseur part du mauvais côté.',
   ),
   SideBySideModule(
     id: 'ch2_sec1_side5',
@@ -419,7 +419,7 @@ const List<ContentModule> chapter2Modules = [
   TextModule(
     id: 'ch2_sec2_txt4',
     title: 'Donner du volume au câble',
-    content: 'Une courbe n\'a pas de volume : elle n\'apparaît pas au rendu. Son épaisseur se règle dans l\'éditeur de propriétés, onglet *Object Data* (l\'icône de courbe) :\n- rubrique *Shape* : *Resolution Preview U*, la finesse de la courbe dans la vue ;\n- rubrique *Geometry*, sous-rubrique *Bevel* : *Round* pour une section ronde, *Depth* pour son rayon, *Resolution* pour sa finesse, *Fill Caps* pour fermer les extrémités.\n*Extrude* et *Offset*, juste au-dessus, servent à d\'autres usages : *Extrude* donne un ruban plat.',
+    content: 'Une courbe n\'a pas de volume : elle n\'apparaît pas au rendu. Son épaisseur se règle dans l\'éditeur de propriétés, onglet *Object Data* (l\'icône de courbe) :\n- rubrique *Shape* : *Resolution Preview U*, la finesse de la courbe dans la vue ;\n- rubrique *Geometry*, sous-rubrique *Bevel* : *Round* pour une section ronde, *Depth* pour son rayon, *Resolution* pour sa finesse, *Fill Caps* pour fermer les extrémités.\n\n*Extrude* et *Offset*, juste au-dessus, servent à d\'autres usages : *Extrude* donne un ruban plat.',
   ),
   SideBySideModule(
     id: 'ch2_sec2_side4',
@@ -619,7 +619,7 @@ const List<ContentModule> chapter2Modules = [
   InfoModule(
     id: 'ch2_sec3_chal1',
     type: InfoType.challenge,
-    text: '**Les paliers ★ de l\'atelier**, pour ceux qui ont fini le socle :\n- des molettes de serrage sur les articulations : sélectionnez l\'interrupteur, ses crans et son *Empty* ensemble, puis `Alt + D` ; tournez la copie de X -90° et posez-la contre l\'articulation ;\n- une rainure décorative sur le pourtour du socle : deux boucles (*Loop Cut*), puis la bande entre elles extrudée de 1 mm vers l\'intérieur ;\n- une collection par sous-ensemble, *Pied*, *Bras* et *Tête*, dans *Lampe*.\nLes solutions sont dans la collection *Corrigé défis*, sous-collection *Paliers*. Les copies liées partagent leur maillage, pas leurs modificateurs : changer le nombre de crans de l\'une ne change pas les autres.',
+    text: '**Les paliers ★ de l\'atelier**, pour ceux qui ont fini le socle :\n- des molettes de serrage sur les articulations : sélectionnez l\'interrupteur, ses crans et son *Empty* ensemble, puis `Alt + D` ; tournez la copie de X -90° et posez-la contre l\'articulation ;\n- une rainure décorative sur le pourtour du socle : deux boucles (*Loop Cut*), puis la bande entre elles extrudée de 1 mm vers l\'intérieur ;\n- une collection par sous-ensemble, *Pied*, *Bras* et *Tête*, dans *Lampe*.\n\nLes solutions sont dans la collection *Corrigé défis*, sous-collection *Paliers*. Les copies liées partagent leur maillage, pas leurs modificateurs : changer le nombre de crans de l\'une ne change pas les autres.',
   ),
   TextModule(
     id: 'ch2_sec3_txt2',

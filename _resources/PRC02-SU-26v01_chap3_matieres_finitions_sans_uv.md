@@ -1128,6 +1128,7 @@ title: "Les nœuds Mix"
 Un *Mix* choisit entre *A* et *B* selon son *Factor* : 0 donne *A*, 1 donne *B*. Le masque se branche sur *Factor*.
 - *Mix Color* (`Maj + A > Color`) mélange deux couleurs.
 - *Mix* (`Maj + A > Utilities > Math`) mélange deux nombres, en type *Float*.
+
 Le type se change en haut du nœud.
 ```
 

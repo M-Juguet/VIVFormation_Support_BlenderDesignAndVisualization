@@ -66,6 +66,7 @@ La petite flèche de l'en-tête d'un modificateur ouvre son menu. *Copy to Selec
 Le *Mirror* reflète la géométrie d'un objet. Vous l'avez vu sur l'axe X avec la rangée de sièges. Deux points comptent ici :
 - l'axe se lit dans le repère de l'objet ;
 - le reflet se fait autour de l'origine de l'objet, ou autour d'un autre objet choisi dans *Mirror Object*.
+
 Sur la lampe, le *Mirror* transforme chaque bras plein en une paire de tiges parallèles, de part et d'autre de l'axe de la lampe.
 
 ```side-by-side
@@ -116,6 +117,7 @@ Ses réglages principaux :
 - *Offset* : le côté de l'épaisseur, de `-1` (vers l'intérieur) à `1` (vers l'extérieur), `0` la répartissant de part et d'autre ;
 - *Even Thickness* : une épaisseur constante, même dans les angles ;
 - *Fill* (rubrique *Rim*) : ferme le bord de la coque.
+
 Le côté intérieur ou extérieur se lit d'après les normales des faces : si elles sont inversées, l'épaisseur part du mauvais côté.
 
 ```side-by-side
@@ -395,6 +397,7 @@ Pour revenir à la sélection, reprenez l'outil du haut de la barre.
 Une courbe n'a pas de volume : elle n'apparaît pas au rendu. Son épaisseur se règle dans l'éditeur de propriétés, onglet *Object Data* (l'icône de courbe) :
 - rubrique *Shape* : *Resolution Preview U*, la finesse de la courbe dans la vue ;
 - rubrique *Geometry*, sous-rubrique *Bevel* : *Round* pour une section ronde, *Depth* pour son rayon, *Resolution* pour sa finesse, *Fill Caps* pour fermer les extrémités.
+
 *Extrude* et *Offset*, juste au-dessus, servent à d'autres usages : *Extrude* donne un ruban plat.
 
 ```side-by-side
@@ -571,6 +574,7 @@ downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_Bl
 > - des molettes de serrage sur les articulations : sélectionnez l'interrupteur, ses crans et son *Empty* ensemble, puis `Alt + D` ; tournez la copie de X -90° et posez-la contre l'articulation ;
 > - une rainure décorative sur le pourtour du socle : deux boucles (*Loop Cut*), puis la bande entre elles extrudée de 1 mm vers l'intérieur ;
 > - une collection par sous-ensemble, *Pied*, *Bras* et *Tête*, dans *Lampe*.
+>
 > Les solutions sont dans la collection *Corrigé défis*, sous-collection *Paliers*. Les copies liées partagent leur maillage, pas leurs modificateurs : changer le nombre de crans de l'une ne change pas les autres.
 
 ### Les défis ★★

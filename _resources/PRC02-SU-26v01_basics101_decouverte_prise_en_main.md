@@ -160,6 +160,7 @@ Le pavé numérique offre des raccourcis de vue extrêmement efficaces, à mémo
 - `0` : vue à travers la caméra active.
 - `5` : bascule entre projection perspective et orthographique.
 - `.` (point) : recadre la vue sur l'objet sélectionné.
+
 Ces raccourcis font gagner un temps considérable dès qu'on cherche à se positionner précisément.
 
 ### Perspective, orthographique et modes d'affichage

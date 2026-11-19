@@ -41,6 +41,7 @@ Le mode d'affichage *Solid*, celui par défaut, propose plusieurs options pour m
 - *Color* : *Random* donne une couleur différente à chaque objet, pratique pour distinguer des volumes qui se touchent.
 - *Cavity* : souligne les arêtes saillantes et les creux.
 - *Outline* : trace le contour de chaque objet.
+
 Ces réglages ne changent que l'affichage dans la vue : ils n'ont aucun effet sur le rendu final.
 
 ```side-by-side
@@ -106,6 +107,7 @@ L'onglet *Navigation* des préférences (*Edit > Preferences*) contient trois op
 - *Orbit Around Selection* : la vue tourne autour de la sélection plutôt qu'autour du centre de l'écran.
 - *Zoom to Mouse Position* : le zoom se dirige vers le curseur de la souris.
 - *Auto Depth*, la case *Depth* de la ligne *Auto* : la navigation s'adapte à la profondeur de la surface pointée, utile pour tourner autour d'un détail.
+
 Testez-les et gardez celles qui vous conviennent.
 
 ![Figure 1.8 : L'onglet Navigation des préférences : Orbit Around Selection, la case Depth de la ligne Auto et Zoom to Mouse Position sont désactivées par défaut.](assets/images/preferences_navigation_blender.jpg)
@@ -196,6 +198,7 @@ La capture montre le socle de la lampe sélectionné. Les champs Dimensions indi
 Quand les volumes se multiplient, quelques raccourcis aident à se concentrer :
 - `/` du pavé numérique bascule en **vue locale** : seuls les objets sélectionnés restent affichés ; le même raccourci ramène la vue complète.
 - `H` masque la sélection, `Maj + H` masque tout le reste, `Alt + H` réaffiche tout.
+
 Ces commandes ne changent que l'affichage dans la vue 3D : rien n'est supprimé.
 
 ### Comparer des variantes
@@ -258,6 +261,7 @@ Une transformation contrainte à un axe, `G` puis `Z` par exemple, suit par déf
 - *Normal* : en Mode Édition, l'axe perpendiculaire à la face ou à l'arête sélectionnée.
 - *View* : les axes de l'écran.
 - *Cursor* : les axes du curseur 3D.
+
 Un raccourci évite de passer par le menu : appuyer deux fois sur la touche d'axe. Avec l'orientation *Global*, `G Z Z` déplace l'objet le long de son propre axe Z.
 
 ```side-by-side
@@ -309,6 +313,7 @@ Au-delà de l'extrusion simple (`E`), le menu `Alt + E` propose des variantes ut
 - *Extrude Faces Along Normals* : chaque face avance perpendiculairement à elle-même, pour épaissir une surface courbe.
 - *Extrude Individual Faces* : chaque face s'extrude séparément, par exemple pour une série de plots.
 - *Extrude Manifold* : en extrudant vers l'intérieur, l'outil découpe et supprime automatiquement les faces voisines, pour creuser proprement un logement ou une rainure.
+
 Une *normale* est la direction perpendiculaire à une face, qui indique son côté extérieur.
 
 ```side-by-side
@@ -326,6 +331,7 @@ Le biseau (`Ctrl + B`) se règle avec précision juste après l'opération, dans
 - *Segments* : un segment donne un chanfrein (coupe plate), plusieurs segments un congé arrondi.
 - *Profile Shape* : le profil de l'arrondi ; la valeur 0,5 donne un arc de cercle.
 - *Clamp Overlap* : empêche des biseaux voisins de se chevaucher.
+
 `Ctrl + Maj + B` biseaute un sommet seul, pour arrondir un coin sans toucher aux arêtes.
 
 ```side-by-side
