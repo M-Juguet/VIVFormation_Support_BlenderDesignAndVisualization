@@ -25,6 +25,8 @@ sc = bpy.context.scene
 O = bpy.data.objects
 W = bpy.data.worlds
 ROT_INTERIEUR = int(os.environ.get("ROT_INTERIEUR", "135"))
+# Sinon Blender écrit le chemin complet du .blend dans les métadonnées (« File ») de chaque PNG.
+sc.render.use_stamp_filename = False
 
 
 def show(**cols):

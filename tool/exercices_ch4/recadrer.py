@@ -47,7 +47,11 @@ def info(name):
 
 
 def resize(px, w):
+    """Réduction par moyenne de zones. Agrandir laisserait des zones vides (division par zéro, pixels
+    NaN qui noircissent ensuite toute l'image) : on le refuse."""
     h0, w0 = px.shape[:2]
+    if w > w0:
+        raise ValueError(f"resize() ne fait que réduire ({w0} -> {w} px demandés)")
     h = max(1, round(h0 * w / w0))
     ys = (np.arange(h + 1) * h0 / h).astype(int)
     xs = (np.arange(w + 1) * w0 / w).astype(int)
@@ -206,12 +210,19 @@ def fig_4_4():
 
 
 def fig_4_6():
+    # Le cadre de la caméra couvre toute la largeur de la vue 3D : la capture Material Preview garde la
+    # barre d'outils à gauche. On retire la même fraction de largeur aux trois images (même cadrage),
+    # puis on les ramène à la plus petite hauteur (resize() ne fait que réduire).
     mp = camera_crop("406_mp_banc")
     ee = load(os.path.join(CORR, "comparatif_eevee.png"))
     cy = load(os.path.join(CORR, "comparatif_cycles.png"))
-    full = pad_rows([to_height(p, 720) for p in (mp, ee, cy)], 16)
+    x0, _, x1, _ = info("406_mp_banc")["CAM_BOX"]
+    f = (info("406_mp_banc")["VIEW_3D_TOOLS"][2] + 3 - x0) / (x1 - x0)
+    parts = [p[:, int(round(p.shape[1] * f)):] for p in (mp, ee, cy)]
+    h = min(p.shape[0] for p in parts)
+    full = pad_rows([to_height(p, h) for p in parts], 16)
     save(full, "PRC02_ch4_comparatif_moteurs.png", kind="png")
-    save(resize(full, 1200), "engines_comparison_blender.jpg")
+    save(resize(full, 1920), "engines_comparison_blender.jpg")
 
 
 if __name__ == "__main__":

@@ -45,8 +45,11 @@ def load(path):
 
 
 def resize(px, w):
-    """Réduction par moyenne de zones (pas d'interpolation)."""
+    """Réduction par moyenne de zones (pas d'interpolation). Agrandir laisserait des zones vides
+    (division par zéro, pixels NaN) : on le refuse."""
     h0, w0 = px.shape[:2]
+    if w > w0:
+        raise ValueError(f"resize() ne fait que réduire ({w0} -> {w} px demandés)")
     h = max(1, round(h0 * w / w0))
     ys = (np.arange(h + 1) * h0 / h).astype(int)
     xs = (np.arange(w + 1) * w0 / w).astype(int)
