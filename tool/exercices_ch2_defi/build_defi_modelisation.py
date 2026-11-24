@@ -1,5 +1,5 @@
 # Construit _resources/exercices/PRC02_ch2_defi_modelisation.blend
-# (PRC02, chapitre 2, section 4 « Défi facultatif : modélisation avancée »).
+# (PRC02, Défi 1 « Modélisation avancée », rubrique « Pour aller plus loin » ; ancienne section 4 du chapitre 2).
 #
 # Usage, depuis la racine du dépôt :
 #   "C:\Program Files\Blender Foundation\Blender 5.2\blender.exe" -b --factory-startup ^
@@ -33,8 +33,8 @@ OFFSET = 0.0002     # 0,2 mm
 
 LISEZ_MOI = """LISEZ-MOI : survolez cette zone et appuyez sur Ctrl + Espace pour l'agrandir (même raccourci pour revenir).
 
-PRC02 · Chapitre 2 · Défi facultatif, hors programme : modélisation avancée
-Enregistrez ce fichier sous defi_modelisation_v001.blend. Suivez la section 4 du chapitre 2 dans l'application.
+PRC02 · Pour aller plus loin · Défi 1, facultatif, hors programme : modélisation avancée
+Enregistrez ce fichier sous defi_modelisation_v001.blend. Suivez le défi dans l'application : rubrique « Pour aller plus loin », Modélisation avancée.
 Corrigés : collection « Corrigé défi modélisation » (œil fermé), une sous-collection par étape et une pour l'atelier.
 Les corrigés sont à la place de vos pièces : affichez-les, puis masquez votre pièce (H) pour comparer.
 Affichez seulement la collection de l'étape en cours. Vue locale : / du pavé numérique.

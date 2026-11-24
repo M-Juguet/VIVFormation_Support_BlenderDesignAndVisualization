@@ -28,8 +28,8 @@ OUT = os.path.join(C.EX, "PRC02_ch3_defi_procedural.blend")
 ROW = 0.32           # écart entre deux rangées (Y)
 CORR_DX = 2.4        # décalage du corrigé (X)
 
-LISEZ_MOI = """PRC02 · Chapitre 3 · Défi facultatif, hors programme : matières procédurales
-Enregistrez ce fichier sous defi_procedural_v001.blend. Suivez la section 4 du chapitre 3 dans l'application.
+LISEZ_MOI = """PRC02 · Pour aller plus loin · Défi 2, facultatif, hors programme : matières procédurales
+Enregistrez ce fichier sous defi_procedural_v001.blend. Suivez le défi dans l'application : rubrique « Pour aller plus loin », Matières procédurales.
 Corrigés : collection « Corrigé défi procédural » (œil fermé), une sous-collection par étape, suffixe _corrige.
 Affichez seulement la collection de l'étape en cours : l'affichage reste fluide.
 Aperçu d'un nœud : Ctrl + Maj + clic sur le nœud. Retour : Ctrl + Maj + clic sur le Principled BSDF.
