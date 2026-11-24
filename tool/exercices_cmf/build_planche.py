@@ -32,10 +32,10 @@ MM_PX = 0.7          # millimètres par pixel de la référence
 CX, CY = 525, 370    # centre de la référence : centre de la caméra de face
 
 # réglages de la lumière, calibrés sur le gris 18 % (voir calibrer.py)
-AREA_POWER = float(os.environ.get("CMF_AREA_W", "22"))
-WORLD_STRENGTH = float(os.environ.get("CMF_WORLD", "0.10"))
-FOND_EMISSION = float(os.environ.get("CMF_FOND_EMIT", "0.12"))
-RASANTE_POWER = 60.0
+AREA_POWER = float(os.environ.get("CMF_AREA_W", "25"))
+WORLD_STRENGTH = float(os.environ.get("CMF_WORLD", "0.06"))
+FOND_EMISSION = float(os.environ.get("CMF_FOND_EMIT", "0.28"))
+RASANTE_POWER = 80.0
 
 CATS = {  # chemin du catalogue : UUID (ceux de la bibliothèque du chapitre 3 sont repris)
     "Bibliothèque CMF/Métaux": M.CATS_BIBLIO["Métaux"],
@@ -62,11 +62,11 @@ PLAQUES = [
 TUBE = ("Emplacement_6", (742, 257, 798, 722), 26.6)   # main courante couchée, posée sur le 5 et le 8
 
 LISEZ_MOI = """PRC02 · Planche CMF — {titre}
-Tout se fait dans l'espace CMF, en vue caméra, en Rendered (EEVEE). Les valeurs sont indicatives.
+Tout se fait dans l'espace CMF, en vue caméra. Elle s'ouvre en Material Preview, avec les lumières et le monde de la scène : c'est déjà le rendu, à peu de chose près. Pour le rendu exact (EEVEE, Raytracing), cliquez la 4e sphère en haut à droite de la vue, Rendered : Blender ne rouvre jamais un fichier dans ce mode. Les valeurs sont indicatives.
 
 1. Habiller : glissez une matière de l'Asset Browser (en bas, Current File) sur un emplacement de la vue.
 2. Régler sans abîmer le modèle : onglet Material, cliquez l'icône de copie à droite du nom de la matière, renommez-la, puis réglez.
-3. Couleur : cliquez la case Couleur, onglet Hex, tapez le code (ex. 1F2A44). Brillance et Relief vont de 0 à 1 ; les tailles sont en mm.
+3. Couleur : cliquez la case Couleur, tapez le code dans le champ Hex (ex. 1F2A44), puis Entrée. Brillance et Relief vont de 0 à 1 ; les tailles sont en mm.
 4. Motif d'un tissu (Gabarit_Tissu_Motif) : Material > Surface > Motif > Open, choisissez votre image ; Taille du motif (mm) et Rotation juste dessous.
 5. Vue rasante : cochez la collection « Lumière rasante » dans l'Outliner ; sélectionnez CAM_Rasante, puis View > Cameras > Set Active Object as Camera. Retour : même geste sur CAM_Planche.
 6. Exporter : enregistrez le fichier, puis Ctrl + F12. L'image A4 paysage est écrite dans rendus/planche_0001.png, à côté du fichier.
@@ -370,12 +370,12 @@ def build_scene():
 
     lr = bpy.data.lights.new("Area_Rasante", 'AREA')
     lr.shape = 'RECTANGLE'
-    lr.size, lr.size_y = 0.9, 0.05
+    lr.size, lr.size_y = 0.3, 0.3
     lr.energy = RASANTE_POWER
     lr.use_shadow_jitter = True
     ras = bpy.data.objects.new("Area_Rasante", lr)
     c_ras.objects.link(ras)
-    ras.location = (-0.30, 0.55, 0.07)
+    ras.location = (-0.80, 0.12, 0.07)        # sur le côté gauche, à 5° au-dessus de la planche
     aim(ras, (0.0, 0.0, 0.0))
 
     world = bpy.data.worlds.new("Studio_Neutre")
@@ -406,13 +406,13 @@ def build_scene():
     cam.location = (0.0, 0.0, 1.2)
     sc.camera = cam
     cr = bpy.data.cameras.new("CAM_Rasante")
-    cr.lens = 50
+    cr.lens = 40
     cr.clip_start, cr.clip_end = 0.01, 20.0
     cr.dof.use_dof = False
     camr = bpy.data.objects.new("CAM_Rasante", cr)
     c_cam.objects.link(camr)
-    camr.location = (0.02, -0.50, 0.20)
-    aim(camr, (0.0, 0.03, 0.0))
+    camr.location = (0.03, -0.62, 0.30)       # basse : 26° au-dessus de la planche
+    aim(camr, (0.0, 0.0, 0.0))
 
     # contrôle de l'exposition : gris 18 %, blanc (90 %) et noir (3 %), en haut à gauche de la planche
     for k, (nm, hexa) in enumerate((("Controle_Gris_18", "767676"), ("Controle_Blanc_90", "F3F3F3"),
@@ -433,9 +433,10 @@ def build_assets():
     for name, (cat, _col, _m, _r, _o, tags, desc) in M.BIBLIO.items():
         mat = M.biblio(name)
         mark(mat, "Bibliothèque CMF/" + cat, desc, tags)
-    for im in bpy.data.images:
-        if im.packed_file is not None and im.filepath.startswith("//textures_cmf/"):
-            C.set_relative_path(im, "textures_cmf/" + os.path.basename(im.filepath))
+    for key in M.IMAGES:
+        im = bpy.data.images.get(key + ".png")
+        if im is not None:
+            C.set_relative_path(im, "textures_cmf/" + key + ".png")
     gabs = G.build_all(motif_image())
     for name, (m, g, desc) in gabs.items():
         mark(m, "Gabarits", desc, ["gabarit"])
@@ -495,11 +496,11 @@ EXEMPLE = {  # emplacement : (matière, gabarit, réglages, coordonnées du moti
                       {"Couleur": "C7C4BF", "Brillance": 0.35, "Vernis": 0.0, "Relief": 0.04,
                        "Taille de la peau d'orange (mm)": 1.5}, None),
     "Emplacement_5": ("Tissu_Siege_Vagues", "Gabarit_Tissu_Motif",
-                      {"Brillance": 0.08, "Velours": 0.55, "Relief": 0.35, "Taille de la trame (mm)": 0.7},
+                      {"Brillance": 0.08, "Velours": 0.25, "Relief": 0.35, "Taille de la trame (mm)": 0.7},
                       {"Taille du motif (mm)": 130.0}),
-    "Emplacement_6": ("Alu_Brosse", None, None, None),        # la main courante : matière de la bibliothèque
+    "Emplacement_6": ("Inox_Brosse_Main_Courante", None, None, None),   # copie réglée d'Alu_Brosse (bibliothèque)
     "Emplacement_7": ("Translucide_Cote_Blanc", "Gabarit_Translucide_Cote",
-                      {"Couleur": "F4F2EE", "Translucidité": 0.35, "Brillance": 0.55, "Pas des côtes (mm)": 6.0,
+                      {"Couleur": "F4F2EE", "Translucidité": 0.35, "Brillance": 0.55, "Pas des côtes (mm)": 9.0, "Relief": 0.6,
                        "Ondulation (mm)": 2.0}, None),
     "Emplacement_8": ("Laque_Prune", "Gabarit_Laque",
                       {"Couleur": "6A3B7C", "Brillance": 0.82, "Vernis": 1.0, "Relief": 0.02}, None),
@@ -509,7 +510,17 @@ EXEMPLE = {  # emplacement : (matière, gabarit, réglages, coordonnées du moti
 def dress(objs, gabs):
     for empl, (name, gab, values, coord) in EXEMPLE.items():
         if gab is None:
-            mat = bpy.data.materials[name]
+            # la main courante : une copie réglée d'Alu_Brosse (bibliothèque), en inox satiné
+            src = bpy.data.materials["Alu_Brosse"]
+            mat = src.copy()
+            mat.name = name
+            p = next(n for n in mat.node_tree.nodes if n.type == 'BSDF_PRINCIPLED')
+            p.inputs["Base Color"].default_value = C.lin("C8C8C6")
+            p.inputs["Roughness"].default_value = 0.42
+            mat.diffuse_color = C.lin("C8C8C6")
+            mat.roughness = 0.42
+            mark(mat, "Planche exemple", "Planche exemple : inox brossé satiné de la main courante, copie réglée "
+                 "d'Alu_Brosse (bibliothèque CMF).", ["exemple", "inox", "ferroviaire"])
         else:
             mat = G.variant(gabs[gab], name, values, coord)
             mark(mat, "Planche exemple", "Planche exemple : %s, d'après %s." % (name.replace("_", " "), gab), ["exemple"])

@@ -16,6 +16,10 @@ WAIT = float(os.environ.get("CAPTURE_WAIT", "25"))
 
 
 def steps():
+    if os.environ.get("CAPTURE_RENDERED") == "1":     # ce que voit le participant après le clic sur Rendered
+        for a in bpy.context.window_manager.windows[0].screen.areas:
+            if a.type == 'VIEW_3D':
+                a.spaces.active.shading.type = 'RENDERED'
     yield WAIT
     w = bpy.context.window_manager.windows[0]
     with bpy.context.temp_override(window=w):

@@ -18,6 +18,7 @@ BASE = os.path.basename(bpy.data.filepath)
 LOG = os.environ.get("UI_LOG")
 BOTTOM_H = 300       # hauteur de la bande du bas (Asset Browser et LISEZ-MOI)
 OUTLINER_H = 230     # hauteur de l'Outliner
+PROPS_WIDEN = 90     # la colonne de droite (Outliner, Properties) élargie de 90 px
 
 
 def log(*a):
@@ -128,7 +129,21 @@ def steps():
         p.spaces.active.context = 'MATERIAL'
     except Exception as e:
         log("ONGLET_ERR", repr(e))
-    # 5. la vue caméra cadrée
+    # 5. la vue caméra cadrée, en Material Preview avec les lumières et le monde de la scène : Blender
+    # repasse toujours une vue Rendered en Solid à l'ouverture d'un fichier, pas une vue Material
+    # Preview. Le LISEZ-MOI dit de cliquer la sphère Rendered. La colonne de droite est élargie pour
+    # lire les noms des entrées des gabarits.
+    v = find(s, 'VIEW_3D')
+    sh = v.spaces.active.shading
+    sh.type = 'MATERIAL'
+    sh.use_scene_lights = True
+    sh.use_scene_world = True
+    sh.use_scene_world_render = True
+    sh.use_scene_lights_render = True
+    with bpy.context.temp_override(window=w, screen=s):
+        bpy.ops.screen.area_move(x=p.x - 1, y=p.y + p.height // 2, delta=-PROPS_WIDEN)
+    yield 0.8
+    w, s = win()
     v = find(s, 'VIEW_3D')
     reg = next(r for r in v.regions if r.type == 'WINDOW')
     with bpy.context.temp_override(window=w, screen=s, area=v, region=reg):
@@ -154,7 +169,7 @@ def steps():
         te.spaces.active.top = 0
     log("UI_APRES", BASE, [ws.name for ws in bpy.data.workspaces],
         [(a.type, a.ui_type, a.x, a.y, a.width, a.height) for a in s.areas],
-        "| onglet", find(s, 'PROPERTIES').spaces.active.context)
+        "| onglet", find(s, 'PROPERTIES').spaces.active.context, "| ombrage", find(s, 'VIEW_3D').spaces.active.shading.type)
     yield 0.6
     bpy.context.preferences.filepaths.save_version = 0
     with bpy.context.temp_override(window=w):

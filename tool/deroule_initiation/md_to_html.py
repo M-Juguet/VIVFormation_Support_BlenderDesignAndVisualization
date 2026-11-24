@@ -5,7 +5,9 @@
 # et numérotées (un niveau d'imbrication), cases [ ], tableaux, citations >, ---,
 # code `…`, gras **…**, italique *…*, et le commentaire <!-- pagebreak -->.
 # Le surtitre de l'en-tête suit le nom du fichier : « Chapitre N » pour PRC02-deroule-chapN.md,
-# « Initiation » sinon.
+# « Planche CMF · Mémo participant » pour PRC02-memo-cmf.md, « Initiation » sinon.
+# Le mémo seul accepte une image sur sa ligne, ![légende](chemin relatif au .md), et une mise en page
+# resserrée sur une page : la sortie des déroulés ne change pas.
 #
 # Usage : python md_to_html.py <source.md> <sortie.html>
 
@@ -13,7 +15,10 @@ import html, os, re, sys
 
 SRC, OUT = sys.argv[1], sys.argv[2]
 _chap = re.search(r"chap(\d+)", os.path.basename(SRC))
+MEMO = "memo-cmf" in os.path.basename(SRC)
 OVERLINE = f"PRC02 · Chapitre {_chap.group(1)} · Document formateur" if _chap else "PRC02 · Initiation · Document formateur"
+if MEMO:
+    OVERLINE = "PRC02 · Planche CMF · Mémo participant"
 
 CSS = r"""
 @page { size: A4 portrait; margin: 14mm 15mm 16mm; }
@@ -108,6 +113,13 @@ def convert(md):
             flush_para(); out.append('<div class="pagebreak"></div>'); i += 1; continue
         if s == "---":
             flush_para(); out.append("<hr>"); i += 1; continue
+        img = re.match(r"^!\[(.*)\]\((.+)\)$", s) if MEMO else None
+        if img:
+            flush_para()
+            src = os.path.relpath(os.path.join(os.path.dirname(os.path.abspath(SRC)), img.group(2)),
+                                  os.path.dirname(os.path.abspath(OUT))).replace(os.sep, "/")
+            out.append(f'<figure><img src="{html.escape(src)}" alt=""><figcaption>{inline(img.group(1))}</figcaption></figure>')
+            i += 1; continue
         if s.startswith("### "):
             flush_para(); out.append(f"<h3>{inline(s[4:])}</h3>"); i += 1; continue
         if s.startswith("## "):
@@ -166,6 +178,20 @@ def convert(md):
     flush_para()
     return "\n".join(out)
 
+
+MEMO_CSS = r"""
+@page { margin: 10mm 12mm 10mm; }
+body { font-size: 9pt; line-height: 1.34; }
+h1 { font-size: 21pt; }
+h2 { font-size: 12.5pt; margin: 10px 0 5px; padding-top: 5px; }
+header.doc { margin-bottom: 8px; padding-bottom: 8px; }
+li { margin: 0 0 4px; }
+figure { margin: 4px 0 6px; }
+figure img { display: block; width: 62%; margin: 0 auto; border: 1px solid var(--border); border-radius: 6px; }
+figcaption { font-size: 8pt; color: var(--ink-muted); margin-top: 3px; text-align: center; }
+"""
+if MEMO:
+    CSS += MEMO_CSS
 
 md = open(SRC, encoding="utf-8").read()
 body = convert(md)
