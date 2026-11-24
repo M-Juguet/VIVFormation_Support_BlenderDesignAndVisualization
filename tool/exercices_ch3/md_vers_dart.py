@@ -1,7 +1,9 @@
 # Convertit la source Markdown du chapitre 3 (format de writer_guide.md) en modules Dart, et remplace
 # la liste chapter3Modules de lib/core/data/chapter3_data.dart. Repris de tool/exercices_ch2/md_vers_dart.py.
-# La section 4 (défi facultatif sur les matières procédurales) est rédigée par sa propre session : tant
-# qu'elle n'a pas les identifiants de son plan, assign_ids_sec4 la numérote comme les sections 1 à 3.
+# Convertit aussi le défi « Matières procédurales » (rubrique « Pour aller plus loin », ancienne
+# section 4 du chapitre), depuis sa propre source, _resources/PRC02-SU-26v01_defi2_matieres_procedurales.md,
+# en challenge2Modules (lib/core/data/challenge2_data.dart). Le défi garde exactement ses identifiants
+# (ch3_sec4_…, ceux de son plan) : les signets et les quiz déjà faits restent valables.
 #
 # Usage, depuis la racine du dépôt, avec le Python livré avec Blender :
 #   "C:\Program Files\Blender Foundation\Blender 5.2\5.2\python\bin\python.exe" -I ^
@@ -25,6 +27,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 SRC = os.path.join(ROOT, "_resources", "PRC02-SU-26v01_chap3_matieres_finitions_sans_uv.md")
 DART = os.path.join(ROOT, "lib", "core", "data", "chapter3_data.dart")
+DEFI_SRC = os.path.join(ROOT, "_resources", "PRC02-SU-26v01_defi2_matieres_procedurales.md")
+DEFI_DART = os.path.join(ROOT, "lib", "core", "data", "challenge2_data.dart")
 CHAPTER_TITLE = "Matières et finitions réalistes sans dépliage UV"
 
 INFO = {"NOTE": "info", "IMPORTANT": "info", "TIP": "tip", "WARNING": "warning", "CAUTION": "challenge", "IDEA": "idea"}
@@ -251,14 +255,27 @@ def dart_module(mid, kind, d):
     raise ValueError(kind)
 
 
+def write_list(path, name, comment, body):
+    """Remplace la liste Dart `name` du fichier `path` par les modules de `body`."""
+    block = "const List<ContentModule> %s = [\n%s%s\n];" % (name, comment, "\n".join(body))
+    dart = open(path, encoding="utf-8").read()
+    pat = re.compile(r"const List<ContentModule> %s = \[.*?\n\];|const List<ContentModule> %s = \[\];" % (name, name), re.S)
+    assert len(pat.findall(dart)) == 1, "liste %s introuvable ou multiple" % name
+    dart = pat.sub(lambda _: block, dart)
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(dart)
+
+
 def main():
-    text = open(SRC, encoding="utf-8").read()
-    mods = assign_ids(parse(text))
-    ids = [m[0] for m in mods]
+    mods = assign_ids(parse(open(SRC, encoding="utf-8").read()))
+    # le défi : son premier « ## » devient l'en-tête de sa page (ch3_sec4_title)
+    defi = assign_ids_sec4(parse(open(DEFI_SRC, encoding="utf-8").read()))
+    assert defi and defi[0][0] == "ch3_sec4_title", defi[:1]
+    ids = [m[0] for m in mods + defi]
     dup = {x for x in ids if ids.count(x) > 1}
     assert not dup, dup
     missing = []
-    for mid, kind, d in mods:
+    for mid, kind, d in mods + defi:
         if kind in ("side", "media"):
             p = os.path.join(ROOT, d["imagePath"].replace("/", os.sep))
             if not os.path.exists(p):
@@ -266,23 +283,20 @@ def main():
     assert not missing, missing
     body = ["  TitleModule(\n    id: 'ch3_title',\n    title: %s,\n  )," % dart_str(CHAPTER_TITLE)]
     body += [dart_module(*m) for m in mods]
-    block = ("const List<ContentModule> chapter3Modules = [\n"
-             "  // --- Sections 1 à 3, avec l'atelier ; la section 4 (défi facultatif) suit -------\n"
-             "  // Généré par tool/exercices_ch3/md_vers_dart.py depuis\n"
-             "  // _resources/PRC02-SU-26v01_chap3_matieres_finitions_sans_uv.md\n"
-             + "\n".join(body) + "\n];")
-    dart = open(DART, encoding="utf-8").read()
-    pat = re.compile(r"const List<ContentModule> chapter3Modules = \[.*?\n\];|const List<ContentModule> chapter3Modules = \[\];", re.S)
-    assert len(pat.findall(dart)) == 1, "liste chapter3Modules introuvable ou multiple"
-    dart = pat.sub(lambda _: block, dart)
-    with open(DART, "w", encoding="utf-8", newline="\n") as f:
-        f.write(dart)
-    kinds = {}
-    for _, k, _d in mods:
-        kinds[k] = kinds.get(k, 0) + 1
-    print("MODULES", len(mods) + 1, kinds)
-    for mid, kind, d in mods:
-        print(" ", mid, kind)
+    write_list(DART, "chapter3Modules",
+               "  // --- Sections 1 à 3, avec l'atelier ; le défi est dans challenge2_data.dart ----\n"
+               "  // Généré par tool/exercices_ch3/md_vers_dart.py depuis\n"
+               "  // _resources/PRC02-SU-26v01_chap3_matieres_finitions_sans_uv.md\n", body)
+    write_list(DEFI_DART, "challenge2Modules",
+               "  // --- Pour aller plus loin · Défi 2 : matières procédurales -------------------\n"
+               "  // Généré par tool/exercices_ch3/md_vers_dart.py depuis\n"
+               "  // _resources/PRC02-SU-26v01_defi2_matieres_procedurales.md\n",
+               [dart_module(*m) for m in defi])
+    for label, lst, extra in (("CHAPITRE", mods, 1), ("DEFI", defi, 0)):
+        kinds = {}
+        for _, k, _d in lst:
+            kinds[k] = kinds.get(k, 0) + 1
+        print(label, "MODULES", len(lst) + extra, kinds)
 
 
 if __name__ == "__main__":

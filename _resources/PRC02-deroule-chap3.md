@@ -22,7 +22,7 @@ Ces notions sont dans l'application. Elles ne sont pas exigées en séance, et c
 - *Node Wrangler* (figure 3.32) et *Automatically Pack Resources* : cités.
 - *Link* : une phrase ; sa manipulation devient un défi ★ (figure 3.47).
 - La bibliothèque déclarée dans les préférences et le menu *Import Method* (figures 3.42 à 3.44) : une minute de démonstration sur votre poste. Les préférences des postes ne sont pas touchées.
-- La section 4, « Défi facultatif · Matières procédurales » : hors minutage, voir sa partie plus bas.
+- Le défi facultatif « Matières procédurales », dans la rubrique « Pour aller plus loin » de la barre latérale : hors minutage, voir sa partie plus bas.
 
 ### Les fichiers
 
@@ -35,8 +35,9 @@ Ces notions sont dans l'application. Elles ne sont pas exigées en séance, et c
 | `PRC02_ch3_finitions_triplanaires.blend` | 2:15 (votre démo), défis ★★ | Cinq pièces sans dépliage UV, des trois secteurs ; la collection masquée *Corrigé* |
 | `PRC02_ch3_lampe_habillage.zip` | 0:00 (le but du jour), fin | L'état attendu de `lampe_habillage_v002.blend`, avec son fichier de catalogues ; un point de départ possible du chapitre 4 |
 | `PRC02_ch3_defi_procedural.blend` | Hors minutage | Le défi facultatif ; la collection masquée « Corrigé défi procédural » |
+| `PRC02_CMF_planche.zip` | Après la séance, ou pour une présentation CMF | La ressource complémentaire qui ferme le chapitre : une planche de présentation sous éclairage fixe et neutre, vierge et habillée, avec les matières du chapitre en actifs, des gabarits réglables et un mémo d'une page |
 
-L'application propose la lampe à habiller en section 1, sous « Où l'on en est ». Les images et les finitions triplanaires sont en section 2, sous « Une image projetée sur trois axes : Box ». La bibliothèque est en section 3, sous « Récupérer une matière : File > Append ». La lampe habillée suit l'atelier, et le défi ouvre la section 4.
+L'application propose la lampe à habiller en section 1, sous « Où l'on en est ». Les images et les finitions triplanaires sont en section 2, sous « Une image projetée sur trois axes : Box ». La bibliothèque est en section 3, sous « Récupérer une matière : File > Append ». La lampe habillée suit l'atelier, et la planche CMF ferme le chapitre. Le défi est dans la rubrique « Pour aller plus loin » de la barre latérale (Défi 2).
 
 > **À savoir :** chaque fichier `.blend` du chapitre contient un texte LISEZ-MOI, affiché à l'ouverture : en bas de l'écran dans l'espace *Layout*, en haut à gauche dans les deux fichiers qui s'ouvrent sur l'espace *Shading*. Il donne les consignes par paliers (socle, ★, ★★) et dit où se trouve le corrigé. Ce document n'a donc pas d'annexe de consignes : projetez le LISEZ-MOI ou renvoyez-y. Celui de la lampe marque *Coat* et le grain de l'ABS d'une étoile : en séance, tout le monde les fait. Les matières des corrigés ne sont pas des actifs : la bibliothèque *Current File* est vide au début de la section 3. Un apprenant qui garde sa propre lampe n'a pas le corrigé dans son fichier : il le voit sur votre écran, ou ouvre `PRC02_ch3_lampe_a_habiller.blend` dans une seconde fenêtre de Blender.
 
@@ -96,7 +97,7 @@ Les trois sections du chapitre 3, puis l'atelier. Les apprenants repartent avec 
 - **Montrez le but :** ouvrez la lampe habillée, `PRC02_ch3_lampe_habillage.blend`, en *Material Preview* : les deux coloris côte à côte (figure 3.1). « À la fin de la demi-journée, votre lampe ressemble à celle-ci, et ses matières sont rangées pour vos prochains projets. »
 - **Le mot du jour :** CMF, pour *Color, Material, Finish*. C'est le métier qui choisit les teintes, les matières et les finitions d'un produit : la sellerie d'un train, la planche de bord d'une voiture, l'habillage d'une cabine d'avion.
 - **Une phrase sur les Basics,** qui l'annonçaient : « *Material Preview* sert aujourd'hui à juger les matières ; *Rendered* viendra au chapitre 4, consacré au rendu. »
-- **Une phrase sur le défi :** « Pour ceux qui sont à l'aise, ou qui connaissent déjà ces sujets : un défi facultatif, hors programme, en section 4 de l'application. » Pas de démonstration.
+- **Une phrase sur le défi :** « Pour ceux qui sont à l'aise, ou qui connaissent déjà ces sujets : un défi facultatif, hors programme, dans la rubrique « Pour aller plus loin » de l'application. » Pas de démonstration.
 
 **Le check-up (sur poste, 10 min),** d'après § 1 « Recette · Prendre le fichier en main » : chacun ouvre `lampe_modele_v001.blend` et l'enregistre aussitôt sous `lampe_habillage_v001.blend` (*File > Save As*). Puis il vérifie cinq points déjà vus, numérotés de 2 à 6 dans l'application :
 - chaque pièce porte un nom clair dans la collection *Lampe* ;
@@ -344,7 +345,7 @@ La fiche complète est plus bas. Le lancement dure 2 minutes, l'autonomie 16 min
   - « Pourquoi l'ampoule ne montrait-elle que l'image d'environnement ? »
 - **Quiz (1 min),** ensemble à l'écran : le deuxième quiz de la section 3, *Link* face à *Append*. Puis : « Append ou Link, pour envoyer votre fichier à un client ? »
 - **Passerelle (2 min) :** « Au chapitre 4, la lampe sort de la vue de travail. Vous l'amènerez dans un studio par Append, vous l'éclairerez, vous la cadrerez et vous en tirerez des visuels. » Vérifiez que chacun a enregistré `lampe_habillage_v002.blend`, images empaquetées, avec `blender_assets.cats.txt` à côté.
-- **Pour aller plus loin :** les défis de « Pour ceux qui avancent vite », et le défi facultatif de la section 4.
+- **Pour aller plus loin :** les défis de « Pour ceux qui avancent vite », et le défi facultatif « Matières procédurales ».
 
 <!-- pagebreak -->
 
@@ -393,7 +394,7 @@ La fiche complète est plus bas. Le lancement dure 2 minutes, l'autonomie 16 min
 
 ## Le défi facultatif · Matières procédurales
 
-La section 4 de l'application, hors programme de base et hors minutage : environ 3 heures, en deux paliers et sept étapes. Vous n'en faites aucune démonstration.
+Le Défi 2 de la rubrique « Pour aller plus loin » de la barre latérale, qui prolonge ce chapitre, hors programme de base et hors minutage : environ 3 heures, en deux paliers et sept étapes. Vous n'en faites aucune démonstration.
 
 **À qui :** aux apprenants qui parcourent vite le contenu principal, et à ceux qui maîtrisent déjà ces sujets. En cas de doute, les trois quiz de la section 2 servent de test d'entrée.
 
@@ -402,13 +403,13 @@ La section 4 de l'application, hors programme de base et hors minutage : environ
 - pendant l'atelier, une fois le socle du coloris B fait et `lampe_habillage_v002.blend` enregistré, à la place des paliers ★ et ★★ ;
 - après la séance : chacun reprend à l'étape où il s'est arrêté.
 
-L'introduction de la section 4 permet aussi de le faire à la place de parties de base. L'apprenant reprend alors le chapitre 4 avec son fichier de secours, avec la lampe habillée ou avec sa propre lampe, gardée dans la collection *Lampe* de `lampe_habillage_v002.blend`.
+Son introduction permet aussi de le faire à la place de parties de base. L'apprenant reprend alors le chapitre 4 avec son fichier de secours, avec la lampe habillée ou avec sa propre lampe, gardée dans la collection *Lampe* de `lampe_habillage_v002.blend`.
 
-**Le fichier :** `PRC02_ch3_defi_procedural.blend`, proposé en tête de la section 4 et enregistré sous `defi_procedural_v001.blend`. Il s'ouvre dans l'espace *Shading*, sur les rangées des étapes 1 et 2 ; les autres rangées et la copie de la lampe, `Lampe_defi`, sont masquées. Sa case *Raytracing* est décochée : l'ampoule de `Lampe_defi` ne montre que l'environnement, c'est voulu.
+**Le fichier :** `PRC02_ch3_defi_procedural.blend`, proposé en tête du défi et enregistré sous `defi_procedural_v001.blend`. Il s'ouvre dans l'espace *Shading*, sur les rangées des étapes 1 et 2 ; les autres rangées et la copie de la lampe, `Lampe_defi`, sont masquées. Sa case *Raytracing* est décochée : l'ampoule de `Lampe_defi` ne montre que l'environnement, c'est voulu.
 
 | Palier | Étape | Durée | Ce que l'on apprend |
 |---|---|---|---|
-| | Avant de commencer | 5 min | L'aperçu d'un nœud, `Ctrl + Maj + clic` (figure 3.50) |
+| | Avant de commencer | 5 min | L'aperçu d'un nœud, `Ctrl + Maj + clic` (figure D2.3) |
 | 1 | 1 · Lire les textures de bruit | 20 min | *Noise*, *Voronoi*, *Wave*, *Gabor* |
 | 1 | 2 · Remapper les valeurs | 20 min | *Color Ramp*, *Map Range*, *Math* |
 | 1 | 3 · Masques et couches | 20 min | *Mix Color*, *Mix*, *Separate XYZ* |
@@ -456,7 +457,7 @@ Chaque étape suit le même ordre : un exemple terminé, une recette guidée, un
 - **Aéronautique (★★) :** l'accoudoir en cuir grainé et le panneau carbone, sur le fichier des finitions triplanaires, d'après son LISEZ-MOI.
 - **Ferroviaire (★★) :** le marchepied en tôle larmée, puis la rangée de sièges de l'initiation, `PRC02_init_rangee_sieges.blend`, habillée avec la bibliothèque.
 - **Sa propre bibliothèque (★★) :** son dossier de travail déclaré comme bibliothèque, puis un objet habillé dans un nouveau fichier.
-- Le défi facultatif de la section 4, et le rôle de copilote, comme à l'initiation.
+- Le défi facultatif « Matières procédurales », et le rôle de copilote, comme à l'initiation.
 
 ## Animer : ce qui change au chapitre 3
 

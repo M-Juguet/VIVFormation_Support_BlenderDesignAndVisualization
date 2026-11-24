@@ -3,6 +3,8 @@
 PRC02 · Design & visualisation temps réel avec Blender · Blender 5.2 LTS, interface en anglais
 Demi-journée 5 et travail personnel · Complément facultatif, hors programme de base · Plan rédigé et validé le 18 novembre 2026, précisions du formateur intégrées ; produit le 19 novembre 2026 (voir « Décisions de production »)
 
+> **Mise à jour du 24 novembre 2026, décision du formateur.** Le défi n'est plus la section 4 du chapitre 3 : il forme le **Défi 2** de la rubrique « Pour aller plus loin » de l'application, sous les chapitres, pour garder le chapitre des matières simple et rendre le défi facile à trouver. Sa source est `_resources/PRC02-SU-26v01_defi2_matieres_procedurales.md` ; ses figures 3.48 à 3.96 deviennent D2.1 à D2.49. Ses identifiants de modules (`ch3_sec4_…`) ne changent pas. Ce plan garde la numérotation et les renvois d'origine. Le chapitre 3 se termine désormais par la ressource complémentaire de la planche CMF (figure 3.48).
+
 ## En bref
 
 - **Un complément facultatif, hors programme de base :** le défi n'est pas prévu dans la formation initiale. Il ajoute des connaissances utiles qu'elle ne couvre pas. L'écran Programme, le titre de la section et son introduction le signalent comme facultatif.

@@ -5,6 +5,9 @@ import '../models/content_module.dart';
 export 'chapter2_data.dart';
 export 'chapter3_data.dart';
 export 'chapter4_data.dart';
+// Les défis de « Pour aller plus loin », sortis des chapitres 2 et 3.
+export 'challenge1_data.dart';
+export 'challenge2_data.dart';
 
 const List<ContentModule> basics101Modules = [
   TitleModule(

@@ -1,7 +1,9 @@
-# Convertit toute la source Markdown du chapitre 2 (format de writer_guide.md) en modules Dart, et
-# remplace la liste chapter2Modules de lib/core/data/chapter2_data.dart.
-# Étend tool/exercices_ch2_defi/md_vers_dart.py aux sections 1 à 3 (contenu de base) ; la section 4
-# (défi facultatif) garde exactement ses identifiants.
+# Convertit la source Markdown du chapitre 2 (format de writer_guide.md) en modules Dart, et remplace la
+# liste chapter2Modules de lib/core/data/chapter2_data.dart. Convertit aussi le défi « Modélisation
+# avancée » (rubrique « Pour aller plus loin », ancienne section 4 du chapitre), depuis sa propre source,
+# _resources/PRC02-SU-26v01_defi1_modelisation_avancee.md, en challenge1Modules
+# (lib/core/data/challenge1_data.dart). Le défi garde exactement ses identifiants (ch2_sec4_…) : les
+# signets et les quiz déjà faits restent valables. Remplace tool/exercices_ch2_defi/md_vers_dart.py.
 #
 # Usage, depuis la racine du dépôt, avec le Python livré avec Blender :
 #   "C:\Program Files\Blender Foundation\Blender 5.2\5.2\python\bin\python.exe" -I ^
@@ -25,6 +27,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 SRC = os.path.join(ROOT, "_resources", "PRC02-SU-26v01_chap2_modelisation_non_destructive.md")
 DART = os.path.join(ROOT, "lib", "core", "data", "chapter2_data.dart")
+DEFI_SRC = os.path.join(ROOT, "_resources", "PRC02-SU-26v01_defi1_modelisation_avancee.md")
+DEFI_DART = os.path.join(ROOT, "lib", "core", "data", "challenge1_data.dart")
 CHAPTER_TITLE = "Modélisation non destructive : modificateurs et courbes"
 
 INFO = {"NOTE": "info", "IMPORTANT": "info", "TIP": "tip", "WARNING": "warning", "CAUTION": "challenge", "IDEA": "idea"}
@@ -191,7 +195,7 @@ def assign_ids_sec4(mods):
 
 def assign_ids(mods):
     """Sections 1 à 3 : numérotation par section et par type ; section 4 : logique du défi, inchangée."""
-    idx4 = next(i for i, (k, d) in enumerate(mods) if k == "title" and d.startswith("4."))
+    idx4 = next((i for i, (k, d) in enumerate(mods) if k == "title" and d.startswith("4.")), len(mods))
     out = []
     sec = None
     counters = {}
@@ -249,14 +253,27 @@ def dart_module(mid, kind, d):
     raise ValueError(kind)
 
 
+def write_list(path, name, comment, body):
+    """Remplace la liste Dart `name` du fichier `path` par les modules de `body`."""
+    block = "const List<ContentModule> %s = [\n%s%s\n];" % (name, comment, "\n".join(body))
+    dart = open(path, encoding="utf-8").read()
+    pat = re.compile(r"const List<ContentModule> %s = \[.*?\n\];|const List<ContentModule> %s = \[\];" % (name, name), re.S)
+    assert len(pat.findall(dart)) == 1, "liste %s introuvable ou multiple" % name
+    dart = pat.sub(lambda _: block, dart)
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write(dart)
+
+
 def main():
-    text = open(SRC, encoding="utf-8").read()
-    mods = assign_ids(parse(text))
-    ids = [m[0] for m in mods]
+    mods = assign_ids(parse(open(SRC, encoding="utf-8").read()))
+    # le défi : son premier « ## » devient l'en-tête de sa page (ch2_sec4_title)
+    defi = assign_ids_sec4(parse(open(DEFI_SRC, encoding="utf-8").read()))
+    assert defi and defi[0][0] == "ch2_sec4_title", defi[:1]
+    ids = [m[0] for m in mods + defi]
     dup = {x for x in ids if ids.count(x) > 1}
     assert not dup, dup
     missing = []
-    for mid, kind, d in mods:
+    for mid, kind, d in mods + defi:
         if kind in ("side", "media"):
             p = os.path.join(ROOT, d["imagePath"].replace("/", os.sep))
             if not os.path.exists(p):
@@ -264,23 +281,20 @@ def main():
     assert not missing, missing
     body = ["  TitleModule(\n    id: 'ch2_title',\n    title: %s,\n  )," % dart_str(CHAPTER_TITLE)]
     body += [dart_module(*m) for m in mods]
-    block = ("const List<ContentModule> chapter2Modules = [\n"
-             "  // --- Sections 1 à 4 : contenu de base et défi facultatif ---------------------\n"
-             "  // Généré par tool/exercices_ch2/md_vers_dart.py depuis\n"
-             "  // _resources/PRC02-SU-26v01_chap2_modelisation_non_destructive.md\n"
-             + "\n".join(body) + "\n];")
-    dart = open(DART, encoding="utf-8").read()
-    pat = re.compile(r"const List<ContentModule> chapter2Modules = \[.*?\n\];|const List<ContentModule> chapter2Modules = \[\];", re.S)
-    assert len(pat.findall(dart)) == 1, "liste chapter2Modules introuvable ou multiple"
-    dart = pat.sub(lambda _: block, dart)
-    with open(DART, "w", encoding="utf-8", newline="\n") as f:
-        f.write(dart)
-    kinds = {}
-    for _, k, _d in mods:
-        kinds[k] = kinds.get(k, 0) + 1
-    print("MODULES", len(mods) + 1, kinds)
-    for mid, kind, d in mods:
-        print(" ", mid, kind)
+    write_list(DART, "chapter2Modules",
+               "  // --- Sections 1 à 3 : contenu de base ; le défi est dans challenge1_data.dart ----\n"
+               "  // Généré par tool/exercices_ch2/md_vers_dart.py depuis\n"
+               "  // _resources/PRC02-SU-26v01_chap2_modelisation_non_destructive.md\n", body)
+    write_list(DEFI_DART, "challenge1Modules",
+               "  // --- Pour aller plus loin · Défi 1 : modélisation avancée ---------------------\n"
+               "  // Généré par tool/exercices_ch2/md_vers_dart.py depuis\n"
+               "  // _resources/PRC02-SU-26v01_defi1_modelisation_avancee.md\n",
+               [dart_module(*m) for m in defi])
+    for label, lst, extra in (("CHAPITRE", mods, 1), ("DEFI", defi, 0)):
+        kinds = {}
+        for _, k, _d in lst:
+            kinds[k] = kinds.get(k, 0) + 1
+        print(label, "MODULES", len(lst) + extra, kinds)
 
 
 if __name__ == "__main__":

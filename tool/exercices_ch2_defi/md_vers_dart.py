@@ -17,6 +17,12 @@ import os
 import re
 import sys
 
+# Remplacé le 24 novembre 2026 : le défi est sorti du chapitre 2 (rubrique « Pour aller plus loin »).
+# Sa conversion se fait désormais avec tool/exercices_ch2/md_vers_dart.py, qui écrit chapter2Modules et
+# challenge1Modules. Lancé tel quel, ce script écraserait chapter2Modules : il s'arrête.
+if __name__ == "__main__":
+    sys.exit("Remplacé par tool/exercices_ch2/md_vers_dart.py (chapitre 2 et défi « Modélisation avancée »).")
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 SRC = os.path.join(ROOT, "_resources", "PRC02-SU-26v01_chap2_modelisation_non_destructive.md")

@@ -35,6 +35,21 @@ class ProgramScreen extends StatelessWidget {
           Column(
             children: CourseData.formation.map((chapter) => _buildChapterCard(context, chapter)).toList(),
           ),
+          const SizedBox(height: VivSpacing.space6),
+          const VivOverline('Pour aller plus loin'),
+          const SizedBox(height: VivSpacing.space3),
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Text(
+              'Des défis facultatifs, hors programme, pour ceux qui sont à l\'aise avec le chapitre '
+              'qu\'ils prolongent ou qui connaissent déjà ces sujets. Ils ne comptent pas dans la progression.',
+              style: VivTypography.body.copyWith(color: VivColors.inkMuted),
+            ),
+          ),
+          const SizedBox(height: VivSpacing.space6),
+          Column(
+            children: CourseData.challenges.map((chapter) => _buildChapterCard(context, chapter)).toList(),
+          ),
         ],
       ),
     );
@@ -52,7 +67,8 @@ class ProgramScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                VivBadge('Chapitre ${chapter.number.toString().padLeft(2, '0')}', tone: VivBadgeTone.gold),
+                VivBadge('${chapter.isChallenge ? 'Défi' : 'Chapitre'} ${chapter.number.toString().padLeft(2, '0')}',
+                    tone: VivBadgeTone.gold),
                 if (chapter.showsPreparationBadge) ...[
                   const SizedBox(width: VivSpacing.space2),
                   const VivBadge('En préparation'),

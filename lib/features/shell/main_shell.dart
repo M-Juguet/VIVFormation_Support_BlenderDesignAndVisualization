@@ -29,6 +29,7 @@ class _MainShellState extends ConsumerState<MainShell> {
   bool _isSidebarCollapsed = false;
   bool _isBasicsExpanded = true;
   bool _isFormationExpanded = true;
+  bool _isChallengesExpanded = true;
 
   bool _isSearchActive = false;
   final TextEditingController _searchController = TextEditingController();
@@ -169,6 +170,15 @@ class _MainShellState extends ConsumerState<MainShell> {
                       chapters: CourseData.formation,
                       isExpanded: _isFormationExpanded,
                       onToggle: () => setState(() => _isFormationExpanded = !_isFormationExpanded),
+                      selectedIndex: selectedIndex,
+                      isCompact: isCompact,
+                    ),
+                    const SizedBox(height: VivSpacing.space4),
+                    ..._buildSection(
+                      title: 'Pour aller plus loin',
+                      chapters: CourseData.challenges,
+                      isExpanded: _isChallengesExpanded,
+                      onToggle: () => setState(() => _isChallengesExpanded = !_isChallengesExpanded),
                       selectedIndex: selectedIndex,
                       isCompact: isCompact,
                     ),

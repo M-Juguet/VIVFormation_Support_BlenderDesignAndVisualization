@@ -3,6 +3,8 @@
 PRC02 · Design & visualisation temps réel avec Blender · Blender 5.2 LTS, interface en anglais
 Demi-journée 4 et travail personnel · Complément facultatif, hors programme de base · Plan rédigé le 18 novembre 2026, **validé le même jour par la session principale, par délégation du formateur**, avec quatre ajustements (décision 16) ; à confirmer par le formateur
 
+> **Mise à jour du 24 novembre 2026, décision du formateur.** Le défi n'est plus la section 4 du chapitre 2 : il forme le **Défi 1** de la rubrique « Pour aller plus loin » de l'application, sous les chapitres, pour garder le chapitre simple et rendre le défi facile à trouver. Sa source est `_resources/PRC02-SU-26v01_defi1_modelisation_avancee.md` ; ses figures 2.33 à 2.66 deviennent D1.1 à D1.34. Ses identifiants de modules (`ch2_sec4_…`) ne changent pas. Ce plan garde la numérotation et les renvois d'origine.
+
 ## En bref
 
 - **Un complément facultatif, hors programme de base :** le défi n'est pas prévu dans la formation initiale. Il ajoute des techniques de modélisation utiles en design de transport, que le chapitre 2 ne couvre pas. L'écran Programme, le titre de la section et son introduction le signalent comme facultatif.

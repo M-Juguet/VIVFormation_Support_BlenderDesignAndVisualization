@@ -25,7 +25,7 @@ Ces notions sont dans l'application. Elles ne sont pas exigées en séance, et c
 - *Extrude* et *Offset* d'une courbe : cités, comme pièges.
 - *Circle*, le cercle de Bézier, et les champs *Screw* et *Iterations* du *Screw* : cités ; ils servent au défi des ressorts.
 - Le *Boolean* : seulement en défi (figure 2.31).
-- La section 4, le défi facultatif : annoncée en une phrase, sans démonstration.
+- Le défi facultatif « Modélisation avancée », dans la rubrique « Pour aller plus loin » de la barre latérale : annoncé en une phrase, sans démonstration.
 
 ### Les fichiers
 
@@ -35,10 +35,10 @@ Ces notions sont dans l'application. Elles ne sont pas exigées en séance, et c
 | `PRC02_ch2_croquis_ampoule.zip` | 2:10, si besoin | Le demi-profil de l'ampoule, déjà placé dans le fichier de départ ; pour ceux qui gardent leur propre blocage |
 | `PRC02_ch2_lampe_modele.blend` | Fin de séance | La lampe terminée, noms sans suffixe : le corrigé de l'atelier et le départ du chapitre 3 |
 | `PRC02_ch2_liseuse_depart.blend` | Atelier, pour ceux qui avancent vite | Le défi ★★ de la liseuse, avec son corrigé masqué *Corrigé* |
-| `PRC02_ch2_defi_modelisation.blend` | Hors minutage | Le défi facultatif de la section 4 ; corrigés dans « Corrigé défi modélisation » |
+| `PRC02_ch2_defi_modelisation.blend` | Hors minutage | Le défi facultatif « Modélisation avancée » ; corrigés dans « Corrigé défi modélisation » |
 | `PRC02_ch2_demos_secteurs.blend` | Moments « Ailleurs » | Votre poste seulement : un capot, une soufflante, une main courante de tram et une roue ferroviaire, déjà terminés |
 
-L'application propose le fichier de départ en section 1, sous « Du blocage au modèle », et le croquis en section 2, sous « Profil de révolution : l'ampoule ». La lampe modélisée et la liseuse sont en section 3, sous la checklist et dans « Les défis ★★ » ; le défi facultatif, en section 4. Le fichier de démos n'est pas dans l'application : il est dans le dossier `_resources/exercices/` du dépôt, avec les autres.
+L'application propose le fichier de départ en section 1, sous « Du blocage au modèle », et le croquis en section 2, sous « Profil de révolution : l'ampoule ». La lampe modélisée et la liseuse sont en section 3, sous la checklist et dans « Les défis ★★ »  ; le défi facultatif, dans la rubrique « Pour aller plus loin » de la barre latérale (Défi 1). Le fichier de démos n'est pas dans l'application : il est dans le dossier `_resources/exercices/` du dépôt, avec les autres.
 
 > **À savoir :** chaque fichier s'ouvre sur un texte LISEZ-MOI en bas de l'écran ; `Ctrl + Espace`, la souris au-dessus, l'agrandit. Celui du fichier de départ suit la séance : une partie par séquence, de « 0 · Repères » à « 6 · Atelier », chacune avec son socle, un palier ★ et un contrôle. Il tient lieu de consignes : ce document n'a pas d'annexe et renvoie à ses parties. Les fichiers sont réglés sur EEVEE et affichent des millimètres : cette fois, pas de moteur à vérifier.
 
@@ -94,7 +94,7 @@ Les trois sections du chapitre 2. Les apprenants repartent avec leur lampe modé
 - **Où l'on en est (collectif, 4 min) :** « Au chapitre 1, vous avez arrêté les proportions de la lampe. Aujourd'hui, chaque volume devient une pièce propre, et chaque décision reste modifiable. Au chapitre 3, ces pièces recevront leurs matières. »
 - **Montrez le but :** sur votre copie, fermez l'œil de *Lampe* et ouvrez celui de *Corrigé* : la lampe terminée apparaît dans le gabarit (figure 2.28). Sélectionnez *Grille_aeration_corrige* ; onglet *Modifiers*, *Count* 18 : une demi-couronne. Remettez 36. « C'est cela, le non destructif. » Puis refermez l'œil de *Corrigé* et rouvrez celui de *Lampe*.
 - **La règle du jour,** au paperboard : « On n'applique aucun modificateur. »
-- **Le défi facultatif, en une phrase :** « Pour ceux qui sont à l'aise, ou qui connaissent déjà ces sujets : un défi facultatif, hors programme, en section 4 de l'application. » Pas de démonstration.
+- **Le défi facultatif, en une phrase :** « Pour ceux qui sont à l'aise, ou qui connaissent déjà ces sujets : un défi facultatif, hors programme, dans la rubrique « Pour aller plus loin » de l'application. » Pas de démonstration.
 
 **Ils font, sur poste (6 min),** d'après § 1 « Du blocage au modèle » et « Recette · Prendre le fichier en main » (figure 2.1) :
 1. *File > Open* : `PRC02_ch2_lampe_depart.blend`. Ceux qui ne l'ont pas le téléchargent dans l'application, en section 1.
@@ -335,7 +335,7 @@ La fiche complète est plus bas. Le lancement dure 5 minutes, l'autonomie 40 min
 
 **Paliers :**
 - **★ :** l'encart *CAUTION* « Les paliers ★ de l'atelier ». Des molettes de serrage sur les articulations : l'interrupteur, ses crans et son *Empty* sélectionnés ensemble, `Alt + D`, la copie tournée de X -90° et posée contre l'articulation. Une rainure sur le pourtour du socle : deux boucles (*Loop Cut*), puis la bande entre elles extrudée de 1 mm vers l'intérieur. Une collection par sous-ensemble, *Pied*, *Bras* et *Tête*, dans *Lampe*.
-- **★★ :** les défis de la partie « Pour ceux qui avancent vite », puis le défi facultatif de la section 4.
+- **★★ :** les défis de la partie « Pour ceux qui avancent vite », puis le défi facultatif « Modélisation avancée ».
 
 **Points d'observation :**
 - Trois articulations de diamètres différents : des copies simples (`Maj + D`) redimensionnées en Mode Édition, ou trois cylindres. Une copie redimensionnée en Mode Objet garde une échelle différente de 1.
@@ -351,13 +351,13 @@ La fiche complète est plus bas. Le lancement dure 5 minutes, l'autonomie 40 min
 
 ## Le défi facultatif · Modélisation avancée
 
-La section 4 de l'application. Un complément hors programme et hors minutage : vous n'en faites aucune démonstration.
+Le Défi 1 de la rubrique « Pour aller plus loin » de la barre latérale, qui prolonge ce chapitre. Un complément hors programme et hors minutage : vous n'en faites aucune démonstration. Ses figures sont numérotées D1.1 à D1.34.
 
 **Pour qui :** ceux qui parcourent vite le contenu principal, et ceux qui maîtrisent déjà ces sujets. Le défi apprend à poser des détails sur des surfaces courbes et à garder ces surfaces propres : le quotidien du design de carrosserie, de cabine et de fuselage.
 
 **Quand le proposer :** annoncez-le en une phrase à 0:00. Proposez-le pendant l'atelier, à qui a fini le socle et enregistré `lampe_modele_v001.blend` : le défi se fait dans un autre fichier, et la lampe du chapitre 3 n'est pas touchée. La suite se fait après la séance ; chaque étape se termine par un quiz et une comparaison avec le corrigé. Celui qui maîtrise déjà le chapitre 2 peut le faire à la place : il reprend alors le chapitre 3 avec `PRC02_ch2_lampe_modele.blend` ou avec le fichier de secours du chapitre 3.
 
-**Le fichier :** `PRC02_ch2_defi_modelisation.blend`, en section 4, enregistré sous `defi_modelisation_v001.blend`. Une collection par étape ; gris clair pour les carrosseries, gris sombre pour les détails finis, orange pour les pièces à travailler. Son LISEZ-MOI résume les recettes.
+**Le fichier :** `PRC02_ch2_defi_modelisation.blend`, en tête du défi, enregistré sous `defi_modelisation_v001.blend`. Une collection par étape ; gris clair pour les carrosseries, gris sombre pour les détails finis, orange pour les pièces à travailler. Son LISEZ-MOI résume les recettes.
 
 | Étape | Ce qu'on apprend | Sur quelle pièce |
 |---|---|---|
@@ -404,7 +404,7 @@ Le palier 1, les étapes 1 à 4, dure environ 90 minutes ; le palier 2, 55 minut
 - **Une grille au dos de l'abat-jour (★★) :** la même couronne, sur l'axe incliné de la tête.
 - Leurs solutions : *Corrigé défis*, sous-collections *Chape*, *Tulipe*, *Ressorts*, *Perçage* et *Grille tête*.
 - **La liseuse de cabine (★★) :** `PRC02_ch2_liseuse_depart.blend` (figure 2.32), enregistré sous `liseuse_modele_v001.blend`. Six étapes dans son LISEZ-MOI : la platine, les vis en symétrie, le bouton moleté, le col de cygne, la tête en coque et le diffuseur. Son corrigé est dans sa collection masquée *Corrigé*. Le bouton a 16 crans : son *Empty* tourne de 22,5° autour de Y.
-- Le défi facultatif de la section 4.
+- Le défi facultatif « Modélisation avancée ».
 - Le rôle de copilote, comme à l'initiation.
 
 ## Animer : ce qui change au chapitre 2

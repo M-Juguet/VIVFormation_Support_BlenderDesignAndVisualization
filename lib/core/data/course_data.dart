@@ -4,8 +4,9 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import '../models/content_module.dart';
 import 'mock_chapters_data.dart';
 
-/// Section de la barre latérale à laquelle appartient un chapitre.
-enum CourseSection { bases, formation }
+/// Section de la barre latérale à laquelle appartient un chapitre : les bases, la formation, puis
+/// « Pour aller plus loin », les défis facultatifs hors programme.
+enum CourseSection { bases, formation, plusLoin }
 
 /// Point clé du programme, lien direct vers une section d'un chapitre.
 class ChapterPoint {
@@ -32,7 +33,7 @@ class CourseChapter {
 
   final CourseSection section;
 
-  /// Numéro affiché : 101, 102, 103 pour les bases, 1 à 4 pour la formation.
+  /// Numéro affiché : 101, 102, 103 pour les bases, 1 à 4 pour la formation, 1 et 2 pour les défis.
   final int number;
 
   /// Libellé court de la barre latérale et de l'en-tête.
@@ -72,16 +73,21 @@ class CourseChapter {
 
   bool get isBasics => section == CourseSection.bases;
 
+  /// Un défi de la rubrique « Pour aller plus loin » : facultatif, hors du parcours et de la progression.
+  bool get isChallenge => section == CourseSection.plusLoin;
+
   bool get isInPreparation => modules.isEmpty;
 
   /// Badge « En préparation » du tableau de bord et du Programme.
   bool get showsPreparationBadge => isInPreparation || baseContentPending;
 
-  /// « Basics 101 » ou « Chapitre 1 ».
-  String get shortLabel => isBasics ? 'Basics $number' : 'Chapitre $number';
+  /// « Basics 101 », « Chapitre 1 » ou « Défi 1 ».
+  String get shortLabel => isBasics ? 'Basics $number' : (isChallenge ? 'Défi $number' : 'Chapitre $number');
 
   /// Sur-titre du chapitre (à composer en capitales).
-  String get overline => isBasics ? 'Les bases · Basics $number' : 'Formation · Chapitre $number';
+  String get overline => isBasics
+      ? 'Les bases · Basics $number'
+      : (isChallenge ? 'Pour aller plus loin · Défi $number' : 'Formation · Chapitre $number');
 }
 
 /// Identité de la formation et registre ordonné de ses chapitres.
@@ -172,7 +178,6 @@ class CourseData {
         ChapterPoint(label: 'Modificateurs : symétrie, épaisseur, répétition', targetModuleId: 'ch2_sec1_title'),
         ChapterPoint(label: 'Courbes de Bézier : profils et détails', targetModuleId: 'ch2_sec2_title'),
         ChapterPoint(label: 'Atelier : concept d\'objet industriel', targetModuleId: 'ch2_sec3_title'),
-        ChapterPoint(label: 'Défi facultatif : modélisation avancée', targetModuleId: 'ch2_sec4_title'),
       ],
     ),
 
@@ -193,7 +198,6 @@ class CourseData {
         ChapterPoint(label: 'Finitions CMF en projection triplanaire', targetModuleId: 'ch3_sec2_title'),
         ChapterPoint(label: 'Bibliothèque d\'actifs (Asset Browser)', targetModuleId: 'ch3_sec3_title'),
         ChapterPoint(label: 'Atelier : le second coloris', targetModuleId: 'ch3_atelier'),
-        ChapterPoint(label: 'Défi facultatif : matières procédurales', targetModuleId: 'ch3_sec4_title'),
       ],
     ),
     CourseChapter(
@@ -214,11 +218,54 @@ class CourseData {
         ChapterPoint(label: 'Atelier : concept final', targetModuleId: 'ch4_sec4_title'),
       ],
     ),
+
+    // --- Pour aller plus loin : défis facultatifs, hors programme ---------------
+    // Leurs modules gardent les identifiants qu'ils avaient en section 4 des chapitres 2 et 3 :
+    // les signets et les quiz déjà faits restent valables.
+    CourseChapter(
+      route: '/defi-modelisation',
+      branchIndex: 11,
+      section: CourseSection.plusLoin,
+      number: 1,
+      navLabel: 'Modélisation avancée',
+      title: 'Modélisation avancée : surfaces, shrinkwrap et découpes',
+      objective:
+          'Après le chapitre 2 : tendre une surface en subdivision, conformer un détail à une surface courbe avec le Shrinkwrap et découper une pièce sans la détruire, sur des pièces des trois secteurs.',
+      icon: LucideIcons.pyramid,
+      modules: challenge1Modules,
+      points: [
+        ChapterPoint(label: 'Palier 1 : surfaces et shrinkwrap', targetModuleId: 'ch2_sec4_pal1_txt1'),
+        ChapterPoint(label: 'Palier 2 : découpes et normales', targetModuleId: 'ch2_sec4_pal2_txt1'),
+        ChapterPoint(label: 'Atelier : le rétroviseur extérieur', targetModuleId: 'ch2_sec4_atelier_txt1'),
+      ],
+    ),
+    CourseChapter(
+      route: '/defi-procedural',
+      branchIndex: 12,
+      section: CourseSection.plusLoin,
+      number: 2,
+      navLabel: 'Matières procédurales',
+      title: 'Matières procédurales : bruits, usure et motifs',
+      objective:
+          'Après le chapitre 3 : construire des matières calculées par Blender, sans image ni dépliage UV, des textures de bruit à l\'usure, aux motifs réguliers et aux groupes de nœuds réutilisables.',
+      icon: LucideIcons.wandSparkles,
+      modules: challenge2Modules,
+      points: [
+        ChapterPoint(label: 'Palier 1 : lire et combiner', targetModuleId: 'ch3_sec4_palier1'),
+        ChapterPoint(label: 'Palier 2 : usure, motifs, groupes', targetModuleId: 'ch3_sec4_palier2'),
+      ],
+    ),
   ];
 
   static Iterable<CourseChapter> get basics => chapters.where((c) => c.isBasics);
 
-  static Iterable<CourseChapter> get formation => chapters.where((c) => !c.isBasics);
+  static Iterable<CourseChapter> get formation => chapters.where((c) => c.section == CourseSection.formation);
+
+  /// Les défis de « Pour aller plus loin ».
+  static Iterable<CourseChapter> get challenges => chapters.where((c) => c.isChallenge);
+
+  /// Le parcours : les bases et la formation, sans les défis. La progression se compte sur lui.
+  static Iterable<CourseChapter> get core => chapters.where((c) => !c.isChallenge);
 
   static CourseChapter? byRoute(String route) {
     for (final c in chapters) {
@@ -230,14 +277,21 @@ class CourseData {
   static CourseChapter byBranch(int branchIndex) =>
       chapters.firstWhere((c) => c.branchIndex == branchIndex);
 
+  /// Les flèches « précédent » et « suivant » restent dans le groupe du chapitre : le parcours d'un
+  /// côté, les défis de l'autre. Le chapitre 4 ne mène pas aux défis.
+  static List<CourseChapter> _groupOf(CourseChapter chapter) =>
+      (chapter.isChallenge ? challenges : core).toList();
+
   static CourseChapter? previousOf(CourseChapter chapter) {
-    final i = chapters.indexOf(chapter);
-    return i > 0 ? chapters[i - 1] : null;
+    final group = _groupOf(chapter);
+    final i = group.indexOf(chapter);
+    return i > 0 ? group[i - 1] : null;
   }
 
   static CourseChapter? nextOf(CourseChapter chapter) {
-    final i = chapters.indexOf(chapter);
-    return (i >= 0 && i < chapters.length - 1) ? chapters[i + 1] : null;
+    final group = _groupOf(chapter);
+    final i = group.indexOf(chapter);
+    return (i >= 0 && i < group.length - 1) ? group[i + 1] : null;
   }
 
   /// Titres des écrans hors chapitres, par index de branche.

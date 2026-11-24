@@ -12,6 +12,7 @@ import '../../features/chapter_1/chapter_1_screen.dart';
 import '../../features/chapter_2/chapter_2_screen.dart';
 import '../../features/chapter_3/chapter_3_screen.dart';
 import '../../features/chapter_4/chapter_4_screen.dart';
+import '../../features/challenges/challenge_screen.dart';
 import '../../features/settings/settings_screen.dart';
 import '../../features/shell/main_shell.dart';
 import '../widgets/update_listener_wrapper.dart';
@@ -146,6 +147,29 @@ final routerProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: '/settings',
                 builder: (context, state) => const SettingsScreen(),
+              ),
+            ],
+          ),
+          // Pour aller plus loin : branches 11 et 12, dans l'ordre de CourseData.chapters
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/defi-modelisation',
+                builder: (context, state) {
+                  final target = state.uri.queryParameters['target'];
+                  return ChallengeScreen(route: '/defi-modelisation', targetModuleId: target);
+                },
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/defi-procedural',
+                builder: (context, state) {
+                  final target = state.uri.queryParameters['target'];
+                  return ChallengeScreen(route: '/defi-procedural', targetModuleId: target);
+                },
               ),
             ],
           ),

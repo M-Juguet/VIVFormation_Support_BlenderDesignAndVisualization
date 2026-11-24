@@ -22,7 +22,8 @@ class DashboardScreen extends ConsumerWidget {
     final bookmarkedIds = ref.watch(bookmarksProvider);
     final completedChapters = ref.watch(chapterProgressProvider);
 
-    final allChapters = CourseData.chapters;
+    // Les défis de « Pour aller plus loin » sont facultatifs : la progression ne compte que le parcours.
+    final allChapters = CourseData.core.toList();
     final completedCount = allChapters.where((c) => completedChapters.contains(c.route)).length;
     final progress = completedCount / allChapters.length;
     final formation = CourseData.formation.toList();
@@ -117,7 +118,7 @@ class DashboardScreen extends ConsumerWidget {
     Set<String> completedChapters,
   ) {
     CourseChapter? nextChapter;
-    for (final c in CourseData.chapters) {
+    for (final c in CourseData.core) {
       if (!completedChapters.contains(c.route)) {
         nextChapter = c;
         break;
