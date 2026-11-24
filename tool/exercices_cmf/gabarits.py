@@ -128,9 +128,10 @@ def g_metal_brosse():
     ng, I, O = group("GAB_Metal_Brosse", [
         ("Couleur", 'C', "C8C8C6", 0, 0), ("Brillance", 'F', 0.7, 0, 1, 'FACTOR'),
         ("Relief", 'F', 0.15, 0, 1, 'FACTOR'), ("Finesse du brossage (mm)", 'F', 1.0, 0.05, 20),
-        ("Rotation du brossage", 'A', 0.0, -6.3, 6.3)])
+        ("Rotation du brossage", 'A', pymath.pi / 2, -6.3, 6.3)])
     vec, _ = obj_xyz(ng)
-    # rayures le long de l'axe Z de la pièce (l'axe d'un tube) ; 90° les couche le long de X
+    # rayures le long de l'axe Z de la pièce (l'axe d'un tube) à 0° ; à 90°, valeur par défaut, le long
+    # de l'axe X d'une plaque
     rot = node(ng, "ShaderNodeVectorRotate", -1000, -150, rotation_type='Y_AXIS')
     ng.links.new(vec, rot.inputs["Vector"])
     feed(ng, rot.inputs["Angle"], I["Rotation du brossage"])
@@ -228,9 +229,9 @@ def g_perfore():
 
 def g_translucide():
     ng, I, O = group("GAB_Translucide_Cote", [
-        ("Couleur", 'C', "EEECE8", 0, 0), ("Translucidité", 'F', 0.85, 0, 1, 'FACTOR'),
-        ("Brillance", 'F', 0.65, 0, 1, 'FACTOR'), ("Relief", 'F', 0.35, 0, 1, 'FACTOR'),
-        ("Pas des côtes (mm)", 'F', 5.0, 0.2, 200), ("Ondulation (mm)", 'F', 1.5, 0, 100),
+        ("Couleur", 'C', "F4F2EE", 0, 0), ("Translucidité", 'F', 0.4, 0, 1, 'FACTOR'),
+        ("Brillance", 'F', 0.55, 0, 1, 'FACTOR'), ("Relief", 'F', 0.6, 0, 1, 'FACTOR'),
+        ("Pas des côtes (mm)", 'F', 9.0, 0.2, 200), ("Ondulation (mm)", 'F', 1.5, 0, 100),
         ("Longueur de l'onde (mm)", 'F', 90.0, 1, 2000)])
     _, xyz = obj_xyz(ng)
     xm = math(ng, 'MULTIPLY', xyz[0], 1000.0, x=-900, y=-300)
@@ -294,12 +295,12 @@ GABARITS = [  # matière, groupe, couleur d'affichage, description
     ("Gabarit_Plastique_Graine", g_plastique, "3A3D40",
      "Plastique grainé, avec mouchetures en option : Couleur, Brillance, Relief, taille du grain en mm."),
     ("Gabarit_Metal_Brosse", g_metal_brosse, "C8C8C6",
-     "Métal brossé, rayé le long de l'axe Z de la pièce (axe d'un tube) ; Rotation du brossage 90° pour une plaque."),
+     "Métal brossé : rayé le long de l'axe X d'une plaque (Rotation du brossage 90°) ; 0° pour un tube, rayé le long de son axe."),
     ("Gabarit_Tissu_Motif", g_tissu, "2A2F55",
      "Tissu à motif : l'image du motif (Open), sa taille en mm et sa rotation, Velours, Relief de la trame."),
     ("Gabarit_Perfore", g_perfore, "8A979E",
      "Tôle ou panneau perforé : pas et diamètre des trous en mm, en quinconce ou en ligne ; les trous sont transparents."),
-    ("Gabarit_Translucide_Cote", g_translucide, "EEECE8",
+    ("Gabarit_Translucide_Cote", g_translucide, "F4F2EE",
      "Panneau translucide côtelé : Translucidité, pas des côtes et ondulation en mm."),
     ("Gabarit_Anodise_Degrade", g_anodise, "A0A8AE",
      "Aluminium anodisé en dégradé vertical : deux couleurs, début et fin du dégradé en mm le long de l'axe Y."),
