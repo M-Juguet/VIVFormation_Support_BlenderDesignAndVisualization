@@ -10,15 +10,15 @@ Le mot **CMF** signifie *Color, Material, Finish* : la couleur, la matière et l
 
 À la fin de la demi-journée, vous savez :
 - régler une matière de métal, de plastique ou de verre avec le Principled BSDF ;
-- ajouter une finition brossée, grainée ou structurée, sans dépliage UV ;
+- ajouter une finition brossée, grainée ou structurée, puis poser un lot de textures PBR, sans dépliage UV ;
 - ranger vos matières en actifs dans l'Asset Browser, et récupérer une matière d'un autre fichier avec *File > Append*.
 
 ![Figure 3.1 : Le but du chapitre : la lampe habillée en deux coloris, en Material Preview. À gauche, le coloris A (laque verte, aluminium brossé, chrome) ; à droite, le coloris B de l'atelier.](assets/images/lamp_cmf_target_blender.jpg)
 
 ```resource
 title: "Fichier d'exercice : la lampe à habiller"
-description: "Le fichier de secours du chapitre : la lampe modélisée au chapitre 2, sans matière, et le texte LISEZ-MOI avec les consignes de chaque partie. Les corrigés sont dans les collections masquées « Corrigé coloris A » (sections 1 à 3) et « Corrigé coloris B » (atelier) ; leurs matières portent le suffixe _corrige. Enregistrez-le sous lampe_habillage_v001.blend avant de commencer."
-fileName: "PRC02_ch3_lampe_a_habiller.blend (0.2 Mo)"
+description: "Le fichier de secours du chapitre : la lampe modélisée au chapitre 2, sans matière, et le texte LISEZ-MOI avec les consignes de chaque partie. Les corrigés sont dans les collections masquées « Corrigé coloris A » (sections 1 à 3), « Corrigé socle PBR » (fin de la section 2) et « Corrigé coloris B » (atelier) ; leurs matières portent le suffixe _corrige. Enregistrez-le sous lampe_habillage_v001.blend avant de commencer."
+fileName: "PRC02_ch3_lampe_a_habiller.blend (1.9 Mo)"
 downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch3_lampe_a_habiller.blend"
 ```
 
@@ -327,7 +327,7 @@ explanation: "La rubrique Coat ajoute un vernis transparent : Weight 1 et une Ro
 > Cette section part des matières de la section 1. Elle utilise l'espace de travail *Shading* (Basics 101), `Maj + A`, `G` et `X` comme dans la vue 3D, et `Ctrl + A > Scale` (Basics 103). Elle apporte le Shader Editor : on y retrouve d'abord la matière déjà réglée, puis chaque étape ajoute un seul nœud.
 
 ### Pourquoi pas de dépliage UV
-Le dépliage UV sert à poser une image à un endroit précis : un logo, une étiquette, un marquage. Une finition uniforme, comme un grain, un brossé ou une peinture structurée, n'en a pas besoin : elle s'applique en 3D, directement d'après la position de la surface.
+Le dépliage UV sert à poser une image à un endroit précis : un logo, une étiquette, un marquage. Une finition uniforme, comme un grain, un brossé ou une peinture structurée, n'en a pas besoin : elle s'applique en 3D, directement d'après la position de la surface. Un lot de textures de bois ou de béton non plus : toutes ses cartes se projettent en 3D, à la fin de cette section.
 
 Ce chapitre ne déplie donc aucune pièce. C'est la méthode la plus rapide pour habiller un produit en revue de design.
 
@@ -494,17 +494,121 @@ Sur le socle de votre lampe :
 - **4.** Reliez *Texture Coordinate* (*Object*), puis un *Mapping* (*Scale* 50 sur les trois axes), l'image, un *Bump* (*Strength* 0,2) et l'entrée *Normal* du Principled.
 Contrôle : le socle est grainé, la tête reste laquée et lisse. Corrigé : `Structure_Vert_corrige`.
 
-### Consignes · Sans raccord, puis empaqueter
+### Consignes · Sans raccord
 À vous :
 - faites le tour du socle, et réglez *Blend* et *Scale* jusqu'à ne plus voir de raccord ;
+- enregistrez (`Ctrl + S`).
+Contrôle : aucun raccord visible au tour du socle.
+
+> [!WARNING]
+> Le grain apparaît aussi sur la tête : la laque n'a pas été rendue indépendante avant la modification. `Ctrl + Z`, puis un clic sur le compteur. Ce grain est une image de hauteur, en niveaux de gris : elle passe par un *Bump*. Une carte de normales, aux teintes bleu violet, passe par le nœud *Normal Map* : c'est la suite de la section.
+
+### Un lot de textures PBR
+Un fournisseur de matières, ou un site spécialisé, livre souvent une matière en plusieurs images, prises sur le même échantillon : c'est un **lot de textures PBR** (pour *Physically Based Rendering*). Chaque image, ou **carte**, règle une entrée du Principled. Pour un designer CMF, c'est le moyen le plus courant d'habiller une pièce d'une matière réelle : un placage de bois, un béton, une pierre, un cuir, un tissu.
+
+Un lot compte en général quatre cartes, reconnaissables à la fin du nom du fichier :
+- `diff`, la couleur, pour *Base Color*, en *sRGB* ;
+- `rough`, la rugosité, pour *Roughness*, en *Non-Color* ;
+- `nor_gl`, les normales, pour *Normal*, en *Non-Color* ;
+- `disp`, la hauteur, en *Non-Color* : une option, par un *Bump*.
+
+Les cartes de données (`rough`, `nor_gl`, `disp`) se règlent en *Non-Color*, comme le grain du socle. Seule la couleur garde *sRGB*.
+
+### Où trouver des lots : Poly Haven
+Le site Poly Haven (polyhaven.com) propose des centaines de lots gratuits, sous licence CC0 : tout usage est permis, y compris commercial, sans attribution obligatoire. La page d'un lot affiche sa licence et la taille réelle de l'échantillon, par exemple « 1m wide » pour le noyer.
+
+Pour télécharger, choisissez la définition en haut à droite de la page : 1K (1 024 pixels) suffit pour un petit objet comme la lampe. La flèche à droite de *Download* liste les cartes : prenez *Diffuse*, *Rough*, *Normal (GL)* et *Displacement*, en JPG. Votre formateur vous montre ce téléchargement. Le dossier ci-dessous contient trois lots déjà téléchargés.
+
+```resource
+title: "Les lots de textures PBR"
+description: "Le dossier textures_pbr : trois lots CC0 de Poly Haven, en 1K : un placage de noyer (walnut_veneer_02), un béton lisse (granular_concrete) et un palissandre verni (rosewood_veneer1). Quatre cartes par lot : diff en sRGB ; rough, nor_gl et disp en Non-Color. Le LISEZ-MOI donne la source de chaque lot et le Color Space de chaque carte. Décompressez le dossier à côté de votre fichier de travail, comme textures_cmf."
+fileName: "PRC02_ch3_textures_pbr.zip (6.7 Mo)"
+downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch3_textures_pbr.zip"
+```
+
+### Toutes les cartes en projection Box
+Sans dépliage UV, chaque carte se pose comme l'image du socle : un nœud *Image Texture* en projection *Box*, avec *Blend*. Les cartes partagent un seul *Texture Coordinate* (*Object*) et un seul *Mapping* : elles restent superposées, et un seul réglage d'échelle les règle toutes.
+
+*Scale* du *Mapping* compte les répétitions de l'image par mètre. À 1, le noyer, large de 1 m, garde sa taille réelle. Sur un socle de 180 mm, *Scale* 2 donne un veinage plus net avec des images en 1K.
+
+### La carte de normales : Normal Map
+Une carte de normales n'est pas une hauteur : ses teintes bleu violet décrivent l'inclinaison de la surface, point par point. Elle ne passe donc pas par un *Bump*, mais par le nœud *Normal Map*, entre l'image et l'entrée *Normal* du Principled. Il fonctionne en projection *Box*, sans dépliage UV, avec EEVEE comme avec Cycles (vérifié dans Blender 5.2).
+
+Prenez la carte `nor_gl`, au format OpenGL qu'utilise Blender. La carte `nor_dx`, au format DirectX, inverse le relief : les creux deviennent des bosses.
+
+```side-by-side
+layout: "textRight"
+imagePath: "assets/images/shader_add_normal_map_blender.jpg"
+caption: "Figure 3.31 : Maj + A > Displacement, dans le Shader Editor : Normal Map, sous Bump et Displacement."
+title: "Le nœud Normal Map"
+---
+*Normal Map* se trouve dans `Maj + A > Displacement`, avec *Bump*.
+
+Son réglage *Strength* dose le relief : 1 par défaut. Baissez-le si le relief paraît trop marqué. Les autres réglages restent à leur valeur : *Tangent Space* et *OpenGL*.
+```
+
+### Garder une matière : le bouclier
+Une matière qu'aucune pièce ne porte plus n'est pas enregistrée : elle disparaît à la prochaine ouverture du fichier. Le bouclier, à droite de son nom (*Fake User*), la garde dans le fichier.
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/material_fake_user_shield_blender.jpg"
+caption: "Figure 3.32 : L'onglet Material du socle : le bouclier de Structure_Vert, activé (en bleu), puis le bouton de copie (New Material)."
+title: "Le bouclier et le bouton de copie"
+---
+Activez le bouclier de `Structure_Vert` avant de changer la matière du socle : elle restera dans le fichier, pour le coloris B.
+
+Le bouton juste à droite du bouclier copie la matière et donne la copie à la pièce : `Structure_Vert.001`, avec tous ses nœuds.
+```
+
+### Recette · Un lot PBR sur le socle
+Dans l'espace *Shading*, sur le socle, avec le placage de noyer `walnut_veneer_02` :
+- **1.** Onglet *Material* : cliquez sur le bouclier de `Structure_Vert`, puis sur le bouton de copie. Renommez la copie `Bois_Noyer`. Elle garde la chaîne du grain : *Texture Coordinate*, *Mapping*, *Image Texture* et *Bump*.
+- **2.** Dans le nœud *Image Texture*, le bouton de dossier (*Open Image*) : `textures_pbr/walnut_veneer_02/walnut_veneer_02_diff_1k.jpg`. *Color Space* : *sRGB*. Supprimez le *Bump* (`X`), puis reliez la sortie *Color* de l'image à *Base Color*. *Scale* du *Mapping* : 2.
+- **3.** Le nœud de l'image sélectionné, `Maj + D` : une copie, déjà en *Box*. Reliez la sortie *Vector* du *Mapping* à son entrée *Vector*. Ouvrez `walnut_veneer_02_rough_1k.jpg`, en *Non-Color*, et reliez *Color* à *Roughness*.
+- **4.** De même pour les normales : `Maj + D`, le lien du *Mapping*, puis `walnut_veneer_02_nor_gl_1k.jpg`, en *Non-Color*. `Maj + A > Displacement > Normal Map` : la sortie *Color* de l'image va dans son entrée *Color*, sa sortie *Normal* dans l'entrée *Normal* du Principled.
+Contrôle : le socle prend le veinage du noyer, net et sans raccord. Ses reflets suivent le fil du bois. Corrigé : `Bois_Noyer_corrige`, dans la collection *Corrigé socle PBR*.
+
+![Figure 3.33 : La chaîne du lot : Texture Coordinate (Object) et un seul Mapping (Scale 2), trois Image Texture en Box (Blend 0,25), puis Base Color, Roughness et, par le Normal Map, Normal.](assets/images/pbr_chain_overview_blender.jpg)
+
+![Figure 3.34 : Deux cartes du lot, en gros plan. À gauche, la couleur, en sRGB. À droite, les normales, en Non-Color, reliées au Normal Map. La rugosité se règle comme les normales.](assets/images/pbr_maps_closeup_blender.jpg)
+
+![Figure 3.35 : Le même socle, quatre finitions, en Material Preview : la peinture structurée, le noyer (Scale 2), le béton lisse (Scale 4) et le palissandre verni (Scale 3).](assets/images/pbr_socle_lots_comparison_blender.jpg)
+
+```side-by-side
+layout: "textLeft"
+imagePath: "assets/images/preferences_node_wrangler_blender.jpg"
+caption: "Figure 3.36 : Option : Edit > Preferences > Add-ons, l'extension Node Wrangler, livrée avec Blender."
+title: "Option : Node Wrangler"
+---
+L'extension *Node Wrangler* est livrée avec Blender, mais désactivée. Cochez-la dans *Edit > Preferences > Add-ons* (cherchez « node wrangler »).
+
+Sur un nœud de texture sélectionné, `Ctrl + T` ajoute alors *Texture Coordinate* et *Mapping* d'un coup. Vérifiez la sortie reliée : remettez-la sur *Object* si besoin.
+```
+
+### Option : charger un lot d'un coup
+Avec *Node Wrangler*, `Ctrl + Maj + T` sur le Principled sélectionné ouvre la fenêtre de fichiers : choisissez les cartes du lot. L'extension crée un nœud par carte, le *Normal Map* et le *Mapping*, et règle les *Color Space*. Mais elle prévoit un dépliage UV. Sans dépliage, deux retouches :
+- reliez la sortie *Object* de *Texture Coordinate* au *Mapping*, à la place de *UV* ;
+- passez chaque image en *Box*, *Blend* 0,25, puis réglez *Scale* du *Mapping*.
+
+Ne choisissez pas la carte `disp` : l'extension la brancherait sur un nœud *Displacement*, dans la sortie de la matière.
+
+![Figure 3.37 : Option : la chaîne créée par Ctrl + Maj + T avec les cartes diff, rough et nor_gl du noyer. Les images arrivent en projection Flat, et Texture Coordinate est relié par sa sortie UV (agrandie dans le médaillon).](assets/images/node_wrangler_principled_setup_blender.jpg)
+
+### Consignes · Votre lot, puis empaqueter
+À vous :
+- gardez sur le socle le lot de votre choix : c'est le socle du coloris A ;
+- pour essayer le béton ou le palissandre, copiez `Bois_Noyer`, renommez la copie `Beton_Lisse` ou `Palissandre_Verni`, puis ouvrez les cartes du lot dans les trois nœuds *Image Texture*, avec *Scale* 4 pour le béton et 3 pour le palissandre ;
 - empaquetez les images dans le fichier (*File > External Data > Pack Resources*), comme à l'initiation ;
 - enregistrez.
-Contrôle : aucun raccord visible au tour du socle. Après *Pack Resources*, le fichier ne dépend plus du dossier `textures_cmf`.
+Contrôle : le socle porte un lot sans raccord, et `Structure_Vert` reste dans la liste des matières. Après *Pack Resources*, le fichier ne dépend plus des dossiers `textures_cmf` et `textures_pbr`.
+
+Pour ceux qui ont fini : ajoutez la hauteur. La carte `disp`, en *Non-Color*, va dans *Height* d'un *Bump* (*Strength* 0,1). La sortie *Normal* du *Normal Map* va dans l'entrée *Normal* du *Bump*, et la sortie du *Bump* dans le Principled : les deux reliefs s'ajoutent.
 
 ```side-by-side
 layout: "textRight"
 imagePath: "assets/images/file_external_data_pack_blender.jpg"
-caption: "Figure 3.31 : File > External Data : Pack Resources range les images dans le fichier .blend."
+caption: "Figure 3.38 : File > External Data : Pack Resources range les images dans le fichier .blend."
 title: "Pack Resources"
 ---
 *Pack Resources* copie les images utilisées dans le fichier `.blend`. Le fichier s'ouvre alors seul, sur un autre poste ou au chapitre 4.
@@ -513,21 +617,10 @@ title: "Pack Resources"
 ```
 
 > [!WARNING]
-> Le grain apparaît aussi sur la tête : la laque n'a pas été rendue indépendante avant la modification. `Ctrl + Z`, puis un clic sur le compteur. Le nœud *Normal Map* ne convient pas ici : il a besoin d'un dépliage UV. Le nœud *Bump* suffit.
-
-```side-by-side
-layout: "textLeft"
-imagePath: "assets/images/preferences_node_wrangler_blender.jpg"
-caption: "Figure 3.32 : Option : Edit > Preferences > Add-ons, l'extension Node Wrangler, livrée avec Blender."
-title: "Option : Node Wrangler"
----
-L'extension *Node Wrangler* est livrée avec Blender, mais désactivée. Cochez-la dans *Edit > Preferences > Add-ons* (cherchez « node wrangler »).
-
-Sur un nœud de texture sélectionné, `Ctrl + T` ajoute alors *Texture Coordinate* et *Mapping* d'un coup. Vérifiez la sortie reliée : remettez-la sur *Object* si besoin.
-```
+> Le socle devient bleu violet : la carte de normales est reliée à *Base Color* ; elle va dans le *Normal Map*. Des creux en bosse : c'est la carte `nor_dx` ; prenez `nor_gl`. Un bois délavé : la carte `diff` est en *Non-Color*. Un socle trop brillant ou trop mat : la carte `rough` est restée en *sRGB*. Un veinage flou : montez *Scale* du *Mapping*. Une carte décalée des autres : son entrée *Vector* n'est pas reliée au *Mapping*. `Structure_Vert` a disparu à la réouverture du fichier : son bouclier n'était pas activé ; reprenez `Structure_Vert_corrige`, dans *Corrigé coloris A*.
 
 > [!NOTE]
-> **Ailleurs.** La projection *Box* habille un accoudoir en cuir grainé ou un panneau en fibre de carbone (aéronautique), une coque de rétroviseur grainée (automobile), une main courante en inox brossé ou un marchepied en tôle larmée (ferroviaire). Le fichier de démonstration propose ces pièces.
+> **Ailleurs.** La projection *Box* habille un accoudoir en cuir grainé ou un panneau en fibre de carbone (aéronautique), une coque de rétroviseur grainée (automobile), une main courante en inox brossé ou un marchepied en tôle larmée (ferroviaire). Le fichier de démonstration propose ces pièces. Un lot PBR habille de même une tablette en placage de bois (ferroviaire, aviation d'affaires) ou un dessus de console (automobile).
 
 ```quiz
 question: "Pourquoi relier la sortie Object du nœud Texture Coordinate ?"
@@ -554,19 +647,19 @@ explanation: "La projection suit les coordonnées Object : une échelle non appl
 ```
 
 ```quiz
-question: "Quel nœud transforme une image de grain en relief, sans dépliage UV ?"
+question: "Quel nœud se place entre la carte de normales d'un lot PBR et l'entrée Normal du Principled ?"
 options:
+  - "Bump"
   - "Normal Map"
   - "Mapping"
-  - "Bump"
   - "Displacement"
 correctIndices:
-  - 2
-explanation: "Le Bump lit une hauteur et perturbe la normale de la surface. Le Normal Map a besoin d'un dépliage UV ; le Mapping étire ou déplace une texture ; le Displacement déplace la géométrie."
+  - 1
+explanation: "Une carte de normales décrit l'inclinaison de la surface : le nœud Normal Map la lit, en projection Box comme avec un dépliage UV. Bump lit une image de hauteur en niveaux de gris, comme le grain du socle ; Mapping déplace et met à l'échelle les cartes ; Displacement est fait pour déplacer la géométrie."
 ```
 
 > [!CAUTION]
-> **Défi fil rouge.** Donnez à la lampe ses finitions : aluminium brossé dans l'axe des bras, socle en peinture structurée, grain fin sur l'interrupteur et la grille. Vérifiez qu'aucun raccord ne se voit, puis empaquetez les images. Pour aller plus loin, le fichier `PRC02_ch3_finitions_triplanaires.blend` propose un accoudoir en cuir, une coque de rétroviseur, un marchepied en tôle larmée et un panneau en carbone, avec des consignes par paliers dans son LISEZ-MOI.
+> **Défi fil rouge.** Donnez à la lampe ses finitions : aluminium brossé dans l'axe des bras, grain fin sur l'interrupteur et la grille, socle en lot PBR, sans raccord. Gardez la peinture structurée par son bouclier, puis empaquetez les images. Pour aller plus loin, le fichier `PRC02_ch3_finitions_triplanaires.blend` propose un accoudoir en cuir, une coque de rétroviseur, un marchepied en tôle larmée et un panneau en carbone, avec des consignes par paliers dans son LISEZ-MOI.
 
 ## 3. Bibliothèque d'actifs (Asset Browser)
 
@@ -578,7 +671,7 @@ Une équipe CMF réutilise ses matières d'un projet à l'autre : la gamme de te
 
 Blender range ces matières en **actifs** (*assets*). L'**Asset Browser** les montre en vignettes, rangées en **catalogues**. La bibliothèque CMF de la formation en propose vingt-cinq.
 
-![Figure 3.33 : Le nuancier de la bibliothèque CMF, en Material Preview : une rangée par catalogue (métaux, plastiques, peintures, verres, finitions texturées), et la grille Metallic / Roughness au fond.](assets/images/cmf_swatch_library_blender.jpg)
+![Figure 3.39 : Le nuancier de la bibliothèque CMF, en Material Preview : une rangée par catalogue (métaux, plastiques, peintures, verres, finitions texturées), et la grille Metallic / Roughness au fond.](assets/images/cmf_swatch_library_blender.jpg)
 
 ### Faire d'une matière un actif
 Un clic droit sur le nom de la matière, dans l'onglet *Material*, ouvre un menu : *Mark as Asset*. La matière devient un actif, et Blender calcule sa vignette.
@@ -586,7 +679,7 @@ Un clic droit sur le nom de la matière, dans l'onglet *Material*, ouvre un menu
 ```side-by-side
 layout: "textLeft"
 imagePath: "assets/images/material_mark_as_asset_blender.jpg"
-caption: "Figure 3.34 : Le clic droit sur le nom de la matière, dans l'onglet Material : Mark as Asset."
+caption: "Figure 3.40 : Le clic droit sur le nom de la matière, dans l'onglet Material : Mark as Asset."
 title: "Mark as Asset"
 ---
 Faites le clic droit sur le nom de la matière, pas sur la vue 3D : *Mark as Asset* lancé depuis le menu *Object* marquerait la pièce, pas sa matière.
@@ -604,9 +697,9 @@ Le sélecteur de type d'éditeur est la première icône de l'en-tête d'une zon
 
 Agrandissez la zone en tirant sa bordure : les vignettes ont besoin de place.
 
-![Figure 3.35 : Le sélecteur de type d'éditeur, ouvert sur la zone du bas : Asset Browser se trouve dans la colonne Data.](assets/images/asset_browser_editor_type_blender.jpg)
+![Figure 3.41 : Le sélecteur de type d'éditeur, ouvert sur la zone du bas : Asset Browser se trouve dans la colonne Data.](assets/images/asset_browser_editor_type_blender.jpg)
 
-![Figure 3.36 : L'Asset Browser, bibliothèque Current File : les catalogues à gauche, les vignettes du catalogue Métaux au centre, et la barre latérale de l'actif sélectionné à droite.](assets/images/asset_browser_overview_blender.jpg)
+![Figure 3.42 : L'Asset Browser, bibliothèque Current File : les catalogues à gauche, les vignettes du catalogue Métaux au centre, et la barre latérale de l'actif sélectionné à droite.](assets/images/asset_browser_overview_blender.jpg)
 
 ### Ranger en catalogues
 Un catalogue range les actifs, comme un dossier. Le bouton `+`, en haut de la liste des catalogues, en crée un ; un double-clic le renomme. Glissez ensuite une vignette sur un catalogue pour l'y ranger.
@@ -614,7 +707,7 @@ Un catalogue range les actifs, comme un dossier. Le bouton `+`, en haut de la li
 ```side-by-side
 layout: "textLeft"
 imagePath: "assets/images/asset_catalog_new_blender.jpg"
-caption: "Figure 3.37 : La liste des catalogues : le bouton + pour en créer un, et les trois catalogues de la lampe. Unassigned regroupe les actifs sans catalogue."
+caption: "Figure 3.43 : La liste des catalogues : le bouton + pour en créer un, et les trois catalogues de la lampe. Unassigned regroupe les actifs sans catalogue."
 title: "Les catalogues"
 ---
 Trois catalogues suffisent pour la lampe : *Métaux*, *Plastiques et peintures*, *Verres*.
@@ -631,7 +724,7 @@ La barre latérale de l'Asset Browser (`N`) montre l'actif sélectionné : son n
 ```side-by-side
 layout: "textRight"
 imagePath: "assets/images/asset_metadata_sidebar_blender.jpg"
-caption: "Figure 3.38 : La barre latérale de l'Asset Browser pour Alu_Brosse : Description, License, Author, et la vignette (Preview)."
+caption: "Figure 3.44 : La barre latérale de l'Asset Browser pour Alu_Brosse : Description, License, Author, et la vignette (Preview)."
 title: "La barre latérale"
 ---
 Exemple de description : « Aluminium brossé. Bras de lampe ; convient aussi à une main courante ou à une jante. »
@@ -642,7 +735,7 @@ Une vignette noire ? Relancez son calcul avec le bouton à droite de l'aperçu (
 ### Appliquer un actif par glisser-déposer
 Une vignette se glisse sur une pièce de la vue 3D : la pièce prend la matière, en un geste. C'est le même résultat que la liste des matières. Relâchez le bouton avec le pointeur sur la pièce : Blender affiche alors la pièce visée.
 
-![Figure 3.39 : La vignette Chrome, glissée de la bibliothèque Current File sur la douille. Blender affiche la pièce visée : « Drop Chrome on Douille ».](assets/images/asset_drag_drop_material_blender.jpg)
+![Figure 3.45 : La vignette Chrome, glissée de la bibliothèque Current File sur la douille. Blender affiche la pièce visée : « Drop Chrome on Douille ».](assets/images/asset_drag_drop_material_blender.jpg)
 
 ### Recette · Ranger les matières de la lampe
 - **1.** Clic droit sur le nom de `Alu_Brosse`, *Mark as Asset*. Faites de même pour `Chrome` et `Peinture_Vert`.
@@ -654,7 +747,7 @@ Contrôle : le catalogue *Métaux* montre l'aluminium brossé et le chrome ; la 
 
 ### Consignes · Jusqu'à la dernière matière
 À vous :
-- marquez et rangez seuls les autres matières : `Structure_Vert`, `ABS_Noir`, `PVC_Mat_Noir`, `Verre_Clair` ;
+- marquez et rangez seuls les autres matières : `ABS_Noir`, `PVC_Mat_Noir`, `Verre_Clair`, et la matière de votre socle, par exemple `Bois_Noyer`, dans un quatrième catalogue, *Bois et minéraux* ;
 - décrivez un actif, au choix ;
 - enregistrez, et vérifiez que `blender_assets.cats.txt` est apparu à côté de votre fichier.
 Contrôle : dans *Current File*, chaque matière de la lampe est rangée dans un catalogue. Corrigé du rangement : la bibliothèque CMF elle-même, présentée juste après.
@@ -674,7 +767,7 @@ downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_Bl
 ```side-by-side
 layout: "textLeft"
 imagePath: "assets/images/file_menu_link_append_blender.jpg"
-caption: "Figure 3.40 : Le menu File : Link… et Append…, juste au-dessus de Data Previews."
+caption: "Figure 3.46 : Le menu File : Link… et Append…, juste au-dessus de Data Previews."
 title: "Link et Append, dans le menu File"
 ---
 *Append* copie la donnée dans votre fichier : elle devient la vôtre, modifiable.
@@ -687,7 +780,7 @@ Double-cliquez sur le fichier `PRC02_ch3_nuancier_cmf.blend` : ses dossiers de d
 
 Le chapitre 4 reprendra ce geste, dans le dossier *Collection*, pour amener la lampe dans son studio.
 
-![Figure 3.41 : La fenêtre File > Append, à l'intérieur du fichier du nuancier : ses dossiers Collection, Material, Object… Le chemin du poste est flouté.](assets/images/file_append_blend_folders_blender.jpg)
+![Figure 3.47 : La fenêtre File > Append, à l'intérieur du fichier du nuancier : ses dossiers Collection, Material, Object… Le chemin du poste est flouté.](assets/images/file_append_blend_folders_blender.jpg)
 
 ### Recette · L'aluminium de la douille
 - **1.** *File > Append*. Allez dans le dossier `PRC02_bibliotheque_CMF`, double-cliquez sur `PRC02_ch3_nuancier_cmf.blend`, puis sur *Material*.
@@ -707,12 +800,12 @@ La section *Asset Libraries* des préférences liste les bibliothèques. Le bout
 
 *Import Method* vaut *Pack* par défaut dans Blender 5.2 : la matière est liée, et sa source rangée dans votre fichier. Pour une matière à modifier, préférez *Append*.
 
-![Figure 3.42 : Option : Edit > Preferences > Asset Libraries, la bibliothèque CMF ajoutée, avec son chemin (Path, flouté) et sa méthode d'import (Import Method : Pack).](assets/images/preferences_asset_libraries_blender.jpg)
+![Figure 3.48 : Option : Edit > Preferences > Asset Libraries, la bibliothèque CMF ajoutée, avec son chemin (Path, flouté) et sa méthode d'import (Import Method : Pack).](assets/images/preferences_asset_libraries_blender.jpg)
 
 ```side-by-side
 layout: "textRight"
 imagePath: "assets/images/asset_library_selector_blender.jpg"
-caption: "Figure 3.43 : Option : le menu des bibliothèques de l'Asset Browser : All Libraries, Current File, Essentials, User Library et la bibliothèque CMF déclarée."
+caption: "Figure 3.49 : Option : le menu des bibliothèques de l'Asset Browser : All Libraries, Current File, Essentials, User Library et la bibliothèque CMF déclarée."
 title: "Option : choisir la bibliothèque"
 ---
 Une fois déclarée, la bibliothèque apparaît dans le menu à gauche de l'Asset Browser. Ses catalogues et ses vignettes s'affichent.
@@ -723,7 +816,7 @@ Une fois déclarée, la bibliothèque apparaît dans le menu à gauche de l'Asse
 ```side-by-side
 layout: "textLeft"
 imagePath: "assets/images/asset_import_method_menu_blender.jpg"
-caption: "Figure 3.44 : Option : Import Settings, dans l'en-tête de l'Asset Browser : Import Method propose Follow Asset or Preferences, Link, Append et Pack."
+caption: "Figure 3.50 : Option : Import Settings, dans l'en-tête de l'Asset Browser : Import Method propose Follow Asset or Preferences, Link, Append et Pack."
 title: "Option : la méthode d'import"
 ---
 *Import Settings* choisit ce que fait une vignette glissée depuis une bibliothèque déclarée. *Append* copie la matière ; *Link* la lie en lecture seule ; *Pack*, nouveau dans Blender 5, la lie puis range sa source dans votre fichier.
@@ -783,7 +876,7 @@ Si vous manquez d'idée, voici le coloris B du corrigé : une version claire pou
 ```side-by-side
 layout: "textLeft"
 imagePath: "assets/images/outliner_collection_menu_blender.jpg"
-caption: "Figure 3.45 : Le clic droit sur la collection Lampe, dans l'Outliner : Duplicate Collection."
+caption: "Figure 3.51 : Le clic droit sur la collection Lampe, dans l'Outliner : Duplicate Collection."
 title: "Duplicate Collection"
 ---
 Un clic droit sur la collection *Lampe*, dans l'Outliner, puis *Duplicate Collection* : la collection est copiée avec ses pièces.
@@ -793,7 +886,7 @@ Attention : la copie partage les matières de l'original. Rendez chaque matière
 
 ### Consignes · Le coloris B, par paliers
 - **Lancement.** Dupliquez la collection *Lampe*, renommez la copie `Lampe_coloris_B`, puis décalez-la de 750 mm sur X : sélectionnez ses pièces (clic droit sur la collection, *Select Objects*), puis `G X = 750mm`. Avec moins, le câble de la copie traverserait le socle de l'original.
-- **Socle.** Le coloris B change au moins quatre matières, dont une peinture et un métal. Rendez chaque matière indépendante, puis renommez-la, par exemple `Laque_Blanche`. Le coloris A ne bouge pas.
+- **Socle.** Le coloris B change au moins quatre matières, dont une peinture et un métal. Rendez chaque matière indépendante, puis renommez-la, par exemple `Laque_Blanche`. Le coloris A ne bouge pas. Pour le socle, choisissez par exemple `Structure_Vert` dans la liste, copiez-la (bouton de copie), puis renommez la copie `Structure_Blanche`. Ou prenez un autre lot de `textures_pbr`.
 - **★** Toutes les pièces du coloris B suivent une gamme cohérente. Ses nouvelles matières sont des actifs, rangés dans les catalogues. Une matière au moins vient du nuancier, par *File > Append* : par exemple `Laiton`.
 - **★★** Un coloris C « premium » : laiton, carbone en projection triplanaire, verre fumé.
 - **Revue.** Changez une teinte du coloris B : le coloris A ne doit pas bouger. Puis enregistrez sous `lampe_habillage_v002.blend`, avec le bouton `+` de *File > Save As*.
@@ -802,11 +895,11 @@ La collection *Lampe* garde le coloris A et son nom : le chapitre 4 l'importe so
 > [!WARNING]
 > Les deux lampes changent ensemble : la matière est encore partagée. Un clic sur son compteur la rend indépendante. *Duplicate Collection* copie les objets et les maillages, mais pas les matières (vérifié dans Blender 5.2). Une copie de matière garde ses nœuds : l'aluminium brossé, rendu indépendant puis teinté en noir, reste brossé. Un verre créé avec *New*, au lieu d'une copie de `Verre_Clair`, ne montre que l'image d'environnement : recochez *Raytraced Transmission* et *Thin Wall*.
 
-![Figure 3.46 : L'atelier terminé : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, décalé de 750 mm.](assets/images/lamp_two_colorways_blender.jpg)
+![Figure 3.52 : L'atelier terminé : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, décalé de 750 mm.](assets/images/lamp_two_colorways_blender.jpg)
 
 ```resource
 title: "La lampe habillée : fin du chapitre 3"
-description: "L'état attendu de lampe_habillage_v002.blend : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, les matières rangées en actifs dans leurs catalogues. C'est aussi un point de départ possible du chapitre 4. Décompressez le dossier sans séparer le .blend de son fichier de catalogues."
+description: "Un exemple de lampe_habillage_v002.blend : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, les matières rangées en actifs dans leurs catalogues. Son socle garde la peinture structurée ; le vôtre porte le lot PBR de votre choix. C'est aussi un point de départ possible du chapitre 4. Décompressez le dossier sans séparer le .blend de son fichier de catalogues."
 fileName: "PRC02_ch3_lampe_habillage.zip (0.4 Mo)"
 downloadUrl: "https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch3_lampe_habillage.zip"
 ```
@@ -816,7 +909,7 @@ Les défis ★ :
 - le verre dépoli et le verre fumé ;
 - l'intérieur blanc de la tête : un second emplacement de matière et *Material Offset* du *Solidify* (figures 3.16 et 3.17) ;
 - *Emission* : un voyant lumineux sur l'interrupteur (figure 3.15) ;
-- *File > Link* d'une matière du nuancier : elle arrive grisée, en lecture seule (figure 3.47), puis `Ctrl + Z` ;
+- *File > Link* d'une matière du nuancier : elle arrive grisée, en lecture seule (figure 3.53), puis `Ctrl + Z` ;
 - la bibliothèque CMF déclarée dans vos préférences : glissez une vignette de la gamme sur une pièce, puis essayez le menu *Import Method*.
 
 Les défis ★★ :
@@ -830,7 +923,7 @@ Pour aller plus loin, le défi « Matières procédurales », dans la rubrique �
 ```side-by-side
 layout: "textRight"
 imagePath: "assets/images/linked_material_readonly_blender.jpg"
-caption: "Figure 3.47 : Défi : une matière liée par File > Link. Son nom porte l'icône de lien, et ses réglages sont grisés : elle se modifie dans son fichier source."
+caption: "Figure 3.53 : Défi : une matière liée par File > Link. Son nom porte l'icône de lien, et ses réglages sont grisés : elle se modifie dans son fichier source."
 title: "Défi : une matière liée"
 ---
 Une matière liée appartient à son fichier source : elle s'affiche, mais ne se modifie pas ici. Si la bibliothèque change, la matière suit à la prochaine ouverture.
@@ -843,7 +936,7 @@ Pour présenter une harmonie de couleurs et de matières, une scène toute prêt
 
 Les matières de ce chapitre y sont déjà rangées en actifs, avec des gabarits réglables, nommés en français : glissez-les sur les échantillons, changez une couleur, chargez l'image d'un motif. Un mémo d'une page donne les cinq gestes.
 
-![Figure 3.48 : La planche CMF exemple, vue de face : les huit échantillons numérotés d'un intérieur ferroviaire, sous l'éclairage fixe de la scène. Le zip contient aussi la même planche, vierge, prête à habiller.](assets/images/cmf_board_example_blender.jpg)
+![Figure 3.54 : La planche CMF exemple, vue de face : les huit échantillons numérotés d'un intérieur ferroviaire, sous l'éclairage fixe de la scène. Le zip contient aussi la même planche, vierge, prête à habiller.](assets/images/cmf_board_example_blender.jpg)
 
 ```resource
 title: "Planche CMF : la scène de présentation"

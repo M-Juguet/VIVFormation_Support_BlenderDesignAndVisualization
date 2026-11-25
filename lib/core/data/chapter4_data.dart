@@ -58,7 +58,7 @@ const List<ContentModule> chapter4Modules = [
   TextModule(
     id: 'ch4_sec1_txt2',
     title: 'Le dossier Collection',
-    content: 'La fenêtre d\'*Append* est celle du chapitre 3 (figure 3.41). Le dossier *Collection* contient les deux coloris : *Lampe*, le coloris A, et `Lampe_coloris_B`.\n\nChoisissez *Lampe*. Le coloris B attend : il servira au palier ★ de l\'atelier.',
+    content: 'La fenêtre d\'*Append* est celle du chapitre 3 (figure 3.47). Le dossier *Collection* contient les deux coloris : *Lampe*, le coloris A, et `Lampe_coloris_B`.\n\nChoisissez *Lampe*. Le coloris B attend : il servira au palier ★ de l\'atelier.',
   ),
   FullMediaModule(
     id: 'ch4_sec1_media2',

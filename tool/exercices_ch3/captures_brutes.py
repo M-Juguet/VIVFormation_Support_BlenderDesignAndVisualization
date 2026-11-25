@@ -332,9 +332,10 @@ def node_box(ne, nodes):
     return [min(xs), min(ys), max(xs), max(ys)]
 
 
-def node_band(name, nodes, maxw=1250, maxh=740):
+def node_band(name, nodes, maxw=1250, maxh=740, minh=0):
     """Le Shader Editor agrandi, cadré sur les nœuds donnés, réduit jusqu'à ce qu'ils tiennent dans
-    maxw x maxh pixels : une bande large, lisible à l'échelle 0,55 dans l'application."""
+    maxw x maxh pixels : une bande large, lisible à l'échelle 0,55 dans l'application. minh : agrandit
+    ensuite jusqu'à cette hauteur au moins (gros plan d'un seul nœud), sans dépasser maxw x maxh."""
     ne = node_area()
     with bpy.context.temp_override(**ov(ne)):
         bpy.ops.screen.screen_full_area()
@@ -354,6 +355,19 @@ def node_band(name, nodes, maxw=1250, maxh=740):
         with bpy.context.temp_override(**ov(ne)):
             bpy.ops.view2d.zoom_out()
         yield 0.4
+    for _ in range(12):
+        b = node_box(ne, nodes)
+        if b[3] - b[1] >= minh:
+            break
+        with bpy.context.temp_override(**ov(ne)):
+            bpy.ops.view2d.zoom_in()
+        yield 0.4
+        b = node_box(ne, nodes)
+        if b[2] - b[0] > maxw or b[3] - b[1] > maxh:
+            with bpy.context.temp_override(**ov(ne)):
+                bpy.ops.view2d.zoom_out()
+            yield 0.4
+            break
     for n in nt.nodes:
         n.select = False
     yield 0.8
@@ -961,6 +975,139 @@ def f327():
         o.hide_set(False)
 
 
+# ---------------------------------------------------------------------------- fiche A : le lot PBR du socle
+def socle_structure():
+    """La fin de la recette de la peinture structurée : la tête laquée, le socle en Structure_Vert."""
+    s1_state()
+    m = bpy.data.materials.get("Structure_Vert") or M.lampe("Structure_Vert")
+    give(["Socle"], m)
+    return m
+
+
+def f_p1():
+    """L'onglet Material du socle : le bouclier (Fake User) activé, puis le bouton de copie."""
+    m = socle_structure()
+    select(["Socle"])
+    props('MATERIAL')
+    yield 1.5
+    shot("p1_bouclier_avant")
+    m.use_fake_user = True
+    area('PROPERTIES').tag_redraw()
+    yield 1.5
+    shot("p1_bouclier")
+    print("UTILISATEURS", m.name, m.users, "fake", m.use_fake_user, flush=True)
+    m.use_fake_user = False
+    area('PROPERTIES').tag_redraw()
+    yield 0.5
+
+
+def f_p2():
+    """Maj + A > Displacement, dans le Shader Editor : le nœud Normal Map, à côté de Bump."""
+    socle_structure()
+    yield from set_workspace("Shading")
+    select(["Socle"])
+    node_view_all()
+    yield 1.0
+    shot("p2_menu_displacement_avant")
+    call_menu("NODE_MT_category_shader_displacement", 'NODE_EDITOR', at=(0.25, 0.8))
+    yield 1.2
+    shot("p2_menu_displacement")
+    close_popups()
+    yield 0.6
+
+
+def socles_rangee(names):
+    """Des copies du socle, une par matière, en rangée le long de X (mémoire seulement)."""
+    s = O["Socle"]
+    objs = []
+    for i, name in enumerate(names):
+        o = s if i == 0 else s.copy()
+        if i:
+            o.data = s.data.copy()
+            s.users_collection[0].objects.link(o)
+            o.name = "Socle_essai_%d" % i
+        o.location = (0.21 * i, -0.40, 0.0125)
+        give([o.name], bpy.data.materials.get(name) or (M.lampe(name) if name in M.LAMPE else M.pbr(name)))
+        objs.append(o)
+    return objs
+
+
+def f_p3():
+    """La chaîne du lot : vue d'ensemble dans une bande du Shader Editor, gros plans des nœuds (les trois
+    images, puis l'image des normales avec le Normal Map), et le socle en noyer dans la grande vue 3D."""
+    s1_state()
+    m = bpy.data.materials.get("Bois_Noyer") or M.pbr("Bois_Noyer")
+    give(["Socle"], m)
+    yield from set_workspace("Shading")
+    look('MATERIAL')
+    select(["Socle"])
+    yield 1.0
+    node_view_all()
+    yield 1.0
+    nodes = m.node_tree.nodes
+    yield from node_band("p3_chaine_pbr", [n for n in nodes if n.type != 'OUTPUT_MATERIAL'], maxw=1250, maxh=900)
+    imgs = sorted((n for n in nodes if n.type == 'TEX_IMAGE'), key=lambda n: -n.location.y)
+    nm = next(n for n in nodes if n.type == 'NORMAL_MAP')
+    for key, group in (("diff", [imgs[0]]), ("nor", [imgs[2], nm])):
+        yield from node_band("p3_gros_plan_" + key, group, maxw=900, maxh=430, minh=380)
+
+
+def f_p4():
+    """Le même socle, quatre finitions : peinture structurée, noyer, béton, palissandre."""
+    s1_state()
+    objs = socles_rangee(["Structure_Vert", "Bois_Noyer", "Beton_Lisse", "Palissandre_Verni"])
+    look('MATERIAL', rotate=30)
+    keep = {o.name for o in objs}
+    for o in bpy.context.view_layer.objects:
+        o.hide_set(o.name not in keep)
+    deselect_all()
+    view_on([o.name for o in objs], eye=(0, -1, 0.75), zoom=0.9)
+    yield 6.0
+    shot("p4_quatre_socles")
+    for o in bpy.context.view_layer.objects:
+        o.hide_set(False)
+
+
+def f_p5():
+    """Option : Ctrl + Maj + T de Node Wrangler, sur le Principled d'une matière neuve : la chaîne créée."""
+    import addon_utils
+    addon_utils.enable("node_wrangler", default_set=True, persistent=False)
+    s1_state()
+    m = bpy.data.materials.new("Essai_Node_Wrangler")
+    try:
+        m.use_nodes = True
+    except Exception:
+        pass
+    give(["Socle"], m)
+    yield from set_workspace("Shading")
+    look('MATERIAL')
+    select(["Socle"])
+    yield 1.0
+    node_view_all()
+    yield 1.0
+    ne = node_area()
+    nt = m.node_tree
+    p = principled(m)
+    lot = "walnut_veneer_02"
+    folder = os.path.join(M.TEX_PBR, lot) + os.sep
+    files = [{"name": "%s_%s_1k.jpg" % (lot, c)} for c in ("diff", "rough", "nor_gl")]
+    with bpy.context.temp_override(**ov(ne)):
+        for n in nt.nodes:
+            n.select = (n == p)          # posée juste avant l'appel : un redessin la perdrait
+        nt.nodes.active = p
+        r = bpy.ops.node.nw_add_textures_for_principled(directory=folder, files=files, relative_path=False)
+    print("NODE WRANGLER", r, sorted(n.bl_idname for n in nt.nodes), flush=True)
+    for n in nt.nodes:
+        if n.type == 'TEX_IMAGE':
+            print("  IMAGE", n.image.name, n.projection, n.image.colorspace_settings.name, flush=True)
+        if n.type == 'TEX_COORD':
+            print("  TC", [l.from_socket.name for l in nt.links if l.from_node == n], flush=True)
+    yield 1.5
+    node_view_all()
+    yield 1.0
+    yield from node_band("p5_node_wrangler", [n for n in nt.nodes if n.type not in ('OUTPUT_MATERIAL', 'FRAME')], maxw=1250, maxh=760)
+
+
 # ---------------------------------------------------------------------------- fiche C
 def chain_cuir(m, projection='FLAT'):
     nt = m.node_tree
@@ -1269,7 +1416,8 @@ STEPS = {
         ("310", f310), ("311", f311), ("312", f312), ("313", f313), ("314", f314), ("315", f315), ("316", f316),
         ("317", f317), ("331", f331), ("332", f332), ("340", f340), ("344", f344), ("345", f345), ("342", f342),
         ("341", f341), ("327", f327), ("318", f318), ("319", f319), ("320", f320), ("321", f321), ("322", f322),
-        ("323", f323), ("324", f324)],
+        ("323", f323), ("324", f324),
+        ("p1", f_p1), ("p2", f_p2), ("p3", f_p3), ("p4", f_p4), ("p5", f_p5)],
     "PRC02_ch3_finitions_triplanaires.blend": [("325", f325), ("329", f329)],
     "PRC02_ch3_nuancier_cmf.blend": [("300", f300), ("307", f307), ("330", f330), ("336", f336)],
     "PRC02_ch3_lampe_habillage.blend": [("301", f301), ("343", f343), ("333", f333), ("338", f338), ("337", f337)],

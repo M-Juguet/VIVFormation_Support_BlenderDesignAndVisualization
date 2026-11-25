@@ -1,4 +1,4 @@
-# Recadre les captures brutes de captures_brutes.py et écrit les figures 3.1 à 3.47 (JPEG), numérotées comme
+# Recadre les captures brutes de captures_brutes.py et écrit les figures 3.1 à 3.54 (JPEG), numérotées comme
 # dans le texte du chapitre, dans
 # assets/images/. Repris de tool/exercices_ch2/recadrer.py.
 #
@@ -223,25 +223,33 @@ FIGS = {
     "3.29": ("image_color_space_menu_blender.jpg", [[("328_color_space_menu", (650, 596, 912, 900))]], SIDE, {}),
     "3.30": ("texture_scale_not_applied_blender.jpg", [[("329_echelle_non_appliquee", (440, 70, 1080, 478)),
                                                         ("329_echelle_appliquee", "meme")]], FULL, {}),
-    "3.31": ("file_external_data_pack_blender.jpg", [[("344_external_data", ("menu", 8))]], SIDE, {}),
-    "3.32": ("preferences_node_wrangler_blender.jpg", [[("330_node_wrangler", (10, 70, 640, 360))]], SIDE, {}),
-    "3.34": ("material_mark_as_asset_blender.jpg", [[("331_menu_mark", (1004, 448, 1598, 690))]], SIDE, {}),
-    "3.35": ("asset_browser_editor_type_blender.jpg", [[("332_type_editeur", (10, 616, 960, 900))]], FULL, {}),
-    "3.36": ("asset_browser_overview_blender.jpg", [[("333_asset_browser", ("zone", "FILE_BROWSER_AREA"))]], FULL, {}),
-    "3.37": ("asset_catalog_new_blender.jpg", [[("333_asset_browser", (2, 535, 300, 730))]], SIDE, {}),
-    "3.38": ("asset_metadata_sidebar_blender.jpg", [[("333_asset_browser", (715, 535, 1012, 928))]], SIDE, {}),
-    "3.39": ("asset_drag_drop_material_blender.jpg", [[("338_glisser", (2, 100, 1012, 720))]], FULL, {}),
-    "3.40": ("file_menu_link_append_blender.jpg", [[("340_menu_file", ("menu", 8))]], SIDE, {}),
-    "3.41": ("file_append_blend_folders_blender.jpg", [[("341_append_dossiers", (0, 0, 1025, 430))]], FULL,
+    # le lot PBR du socle (étapes p1 à p5 de captures_brutes.py)
+    "3.31": ("shader_add_normal_map_blender.jpg", [[("p2_menu_displacement", ("menu", 8, "p2_menu_displacement_avant"))]], SIDE, {}),
+    "3.32": ("material_fake_user_shield_blender.jpg", [[("p1_bouclier", ("props", P, 520))]], SIDE, {}),
+    "3.33": ("pbr_chain_overview_blender.jpg", [[("p3_chaine_pbr", ("boite", 14))]], FULL, {}),
+    "3.34": ("pbr_maps_closeup_blender.jpg", [[("p3_gros_plan_diff", ("boite", 14)), ("p3_gros_plan_nor", ("boite", 14))]], FULL, {}),
+    "3.35": ("pbr_socle_lots_comparison_blender.jpg", [[("p4_quatre_socles", ("vue", 30))]], FULL, {}),
+    "3.37": ("node_wrangler_principled_setup_blender.jpg", [[("p5_node_wrangler", (305, 200, 1294, 781))]], FULL,
+             {"medaillon": ("p5_node_wrangler", (316, 356, 456, 440), 2.0, "bl")}),
+    "3.38": ("file_external_data_pack_blender.jpg", [[("344_external_data", ("menu", 8))]], SIDE, {}),
+    "3.36": ("preferences_node_wrangler_blender.jpg", [[("330_node_wrangler", (10, 70, 640, 360))]], SIDE, {}),
+    "3.40": ("material_mark_as_asset_blender.jpg", [[("331_menu_mark", (1004, 448, 1598, 690))]], SIDE, {}),
+    "3.41": ("asset_browser_editor_type_blender.jpg", [[("332_type_editeur", (10, 616, 960, 900))]], FULL, {}),
+    "3.42": ("asset_browser_overview_blender.jpg", [[("333_asset_browser", ("zone", "FILE_BROWSER_AREA"))]], FULL, {}),
+    "3.43": ("asset_catalog_new_blender.jpg", [[("333_asset_browser", (2, 535, 300, 730))]], SIDE, {}),
+    "3.44": ("asset_metadata_sidebar_blender.jpg", [[("333_asset_browser", (715, 535, 1012, 928))]], SIDE, {}),
+    "3.45": ("asset_drag_drop_material_blender.jpg", [[("338_glisser", (2, 100, 1012, 720))]], FULL, {}),
+    "3.46": ("file_menu_link_append_blender.jpg", [[("340_menu_file", ("menu", 8))]], SIDE, {}),
+    "3.47": ("file_append_blend_folders_blender.jpg", [[("341_append_dossiers", (0, 0, 1025, 430))]], FULL,
              {"flou": [("341_append_dossiers", (195, 10, 768, 42))]}),
-    "3.42": ("preferences_asset_libraries_blender.jpg", [[("336_asset_libraries", (10, 66, 1003, 380))]], FULL,
+    "3.48": ("preferences_asset_libraries_blender.jpg", [[("336_asset_libraries", (10, 66, 1003, 380))]], FULL,
              {"flou": [("336_asset_libraries", (415, 286, 965, 310))]}),
-    "3.43": ("asset_library_selector_blender.jpg", [[("337_bibliotheques", ("menu", 8))]], SIDE, {}),
-    "3.44": ("asset_import_method_menu_blender.jpg", [[("339_import_liste", (290, 500, 720, 700))]], SIDE, {}),
-    "3.45": ("outliner_collection_menu_blender.jpg", [[("345_menu_collection", (936, 88, 1253, 365))]], SIDE, {}),
-    "3.46": ("lamp_two_colorways_blender.jpg", [[("343_coloris_face", ("vue", 30))]], FULL, {}),
-    "3.47": ("linked_material_readonly_blender.jpg", [[("342_matiere_liee", ("props", P, 860))]], SIDE, {}),
-    "3.33": ("cmf_swatch_library_blender.jpg", [[("300_nuancier", (76, 98, 1010, 892))]], FULL, {}),
+    "3.49": ("asset_library_selector_blender.jpg", [[("337_bibliotheques", ("menu", 8))]], SIDE, {}),
+    "3.50": ("asset_import_method_menu_blender.jpg", [[("339_import_liste", (290, 500, 720, 700))]], SIDE, {}),
+    "3.51": ("outliner_collection_menu_blender.jpg", [[("345_menu_collection", (936, 88, 1253, 365))]], SIDE, {}),
+    "3.52": ("lamp_two_colorways_blender.jpg", [[("343_coloris_face", ("vue", 30))]], FULL, {}),
+    "3.53": ("linked_material_readonly_blender.jpg", [[("342_matiere_liee", ("props", P, 860))]], SIDE, {}),
+    "3.39": ("cmf_swatch_library_blender.jpg", [[("300_nuancier", (76, 98, 1010, 892))]], FULL, {}),
 }
 
 

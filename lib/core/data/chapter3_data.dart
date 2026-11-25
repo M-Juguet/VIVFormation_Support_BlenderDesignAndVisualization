@@ -22,7 +22,7 @@ const List<ContentModule> chapter3Modules = [
   TextModule(
     id: 'ch3_sec1_txt1',
     title: 'Où l\'on en est',
-    content: 'La lampe de bureau a été bloquée au chapitre 1, puis modélisée au chapitre 2. Dans ce chapitre, vous l\'habillez : une matière par pièce, des finitions réalistes, puis une bibliothèque pour réutiliser vos matières. Au chapitre 4, vous la mettrez en scène et vous en tirerez des visuels.\n\nLe mot **CMF** signifie *Color, Material, Finish* : la couleur, la matière et la finition. C\'est le métier qui choisit les teintes, les matières et les finitions d\'un produit : la sellerie d\'un train, la planche de bord d\'une voiture, l\'habillage d\'une cabine d\'avion.\n\nÀ la fin de la demi-journée, vous savez :\n- régler une matière de métal, de plastique ou de verre avec le Principled BSDF ;\n- ajouter une finition brossée, grainée ou structurée, sans dépliage UV ;\n- ranger vos matières en actifs dans l\'Asset Browser, et récupérer une matière d\'un autre fichier avec *File > Append*.',
+    content: 'La lampe de bureau a été bloquée au chapitre 1, puis modélisée au chapitre 2. Dans ce chapitre, vous l\'habillez : une matière par pièce, des finitions réalistes, puis une bibliothèque pour réutiliser vos matières. Au chapitre 4, vous la mettrez en scène et vous en tirerez des visuels.\n\nLe mot **CMF** signifie *Color, Material, Finish* : la couleur, la matière et la finition. C\'est le métier qui choisit les teintes, les matières et les finitions d\'un produit : la sellerie d\'un train, la planche de bord d\'une voiture, l\'habillage d\'une cabine d\'avion.\n\nÀ la fin de la demi-journée, vous savez :\n- régler une matière de métal, de plastique ou de verre avec le Principled BSDF ;\n- ajouter une finition brossée, grainée ou structurée, puis poser un lot de textures PBR, sans dépliage UV ;\n- ranger vos matières en actifs dans l\'Asset Browser, et récupérer une matière d\'un autre fichier avec *File > Append*.',
   ),
   FullMediaModule(
     id: 'ch3_sec1_media1',
@@ -32,8 +32,8 @@ const List<ContentModule> chapter3Modules = [
   ResourceModule(
     id: 'ch3_sec1_res1',
     title: 'Fichier d\'exercice : la lampe à habiller',
-    description: 'Le fichier de secours du chapitre : la lampe modélisée au chapitre 2, sans matière, et le texte LISEZ-MOI avec les consignes de chaque partie. Les corrigés sont dans les collections masquées « Corrigé coloris A » (sections 1 à 3) et « Corrigé coloris B » (atelier) ; leurs matières portent le suffixe _corrige. Enregistrez-le sous lampe_habillage_v001.blend avant de commencer.',
-    fileName: 'PRC02_ch3_lampe_a_habiller.blend (0.2 Mo)',
+    description: 'Le fichier de secours du chapitre : la lampe modélisée au chapitre 2, sans matière, et le texte LISEZ-MOI avec les consignes de chaque partie. Les corrigés sont dans les collections masquées « Corrigé coloris A » (sections 1 à 3), « Corrigé socle PBR » (fin de la section 2) et « Corrigé coloris B » (atelier) ; leurs matières portent le suffixe _corrige. Enregistrez-le sous lampe_habillage_v001.blend avant de commencer.',
+    fileName: 'PRC02_ch3_lampe_a_habiller.blend (1.9 Mo)',
     downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch3_lampe_a_habiller.blend',
   ),
   ListModule(
@@ -361,7 +361,7 @@ const List<ContentModule> chapter3Modules = [
   TextModule(
     id: 'ch3_sec2_txt1',
     title: 'Pourquoi pas de dépliage UV',
-    content: 'Le dépliage UV sert à poser une image à un endroit précis : un logo, une étiquette, un marquage. Une finition uniforme, comme un grain, un brossé ou une peinture structurée, n\'en a pas besoin : elle s\'applique en 3D, directement d\'après la position de la surface.\n\nCe chapitre ne déplie donc aucune pièce. C\'est la méthode la plus rapide pour habiller un produit en revue de design.',
+    content: 'Le dépliage UV sert à poser une image à un endroit précis : un logo, une étiquette, un marquage. Une finition uniforme, comme un grain, un brossé ou une peinture structurée, n\'en a pas besoin : elle s\'applique en 3D, directement d\'après la position de la surface. Un lot de textures de bois ou de béton non plus : toutes ses cartes se projettent en 3D, à la fin de cette section.\n\nCe chapitre ne déplie donc aucune pièce. C\'est la méthode la plus rapide pour habiller un produit en revue de design.',
   ),
   TextModule(
     id: 'ch3_sec2_txt2',
@@ -560,40 +560,145 @@ const List<ContentModule> chapter3Modules = [
   ),
   ListModule(
     id: 'ch3_sec2_list5',
-    title: 'Consignes · Sans raccord, puis empaqueter',
+    title: 'Consignes · Sans raccord',
     intro: 'À vous :',
     items: [
       'faites le tour du socle, et réglez *Blend* et *Scale* jusqu\'à ne plus voir de raccord ;',
-      'empaquetez les images dans le fichier (*File > External Data > Pack Resources*), comme à l\'initiation ;',
-      'enregistrez.',
+      'enregistrez (`Ctrl + S`).',
     ],
-    outro: 'Contrôle : aucun raccord visible au tour du socle. Après *Pack Resources*, le fichier ne dépend plus du dossier `textures_cmf`.',
-  ),
-  SideBySideModule(
-    id: 'ch3_sec2_side5',
-    title: 'Pack Resources',
-    content: '*Pack Resources* copie les images utilisées dans le fichier `.blend`. Le fichier s\'ouvre alors seul, sur un autre poste ou au chapitre 4.\n\n*Automatically Pack Resources* le fait à chaque enregistrement : c\'est une option.',
-    imagePath: 'assets/images/file_external_data_pack_blender.jpg',
-    caption: 'Figure 3.31 : File > External Data : Pack Resources range les images dans le fichier .blend.',
-    layout: ContentLayout.textRight,
+    outro: 'Contrôle : aucun raccord visible au tour du socle.',
   ),
   InfoModule(
     id: 'ch3_sec2_warn2',
     type: InfoType.warning,
-    text: 'Le grain apparaît aussi sur la tête : la laque n\'a pas été rendue indépendante avant la modification. `Ctrl + Z`, puis un clic sur le compteur. Le nœud *Normal Map* ne convient pas ici : il a besoin d\'un dépliage UV. Le nœud *Bump* suffit.',
+    text: 'Le grain apparaît aussi sur la tête : la laque n\'a pas été rendue indépendante avant la modification. `Ctrl + Z`, puis un clic sur le compteur. Ce grain est une image de hauteur, en niveaux de gris : elle passe par un *Bump*. Une carte de normales, aux teintes bleu violet, passe par le nœud *Normal Map* : c\'est la suite de la section.',
+  ),
+  TextModule(
+    id: 'ch3_sec2_txt13',
+    title: 'Un lot de textures PBR',
+    content: 'Un fournisseur de matières, ou un site spécialisé, livre souvent une matière en plusieurs images, prises sur le même échantillon : c\'est un **lot de textures PBR** (pour *Physically Based Rendering*). Chaque image, ou **carte**, règle une entrée du Principled. Pour un designer CMF, c\'est le moyen le plus courant d\'habiller une pièce d\'une matière réelle : un placage de bois, un béton, une pierre, un cuir, un tissu.\n\nUn lot compte en général quatre cartes, reconnaissables à la fin du nom du fichier :\n- `diff`, la couleur, pour *Base Color*, en *sRGB* ;\n- `rough`, la rugosité, pour *Roughness*, en *Non-Color* ;\n- `nor_gl`, les normales, pour *Normal*, en *Non-Color* ;\n- `disp`, la hauteur, en *Non-Color* : une option, par un *Bump*.\n\nLes cartes de données (`rough`, `nor_gl`, `disp`) se règlent en *Non-Color*, comme le grain du socle. Seule la couleur garde *sRGB*.',
+  ),
+  TextModule(
+    id: 'ch3_sec2_txt14',
+    title: 'Où trouver des lots : Poly Haven',
+    content: 'Le site Poly Haven (polyhaven.com) propose des centaines de lots gratuits, sous licence CC0 : tout usage est permis, y compris commercial, sans attribution obligatoire. La page d\'un lot affiche sa licence et la taille réelle de l\'échantillon, par exemple « 1m wide » pour le noyer.\n\nPour télécharger, choisissez la définition en haut à droite de la page : 1K (1 024 pixels) suffit pour un petit objet comme la lampe. La flèche à droite de *Download* liste les cartes : prenez *Diffuse*, *Rough*, *Normal (GL)* et *Displacement*, en JPG. Votre formateur vous montre ce téléchargement. Le dossier ci-dessous contient trois lots déjà téléchargés.',
+  ),
+  ResourceModule(
+    id: 'ch3_sec2_res3',
+    title: 'Les lots de textures PBR',
+    description: 'Le dossier textures_pbr : trois lots CC0 de Poly Haven, en 1K : un placage de noyer (walnut_veneer_02), un béton lisse (granular_concrete) et un palissandre verni (rosewood_veneer1). Quatre cartes par lot : diff en sRGB ; rough, nor_gl et disp en Non-Color. Le LISEZ-MOI donne la source de chaque lot et le Color Space de chaque carte. Décompressez le dossier à côté de votre fichier de travail, comme textures_cmf.',
+    fileName: 'PRC02_ch3_textures_pbr.zip (6.7 Mo)',
+    downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch3_textures_pbr.zip',
+  ),
+  TextModule(
+    id: 'ch3_sec2_txt15',
+    title: 'Toutes les cartes en projection Box',
+    content: 'Sans dépliage UV, chaque carte se pose comme l\'image du socle : un nœud *Image Texture* en projection *Box*, avec *Blend*. Les cartes partagent un seul *Texture Coordinate* (*Object*) et un seul *Mapping* : elles restent superposées, et un seul réglage d\'échelle les règle toutes.\n\n*Scale* du *Mapping* compte les répétitions de l\'image par mètre. À 1, le noyer, large de 1 m, garde sa taille réelle. Sur un socle de 180 mm, *Scale* 2 donne un veinage plus net avec des images en 1K.',
+  ),
+  TextModule(
+    id: 'ch3_sec2_txt16',
+    title: 'La carte de normales : Normal Map',
+    content: 'Une carte de normales n\'est pas une hauteur : ses teintes bleu violet décrivent l\'inclinaison de la surface, point par point. Elle ne passe donc pas par un *Bump*, mais par le nœud *Normal Map*, entre l\'image et l\'entrée *Normal* du Principled. Il fonctionne en projection *Box*, sans dépliage UV, avec EEVEE comme avec Cycles (vérifié dans Blender 5.2).\n\nPrenez la carte `nor_gl`, au format OpenGL qu\'utilise Blender. La carte `nor_dx`, au format DirectX, inverse le relief : les creux deviennent des bosses.',
+  ),
+  SideBySideModule(
+    id: 'ch3_sec2_side5',
+    title: 'Le nœud Normal Map',
+    content: '*Normal Map* se trouve dans `Maj + A > Displacement`, avec *Bump*.\n\nSon réglage *Strength* dose le relief : 1 par défaut. Baissez-le si le relief paraît trop marqué. Les autres réglages restent à leur valeur : *Tangent Space* et *OpenGL*.',
+    imagePath: 'assets/images/shader_add_normal_map_blender.jpg',
+    caption: 'Figure 3.31 : Maj + A > Displacement, dans le Shader Editor : Normal Map, sous Bump et Displacement.',
+    layout: ContentLayout.textRight,
+  ),
+  TextModule(
+    id: 'ch3_sec2_txt17',
+    title: 'Garder une matière : le bouclier',
+    content: 'Une matière qu\'aucune pièce ne porte plus n\'est pas enregistrée : elle disparaît à la prochaine ouverture du fichier. Le bouclier, à droite de son nom (*Fake User*), la garde dans le fichier.',
   ),
   SideBySideModule(
     id: 'ch3_sec2_side6',
+    title: 'Le bouclier et le bouton de copie',
+    content: 'Activez le bouclier de `Structure_Vert` avant de changer la matière du socle : elle restera dans le fichier, pour le coloris B.\n\nLe bouton juste à droite du bouclier copie la matière et donne la copie à la pièce : `Structure_Vert.001`, avec tous ses nœuds.',
+    imagePath: 'assets/images/material_fake_user_shield_blender.jpg',
+    caption: 'Figure 3.32 : L\'onglet Material du socle : le bouclier de Structure_Vert, activé (en bleu), puis le bouton de copie (New Material).',
+    layout: ContentLayout.textLeft,
+  ),
+  ListModule(
+    id: 'ch3_sec2_list6',
+    title: 'Recette · Un lot PBR sur le socle',
+    intro: 'Dans l\'espace *Shading*, sur le socle, avec le placage de noyer `walnut_veneer_02` :',
+    items: [
+      '**1.** Onglet *Material* : cliquez sur le bouclier de `Structure_Vert`, puis sur le bouton de copie. Renommez la copie `Bois_Noyer`. Elle garde la chaîne du grain : *Texture Coordinate*, *Mapping*, *Image Texture* et *Bump*.',
+      '**2.** Dans le nœud *Image Texture*, le bouton de dossier (*Open Image*) : `textures_pbr/walnut_veneer_02/walnut_veneer_02_diff_1k.jpg`. *Color Space* : *sRGB*. Supprimez le *Bump* (`X`), puis reliez la sortie *Color* de l\'image à *Base Color*. *Scale* du *Mapping* : 2.',
+      '**3.** Le nœud de l\'image sélectionné, `Maj + D` : une copie, déjà en *Box*. Reliez la sortie *Vector* du *Mapping* à son entrée *Vector*. Ouvrez `walnut_veneer_02_rough_1k.jpg`, en *Non-Color*, et reliez *Color* à *Roughness*.',
+      '**4.** De même pour les normales : `Maj + D`, le lien du *Mapping*, puis `walnut_veneer_02_nor_gl_1k.jpg`, en *Non-Color*. `Maj + A > Displacement > Normal Map` : la sortie *Color* de l\'image va dans son entrée *Color*, sa sortie *Normal* dans l\'entrée *Normal* du Principled.',
+    ],
+    outro: 'Contrôle : le socle prend le veinage du noyer, net et sans raccord. Ses reflets suivent le fil du bois. Corrigé : `Bois_Noyer_corrige`, dans la collection *Corrigé socle PBR*.',
+  ),
+  FullMediaModule(
+    id: 'ch3_sec2_media10',
+    imagePath: 'assets/images/pbr_chain_overview_blender.jpg',
+    caption: 'Figure 3.33 : La chaîne du lot : Texture Coordinate (Object) et un seul Mapping (Scale 2), trois Image Texture en Box (Blend 0,25), puis Base Color, Roughness et, par le Normal Map, Normal.',
+  ),
+  FullMediaModule(
+    id: 'ch3_sec2_media11',
+    imagePath: 'assets/images/pbr_maps_closeup_blender.jpg',
+    caption: 'Figure 3.34 : Deux cartes du lot, en gros plan. À gauche, la couleur, en sRGB. À droite, les normales, en Non-Color, reliées au Normal Map. La rugosité se règle comme les normales.',
+  ),
+  FullMediaModule(
+    id: 'ch3_sec2_media12',
+    imagePath: 'assets/images/pbr_socle_lots_comparison_blender.jpg',
+    caption: 'Figure 3.35 : Le même socle, quatre finitions, en Material Preview : la peinture structurée, le noyer (Scale 2), le béton lisse (Scale 4) et le palissandre verni (Scale 3).',
+  ),
+  SideBySideModule(
+    id: 'ch3_sec2_side7',
     title: 'Option : Node Wrangler',
     content: 'L\'extension *Node Wrangler* est livrée avec Blender, mais désactivée. Cochez-la dans *Edit > Preferences > Add-ons* (cherchez « node wrangler »).\n\nSur un nœud de texture sélectionné, `Ctrl + T` ajoute alors *Texture Coordinate* et *Mapping* d\'un coup. Vérifiez la sortie reliée : remettez-la sur *Object* si besoin.',
     imagePath: 'assets/images/preferences_node_wrangler_blender.jpg',
-    caption: 'Figure 3.32 : Option : Edit > Preferences > Add-ons, l\'extension Node Wrangler, livrée avec Blender.',
+    caption: 'Figure 3.36 : Option : Edit > Preferences > Add-ons, l\'extension Node Wrangler, livrée avec Blender.',
     layout: ContentLayout.textLeft,
+  ),
+  TextModule(
+    id: 'ch3_sec2_txt18',
+    title: 'Option : charger un lot d\'un coup',
+    content: 'Avec *Node Wrangler*, `Ctrl + Maj + T` sur le Principled sélectionné ouvre la fenêtre de fichiers : choisissez les cartes du lot. L\'extension crée un nœud par carte, le *Normal Map* et le *Mapping*, et règle les *Color Space*. Mais elle prévoit un dépliage UV. Sans dépliage, deux retouches :\n- reliez la sortie *Object* de *Texture Coordinate* au *Mapping*, à la place de *UV* ;\n- passez chaque image en *Box*, *Blend* 0,25, puis réglez *Scale* du *Mapping*.\n\nNe choisissez pas la carte `disp` : l\'extension la brancherait sur un nœud *Displacement*, dans la sortie de la matière.',
+  ),
+  FullMediaModule(
+    id: 'ch3_sec2_media13',
+    imagePath: 'assets/images/node_wrangler_principled_setup_blender.jpg',
+    caption: 'Figure 3.37 : Option : la chaîne créée par Ctrl + Maj + T avec les cartes diff, rough et nor_gl du noyer. Les images arrivent en projection Flat, et Texture Coordinate est relié par sa sortie UV (agrandie dans le médaillon).',
+  ),
+  ListModule(
+    id: 'ch3_sec2_list7',
+    title: 'Consignes · Votre lot, puis empaqueter',
+    intro: 'À vous :',
+    items: [
+      'gardez sur le socle le lot de votre choix : c\'est le socle du coloris A ;',
+      'pour essayer le béton ou le palissandre, copiez `Bois_Noyer`, renommez la copie `Beton_Lisse` ou `Palissandre_Verni`, puis ouvrez les cartes du lot dans les trois nœuds *Image Texture*, avec *Scale* 4 pour le béton et 3 pour le palissandre ;',
+      'empaquetez les images dans le fichier (*File > External Data > Pack Resources*), comme à l\'initiation ;',
+      'enregistrez.',
+    ],
+    outro: 'Contrôle : le socle porte un lot sans raccord, et `Structure_Vert` reste dans la liste des matières. Après *Pack Resources*, le fichier ne dépend plus des dossiers `textures_cmf` et `textures_pbr`.',
+  ),
+  TextModule(
+    id: 'ch3_sec2_txt19',
+    content: 'Pour ceux qui ont fini : ajoutez la hauteur. La carte `disp`, en *Non-Color*, va dans *Height* d\'un *Bump* (*Strength* 0,1). La sortie *Normal* du *Normal Map* va dans l\'entrée *Normal* du *Bump*, et la sortie du *Bump* dans le Principled : les deux reliefs s\'ajoutent.',
+  ),
+  SideBySideModule(
+    id: 'ch3_sec2_side8',
+    title: 'Pack Resources',
+    content: '*Pack Resources* copie les images utilisées dans le fichier `.blend`. Le fichier s\'ouvre alors seul, sur un autre poste ou au chapitre 4.\n\n*Automatically Pack Resources* le fait à chaque enregistrement : c\'est une option.',
+    imagePath: 'assets/images/file_external_data_pack_blender.jpg',
+    caption: 'Figure 3.38 : File > External Data : Pack Resources range les images dans le fichier .blend.',
+    layout: ContentLayout.textRight,
+  ),
+  InfoModule(
+    id: 'ch3_sec2_warn3',
+    type: InfoType.warning,
+    text: 'Le socle devient bleu violet : la carte de normales est reliée à *Base Color* ; elle va dans le *Normal Map*. Des creux en bosse : c\'est la carte `nor_dx` ; prenez `nor_gl`. Un bois délavé : la carte `diff` est en *Non-Color*. Un socle trop brillant ou trop mat : la carte `rough` est restée en *sRGB*. Un veinage flou : montez *Scale* du *Mapping*. Une carte décalée des autres : son entrée *Vector* n\'est pas reliée au *Mapping*. `Structure_Vert` a disparu à la réouverture du fichier : son bouclier n\'était pas activé ; reprenez `Structure_Vert_corrige`, dans *Corrigé coloris A*.',
   ),
   InfoModule(
     id: 'ch3_sec2_info2',
     type: InfoType.info,
-    text: '**Ailleurs.** La projection *Box* habille un accoudoir en cuir grainé ou un panneau en fibre de carbone (aéronautique), une coque de rétroviseur grainée (automobile), une main courante en inox brossé ou un marchepied en tôle larmée (ferroviaire). Le fichier de démonstration propose ces pièces.',
+    text: '**Ailleurs.** La projection *Box* habille un accoudoir en cuir grainé ou un panneau en fibre de carbone (aéronautique), une coque de rétroviseur grainée (automobile), une main courante en inox brossé ou un marchepied en tôle larmée (ferroviaire). Le fichier de démonstration propose ces pièces. Un lot PBR habille de même une tablette en placage de bois (ferroviaire, aviation d\'affaires) ou un dessus de console (automobile).',
   ),
   QuizModule(
     id: 'ch3_sec2_quiz1',
@@ -621,20 +726,20 @@ const List<ContentModule> chapter3Modules = [
   ),
   QuizModule(
     id: 'ch3_sec2_quiz3',
-    question: 'Quel nœud transforme une image de grain en relief, sans dépliage UV ?',
+    question: 'Quel nœud se place entre la carte de normales d\'un lot PBR et l\'entrée Normal du Principled ?',
     options: [
+      'Bump',
       'Normal Map',
       'Mapping',
-      'Bump',
       'Displacement',
     ],
-    correctIndices: [2],
-    explanation: 'Le Bump lit une hauteur et perturbe la normale de la surface. Le Normal Map a besoin d\'un dépliage UV ; le Mapping étire ou déplace une texture ; le Displacement déplace la géométrie.',
+    correctIndices: [1],
+    explanation: 'Une carte de normales décrit l\'inclinaison de la surface : le nœud Normal Map la lit, en projection Box comme avec un dépliage UV. Bump lit une image de hauteur en niveaux de gris, comme le grain du socle ; Mapping déplace et met à l\'échelle les cartes ; Displacement est fait pour déplacer la géométrie.',
   ),
   InfoModule(
     id: 'ch3_sec2_chal1',
     type: InfoType.challenge,
-    text: '**Défi fil rouge.** Donnez à la lampe ses finitions : aluminium brossé dans l\'axe des bras, socle en peinture structurée, grain fin sur l\'interrupteur et la grille. Vérifiez qu\'aucun raccord ne se voit, puis empaquetez les images. Pour aller plus loin, le fichier `PRC02_ch3_finitions_triplanaires.blend` propose un accoudoir en cuir, une coque de rétroviseur, un marchepied en tôle larmée et un panneau en carbone, avec des consignes par paliers dans son LISEZ-MOI.',
+    text: '**Défi fil rouge.** Donnez à la lampe ses finitions : aluminium brossé dans l\'axe des bras, grain fin sur l\'interrupteur et la grille, socle en lot PBR, sans raccord. Gardez la peinture structurée par son bouclier, puis empaquetez les images. Pour aller plus loin, le fichier `PRC02_ch3_finitions_triplanaires.blend` propose un accoudoir en cuir, une coque de rétroviseur, un marchepied en tôle larmée et un panneau en carbone, avec des consignes par paliers dans son LISEZ-MOI.',
   ),
   TitleModule(
     id: 'ch3_sec3_title',
@@ -653,7 +758,7 @@ const List<ContentModule> chapter3Modules = [
   FullMediaModule(
     id: 'ch3_sec3_media1',
     imagePath: 'assets/images/cmf_swatch_library_blender.jpg',
-    caption: 'Figure 3.33 : Le nuancier de la bibliothèque CMF, en Material Preview : une rangée par catalogue (métaux, plastiques, peintures, verres, finitions texturées), et la grille Metallic / Roughness au fond.',
+    caption: 'Figure 3.39 : Le nuancier de la bibliothèque CMF, en Material Preview : une rangée par catalogue (métaux, plastiques, peintures, verres, finitions texturées), et la grille Metallic / Roughness au fond.',
   ),
   TextModule(
     id: 'ch3_sec3_txt2',
@@ -665,7 +770,7 @@ const List<ContentModule> chapter3Modules = [
     title: 'Mark as Asset',
     content: 'Faites le clic droit sur le nom de la matière, pas sur la vue 3D : *Mark as Asset* lancé depuis le menu *Object* marquerait la pièce, pas sa matière.\n\n*Clear Asset*, juste en dessous, retire le statut d\'actif.',
     imagePath: 'assets/images/material_mark_as_asset_blender.jpg',
-    caption: 'Figure 3.34 : Le clic droit sur le nom de la matière, dans l\'onglet Material : Mark as Asset.',
+    caption: 'Figure 3.40 : Le clic droit sur le nom de la matière, dans l\'onglet Material : Mark as Asset.',
     layout: ContentLayout.textLeft,
   ),
   TextModule(
@@ -681,12 +786,12 @@ const List<ContentModule> chapter3Modules = [
   FullMediaModule(
     id: 'ch3_sec3_media2',
     imagePath: 'assets/images/asset_browser_editor_type_blender.jpg',
-    caption: 'Figure 3.35 : Le sélecteur de type d\'éditeur, ouvert sur la zone du bas : Asset Browser se trouve dans la colonne Data.',
+    caption: 'Figure 3.41 : Le sélecteur de type d\'éditeur, ouvert sur la zone du bas : Asset Browser se trouve dans la colonne Data.',
   ),
   FullMediaModule(
     id: 'ch3_sec3_media3',
     imagePath: 'assets/images/asset_browser_overview_blender.jpg',
-    caption: 'Figure 3.36 : L\'Asset Browser, bibliothèque Current File : les catalogues à gauche, les vignettes du catalogue Métaux au centre, et la barre latérale de l\'actif sélectionné à droite.',
+    caption: 'Figure 3.42 : L\'Asset Browser, bibliothèque Current File : les catalogues à gauche, les vignettes du catalogue Métaux au centre, et la barre latérale de l\'actif sélectionné à droite.',
   ),
   TextModule(
     id: 'ch3_sec3_txt5',
@@ -698,7 +803,7 @@ const List<ContentModule> chapter3Modules = [
     title: 'Les catalogues',
     content: 'Trois catalogues suffisent pour la lampe : *Métaux*, *Plastiques et peintures*, *Verres*.\n\n*Unassigned* montre les actifs qui ne sont rangés nulle part.',
     imagePath: 'assets/images/asset_catalog_new_blender.jpg',
-    caption: 'Figure 3.37 : La liste des catalogues : le bouton + pour en créer un, et les trois catalogues de la lampe. Unassigned regroupe les actifs sans catalogue.',
+    caption: 'Figure 3.43 : La liste des catalogues : le bouton + pour en créer un, et les trois catalogues de la lampe. Unassigned regroupe les actifs sans catalogue.',
     layout: ContentLayout.textLeft,
   ),
   InfoModule(
@@ -716,7 +821,7 @@ const List<ContentModule> chapter3Modules = [
     title: 'La barre latérale',
     content: 'Exemple de description : « Aluminium brossé. Bras de lampe ; convient aussi à une main courante ou à une jante. »\n\nUne vignette noire ? Relancez son calcul avec le bouton à droite de l\'aperçu (*Generate Preview*).',
     imagePath: 'assets/images/asset_metadata_sidebar_blender.jpg',
-    caption: 'Figure 3.38 : La barre latérale de l\'Asset Browser pour Alu_Brosse : Description, License, Author, et la vignette (Preview).',
+    caption: 'Figure 3.44 : La barre latérale de l\'Asset Browser pour Alu_Brosse : Description, License, Author, et la vignette (Preview).',
     layout: ContentLayout.textRight,
   ),
   TextModule(
@@ -727,7 +832,7 @@ const List<ContentModule> chapter3Modules = [
   FullMediaModule(
     id: 'ch3_sec3_media4',
     imagePath: 'assets/images/asset_drag_drop_material_blender.jpg',
-    caption: 'Figure 3.39 : La vignette Chrome, glissée de la bibliothèque Current File sur la douille. Blender affiche la pièce visée : « Drop Chrome on Douille ».',
+    caption: 'Figure 3.45 : La vignette Chrome, glissée de la bibliothèque Current File sur la douille. Blender affiche la pièce visée : « Drop Chrome on Douille ».',
   ),
   ListModule(
     id: 'ch3_sec3_list1',
@@ -746,7 +851,7 @@ const List<ContentModule> chapter3Modules = [
     title: 'Consignes · Jusqu\'à la dernière matière',
     intro: 'À vous :',
     items: [
-      'marquez et rangez seuls les autres matières : `Structure_Vert`, `ABS_Noir`, `PVC_Mat_Noir`, `Verre_Clair` ;',
+      'marquez et rangez seuls les autres matières : `ABS_Noir`, `PVC_Mat_Noir`, `Verre_Clair`, et la matière de votre socle, par exemple `Bois_Noyer`, dans un quatrième catalogue, *Bois et minéraux* ;',
       'décrivez un actif, au choix ;',
       'enregistrez, et vérifiez que `blender_assets.cats.txt` est apparu à côté de votre fichier.',
     ],
@@ -769,7 +874,7 @@ const List<ContentModule> chapter3Modules = [
     title: 'Link et Append, dans le menu File',
     content: '*Append* copie la donnée dans votre fichier : elle devient la vôtre, modifiable.\n\n*Link*, juste au-dessus, lie la donnée en lecture seule : on l\'utilise pour partager une bibliothèque d\'équipe. Le fichier qui part au chapitre 4 n\'en contient aucune.',
     imagePath: 'assets/images/file_menu_link_append_blender.jpg',
-    caption: 'Figure 3.40 : Le menu File : Link… et Append…, juste au-dessus de Data Previews.',
+    caption: 'Figure 3.46 : Le menu File : Link… et Append…, juste au-dessus de Data Previews.',
     layout: ContentLayout.textLeft,
   ),
   TextModule(
@@ -780,7 +885,7 @@ const List<ContentModule> chapter3Modules = [
   FullMediaModule(
     id: 'ch3_sec3_media5',
     imagePath: 'assets/images/file_append_blend_folders_blender.jpg',
-    caption: 'Figure 3.41 : La fenêtre File > Append, à l\'intérieur du fichier du nuancier : ses dossiers Collection, Material, Object… Le chemin du poste est flouté.',
+    caption: 'Figure 3.47 : La fenêtre File > Append, à l\'intérieur du fichier du nuancier : ses dossiers Collection, Material, Object… Le chemin du poste est flouté.',
   ),
   ListModule(
     id: 'ch3_sec3_list3',
@@ -811,14 +916,14 @@ const List<ContentModule> chapter3Modules = [
   FullMediaModule(
     id: 'ch3_sec3_media6',
     imagePath: 'assets/images/preferences_asset_libraries_blender.jpg',
-    caption: 'Figure 3.42 : Option : Edit > Preferences > Asset Libraries, la bibliothèque CMF ajoutée, avec son chemin (Path, flouté) et sa méthode d\'import (Import Method : Pack).',
+    caption: 'Figure 3.48 : Option : Edit > Preferences > Asset Libraries, la bibliothèque CMF ajoutée, avec son chemin (Path, flouté) et sa méthode d\'import (Import Method : Pack).',
   ),
   SideBySideModule(
     id: 'ch3_sec3_side5',
     title: 'Option : choisir la bibliothèque',
     content: 'Une fois déclarée, la bibliothèque apparaît dans le menu à gauche de l\'Asset Browser. Ses catalogues et ses vignettes s\'affichent.\n\n*Essentials*, livrée avec Blender, ne contient aucune matière : la bibliothèque CMF est faite pour cela.',
     imagePath: 'assets/images/asset_library_selector_blender.jpg',
-    caption: 'Figure 3.43 : Option : le menu des bibliothèques de l\'Asset Browser : All Libraries, Current File, Essentials, User Library et la bibliothèque CMF déclarée.',
+    caption: 'Figure 3.49 : Option : le menu des bibliothèques de l\'Asset Browser : All Libraries, Current File, Essentials, User Library et la bibliothèque CMF déclarée.',
     layout: ContentLayout.textRight,
   ),
   SideBySideModule(
@@ -826,7 +931,7 @@ const List<ContentModule> chapter3Modules = [
     title: 'Option : la méthode d\'import',
     content: '*Import Settings* choisit ce que fait une vignette glissée depuis une bibliothèque déclarée. *Append* copie la matière ; *Link* la lie en lecture seule ; *Pack*, nouveau dans Blender 5, la lie puis range sa source dans votre fichier.\n\n*Follow Asset or Preferences* applique le réglage de la bibliothèque.',
     imagePath: 'assets/images/asset_import_method_menu_blender.jpg',
-    caption: 'Figure 3.44 : Option : Import Settings, dans l\'en-tête de l\'Asset Browser : Import Method propose Follow Asset or Preferences, Link, Append et Pack.',
+    caption: 'Figure 3.50 : Option : Import Settings, dans l\'en-tête de l\'Asset Browser : Import Method propose Follow Asset or Preferences, Link, Append et Pack.',
     layout: ContentLayout.textLeft,
   ),
   InfoModule(
@@ -885,7 +990,7 @@ const List<ContentModule> chapter3Modules = [
     title: 'Duplicate Collection',
     content: 'Un clic droit sur la collection *Lampe*, dans l\'Outliner, puis *Duplicate Collection* : la collection est copiée avec ses pièces.\n\nAttention : la copie partage les matières de l\'original. Rendez chaque matière indépendante, par un clic sur son compteur, avant de la changer.',
     imagePath: 'assets/images/outliner_collection_menu_blender.jpg',
-    caption: 'Figure 3.45 : Le clic droit sur la collection Lampe, dans l\'Outliner : Duplicate Collection.',
+    caption: 'Figure 3.51 : Le clic droit sur la collection Lampe, dans l\'Outliner : Duplicate Collection.',
     layout: ContentLayout.textLeft,
   ),
   ListModule(
@@ -893,7 +998,7 @@ const List<ContentModule> chapter3Modules = [
     title: 'Consignes · Le coloris B, par paliers',
     items: [
       '**Lancement.** Dupliquez la collection *Lampe*, renommez la copie `Lampe_coloris_B`, puis décalez-la de 750 mm sur X : sélectionnez ses pièces (clic droit sur la collection, *Select Objects*), puis `G X = 750mm`. Avec moins, le câble de la copie traverserait le socle de l\'original.',
-      '**Socle.** Le coloris B change au moins quatre matières, dont une peinture et un métal. Rendez chaque matière indépendante, puis renommez-la, par exemple `Laque_Blanche`. Le coloris A ne bouge pas.',
+      '**Socle.** Le coloris B change au moins quatre matières, dont une peinture et un métal. Rendez chaque matière indépendante, puis renommez-la, par exemple `Laque_Blanche`. Le coloris A ne bouge pas. Pour le socle, choisissez par exemple `Structure_Vert` dans la liste, copiez-la (bouton de copie), puis renommez la copie `Structure_Blanche`. Ou prenez un autre lot de `textures_pbr`.',
       '**★** Toutes les pièces du coloris B suivent une gamme cohérente. Ses nouvelles matières sont des actifs, rangés dans les catalogues. Une matière au moins vient du nuancier, par *File > Append* : par exemple `Laiton`.',
       '**★★** Un coloris C « premium » : laiton, carbone en projection triplanaire, verre fumé.',
       '**Revue.** Changez une teinte du coloris B : le coloris A ne doit pas bouger. Puis enregistrez sous `lampe_habillage_v002.blend`, avec le bouton `+` de *File > Save As*.',
@@ -908,26 +1013,26 @@ const List<ContentModule> chapter3Modules = [
   FullMediaModule(
     id: 'ch3_sec3_media7',
     imagePath: 'assets/images/lamp_two_colorways_blender.jpg',
-    caption: 'Figure 3.46 : L\'atelier terminé : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, décalé de 750 mm.',
+    caption: 'Figure 3.52 : L\'atelier terminé : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, décalé de 750 mm.',
   ),
   ResourceModule(
     id: 'ch3_sec3_res2',
     title: 'La lampe habillée : fin du chapitre 3',
-    description: 'L\'état attendu de lampe_habillage_v002.blend : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, les matières rangées en actifs dans leurs catalogues. C\'est aussi un point de départ possible du chapitre 4. Décompressez le dossier sans séparer le .blend de son fichier de catalogues.',
+    description: 'Un exemple de lampe_habillage_v002.blend : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, les matières rangées en actifs dans leurs catalogues. Son socle garde la peinture structurée ; le vôtre porte le lot PBR de votre choix. C\'est aussi un point de départ possible du chapitre 4. Décompressez le dossier sans séparer le .blend de son fichier de catalogues.',
     fileName: 'PRC02_ch3_lampe_habillage.zip (0.4 Mo)',
     downloadUrl: 'https://raw.githubusercontent.com/M-Juguet/VIVFormation_Support_BlenderDesignAndVisualization/main/_resources/exercices/PRC02_ch3_lampe_habillage.zip',
   ),
   TextModule(
     id: 'ch3_sec3_txt13',
     title: 'Pour ceux qui avancent vite',
-    content: 'Les défis ★ :\n- le verre dépoli et le verre fumé ;\n- l\'intérieur blanc de la tête : un second emplacement de matière et *Material Offset* du *Solidify* (figures 3.16 et 3.17) ;\n- *Emission* : un voyant lumineux sur l\'interrupteur (figure 3.15) ;\n- *File > Link* d\'une matière du nuancier : elle arrive grisée, en lecture seule (figure 3.47), puis `Ctrl + Z` ;\n- la bibliothèque CMF déclarée dans vos préférences : glissez une vignette de la gamme sur une pièce, puis essayez le menu *Import Method*.\n\nLes défis ★★ :\n- **Automobile :** la peinture métallisée de la bibliothèque, décortiquée dans le Shader Editor, puis reproduite ;\n- **Aéronautique :** l\'accoudoir en cuir grainé et le panneau carbone, sur le fichier des finitions triplanaires ;\n- **Ferroviaire :** le marchepied en tôle larmée, puis la rangée de sièges de l\'initiation (`PRC02_init_rangee_sieges.blend`) habillée avec la bibliothèque ;\n- **Votre bibliothèque :** déclarez votre dossier de travail comme bibliothèque, puis habillez un objet dans un nouveau fichier.\n\nPour aller plus loin, le défi « Matières procédurales », dans la rubrique « Pour aller plus loin » de la barre latérale. Il est facultatif et hors programme : gardez-le pour quand ce chapitre vous paraît acquis.',
+    content: 'Les défis ★ :\n- le verre dépoli et le verre fumé ;\n- l\'intérieur blanc de la tête : un second emplacement de matière et *Material Offset* du *Solidify* (figures 3.16 et 3.17) ;\n- *Emission* : un voyant lumineux sur l\'interrupteur (figure 3.15) ;\n- *File > Link* d\'une matière du nuancier : elle arrive grisée, en lecture seule (figure 3.53), puis `Ctrl + Z` ;\n- la bibliothèque CMF déclarée dans vos préférences : glissez une vignette de la gamme sur une pièce, puis essayez le menu *Import Method*.\n\nLes défis ★★ :\n- **Automobile :** la peinture métallisée de la bibliothèque, décortiquée dans le Shader Editor, puis reproduite ;\n- **Aéronautique :** l\'accoudoir en cuir grainé et le panneau carbone, sur le fichier des finitions triplanaires ;\n- **Ferroviaire :** le marchepied en tôle larmée, puis la rangée de sièges de l\'initiation (`PRC02_init_rangee_sieges.blend`) habillée avec la bibliothèque ;\n- **Votre bibliothèque :** déclarez votre dossier de travail comme bibliothèque, puis habillez un objet dans un nouveau fichier.\n\nPour aller plus loin, le défi « Matières procédurales », dans la rubrique « Pour aller plus loin » de la barre latérale. Il est facultatif et hors programme : gardez-le pour quand ce chapitre vous paraît acquis.',
   ),
   SideBySideModule(
     id: 'ch3_sec3_side8',
     title: 'Défi : une matière liée',
     content: 'Une matière liée appartient à son fichier source : elle s\'affiche, mais ne se modifie pas ici. Si la bibliothèque change, la matière suit à la prochaine ouverture.\n\nC\'est l\'intérêt de *Link* pour une équipe, et sa limite pour un fichier envoyé seul : préférez alors *Append*.',
     imagePath: 'assets/images/linked_material_readonly_blender.jpg',
-    caption: 'Figure 3.47 : Défi : une matière liée par File > Link. Son nom porte l\'icône de lien, et ses réglages sont grisés : elle se modifie dans son fichier source.',
+    caption: 'Figure 3.53 : Défi : une matière liée par File > Link. Son nom porte l\'icône de lien, et ses réglages sont grisés : elle se modifie dans son fichier source.',
     layout: ContentLayout.textRight,
   ),
   TextModule(
@@ -938,7 +1043,7 @@ const List<ContentModule> chapter3Modules = [
   FullMediaModule(
     id: 'ch3_sec3_media8',
     imagePath: 'assets/images/cmf_board_example_blender.jpg',
-    caption: 'Figure 3.48 : La planche CMF exemple, vue de face : les huit échantillons numérotés d\'un intérieur ferroviaire, sous l\'éclairage fixe de la scène. Le zip contient aussi la même planche, vierge, prête à habiller.',
+    caption: 'Figure 3.54 : La planche CMF exemple, vue de face : les huit échantillons numérotés d\'un intérieur ferroviaire, sous l\'éclairage fixe de la scène. Le zip contient aussi la même planche, vierge, prête à habiller.',
   ),
   ResourceModule(
     id: 'ch3_sec3_res3',

@@ -40,7 +40,7 @@ Le chapitre 3 l'avait annoncé : *File > Append* amène la lampe dans son studio
 Contrôle : la lampe est posée sur le fond, et le titre de la fenêtre affiche `lampe_rendu_v001.blend`. Corrigé : le fichier de secours `PRC02_ch4_lampe_en_studio.blend` montre la lampe en place.
 
 ### Le dossier Collection
-La fenêtre d'*Append* est celle du chapitre 3 (figure 3.41). Le dossier *Collection* contient les deux coloris : *Lampe*, le coloris A, et `Lampe_coloris_B`.
+La fenêtre d'*Append* est celle du chapitre 3 (figure 3.47). Le dossier *Collection* contient les deux coloris : *Lampe*, le coloris A, et `Lampe_coloris_B`.
 
 Choisissez *Lampe*. Le coloris B attend : il servira au palier ★ de l'atelier.
 
