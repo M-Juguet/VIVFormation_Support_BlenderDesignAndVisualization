@@ -601,7 +601,7 @@ const List<ContentModule> chapter3Modules = [
     content: 'Une carte de normales n\'est pas une hauteur : ses teintes bleu violet décrivent l\'inclinaison de la surface, point par point. Elle ne passe donc pas par un *Bump*, mais par le nœud *Normal Map*, entre l\'image et l\'entrée *Normal* du Principled. Il fonctionne en projection *Box*, sans dépliage UV, avec EEVEE comme avec Cycles (vérifié dans Blender 5.2).\n\nPrenez la carte `nor_gl`, au format OpenGL qu\'utilise Blender. La carte `nor_dx`, au format DirectX, inverse le relief : les creux deviennent des bosses.',
   ),
   SideBySideModule(
-    id: 'ch3_sec2_side5',
+    id: 'ch3_sec2_side8',
     title: 'Le nœud Normal Map',
     content: '*Normal Map* se trouve dans `Maj + A > Displacement`, avec *Bump*.\n\nSon réglage *Strength* dose le relief : 1 par défaut. Baissez-le si le relief paraît trop marqué. Les autres réglages restent à leur valeur : *Tangent Space* et *OpenGL*.',
     imagePath: 'assets/images/shader_add_normal_map_blender.jpg',
@@ -614,7 +614,7 @@ const List<ContentModule> chapter3Modules = [
     content: 'Une matière qu\'aucune pièce ne porte plus n\'est pas enregistrée : elle disparaît à la prochaine ouverture du fichier. Le bouclier, à droite de son nom (*Fake User*), la garde dans le fichier.',
   ),
   SideBySideModule(
-    id: 'ch3_sec2_side6',
+    id: 'ch3_sec2_side7',
     title: 'Le bouclier et le bouton de copie',
     content: 'Activez le bouclier de `Structure_Vert` avant de changer la matière du socle : elle restera dans le fichier, pour le coloris B.\n\nLe bouton juste à droite du bouclier copie la matière et donne la copie à la pièce : `Structure_Vert.001`, avec tous ses nœuds.',
     imagePath: 'assets/images/material_fake_user_shield_blender.jpg',
@@ -649,7 +649,7 @@ const List<ContentModule> chapter3Modules = [
     caption: 'Figure 3.35 : Le même socle, quatre finitions, en Material Preview : la peinture structurée, le noyer (Scale 2), le béton lisse (Scale 4) et le palissandre verni (Scale 3).',
   ),
   SideBySideModule(
-    id: 'ch3_sec2_side7',
+    id: 'ch3_sec2_side6',
     title: 'Option : Node Wrangler',
     content: 'L\'extension *Node Wrangler* est livrée avec Blender, mais désactivée. Cochez-la dans *Edit > Preferences > Add-ons* (cherchez « node wrangler »).\n\nSur un nœud de texture sélectionné, `Ctrl + T` ajoute alors *Texture Coordinate* et *Mapping* d\'un coup. Vérifiez la sortie reliée : remettez-la sur *Object* si besoin.',
     imagePath: 'assets/images/preferences_node_wrangler_blender.jpg',
@@ -683,7 +683,7 @@ const List<ContentModule> chapter3Modules = [
     content: 'Pour ceux qui ont fini : ajoutez la hauteur. La carte `disp`, en *Non-Color*, va dans *Height* d\'un *Bump* (*Strength* 0,1). La sortie *Normal* du *Normal Map* va dans l\'entrée *Normal* du *Bump*, et la sortie du *Bump* dans le Principled : les deux reliefs s\'ajoutent.',
   ),
   SideBySideModule(
-    id: 'ch3_sec2_side8',
+    id: 'ch3_sec2_side5',
     title: 'Pack Resources',
     content: '*Pack Resources* copie les images utilisées dans le fichier `.blend`. Le fichier s\'ouvre alors seul, sur un autre poste ou au chapitre 4.\n\n*Automatically Pack Resources* le fait à chaque enregistrement : c\'est une option.',
     imagePath: 'assets/images/file_external_data_pack_blender.jpg',

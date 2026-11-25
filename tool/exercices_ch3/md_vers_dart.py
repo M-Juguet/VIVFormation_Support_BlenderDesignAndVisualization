@@ -213,7 +213,26 @@ def assign_ids(mods):
             out.append(("ch3_atelier", kind, d))
             continue
         out.append(("ch3_sec%d_%s%d" % (sec, short, counters[key]), kind, d))
-    return out + assign_ids_sec4(mods[idx4:])
+    return pin_ids(out) + assign_ids_sec4(mods[idx4:])
+
+
+# Identifiants publiés à garder : un module inséré plus tôt dans sa section (le lot PBR, le
+# 25 novembre 2026) décale la numérotation. Chaque module épinglé reprend son identifiant de la
+# version publiée, par échange avec le module qui l'avait reçu : les signets restent sur leur contenu.
+PINNED = {
+    ("side", "Pack Resources"): "ch3_sec2_side5",
+    ("side", "Option : Node Wrangler"): "ch3_sec2_side6",
+}
+
+
+def pin_ids(out):
+    out = list(out)
+    for (kind, title), target in PINNED.items():
+        i = next(i for i, (mid, k, d) in enumerate(out) if k == kind and d.get("title") == title)
+        j = next(j for j, (mid, k, d) in enumerate(out) if mid == target)
+        (a, ka, da), (b, kb, db) = out[i], out[j]
+        out[i], out[j] = (b, ka, da), (a, kb, db)
+    return out
 
 
 def dart_module(mid, kind, d):
