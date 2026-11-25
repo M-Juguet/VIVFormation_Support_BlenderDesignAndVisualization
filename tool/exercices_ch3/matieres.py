@@ -116,6 +116,26 @@ LAMPE = {
     "Laiton": BIBLIO["Laiton"][1:5],
     "Verre_Depoli": BIBLIO["Verre_Depoli"][1:5],
 }
+# ---------------------------------------------------------------------------- les lots PBR du socle
+# Trois lots CC0 de Poly Haven, téléchargés une fois en 1K (JPG), rangés dans tool/exercices_ch3/textures_pbr/
+# (non suivi par git) et livrés dans _resources/exercices/PRC02_ch3_textures_pbr.zip.
+# matière : (lot Poly Haven, échelle du Mapping sur le socle). Chaque lot couvre une tuile de taille réelle
+# (noyer 1 m, béton 2,4 m, palissandre 2,43 m) : sur un socle de 180 mm, l'échelle est montée pour garder
+# un veinage net en 1K.
+TEX_PBR = os.path.join(HERE, "textures_pbr")
+LOTS_PBR = {
+    "Bois_Noyer": ("walnut_veneer_02", 2.0),
+    "Beton_Lisse": ("granular_concrete", 4.0),
+    "Palissandre_Verni": ("rosewood_veneer1", 3.0),
+}
+CARTES_PBR = (  # suffixe du fichier, espace colorimétrique, entrée du Principled
+    ("diff", "sRGB", "Base Color"),
+    ("rough", "Non-Color", "Roughness"),
+    ("nor_gl", "Non-Color", "Normal"),
+)
+PBR_BLEND = 0.25
+
+
 LAMPE_CATALOGUE = {
     "Peinture_Vert": "Plastiques et peintures", "Structure_Vert": "Plastiques et peintures",
     "ABS_Noir": "Plastiques et peintures", "PVC_Mat_Noir": "Plastiques et peintures",
@@ -159,9 +179,9 @@ def image(name):
         im.name = key
         im.colorspace_settings.name = IMAGES[name]
         im.pack()
-        im.filepath = "//textures_cmf/" + key
-        for pf in im.packed_files:
-            pf.filepath = "//textures_cmf/" + key
+        # le tampon du chemin est écrasé en entier : sinon la fin de l'ancien chemin absolu y restait
+        # (relevé le 25 novembre 2026 dans les fichiers construits avant cette date)
+        set_relative_path(im, "textures_cmf/" + key)
     return im
 
 
@@ -282,6 +302,73 @@ def principled(name, color, metallic, rough, opts, complete=True):
         nt.links.new(col.outputs["Color"], p.inputs["Base Color"])
         bump(nt, p, rel.outputs["Color"], 0.0001)
         mat.diffuse_color = lin("1A1A1C")
+    return mat
+
+
+def set_relative_path(im, rel):
+    """Le chemin d'une image empaquetée est un tampon de taille fixe, enregistré en entier : on l'écrase
+    d'abord sur toute sa longueur, sinon la fin de l'ancien chemin absolu resterait dans le fichier."""
+    im.filepath_raw = "/" * 1200
+    im.filepath_raw = "//" + rel
+    for pf in im.packed_files:
+        pf.filepath = "/" * 1200
+        pf.filepath = "//" + rel
+
+
+def image_pbr(lot, carte, espace):
+    """Une carte d'un lot PBR, empaquetée, au chemin relatif //textures_pbr/<lot>/<lot>_<carte>_1k.jpg."""
+    key = "%s_%s_1k.jpg" % (lot, carte)
+    im = bpy.data.images.get(key)
+    if im is None:
+        im = bpy.data.images.load(os.path.join(TEX_PBR, lot, key))
+        im.name = key
+        im.colorspace_settings.name = espace
+        im.pack()
+        set_relative_path(im, "textures_pbr/%s/%s" % (lot, key))
+    return im
+
+
+def mean_color(im):
+    """La teinte moyenne d'une image sRGB, pour la couleur du mode Solid (diffuse_color, linéaire)."""
+    px = im.pixels[:]
+    n = len(px) // 4
+    srgb = [sum(px[c::4]) / n for c in range(3)]
+    return lin("".join("%02X" % round(min(1.0, v) * 255) for v in srgb))
+
+
+def pbr(name, new_name=None, scale=None):
+    """Un lot PBR en projection Box, la chaîne de la recette du socle : Texture Coordinate (Object) et un seul
+    Mapping, puis une Image Texture par carte, en Box (Blend 0,25) : diff (sRGB) > Base Color ;
+    rough (Non-Color) > Roughness ; nor_gl (Non-Color) > Normal Map > Normal. Metallic 0, sans Coat.
+    Nœuds serrés : la chaîne entière tient dans une bande du Shader Editor."""
+    lot, sc = LOTS_PBR[name]
+    sc = scale if scale is not None else sc
+    mat = bpy.data.materials.new(new_name or name)
+    try:
+        mat.use_nodes = True
+    except Exception:
+        pass
+    nt, p, o = nodes_of(mat)
+    p.inputs["Metallic"].default_value = 0.0
+    mat.metallic = 0.0
+    vec = coords(nt, x=-950, y=140, mapping=(sc, sc, sc))
+    nt.nodes["Mapping"].location = (-780, 140)
+    for i, (carte, espace, entree) in enumerate(CARTES_PBR):
+        tex = nt.nodes.new("ShaderNodeTexImage")
+        tex.location = (-580, 430 - 300 * i)
+        tex.image = image_pbr(lot, carte, espace)
+        tex.projection = 'BOX'
+        tex.projection_blend = PBR_BLEND
+        nt.links.new(vec, tex.inputs["Vector"])
+        if entree == "Normal":
+            nm = nt.nodes.new("ShaderNodeNormalMap")
+            nm.location = (-300, 430 - 300 * i)
+            nt.links.new(tex.outputs["Color"], nm.inputs["Color"])
+            nt.links.new(nm.outputs["Normal"], p.inputs["Normal"])
+        else:
+            nt.links.new(tex.outputs["Color"], p.inputs[entree])
+        if carte == "diff":
+            mat.diffuse_color = mean_color(tex.image)
     return mat
 
 

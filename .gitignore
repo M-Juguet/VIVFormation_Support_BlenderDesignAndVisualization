@@ -53,3 +53,4 @@ app.*.map.json
 /tool/blender/relance.log
 /tool/exercices_ch4/hdri/
 /tool/exercices_ch4/textures/
+/tool/exercices_ch3/textures_pbr/
