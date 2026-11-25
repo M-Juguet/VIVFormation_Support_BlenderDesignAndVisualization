@@ -105,6 +105,9 @@ PRESETS = {
         ("a_corrige_A_ampoule", ["Corrigé coloris A"], ["Tête_A", "Ampoule_A", "Douille_A"], (0.9, -0.5, -0.9), 50, 1.0),
         ("a_bras_proche", ["Corrigé coloris A"], ["Bras_bas_A"], (0.3, -1, 0.15), 50, 0.12),
         ("a_socle_proche", ["Corrigé coloris A"], ["Socle_A"], (0.4, -1, 0.6), 50, 0.45),
+        ("a_corrige_socle_pbr", ["Corrigé socle PBR"], ["Socle_PBR"], (0.4, -1, 0.6), 50, 0.75),
+        ("a_corrige_socle_pbr_proche", ["Corrigé socle PBR"], ["Socle_PBR"], (0.25, -1, 0.35), 50, 0.4),
+        ("a_corrige_A_et_socle_pbr", ["Corrigé coloris A", "Corrigé socle PBR"], None, AV, 50, 1.0),
     ],
     "PRC02_ch3_lampe_habillage.blend": [
         ("a2_deux_coloris", ["Lampe", "Lampe_coloris_B"], None, (0.3, -1, 0.45), 50, 0.95),

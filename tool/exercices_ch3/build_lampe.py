@@ -1,7 +1,9 @@
 # Construit les fichiers de la lampe du chapitre 3 (plan : _resources/plans/PRC02-plan-chap3.md) :
 #   - fiche A : _resources/exercices/PRC02_ch3_lampe_a_habiller.blend, le fichier de travail de secours :
-#     la lampe du chapitre 2 sans matière, et les corrigés masqués « Corrigé coloris A » (X + 0,75 m)
-#     et « Corrigé coloris B » (X + 1,50 m), objets suffixés _A et _B, matières suffixées _corrige ;
+#     la lampe du chapitre 2 sans matière, et les corrigés masqués « Corrigé coloris A » (X + 0,75 m),
+#     « Corrigé socle PBR » (le socle en lot PBR de noyer, en X + 0,75 m et Y − 0,30 m, ajouté le
+#     25 novembre 2026 avec l'accord du formateur) et « Corrigé coloris B » (X + 1,50 m), objets suffixés
+#     _A, _PBR et _B, matières suffixées _corrige ;
 #   - fiche A2 : tool/exercices_ch3/_construction/PRC02_ch3_lampe_habillage/PRC02_ch3_lampe_habillage.blend
 #     et son blender_assets.cats.txt : l'état attendu de lampe_habillage_v002.blend, sous les vrais noms
 #     (livrés en zip par livrer.py). Source du fichier de secours du chapitre 4 et du défi procédural.
@@ -38,7 +40,8 @@ COLORIS_B = dict(COLORIS_A, **{
 
 LISEZ_MOI_A = """PRC02 · Chapitre 3 · Habiller la lampe
 Enregistrez ce fichier sous lampe_habillage_v001.blend.
-Corrigés : collections « Corrigé coloris A » (sections 1 à 3) et « Corrigé coloris B » (atelier), œil fermé dans l'Outliner.
+Corrigés : collections « Corrigé coloris A » (sections 1 à 3), « Corrigé socle PBR » (section 2)
+et « Corrigé coloris B » (atelier), œil fermé dans l'Outliner.
 Leurs matières portent le suffixe _corrige. Valeurs indicatives : composez votre propre gamme.
 
 SECTION 1 · Les matières (onglet Material, vue Material Preview)
@@ -58,13 +61,18 @@ Socle
 - Socle : rendez sa matière indépendante (compteur), Coat 0, Roughness 0,6.
   Image Texture : textures_cmf/grain_structure.png, Non-Color, Box, Blend 0,25.
   Mapping Scale 50, Bump Strength 0,2.
+- Socle en lot PBR (dossier textures_pbr, lot walnut_veneer_02) : bouclier (Fake User) sur Structure_Vert,
+  bouton de copie, copie renommée Bois_Noyer. Un seul Texture Coordinate (Object), un seul Mapping (Scale 2),
+  trois Image Texture en Box, Blend 0,25 : diff (sRGB) > Base Color ; rough (Non-Color) > Roughness ;
+  nor_gl (Non-Color) > Normal Map (Maj + A > Displacement) > Normal. Corrigé : « Corrigé socle PBR ».
 - File > External Data > Pack Resources, puis enregistrez.
 ★  ABS grainé : Noise Scale 1500, Bump Strength 0,05.
 ★★ Articulations microbillées : Noise Scale 2000, Bump Strength 0,03, Roughness 0,5.
 
 SECTION 3 · La bibliothèque
 Socle
-- Mark as Asset sur toutes vos matières ; catalogues Métaux, Plastiques et peintures, Verres.
+- Mark as Asset sur toutes vos matières ; catalogues Métaux, Plastiques et peintures, Verres,
+  et Bois et minéraux pour le socle.
 - Glissez la vignette de Chrome sur la douille.
 - File > Append > PRC02_bibliotheque_CMF > PRC02_ch3_nuancier_cmf.blend > Material > Alu_Naturel,
   puis glissez-la sur la douille.
@@ -134,17 +142,21 @@ def build_a():
     col, objs = load_lampe()
     root = sc.collection
     c_a = C.new_collection("Corrigé coloris A", root)
+    c_p = C.new_collection("Corrigé socle PBR", root)
     c_b = C.new_collection("Corrigé coloris B", root)
     mats = {}
     for name in sorted(set(COLORIS_A.values()) | set(COLORIS_B.values())):
         mats[name] = M.lampe(name, new_name=name + "_corrige")
+    mats["Bois_Noyer"] = M.pbr("Bois_Noyer", new_name="Bois_Noyer_corrige")
     A = C.copy_objects(objs, c_a, "_A", (0.75, 0, 0))
+    P = C.copy_objects([bpy.data.objects["Socle"]], c_p, "_PBR", (0.75, -0.30, 0))
     B = C.copy_objects(objs, c_b, "_B", (1.50, 0, 0))
     dress(COLORIS_A, A.values(), mats, "_A")
+    dress({"Socle": "Bois_Noyer"}, P.values(), mats, "_PBR")
     dress(COLORIS_B, B.values(), mats, "_B")
     lc = bpy.context.view_layer.layer_collection.children
-    lc["Corrigé coloris A"].hide_viewport = True
-    lc["Corrigé coloris B"].hide_viewport = True
+    for cname in ("Corrigé coloris A", "Corrigé socle PBR", "Corrigé coloris B"):
+        lc[cname].hide_viewport = True
     txt = C.text_block(LISEZ_MOI_A)
     C.setup_layout(txt, 'SOLID', eye=(-0.55, -0.85, 0.55), target=(0.0, 0, 0.21), distance_k=0.8)
     C.select_only(bpy.data.objects["Socle"])
