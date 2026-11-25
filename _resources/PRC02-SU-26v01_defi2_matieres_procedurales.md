@@ -391,7 +391,7 @@ Contrôle : les reflets du vernis ondulent légèrement, comme sur une carrosser
 Sur la main courante patinée de l'étape 3 : le masque de patine vers *Height* d'un nouveau *Bump*, *Strength* 0,1, puis vers *Normal* du Principled. La patine forme une couche en léger relief. La case *Invert* du *Bump* la met en creux. Corrigé : `E4_Relief_Main_courante_corrige`.
 
 > [!NOTE]
-> Le nœud *Normal Map* lit des images de normales, qui demandent un dépliage UV. Avec des textures procédurales, *Bump* suffit.
+> Le nœud *Normal Map* lit les cartes de normales d'un lot de textures, en projection *Box* comme avec un dépliage UV (chapitre 3, section 2). Une texture procédurale donne une hauteur : *Bump* suffit.
 
 > [!WARNING]
 > Seul le grain fin se voit : la sortie *Normal* du *Bump* A n'entre pas dans le *Bump* B. Un relief qui scintille : *Strength* est trop forte ; divisez-la par deux. La peau d'orange trouble la teinte, mais le vernis reste lisse : elle est branchée sur *Normal* et non sur *Coat Normal*.

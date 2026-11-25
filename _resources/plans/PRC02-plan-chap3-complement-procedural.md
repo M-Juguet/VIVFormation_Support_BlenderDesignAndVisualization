@@ -64,7 +64,7 @@ En cas de doute, les trois quiz de la section 2 du chapitre 3 servent de test d'
 ## Ce que le complément n'aborde pas
 
 - **Le dépliage UV et les images peintes :** le principe du chapitre reste le même, pas de dépliage UV.
-- **Normal Map :** ce nœud lit des images de normales en espace tangent, qui demandent un dépliage UV. Avec des textures procédurales, *Bump* suffit. Un encart NOTE le dit en une phrase (étape 4).
+- **Normal Map :** ce nœud lit les cartes de normales d'un lot de textures ; il fonctionne en projection *Box*, sans dépliage UV, et le chapitre 3 le pratique sur le socle (section 2, depuis le 25 novembre 2026). Une texture procédurale donne une hauteur : *Bump* suffit. Un encart NOTE le dit en une phrase (étape 4).
 - **Le déplacement réel (Displacement) :** il demande une géométrie très dense et touche aux réglages de la matière. Le relief reste un *Bump*.
 - **Le baking,** les Geometry Nodes, le nœud *Script* (OSL), les zones *Repeat* et *Closure* de Blender 5.
 - **Les nœuds réservés à Cycles,** avec leur alternative EEVEE (tableau suivant).
@@ -368,7 +368,7 @@ Corrigé : sous-collection « Corrigé étape 3 ».
 
 **4.3 · Un masque en relief,** sur la main courante de l'étape 3. Le masque de patine → *Height* d'un nouveau *Bump*, *Strength* 0,1 → *Normal* du Principled. La patine forme une couche en léger relief. La case *Invert* du *Bump* la met en creux.
 
-**Encart NOTE :** le nœud *Normal Map* lit des images de normales, qui demandent un dépliage UV. Avec des textures procédurales, *Bump* suffit.
+**Encart NOTE :** le nœud *Normal Map* lit les cartes de normales d'un lot de textures, en projection *Box* comme avec un dépliage UV (chapitre 3, section 2). Une texture procédurale donne une hauteur : *Bump* suffit.
 
 **Erreurs fréquentes :**
 - Seul le grain fin se voit : la sortie *Normal* du *Bump* A n'entre pas dans le *Bump* B.

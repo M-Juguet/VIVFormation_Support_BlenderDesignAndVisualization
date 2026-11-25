@@ -466,7 +466,7 @@ const List<ContentModule> challenge2Modules = [
   InfoModule(
     id: 'ch3_sec4_e4_info1',
     type: InfoType.info,
-    text: 'Le nœud *Normal Map* lit des images de normales, qui demandent un dépliage UV. Avec des textures procédurales, *Bump* suffit.',
+    text: 'Le nœud *Normal Map* lit les cartes de normales d\'un lot de textures, en projection *Box* comme avec un dépliage UV (chapitre 3, section 2). Une texture procédurale donne une hauteur : *Bump* suffit.',
   ),
   InfoModule(
     id: 'ch3_sec4_e4_warn1',
