@@ -1,14 +1,14 @@
 # Chapitre 3 · Matières et finitions réalistes sans dépliage UV : plan
 
 PRC02 · Design & visualisation temps réel avec Blender · Blender 5.2 LTS, interface en anglais
-Demi-journée 5 · En présentiel, de 5 à 8 apprenants · Plan validé le 18 novembre 2026, décisions du formateur intégrées le même jour
+Demi-journée 5 · En présentiel, de 5 à 8 apprenants · Plan validé le 18 novembre 2026, décisions du formateur intégrées le même jour · Mise à jour du 25 novembre 2026 : un lot de textures PBR sur le socle, dans le fil rouge (voir « Décisions du formateur, 25 novembre 2026 »)
 
 ## En bref
 
 - **Objectif du chapitre :** créer des matières réalistes avec le Principled BSDF (métal, plastique, verre), appliquer des finitions CMF par projection triplanaire et organiser ses matières dans la bibliothèque d'actifs.
 - **À la fin de la demi-journée, l'apprenant sait :**
   - régler une matière de métal, de plastique ou de verre avec le Principled BSDF ;
-  - ajouter une finition brossée, grainée ou structurée, sans dépliage UV ;
+  - ajouter une finition brossée, grainée ou structurée, puis poser un lot de textures PBR, sans dépliage UV ;
   - ranger ses matières en actifs dans l'Asset Browser, et récupérer une matière d'un autre fichier avec *File > Append*.
 - **Format :** 3 h 30 de contenu et 2 pauses de 10 minutes, soit 3 h 50. Il reste 10 minutes de marge sur 4 heures. Exemple : de 9 h 00 à 12 h 50.
 - **Principe :** comme à l'initiation, une démo de 10 minutes au plus, un geste guidé, puis une pratique autonome sur la lampe. Les apprenants ne passent jamais plus de 15 minutes sans toucher la souris.
@@ -49,7 +49,8 @@ Chaque ligne passe de la démonstration à la pratique guidée, puis à la prati
 | Le verre | La transmission et ses deux interrupteurs | *Roughness*, l'onglet *Render* |
 | Le Shader Editor | Le nœud et le lien | La matière de la section 1, l'espace *Shading*, `Maj + A` |
 | Finitions procédurales | Les coordonnées *Object*, puis le relief *Bump*, puis l'étirement *Mapping* | Le nœud et le lien |
-| Projection triplanaire | L'image projetée en *Box* | La même chaîne ; l'échelle appliquée ; Pack Resources |
+| Projection triplanaire | L'image projetée en *Box* | La même chaîne ; l'échelle appliquée |
+| Lot PBR sur le socle | Plusieurs cartes sur un seul *Mapping*, puis le *Normal Map* ; le bouclier (*Fake User*) | La projection *Box*, *Non-Color*, la copie d'une matière ; Pack Resources |
 | Ranger en actifs | L'actif et le catalogue, puis le glisser-déposer d'une vignette | Les matières, le sélecteur de type d'éditeur, la barre latérale |
 | Réutiliser | *File > Append* mis en pratique ; Link cité en une phrase | Append et Link cités à l'initiation, la fenêtre d'ouverture de fichiers, l'actif |
 | Atelier | Aucune | Chapitre 1, initiation, sections 1 à 3 |
@@ -62,20 +63,21 @@ Chaque ligne passe de la démonstration à la pratique guidée, puis à la prati
 | 0:15 | 20 min | Une matière dans Blender | 1 | Démo 7 min + guidée 13 min |
 | 0:35 | 30 min | Métal et plastique | 1 | Démo 8 min + guidée 7 min + autonomie 10 min ; *Coat* : démo 2 min + guidée 3 min |
 | 1:05 | 10 min | Pause | | |
-| 1:15 | 20 min | Le verre | 1 | Démo 7 min + guidée 9 min + autonomie 4 min |
-| 1:35 | 15 min | Le Shader Editor : la matière en nœuds | 2 | Démo 6 min + guidée 9 min |
-| 1:50 | 25 min | Finitions procédurales sans UV | 2 | Trois étapes démo + guidée (19 min) + autonomie 6 min |
-| 2:15 | 25 min | Projection triplanaire d'images | 2 | Démo 8 min + guidée 9 min + autonomie 8 min |
-| 2:40 | 10 min | Pause | | |
-| 2:50 | 20 min | Ranger ses matières en actifs | 3 | Démo 7 min + guidée 7 min + autonomie 6 min |
-| 3:10 | 12 min | Réutiliser : récupérer une matière par Append | 3 | Démo 5 min + guidée 7 min |
-| 3:22 | 20 min | Atelier · Le second coloris | | Lancement 2 min + autonomie 16 min + revue 2 min |
-| 3:42 | 8 min | Tour des postes, bilan et passerelle | | Collectif |
+| 1:15 | 16 min | Le verre | 1 | Démo 7 min + guidée 9 min ; le verre dépoli ou fumé devient un défi ★ |
+| 1:31 | 15 min | Le Shader Editor : la matière en nœuds | 2 | Démo 6 min + guidée 9 min |
+| 1:46 | 25 min | Finitions procédurales sans UV | 2 | Trois étapes démo + guidée (19 min) + autonomie 6 min |
+| 2:11 | 21 min | Projection triplanaire d'images | 2 | Démo 8 min + guidée 9 min + autonomie 3 min + quiz 1 min |
+| 2:32 | 12 min | Un lot de textures PBR sur le socle | 2 | Démo Poly Haven 2 min + démo 3 min + guidée 5 min + *Pack Resources* 1 min + quiz 1 min |
+| 2:44 | 10 min | Pause | | |
+| 2:54 | 18 min | Ranger ses matières en actifs | 3 | Démo 7 min + guidée 7 min + autonomie 4 min ; la description d'un actif devient un défi ★ |
+| 3:12 | 12 min | Réutiliser : récupérer une matière par Append | 3 | Démo 5 min + guidée 7 min |
+| 3:24 | 20 min | Atelier · Le second coloris | | Lancement 2 min + autonomie 16 min + revue 2 min |
+| 3:44 | 6 min | Tour des postes, bilan et passerelle | | Collectif, une question orale |
 | 3:50 | | Fin | | |
 
-Répartition : section 1, 70 minutes ; section 2, 65 minutes ; section 3, 32 minutes ; ouverture 15 minutes, atelier 20 minutes et bilan 8 minutes. Total : 210 minutes de contenu. Les pauses tombent aux mêmes heures qu'à l'initiation.
+Répartition : section 1, 66 minutes ; section 2, 73 minutes ; section 3, 30 minutes ; ouverture 15 minutes, atelier 20 minutes et bilan 6 minutes. Total : 210 minutes de contenu. La première pause tombe à la même heure qu'à l'initiation, la seconde à 2:44. Le déroulé formateur détaille chaque séquence ; les 12 minutes du lot PBR sont reprises comme le décrit « Décisions du formateur, 25 novembre 2026 ».
 
-Pratique autonome : environ 50 minutes, soit 14 en section 1, 14 en section 2, 6 en section 3 et 16 dans l'atelier.
+Pratique autonome : environ 45 minutes, soit 10 en section 1, 10 en section 2, 4 en section 3 et 16 dans l'atelier ; la recette guidée du lot PBR s'y ajoute.
 
 ## Avant la demi-journée
 
@@ -218,7 +220,7 @@ Ancre `ch3_sec1_title` · 70 minutes, de 0:15 à 1:35, pause comprise · Espace 
 
 ### 1:05 · Pause (10 min)
 
-### 1:15 · Le verre (20 min)
+### 1:15 · Le verre (16 min)
 
 **Nouveau :** la transmission et ses deux interrupteurs. **Déjà vu :** *Roughness*, l'onglet *Render*, la vue locale.
 
@@ -255,17 +257,17 @@ Habillez toute la lampe d'après le cahier CMF : laque du socle et de la tête, 
 
 ## Section 2 · Finitions CMF en projection triplanaire
 
-Ancre `ch3_sec2_title` · 65 minutes, de 1:35 à 2:40 · Espace de travail *Shading*
+Ancre `ch3_sec2_title` · 73 minutes, de 1:31 à 2:44 · Espace de travail *Shading*
 
 **Prérequis déjà vus :** les matières de la section 1 et les réglages du Principled ; l'espace *Shading* (Basics 101) ; `Maj + A`, `G` et `X` dans la vue 3D (initiation) ; le compteur d'utilisateurs (initiation) ; `Ctrl + A > Scale` (Basics 103) ; *Pack Resources* et la fenêtre d'ouverture de fichiers (initiation, demi-journée 1).
 
-**Ce que la section apporte :** le Shader Editor, le nœud et le lien ; une texture procédurale ; les coordonnées *Object* ; le relief par *Bump* ; l'étirement par *Mapping* ; l'image projetée en *Box* et l'espace colorimétrique *Non-Color*. Les nœuds sont introduits un par un : on part de la matière déjà réglée, que l'on retrouve sous forme de nœud, puis chaque étape ajoute un seul nœud.
+**Ce que la section apporte :** le Shader Editor, le nœud et le lien ; une texture procédurale ; les coordonnées *Object* ; le relief par *Bump* ; l'étirement par *Mapping* ; l'image projetée en *Box* et l'espace colorimétrique *Non-Color* ; enfin un lot de textures PBR, ses cartes sur un seul *Mapping* et le *Normal Map*. Les nœuds sont introduits un par un : on part de la matière déjà réglée, que l'on retrouve sous forme de nœud, puis chaque étape ajoute un seul nœud.
 
 ### Notions prévues dans l'application
 
 | Sous-titre prévu | Contenu | Figures |
 |---|---|---|
-| Pourquoi pas de dépliage UV | Le dépliage UV sert à poser une image à un endroit précis. Une finition uniforme (grain, brossé, structure) s'applique en 3D, sans dépliage. | |
+| Pourquoi pas de dépliage UV | Le dépliage UV sert à poser une image à un endroit précis. Une finition uniforme (grain, brossé, structure) s'applique en 3D, sans dépliage, comme les cartes d'un lot de textures. | |
 | Le Shader Editor : la même matière, vue en nœuds | L'espace *Shading* ; le nœud *Principled BSDF* porte les mêmes réglages que l'onglet *Material* ; le nœud *Material Output* ; entrées à gauche, sorties à droite ; le lien | 3.18, 3.19 |
 | Se déplacer et agir dans le Shader Editor | Molette pour zoomer, clic molette pour déplacer la vue, `Origine` pour tout voir ; `G` et `X` comme dans la vue 3D | |
 | Ajouter un nœud et le relier | `Maj + A` ; glisser d'une sortie vers une entrée ; glisser un lien hors de son entrée pour le défaire | 3.20, 3.21 |
@@ -273,17 +275,23 @@ Ancre `ch3_sec2_title` · 65 minutes, de 1:35 à 2:40 · Espace de travail *Shad
 | Les coordonnées de texture | Le nœud *Texture Coordinate* : *Generated* étire la texture selon la boîte de l'objet ; *Object* garde la même taille partout ; *UV* n'est pas utilisé ici | 3.22 |
 | Du motif au relief : Bump | *Height* vers *Normal* du Principled ; *Strength* adaptée à un petit objet | 3.23 |
 | Étirer pour brosser : Mapping | *Scale* du nœud *Mapping*, dans l'axe de la pièce | 3.24 |
-| Une image projetée sur trois axes : Box | *Image Texture*, menu *Projection*, *Box*, puis *Blend* pour fondre les raccords | 3.25, 3.26, 3.27 |
-| Les images de données : Non-Color | Une image de relief n'est pas une couleur : *Color Space* sur *Non-Color* ; une image de couleur reste en *sRGB* | 3.28 |
-| L'échelle appliquée, condition de la projection | Une échelle non appliquée étire la texture : `Ctrl + A > Scale` | 3.29 |
-| Empaqueter les images | *File > External Data > Pack Resources*, vu à l'initiation | |
-| Option : Node Wrangler | Extension livrée avec Blender, désactivée par défaut ; `Ctrl + T` ajoute *Texture Coordinate* et *Mapping* | 3.30 |
+| Une image projetée sur trois axes : Box | *Image Texture*, menu *Projection*, *Box*, puis *Blend* pour fondre les raccords | 3.25 à 3.28 |
+| Les images de données : Non-Color | Une image de relief n'est pas une couleur : *Color Space* sur *Non-Color* ; une image de couleur reste en *sRGB* | 3.29 |
+| L'échelle appliquée, condition de la projection | Une échelle non appliquée étire la texture : `Ctrl + A > Scale` | 3.30 |
+| Un lot de textures PBR | Plusieurs cartes d'un même échantillon : `diff` (*sRGB*), `rough`, `nor_gl`, `disp` (*Non-Color*) | |
+| Où trouver des lots : Poly Haven | Licence CC0, taille réelle, définition 1K, cartes en JPG ; démo du formateur ; ressource `PRC02_ch3_textures_pbr.zip` | |
+| Toutes les cartes en projection Box | Un seul *Texture Coordinate* (*Object*) et un seul *Mapping* ; *Scale* compte les répétitions par mètre | 3.33 |
+| La carte de normales : Normal Map | `Maj + A > Displacement > Normal Map`, entre l'image et *Normal* ; il fonctionne en *Box*, sans dépliage UV ; `nor_gl` et non `nor_dx` | 3.31, 3.34 |
+| Garder une matière : le bouclier | *Fake User* garde une matière qu'aucune pièce ne porte ; le bouton de copie, juste à droite | 3.32 |
+| Le même socle, plusieurs lots | Noyer, béton lisse, palissandre verni | 3.35 |
+| Option : Node Wrangler | Extension livrée avec Blender, désactivée par défaut ; `Ctrl + T` ajoute *Texture Coordinate* et *Mapping* ; `Ctrl + Maj + T` charge un lot, à repasser en *Object* et en *Box* | 3.36, 3.37 |
+| Empaqueter les images | *File > External Data > Pack Resources*, vu à l'initiation, une fois pour toutes les images | 3.38 |
 
 **Exemples multisectoriels à citer :** un accoudoir en cuir grainé (aéronautique), une coque de rétroviseur grainée (automobile), une main courante en inox brossé et un marchepied en tôle larmée (ferroviaire), une pièce en fibre de carbone.
 
-**La chaîne construite pas à pas :** *Texture Coordinate* (*Object*) → *Mapping* → texture → *Bump* → entrée *Normal* du Principled. La section change seulement la texture : procédurale d'abord, image ensuite.
+**La chaîne construite pas à pas :** *Texture Coordinate* (*Object*) → *Mapping* → texture → *Bump* → entrée *Normal* du Principled. La section change seulement la texture : procédurale d'abord, image ensuite. Le lot PBR garde le même *Mapping* et multiplie les images : `diff` → *Base Color*, `rough` → *Roughness*, `nor_gl` → *Normal Map* → *Normal*.
 
-### 1:35 · Le Shader Editor : la matière en nœuds (15 min)
+### 1:31 · Le Shader Editor : la matière en nœuds (15 min)
 
 **Nouveau :** le nœud et le lien. **Déjà vu :** l'espace *Shading*, `Maj + A`, `G`, `X`, la matière `Alu_Naturel`.
 
@@ -307,7 +315,7 @@ Ancre `ch3_sec2_title` · 65 minutes, de 1:35 à 2:40 · Espace de travail *Shad
 - Le Shader Editor est vide : l'objet actif n'a pas de matière, ou ce n'est pas le bon objet.
 - La vue 3D de l'espace *Shading* a ses propres réglages : son image d'environnement peut différer de celle de l'espace *Layout*.
 
-### 1:50 · Finitions procédurales sans UV (25 min)
+### 1:46 · Finitions procédurales sans UV (25 min)
 
 **Nouveau :** trois nœuds, l'un après l'autre : *Texture Coordinate*, *Bump*, *Mapping*. **Déjà vu :** le nœud et le lien, *Noise Texture*.
 
@@ -326,7 +334,7 @@ Ancre `ch3_sec2_title` · 65 minutes, de 1:35 à 2:40 · Espace de travail *Shad
 - Un relief qui scintille : *Strength* trop forte. Divisez-la par deux.
 - Les rayures sont en travers : l'axe étiré dans *Mapping* n'est pas le bon. Les axes *Object* sont ceux de la pièce : la rotation des bras n'est pas appliquée au chapitre 2, c'est voulu.
 
-### 2:15 · Projection triplanaire d'images (25 min)
+### 2:11 · Projection triplanaire d'images (21 min)
 
 **Nouveau :** l'image projetée en *Box*, avec son espace colorimétrique. **Déjà vu :** la chaîne de l'étape précédente, le compteur d'utilisateurs, `Ctrl + A > Scale`, *Pack Resources*.
 
@@ -342,27 +350,49 @@ Ancre `ch3_sec2_title` · 65 minutes, de 1:35 à 2:40 · Espace de travail *Shad
 3. ajouter *Image Texture*, *Open*, puis `textures_cmf/grain_structure.png` ; *Non-Color* ; projection *Box*, *Blend* 0,25 ;
 4. relier *Texture Coordinate* (*Object*), *Mapping* (*Scale* 50 sur les trois axes), l'image, *Bump* (*Strength* 0,2) et *Normal*.
 
-**Ils font, en autonomie (8 min) :**
+**Ils font, en autonomie (3 min) :**
 - faire le tour du socle et régler *Blend* et *Scale* jusqu'à ne plus voir de raccord ;
-- empaqueter les images (*File > External Data > Pack Resources*) ;
-- enregistrer.
+- enregistrer. *Pack Resources* attend la fin du lot PBR.
 
-**Point de contrôle :** au tour du socle, aucun raccord visible. Après *Pack Resources*, le fichier ne dépend plus du dossier `textures_cmf`.
+**Point de contrôle :** au tour du socle, aucun raccord visible.
 
 **Points d'observation :**
 - Le grain paraît coloré ou trop contrasté : *Color Space* est resté en *sRGB*.
-- Le nœud *Normal Map* ne convient pas ici : il a besoin d'un dépliage UV. Le nœud *Bump* suffit.
+- Le grain du socle est une image de hauteur, en niveaux de gris : il passe par un *Bump*. Une carte de normales passe par un *Normal Map*, en projection *Box*, sans dépliage UV : c'est la séquence suivante.
 - Le grain apparaît aussi sur la tête : la laque n'a pas été rendue indépendante avant la modification. `Ctrl + Z`, puis le compteur.
+
+### 2:32 · Un lot de textures PBR sur le socle (12 min)
+
+**Nouveau :** plusieurs cartes sur un seul *Mapping*, le nœud *Normal Map*, le bouclier (*Fake User*). **Déjà vu :** la projection *Box* et *Non-Color* (séquence précédente), la copie d'une matière, *Pack Resources*.
+
+**Vous montrez le téléchargement (2 min),** dans un navigateur : la page `https://polyhaven.com/a/walnut_veneer_02`, sa licence CC0 et sa taille réelle (« 1m wide ») ; la définition passée de 4K à 1K ; la flèche de *Download*, qui liste les cartes (*Diffuse*, *Rough*, *Normal (GL)*, *Displacement*) en EXR, JPG ou PNG. Le dossier `textures_pbr` contient déjà les trois lots.
+
+**Vous montrez la chaîne (3 min),** sur le socle de votre copie : le bouclier de `Structure_Vert`, le bouton de copie, la copie `Bois_Noyer` ; dans le nœud *Image Texture* de la copie, la carte `diff` (*sRGB*) vers *Base Color*, le *Bump* supprimé, *Scale* du *Mapping* à 2 ; `Maj + D` et la carte `rough` (*Non-Color*) vers *Roughness* ; `Maj + D` et la carte `nor_gl` (*Non-Color*), puis `Maj + A > Displacement > Normal Map` vers *Normal*.
+
+**Ils font, guidé (5 min),** d'après « Recette · Un lot PBR sur le socle » : les étapes 1 à 4.
+
+**Ils font, seuls (1 min) :** *Pack Resources*, une fois pour toutes les images, puis enregistrer. Le béton ou le palissandre se posent pendant l'atelier ou après la séance.
+
+**Quiz (1 min) :** le nœud entre la carte de normales et *Normal*.
+
+**Point de contrôle :** le socle porte le veinage du noyer, net et sans raccord ; `Structure_Vert` reste dans la liste, son bouclier activé.
+
+**Points d'observation :**
+- Le socle devient bleu violet : la carte de normales est reliée à *Base Color*.
+- Des creux en bosse : la carte `nor_dx` au lieu de `nor_gl`.
+- Un bois délavé : `diff` en *Non-Color* ; un socle trop brillant ou trop mat : `rough` en *sRGB*.
+- Une carte décalée : son entrée *Vector* n'est pas reliée au *Mapping*, car `Maj + D` ne copie pas ce lien.
+- Le bouclier oublié : `Structure_Vert` disparaît à la réouverture du fichier.
 
 ### Quiz de la section 2
 
 1. « Pourquoi relier la sortie Object du nœud Texture Coordinate ? » Pour que le motif garde la même taille sur toute la pièce, quelle que soit sa forme ; leurres : pour déplier les UV, pour accélérer l'affichage, pour colorer la texture.
 2. « Le grain paraît étiré sur une seule pièce. Quelle est la cause la plus probable ? » Une échelle non appliquée ; leurres : un *Blend* trop faible, une image en *sRGB*, une *Roughness* trop forte.
-3. « Quel nœud transforme une image de grain en relief, sans dépliage UV ? » *Bump* ; leurres : *Normal Map*, *Mapping*, *Displacement*.
+3. « Quel nœud se place entre la carte de normales d'un lot PBR et l'entrée Normal du Principled ? » *Normal Map* ; leurres : *Bump*, *Mapping*, *Displacement*. Ce quiz remplace le 25 novembre 2026 celui du *Bump*, qui écartait à tort *Normal Map* « faute de dépliage UV ».
 
 ### Défi fil rouge de la section 2 (encart CAUTION)
 
-Donnez à la lampe ses finitions : aluminium brossé dans l'axe des bras, socle en peinture structurée par projection triplanaire, grain fin sur l'interrupteur et la grille. Vérifiez qu'aucun raccord ne se voit, puis empaquetez les images.
+Donnez à la lampe ses finitions : aluminium brossé dans l'axe des bras, grain fin sur l'interrupteur et la grille, socle en lot PBR, sans raccord. Gardez la peinture structurée par son bouclier, puis empaquetez les images.
 
 ## Section 3 · Bibliothèque d'actifs (Asset Browser)
 
@@ -388,7 +418,7 @@ Ancre `ch3_sec3_title` · 32 minutes, de 2:50 à 3:22
 
 **Exemples multisectoriels à citer :** la gamme de teintes d'un constructeur automobile, la charte des intérieurs d'une compagnie aérienne, les matières homologuées d'un aménagement ferroviaire.
 
-### 2:50 · Ranger ses matières en actifs (20 min)
+### 2:54 · Ranger ses matières en actifs (18 min)
 
 **Nouveau :** l'actif et le catalogue, puis le glisser-déposer d'une vignette. **Déjà vu :** le sélecteur de type d'éditeur, la barre latérale, la liste des matières.
 
@@ -406,10 +436,9 @@ Ancre `ch3_sec3_title` · 32 minutes, de 2:50 à 3:22
 3. ranger ces trois actifs dans leur catalogue ;
 4. glisser la vignette de `Chrome` sur la douille.
 
-**Ils font, en autonomie (6 min) :**
-- marquer et ranger seuls les autres matières, jusqu'à la dernière : `Structure_Vert`, `ABS_Noir`, `PVC_Mat_Noir`, `Verre_Clair` ;
-- décrire un actif, au choix ;
-- enregistrer.
+**Ils font, en autonomie (4 min) :**
+- marquer et ranger seuls les autres matières, jusqu'à la dernière : `ABS_Noir`, `PVC_Mat_Noir`, `Verre_Clair`, et la matière du socle (`Bois_Noyer`…) dans un quatrième catalogue, *Bois et minéraux* ;
+- enregistrer. Décrire un actif devient un défi ★.
 
 **Point de contrôle :** dans l'Asset Browser, bibliothèque *Current File*, chaque matière de la lampe est rangée dans un catalogue ; *Métaux* montre l'aluminium brossé et le chrome. La douille est chromée.
 
@@ -419,7 +448,7 @@ Ancre `ch3_sec3_title` · 32 minutes, de 2:50 à 3:22
 - La vignette lâchée à côté de la pièce ne fait rien : il faut relâcher le bouton avec le pointeur sur la pièce.
 - Les catalogues ont disparu après une copie du fichier : le `blender_assets.cats.txt` est resté dans l'ancien dossier (vérifié dans Blender 5.2.1). Les actifs, eux, sont toujours là.
 
-### 3:10 · Réutiliser : récupérer une matière par Append (12 min)
+### 3:12 · Réutiliser : récupérer une matière par Append (12 min)
 
 **Nouveau :** *File > Append*, mis en pratique ; Link, cité en une phrase. **Déjà vu :** Append et Link cités à l'initiation, la fenêtre d'ouverture de fichiers, l'actif et le glisser-déposer.
 
@@ -454,7 +483,7 @@ Ancre `ch3_sec3_title` · 32 minutes, de 2:50 à 3:22
 
 Faites des matières de votre lampe des actifs, rangés en catalogues et décrits. Habillez ensuite la douille avec une matière du nuancier, récupérée par *File > Append*.
 
-## Atelier · Le second coloris · 3:22 (20 min)
+## Atelier · Le second coloris · 3:24 (20 min)
 
 **Situation :** « La revue de design demande une seconde proposition de couleurs, le coloris B. »
 
@@ -468,7 +497,7 @@ Faites des matières de votre lampe des actifs, rangés en catalogues et décrit
 3. **Revue (2 min).** Chacun change une teinte du coloris B, vérifie que le coloris A ne bouge pas, puis enregistre sous `lampe_habillage_v002.blend` avec le bouton `+`.
 
 **Paliers :**
-- **Socle :** le coloris B change au moins quatre matières, dont une peinture et un métal. Chaque matière changée est rendue indépendante, puis renommée (`Laque_Blanche`…). Le coloris A ne bouge pas.
+- **Socle :** le coloris B change au moins quatre matières, dont une peinture et un métal. Chaque matière changée est rendue indépendante, puis renommée (`Laque_Blanche`…). Le coloris A ne bouge pas. Pour le socle : `Structure_Vert`, gardée par son bouclier, copiée en `Structure_Blanche`, ou un autre lot PBR.
 - **★ :** toutes les pièces du coloris B suivent une gamme cohérente. Ses nouvelles matières sont des actifs, rangés dans les catalogues. Une matière au moins vient du nuancier par *File > Append*, par exemple `Laiton`.
 - **★★ :** un coloris C « premium » : laiton, carbone en projection triplanaire, verre fumé.
 
@@ -479,13 +508,11 @@ Faites des matières de votre lampe des actifs, rangés en catalogues et décrit
 - Une copie garde ses nœuds : l'aluminium brossé rendu indépendant, puis teinté en noir, reste brossé. Faites-le remarquer, c'est la section 2 réinvestie.
 - Un verre créé avec *New*, au lieu d'une copie de `Verre_Clair`, ne montre que l'image d'environnement : il faut recocher *Raytraced Transmission* et *Thin Wall*.
 
-## Tour des postes, bilan et passerelle · 3:42 (8 min)
+## Tour des postes, bilan et passerelle · 3:44 (6 min)
 
-- **Tour des postes (3 min) :** les écrans en *Material Preview*, les deux coloris côte à côte.
-- **Trois questions (3 min) :**
-  - « Métal ou plastique : quel réglage décide ? »
-  - « Pourquoi l'ampoule ne montrait-elle que l'image d'environnement ? »
-  - « Append ou Link, pour envoyer votre fichier à un client ? »
+- **Tour des postes (2 min) :** les écrans en *Material Preview*, les deux coloris côte à côte, chaque socle avec son lot.
+- **Une question (1 min) :** « Pourquoi l'ampoule ne montrait-elle que l'image d'environnement ? »
+- **Quiz (1 min) :** *Link* face à *Append*, puis « Append ou Link, pour envoyer votre fichier à un client ? »
 - **Passerelle (2 min) :** « Au chapitre 4, la lampe sort de la vue de travail. Vous l'amènerez dans un studio par Append, vous l'éclairerez, vous la cadrerez et vous en tirerez des visuels. » Vérifiez que chacun a enregistré `lampe_habillage_v002.blend`, images empaquetées.
 - **Pour aller plus loin :** les quiz du chapitre 3 dans l'application et les défis ci-dessous.
 
@@ -507,7 +534,7 @@ Valeurs et teintes indicatives : l'apprenant compose sa propre gamme. Le détail
 
 | Pièce | Coloris A, collection *Lampe* | Séquence | Coloris B du corrigé |
 |---|---|---|---|
-| *Socle* | `Structure_Vert` : peinture structurée, même teinte que la tête | Une matière ; triplanaire | `Structure_Blanche` |
+| *Socle* | `Structure_Vert` : peinture structurée, même teinte que la tête, gardée par son bouclier ; puis un lot PBR, au choix : `Bois_Noyer` (recette), `Beton_Lisse` ou `Palissandre_Verni` | Une matière ; triplanaire ; lot PBR | `Structure_Blanche` |
 | *Tête* | `Peinture_Vert` : laque (*Coat*) | Une matière ; *Coat* | `Laque_Blanche` |
 | *Grille_aeration*, *Interrupteur* | `ABS_Noir`, grainé | Une matière ; procédural | `ABS_Noir` |
 | *Bras_bas*, *Bras_haut* | `Alu_Brosse` | Métal ; procédural | `Alu_Anodise_Noir` brossé |
@@ -524,14 +551,14 @@ L'ampoule n'éclaire pas dans ce chapitre. La lumière de la lampe appartient au
 Le fichier `lampe_habillage_v002.blend`, point de départ du chapitre 4 :
 - la collection *Lampe*, habillée dans le coloris A, et la collection `Lampe_coloris_B` ;
 - des matières nommées, marquées comme actifs et rangées en catalogues ; le fichier `blender_assets.cats.txt`, à côté du `.blend`, garde ces catalogues ;
-- des images de finition empaquetées et aucune matière liée : le fichier s'ouvre seul, et un Append de la collection *Lampe* emporte ses matières ;
+- des images de finition et les cartes du lot PBR empaquetées, aucune matière liée : le fichier s'ouvre seul, et un Append de la collection *Lampe* emporte ses matières ;
 - un verre dont la matière a *Raytraced Transmission* et *Thin Wall* cochées ;
 - EEVEE comme moteur, avec la case *Raytracing* cochée ;
 - aucune lumière ni caméra réglée : c'est le travail du chapitre 4.
 
 Il garde aussi pour la suite ses propres actifs, réutilisables dans un autre projet par *File > Append*, et la bibliothèque CMF déclarée dans ses préférences, s'il a relevé ce défi.
 
-Le fichier `PRC02_ch3_lampe_habillage.blend` montre cet état attendu (fiche A2).
+Le fichier `PRC02_ch3_lampe_habillage.blend` montre cet état attendu (fiche A2), avec un socle en peinture structurée : il précède le lot PBR et reste un exemple.
 
 ## Fichiers d'exercice
 
@@ -547,11 +574,12 @@ La convention est commune aux chapitres 2 à 4. Le corrigé de chaque exercice e
 | Habillage en coloris A : matières, métal, plastique, verre | 0:15 à 1:35 | `lampe_habillage_v001.blend` | Collection masquée *Corrigé coloris A* de `PRC02_ch3_lampe_a_habiller.blend` : chaque matière y est réglée |
 | Démo « Métal et plastique » | 0:35 | `PRC02_ch3_nuancier_cmf.blend` | Sans objet : le nuancier est un fichier de référence, complet dès le départ |
 | Shader Editor et finitions procédurales | 1:35 à 2:15 | `lampe_habillage_v001.blend` | *Corrigé coloris A* : les bras en `Alu_Brosse_corrige`, l'interrupteur et la grille en `ABS_Noir_corrige`, avec leurs chaînes de nœuds |
-| Projection triplanaire sur le socle | 2:15 à 2:40 | `lampe_habillage_v001.blend` | *Corrigé coloris A* : le socle en `Structure_Vert_corrige` |
-| Projection triplanaire : démo et défi ★★ | 2:15 ; défis | `PRC02_ch3_finitions_triplanaires.blend` | Collection masquée *Corrigé* du même fichier |
-| Rangement en actifs | 2:50 à 3:10 | `lampe_habillage_v001.blend` | La bibliothèque elle-même, `PRC02_bibliotheque_CMF/` : actifs, catalogues, descriptions et étiquettes, dans la forme attendue |
-| Récupérer une matière par Append | 3:10 à 3:22 | `lampe_habillage_v001.blend` ; source : `PRC02_ch3_nuancier_cmf.blend` | *Corrigé coloris A* : la douille en `Alu_Naturel_corrige` |
-| Atelier · Le second coloris | 3:22 à 3:42 | `lampe_habillage_v001.blend`, enregistré sous `lampe_habillage_v002.blend` | Collection masquée *Corrigé coloris B* de `PRC02_ch3_lampe_a_habiller.blend` |
+| Projection triplanaire sur le socle | 2:11 à 2:32 | `lampe_habillage_v001.blend` | *Corrigé coloris A* : le socle en `Structure_Vert_corrige` |
+| Projection triplanaire : démo et défi ★★ | 2:11 ; défis | `PRC02_ch3_finitions_triplanaires.blend` | Collection masquée *Corrigé* du même fichier |
+| Lot de textures PBR sur le socle | 2:32 à 2:44 | `lampe_habillage_v001.blend` ; cartes : `PRC02_ch3_textures_pbr.zip` | Collection masquée *Corrigé socle PBR* de `PRC02_ch3_lampe_a_habiller.blend` : *Socle_PBR* en `Bois_Noyer_corrige`, devant la lampe du coloris A |
+| Rangement en actifs | 2:54 à 3:12 | `lampe_habillage_v001.blend` | La bibliothèque elle-même, `PRC02_bibliotheque_CMF/` : actifs, catalogues, descriptions et étiquettes, dans la forme attendue |
+| Récupérer une matière par Append | 3:12 à 3:24 | `lampe_habillage_v001.blend` ; source : `PRC02_ch3_nuancier_cmf.blend` | *Corrigé coloris A* : la douille en `Alu_Naturel_corrige` |
+| Atelier · Le second coloris | 3:24 à 3:44 | `lampe_habillage_v001.blend`, enregistré sous `lampe_habillage_v002.blend` | Collection masquée *Corrigé coloris B* de `PRC02_ch3_lampe_a_habiller.blend` |
 | Fin du chapitre | 3:50 | `lampe_habillage_v002.blend` | Fichier séparé `PRC02_ch3_lampe_habillage.blend` (fiche A2), justifié ci-dessous |
 
 **Un seul fichier séparé : `PRC02_ch3_lampe_habillage.blend`.** Il est justifié deux fois :
@@ -569,8 +597,9 @@ La convention est commune aux chapitres 2 à 4. Le corrigé de chaque exercice e
 | B | `PRC02_bibliotheque_CMF/` : `PRC02_ch3_nuancier_cmf.blend` et `blender_assets.cats.txt` | Démo « Métal et plastique » ; section 3, dont le corrigé du rangement ; atelier ; défis |
 | C | `PRC02_ch3_finitions_triplanaires.blend` | Démo « Projection triplanaire » ; défi ★★ |
 | D | `textures_cmf/` : cinq images PNG | Séquence « Projection triplanaire » ; empaquetées dans A, A2, B et C |
+| E | `textures_pbr/` : trois lots CC0 de Poly Haven, en 1K | Séquence « Un lot de textures PBR » ; le noyer empaqueté dans A (*Corrigé socle PBR*) |
 
-Le mémo des matières imprimé (ancienne fiche E) est reporté : plus tard, hors de ce plan.
+Le mémo des matières imprimé (ancienne fiche E) est reporté : plus tard, hors de ce plan. La lettre E désigne depuis le 25 novembre 2026 les lots de textures PBR.
 
 **Dans l'application, proposition :** quatre modules ressource. `PRC02_ch3_lampe_a_habiller.blend` en section 1 ; `PRC02_ch3_finitions_triplanaires.blend` et `textures_cmf.zip` en section 2 ; `PRC02_bibliotheque_CMF.zip` en section 3. La bibliothèque se distribue en zip, car le fichier de catalogues doit accompagner le `.blend`. Le fichier de la fiche A2 reste au formateur et à la session du chapitre 4 : s'il est distribué, c'est en zip avec son fichier de catalogues.
 
@@ -828,9 +857,25 @@ Socle · L'accoudoir
 | `carbone_serge_relief.png` | Le même sergé en hauteur : mèches bombées, creux aux croisements | *Non-Color* | 0,016 m (16 mm) | 62,5 |
 | `tole_larmee.png` | Tôle larmée : larmes en relief, alternées à + 45° et − 45°, 4 × 4 par tuile, fond plat noir, larmes blanches à bords doux | *Non-Color* | 0,120 m (120 mm) | 8,33 |
 
+### Fiche E · `textures_pbr/` : les lots de textures PBR
+
+**Rôle :** les cartes du lot PBR du socle (séquence de 2:32), distribuées dans `_resources/exercices/PRC02_ch3_textures_pbr.zip` (6,7 Mo), et le corrigé *Corrigé socle PBR* de la fiche A.
+
+**Source :** trois lots CC0 de Poly Haven, téléchargés une fois le 25 novembre 2026, avec l'accord du formateur, en 1K et en JPG, depuis l'API publique ; empreintes MD5 contrôlées. Les cartes restent hors du dépôt, dans `tool/exercices_ch3/textures_pbr/` ; le script `tool/exercices_ch3/textures_pbr.py` écrit le zip, son LISEZ-MOI, et relit chaque fichier décompressé à la recherche de chemins absolus.
+
+| Lot | Matière du chapitre | Taille réelle | *Mapping Scale* sur le socle | Cartes |
+|---|---|---|---|---|
+| `walnut_veneer_02` (noyer, recette) | `Bois_Noyer` | 1 m | 2 | `diff` *sRGB* ; `rough`, `nor_gl`, `disp` *Non-Color* |
+| `granular_concrete` (béton lisse) | `Beton_Lisse` | 2,4 m | 4 | idem |
+| `rosewood_veneer1` (palissandre verni) | `Palissandre_Verni` | 2,43 m | 3 | idem |
+
+**La chaîne :** un seul *Texture Coordinate* (*Object*), un seul *Mapping*, trois *Image Texture* en *Box*, *Blend* 0,25 : `diff` → *Base Color* ; `rough` → *Roughness* ; `nor_gl` → *Normal Map* (*Strength* 1) → *Normal*. *Metallic* 0, sans *Coat*. Recette dans `tool/exercices_ch3/matieres.py` (`LOTS_PBR`, `pbr`).
+
+**Contrôle :** rendu EEVEE du corrigé (`rendus_controle.py`, rendus `a_corrige_socle_pbr…`) ; la carte de normales donne bien un relief en projection *Box*, sans couche UV (comparaison avec *Strength* 0).
+
 ## Captures Blender à prévoir
 
-Une capture pour chaque menu, bouton, panneau ou nœud cité : 47 figures, toutes produites. Les légendes ci-dessous sont celles du texte. L'échelle est celle de l'affichage dans l'application (colonne de 715 px : une figure pleine largeur tient dans 715 × 450 px, une figure côte à côte dans 345 × 300 px). Toutes les figures qui montrent l'interface s'affichent à 0,5 au moins ; le script `tool/exercices_ch3/echelles.py` les recalcule. Les figures 3.3 et 3.13 portent les noms de fichier prévus par le plan du chapitre 4 : une seule capture sert aux deux chapitres.
+Une capture pour chaque menu, bouton, panneau ou nœud cité : 54 figures, toutes produites. Les figures 3.31 à 3.37 (lot PBR du socle) datent du 25 novembre 2026 : les suivantes ont été renumérotées d'autant. La figure 3.54, la planche CMF, vient de `tool/exercices_cmf/`. Les légendes ci-dessous sont celles du texte. L'échelle est celle de l'affichage dans l'application (colonne de 715 px : une figure pleine largeur tient dans 715 × 450 px, une figure côte à côte dans 345 × 300 px). Toutes les figures qui montrent l'interface s'affichent à 0,5 au moins ; le script `tool/exercices_ch3/echelles.py` les recalcule. Les figures 3.3 et 3.13 portent les noms de fichier prévus par le plan du chapitre 4 : une seule capture sert aux deux chapitres.
 
 | Figure | Fichier | Ce qu'elle montre | Format | Taille (px) | Échelle dans l'application |
 |---|---|---|---|---|---|
@@ -864,23 +909,29 @@ Une capture pour chaque menu, bouton, panneau ou nœud cité : 47 figures, toute
 | 3.28 | `box_blend_comparison_blender.jpg` | Une image contrastée (la tôle larmée) projetée en Box sur une coque de rétroviseur, au raccord de deux projections. À gauche, Blend 0 : les larmes sont coupées net. À droite, Blend 0,2 : la transition se fond. | Pleine largeur | 808 × 260 | 0,88 |
 | 3.29 | `image_color_space_menu_blender.jpg` | Le menu Color Space du nœud Image Texture : Non-Color pour une image de relief, sRGB pour une image de couleur. | Côte à côte | 262 × 304 | 0,99 |
 | 3.30 | `texture_scale_not_applied_blender.jpg` | Les deux accoudoirs du fichier de démonstration. À gauche, l'accoudoir du fond a une échelle X de 2 non appliquée : son grain s'étire en longueur. À droite, après Ctrl + A > Scale : les deux grains sont identiques. | Pleine largeur | 1200 × 380 | 0,60 |
-| 3.31 | `file_external_data_pack_blender.jpg` | File > External Data : Pack Resources range les images dans le fichier .blend. | Côte à côte | 280 × 293 | 1,02 |
-| 3.32 | `preferences_node_wrangler_blender.jpg` | Option : Edit > Preferences > Add-ons, l'extension Node Wrangler, livrée avec Blender. | Côte à côte | 600 × 276 | 0,57 |
-| 3.33 | `cmf_swatch_library_blender.jpg` | Le nuancier de la bibliothèque CMF, en Material Preview : une rangée par catalogue (métaux, plastiques, peintures, verres, finitions texturées), et la grille Metallic / Roughness au fond. | Pleine largeur | 934 × 794 | 0,57 |
-| 3.34 | `material_mark_as_asset_blender.jpg` | Le clic droit sur le nom de la matière, dans l'onglet Material : Mark as Asset. | Côte à côte | 594 × 242 | 0,58 |
-| 3.35 | `asset_browser_editor_type_blender.jpg` | Le sélecteur de type d'éditeur, ouvert sur la zone du bas : Asset Browser se trouve dans la colonne Data. | Pleine largeur | 950 × 284 | 0,75 |
-| 3.36 | `asset_browser_overview_blender.jpg` | L'Asset Browser, bibliothèque Current File : les catalogues à gauche, les vignettes du catalogue Métaux au centre, et la barre latérale de l'actif sélectionné à droite. | Pleine largeur | 1011 × 430 | 0,71 |
-| 3.37 | `asset_catalog_new_blender.jpg` | La liste des catalogues : le bouton + pour en créer un, et les trois catalogues de la lampe. Unassigned regroupe les actifs sans catalogue. | Côte à côte | 298 × 195 | 1,16 |
-| 3.38 | `asset_metadata_sidebar_blender.jpg` | La barre latérale de l'Asset Browser pour Alu_Brosse : Description, License, Author, et la vignette (Preview). | Côte à côte | 297 × 393 | 0,76 |
-| 3.39 | `asset_drag_drop_material_blender.jpg` | La vignette Chrome, glissée de la bibliothèque Current File sur la douille. Blender affiche la pièce visée : « Drop Chrome on Douille ». | Pleine largeur | 1010 × 620 | 0,71 |
-| 3.40 | `file_menu_link_append_blender.jpg` | Le menu File : Link… et Append…, juste au-dessus de Data Previews. | Côte à côte | 263 × 566 | 0,53 |
-| 3.41 | `file_append_blend_folders_blender.jpg` | La fenêtre File > Append, à l'intérieur du fichier du nuancier : ses dossiers Collection, Material, Object… Le chemin du poste est flouté. | Pleine largeur | 1025 × 430 | 0,70 |
-| 3.42 | `preferences_asset_libraries_blender.jpg` | Option : Edit > Preferences > Asset Libraries, la bibliothèque CMF ajoutée, avec son chemin (Path, flouté) et sa méthode d'import (Import Method : Pack). | Pleine largeur | 993 × 314 | 0,72 |
-| 3.43 | `asset_library_selector_blender.jpg` | Option : le menu des bibliothèques de l'Asset Browser : All Libraries, Current File, Essentials, User Library et la bibliothèque CMF déclarée. | Côte à côte | 296 × 234 | 1,17 |
-| 3.44 | `asset_import_method_menu_blender.jpg` | Option : Import Settings, dans l'en-tête de l'Asset Browser : Import Method propose Follow Asset or Preferences, Link, Append et Pack. | Côte à côte | 430 × 200 | 0,80 |
-| 3.45 | `outliner_collection_menu_blender.jpg` | Le clic droit sur la collection Lampe, dans l'Outliner : Duplicate Collection. | Côte à côte | 317 × 277 | 1,08 |
-| 3.46 | `lamp_two_colorways_blender.jpg` | L'atelier terminé : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, décalé de 750 mm. | Pleine largeur | 752 × 288 | 0,95 |
-| 3.47 | `linked_material_readonly_blender.jpg` | Défi : une matière liée par File > Link. Son nom porte l'icône de lien, et ses réglages sont grisés : elle se modifie dans son fichier source. | Côte à côte | 542 × 530 | 0,57 |
+| 3.31 | `shader_add_normal_map_blender.jpg` | Maj + A > Displacement, dans le Shader Editor : Normal Map, sous Bump et Displacement. | Côte à côte | 245 × 150 | 1,41 |
+| 3.32 | `material_fake_user_shield_blender.jpg` | L'onglet Material du socle : le bouclier de Structure_Vert, activé (en bleu), puis le bouton de copie (New Material). | Côte à côte | 542 × 190 | 0,64 |
+| 3.33 | `pbr_chain_overview_blender.jpg` | La chaîne du lot : Texture Coordinate (Object) et un seul Mapping (Scale 2), trois Image Texture en Box (Blend 0,25), puis Base Color, Roughness et, par le Normal Map, Normal. | Pleine largeur | 886 × 673 | 0,67 |
+| 3.34 | `pbr_maps_closeup_blender.jpg` | Deux cartes du lot, en gros plan. À gauche, la couleur, en sRGB. À droite, les normales, en Non-Color, reliées au Normal Map. La rugosité se règle comme les normales. | Pleine largeur | 998 × 436 | 0,72 |
+| 3.35 | `pbr_socle_lots_comparison_blender.jpg` | Le même socle, quatre finitions, en Material Preview : la peinture structurée, le noyer (Scale 2), le béton lisse (Scale 4) et le palissandre verni (Scale 3). | Pleine largeur | 762 × 168 | 0,94 |
+| 3.36 | `preferences_node_wrangler_blender.jpg` | Option : Edit > Preferences > Add-ons, l'extension Node Wrangler, livrée avec Blender. | Côte à côte | 600 × 276 | 0,57 |
+| 3.37 | `node_wrangler_principled_setup_blender.jpg` | Option : la chaîne créée par Ctrl + Maj + T avec les cartes diff, rough et nor_gl du noyer. Les images arrivent en projection Flat, et Texture Coordinate est relié par sa sortie UV (agrandie dans le médaillon). | Pleine largeur | 989 × 581 | 0,72 |
+| 3.38 | `file_external_data_pack_blender.jpg` | File > External Data : Pack Resources range les images dans le fichier .blend. | Côte à côte | 280 × 293 | 1,02 |
+| 3.39 | `cmf_swatch_library_blender.jpg` | Le nuancier de la bibliothèque CMF, en Material Preview : une rangée par catalogue (métaux, plastiques, peintures, verres, finitions texturées), et la grille Metallic / Roughness au fond. | Pleine largeur | 934 × 794 | 0,57 |
+| 3.40 | `material_mark_as_asset_blender.jpg` | Le clic droit sur le nom de la matière, dans l'onglet Material : Mark as Asset. | Côte à côte | 594 × 242 | 0,58 |
+| 3.41 | `asset_browser_editor_type_blender.jpg` | Le sélecteur de type d'éditeur, ouvert sur la zone du bas : Asset Browser se trouve dans la colonne Data. | Pleine largeur | 950 × 284 | 0,75 |
+| 3.42 | `asset_browser_overview_blender.jpg` | L'Asset Browser, bibliothèque Current File : les catalogues à gauche, les vignettes du catalogue Métaux au centre, et la barre latérale de l'actif sélectionné à droite. | Pleine largeur | 1011 × 430 | 0,71 |
+| 3.43 | `asset_catalog_new_blender.jpg` | La liste des catalogues : le bouton + pour en créer un, et les trois catalogues de la lampe. Unassigned regroupe les actifs sans catalogue. | Côte à côte | 298 × 195 | 1,16 |
+| 3.44 | `asset_metadata_sidebar_blender.jpg` | La barre latérale de l'Asset Browser pour Alu_Brosse : Description, License, Author, et la vignette (Preview). | Côte à côte | 297 × 393 | 0,76 |
+| 3.45 | `asset_drag_drop_material_blender.jpg` | La vignette Chrome, glissée de la bibliothèque Current File sur la douille. Blender affiche la pièce visée : « Drop Chrome on Douille ». | Pleine largeur | 1010 × 620 | 0,71 |
+| 3.46 | `file_menu_link_append_blender.jpg` | Le menu File : Link… et Append…, juste au-dessus de Data Previews. | Côte à côte | 263 × 566 | 0,53 |
+| 3.47 | `file_append_blend_folders_blender.jpg` | La fenêtre File > Append, à l'intérieur du fichier du nuancier : ses dossiers Collection, Material, Object… Le chemin du poste est flouté. | Pleine largeur | 1025 × 430 | 0,70 |
+| 3.48 | `preferences_asset_libraries_blender.jpg` | Option : Edit > Preferences > Asset Libraries, la bibliothèque CMF ajoutée, avec son chemin (Path, flouté) et sa méthode d'import (Import Method : Pack). | Pleine largeur | 993 × 314 | 0,72 |
+| 3.49 | `asset_library_selector_blender.jpg` | Option : le menu des bibliothèques de l'Asset Browser : All Libraries, Current File, Essentials, User Library et la bibliothèque CMF déclarée. | Côte à côte | 296 × 234 | 1,17 |
+| 3.50 | `asset_import_method_menu_blender.jpg` | Option : Import Settings, dans l'en-tête de l'Asset Browser : Import Method propose Follow Asset or Preferences, Link, Append et Pack. | Côte à côte | 430 × 200 | 0,80 |
+| 3.51 | `outliner_collection_menu_blender.jpg` | Le clic droit sur la collection Lampe, dans l'Outliner : Duplicate Collection. | Côte à côte | 317 × 277 | 1,08 |
+| 3.52 | `lamp_two_colorways_blender.jpg` | L'atelier terminé : le coloris A dans la collection Lampe, le coloris B dans Lampe_coloris_B, décalé de 750 mm. | Pleine largeur | 752 × 288 | 0,95 |
+| 3.53 | `linked_material_readonly_blender.jpg` | Défi : une matière liée par File > Link. Son nom porte l'icône de lien, et ses réglages sont grisés : elle se modifie dans son fichier source. | Côte à côte | 542 × 530 | 0,57 |
 
 **Méthode :** celle du chapitre 1 (note de passation) : *Resolution Scale* à 1,25, onglets d'extensions tierces hors champ, chemins personnels floutés dans le navigateur de fichiers de l'espace *Shading*. Les vues en *Material Preview* se capturent dans une fenêtre Blender courte, lancée à part, en ouvrant un fichier `.blend` pour éviter l'écran d'accueil ; la comparaison 3.10 a déjà été prototypée ainsi.
 
@@ -890,18 +941,20 @@ Raccourcissez dans cet ordre :
 
 | Ordre | Ce que l'on raccourcit | Gain |
 |---|---|---|
-| D'abord | *Coat* en démo seulement ; l'autonomie du verre ; les descriptions des actifs ; l'option de la bibliothèque déclarée | 8 min |
-| Ensuite | L'autonomie du procédural (grain de l'ABS) ; l'autonomie de la projection réduite à *Pack Resources* et à l'enregistrement | 10 min |
+| D'abord | *Coat* en démo seulement ; l'option de la bibliothèque déclarée ; la démo du téléchargement sur Poly Haven | 6 min |
+| Ensuite | L'autonomie du procédural (grain de l'ABS) ; l'autonomie de la projection réduite à l'enregistrement ; le lot PBR réduit à la couleur et aux normales | 10 min |
 | En dernier | L'atelier réduit à son palier Socle, en 10 minutes ; la suite après la séance, avec le LISEZ-MOI et la collection *Corrigé coloris B* | 10 min |
 
 Un apprenant qui décroche reprend avec le groupe sur la pièce de l'exercice en cours : chaque exercice porte sur ses propres pièces (les bras, le socle, la douille). Il finit les pièces sautées après la séance, avec la collection *Corrigé coloris A*.
 
-À ne jamais sauter : *Material Preview* et le Principled (*Metallic*, *Roughness*) ; le verre et ses deux interrupteurs ; le Shader Editor et la chaîne du brossé ; la projection *Box* sur le socle ; *Mark as Asset* et *File > Append* ; l'enregistrement final, images empaquetées.
+À ne jamais sauter : *Material Preview* et le Principled (*Metallic*, *Roughness*) ; le verre et ses deux interrupteurs ; le Shader Editor et la chaîne du brossé ; la projection *Box* sur le socle ; le lot PBR et son *Normal Map* ; *Mark as Asset* et *File > Append* ; l'enregistrement final, images empaquetées.
 
 ## Pour ceux qui avancent vite
 
 **★**
 - Le verre dépoli et le verre fumé.
+- La description d'un actif.
+- Un autre lot sur le socle, béton ou palissandre ; la carte `disp` dans un *Bump* chaîné au *Normal Map* ; un lot chargé par `Ctrl + Maj + T` de *Node Wrangler*, repassé en *Object* et en *Box*.
 - L'intérieur blanc de la tête : un second emplacement de matière et *Material Offset* du Solidify.
 - `Ctrl + L > Link Materials`, pour donner une matière à plusieurs pièces d'un coup.
 - *Emission* : un voyant lumineux sur l'interrupteur.
@@ -1008,3 +1061,12 @@ Prises par délégation pendant la production des fichiers, du texte et des capt
 7. **La figure de *Blend*** (3.28) montre la tôle larmée projetée sur une coque de rétroviseur, cadrée serré sur le raccord, et non le socle : sur la peinture structurée, le raccord se lit à peine.
 8. **Le panneau carbone** est construit debout dans son repère local, puis couché par sa rotation : le *Bend* du *Simple Deform* sur l'axe Y ne courbe pas un plan couché en XY (vérifié).
 9. **Dans le fichier de démonstration des finitions,** le LISEZ-MOI occupe la zone du navigateur de fichiers de l'espace *Shading* : ce navigateur aurait enregistré le chemin absolu du dossier.
+
+## Décisions du formateur, 25 novembre 2026
+
+1. **Une erreur corrigée.** Le support, le déroulé et ce plan écartaient le nœud *Normal Map* « faute de dépliage UV ». C'est faux : une carte de normales en espace tangent, projetée en *Box* (coordonnées *Object*), donne un relief sans couche UV, en EEVEE comme en Cycles (test du formateur dans Blender 5.2.1, confirmé par le rendu de contrôle du corrigé). Le quiz qui en faisait un leurre est remplacé.
+2. **Un lot de textures PBR dans le fil rouge, pour tous,** sur le socle, juste après la peinture structurée qui en pose les notions : séquence de 2:32, 12 minutes. Le formateur juge ces lots essentiels, voire majoritaires, dans le travail avec des designers CMF.
+3. **Les lots :** trois lots CC0 de Poly Haven en 1K, téléchargés une fois avec son accord (fiche E) : le noyer de la recette, un béton lisse et un palissandre verni. Le formateur montre le téléchargement sur polyhaven.com. Pas de marbre : Poly Haven n'en propose pas en plaque sans joints.
+4. **Le socle du coloris A garde le lot PBR.** `Structure_Vert` reste dans le fichier par son bouclier (*Fake User*) et sert au coloris B. La figure 3.1, la lampe habillée (fiche A2) et les fichiers du chapitre 4 gardent le socle en peinture structurée : ils deviennent des exemples.
+5. **Le minutage :** les 12 minutes sont reprises ainsi : le verre dépoli ou fumé devient un défi ★ (−4) ; *Pack Resources* passe après le lot, une seule fois (−3) ; le quiz du *Bump* devient celui du lot (−1) ; la description d'un actif devient un défi ★ (−2) ; le bilan garde une question orale (−2). Seconde pause à 2:44.
+6. **Le corrigé** va dans `PRC02_ch3_lampe_a_habiller.blend`, fichier déjà livré, avec l'accord du formateur : collection masquée *Corrigé socle PBR* (*Socle_PBR*, `Bois_Noyer_corrige`), une ligne et la recette dans le LISEZ-MOI. Les corrigés A et B et les paliers ★ du LISEZ-MOI restent tels quels (paliers à revoir plus tard). Le fichier passe à 1,9 Mo ; il est reconstruit par `build_lampe.py a`, puis `finish_ui.py`. À cette occasion, le reste d'un ancien chemin absolu, laissé dans le tampon du chemin de `grain_structure.png`, a disparu (`matieres.image` écrase désormais tout le tampon).

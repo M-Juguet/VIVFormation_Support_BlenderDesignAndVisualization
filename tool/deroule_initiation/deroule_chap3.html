@@ -51,19 +51,19 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <p class="overline">PRC02 · Chapitre 3 · Document formateur</p>
 <h1>Chapitre 3 · Matières et finitions sans dépliage UV : déroulé formateur</h1>
 <p class="subtitle">PRC02 · Design &amp; visualisation temps réel avec Blender · Blender 5.2 LTS, interface en anglais</p>
-<p class="subtitle">Demi-journée 5 sur 6, en présentiel, de 5 à 8 apprenants · Version du 19 novembre 2026, application support 1.0.0</p>
+<p class="subtitle">Demi-journée 5 sur 6, en présentiel, de 5 à 8 apprenants · Version du 25 novembre 2026 : le lot de textures PBR du socle entre dans le fil rouge. Il paraît dans l'application à la version qui suit la 1.1.0.</p>
 </div><img src="../../viv-formation-design-system/assets/logos/viv-formation-couleur.svg" alt="VIV Formation"></header>
 <h2>En bref</h2>
 <ul>
-<li><strong>Objectif :</strong> à la fin de la demi-journée, chaque apprenant règle une matière de métal, de plastique ou de verre avec le Principled BSDF. Il ajoute une finition brossée, grainée ou structurée, sans dépliage UV. Il range ses matières en actifs dans l'Asset Browser et récupère une matière d'un autre fichier avec <em>File &gt; Append</em>. Enfin, il décline sa lampe en un second coloris.
+<li><strong>Objectif :</strong> à la fin de la demi-journée, chaque apprenant règle une matière de métal, de plastique ou de verre avec le Principled BSDF. Il ajoute une finition brossée, grainée ou structurée, puis pose un lot de textures PBR sur le socle, sans dépliage UV. Il range ses matières en actifs dans l'Asset Browser et récupère une matière d'un autre fichier avec <em>File &gt; Append</em>. Enfin, il décline sa lampe en un second coloris.
 </li>
-<li><strong>Format :</strong> 3 h 50, dont 3 h 30 de contenu et 2 pauses de 10 minutes. Il reste 10 minutes de marge sur 4 heures. Exemple : de 9 h 00 à 12 h 50. Les pauses tombent aux mêmes heures qu'à la première demi-journée de l'initiation.
+<li><strong>Format :</strong> 3 h 50, dont 3 h 30 de contenu et 2 pauses de 10 minutes. Il reste 10 minutes de marge sur 4 heures. Exemple : de 9 h 00 à 12 h 50. La première pause tombe à la même heure qu'à la première demi-journée de l'initiation ; la seconde, quatre minutes plus tard, à 2:44, après le lot PBR.
 </li>
 <li><strong>Principe :</strong> le même qu'à l'initiation. Une notion à la fois : vous la montrez en quelques minutes, ils la pratiquent en guidé, puis seuls. Personne ne passe plus de 15 minutes sans toucher la souris. C'est le chapitre le plus abstrait : la section 1 se fait entièrement dans l'onglet <em>Material</em>, sans aucun nœud ; le Shader Editor n'arrive qu'en section 2, un nœud à la fois. Tout le chapitre se fait en vue <em>Material Preview</em>.
 </li>
-<li><strong>L'idée du jour : une matière se partage.</strong> Plusieurs pièces peuvent porter la même matière, comme les roues de la maquette partageaient leur maillage à l'initiation. Avant de changer une matière pour une seule pièce, un clic sur son compteur la rend indépendante. Ce geste revient au socle structuré (2:15) et au coloris B (atelier).
+<li><strong>L'idée du jour : une matière se partage.</strong> Plusieurs pièces peuvent porter la même matière, comme les roues de la maquette partageaient leur maillage à l'initiation. Avant de changer une matière pour une seule pièce, un clic sur son compteur la rend indépendante. Ce geste revient au socle structuré (2:11) et au coloris B (atelier). Au lot PBR (2:32), le bouclier garde la peinture structurée dans le fichier.
 </li>
-<li><strong>Fil rouge :</strong> la lampe modélisée au chapitre 2, <code>lampe_modele_v001.blend</code>, enregistrée sous <code>lampe_habillage_v001.blend</code>. Elle repart habillée, en deux coloris, ses matières rangées en actifs, dans <code>lampe_habillage_v002.blend</code>. Le chapitre 4 en importe la collection <em>Lampe</em> par <em>File &gt; Append</em>.
+<li><strong>Fil rouge :</strong> la lampe modélisée au chapitre 2, <code>lampe_modele_v001.blend</code>, enregistrée sous <code>lampe_habillage_v001.blend</code>. Elle repart habillée, en deux coloris, ses matières rangées en actifs, dans <code>lampe_habillage_v002.blend</code>. Le socle du coloris A y porte un lot de textures PBR, au choix de l'apprenant : noyer, béton ou palissandre. Le chapitre 4 en importe la collection <em>Lampe</em> par <em>File &gt; Append</em>.
 </li>
 </ul>
 <h3>Ce que l'on survole</h3>
@@ -75,15 +75,21 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 <li>L'IOR : cité avec le verre ; on n'y touche pas.
 </li>
+<li>Le verre dépoli ou fumé : un défi ★, l'essai en autonomie de 1:15 n'est plus minuté.
+</li>
 <li><em>Emission</em> (figure 3.15) et les deux matières d'une pièce (figures 3.16 et 3.17) : des défis ★.
 </li>
 <li>Ce qu'EEVEE simplifie (<em>Anisotropic</em>, le nœud <em>Bevel</em>, <em>Thin Film</em>) : une phrase, au moment du brossé.
 </li>
-<li><em>Node Wrangler</em> (figure 3.32) et <em>Automatically Pack Resources</em> : cités.
+<li><em>Node Wrangler</em> (figure 3.36), son <code>Ctrl + Maj + T</code> pour charger un lot d'un coup (figure 3.37), et <em>Automatically Pack Resources</em> : cités.
 </li>
-<li><em>Link</em> : une phrase ; sa manipulation devient un défi ★ (figure 3.47).
+<li>La carte de hauteur <code>disp</code> d'un lot, par un <em>Bump</em> chaîné au <em>Normal Map</em> : pour ceux qui ont fini.
 </li>
-<li>La bibliothèque déclarée dans les préférences et le menu <em>Import Method</em> (figures 3.42 à 3.44) : une minute de démonstration sur votre poste. Les préférences des postes ne sont pas touchées.
+<li>La description d'un actif, dans la barre latérale de l'Asset Browser : un défi ★, montrée dans votre démo de 2:54.
+</li>
+<li><em>Link</em> : une phrase ; sa manipulation devient un défi ★ (figure 3.53).
+</li>
+<li>La bibliothèque déclarée dans les préférences et le menu <em>Import Method</em> (figures 3.48 à 3.50) : une minute de démonstration sur votre poste. Les préférences des postes ne sont pas touchées.
 </li>
 <li>Le défi facultatif « Matières procédurales », dans la rubrique « Pour aller plus loin » de la barre latérale : hors minutage, voir sa partie plus bas.
 </li>
@@ -91,15 +97,16 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <h3>Les fichiers</h3>
 <table><thead><tr><th>Fichier</th><th>Moment</th><th>Contenu</th></tr></thead><tbody>
 <tr><td><code>lampe_modele_v001.blend</code></td><td>0:00</td><td>Le fichier de fin du chapitre 2, propre à chaque apprenant ; enregistré sous <code>lampe_habillage_v001.blend</code></td></tr>
-<tr><td><code>PRC02_ch3_lampe_a_habiller.blend</code></td><td>0:00 (secours), puis vos démos jusqu'à 3:10</td><td>La lampe du chapitre 2, sans matière ; les collections masquées <em>Corrigé coloris A</em> (sections 1 à 3) et <em>Corrigé coloris B</em> (atelier), dont les matières portent le suffixe <code>_corrige</code></td></tr>
-<tr><td><code>PRC02_bibliotheque_CMF.zip</code></td><td>0:35 (votre démo), 3:10, atelier</td><td>Le dossier <code>PRC02_bibliotheque_CMF</code> : le nuancier <code>PRC02_ch3_nuancier_cmf.blend</code> (vingt-cinq matières en cinq catalogues, et la grille <em>Metallic</em> / <em>Roughness</em>) et son <code>blender_assets.cats.txt</code>. C'est aussi le corrigé du rangement en actifs</td></tr>
-<tr><td><code>PRC02_ch3_textures_cmf.zip</code></td><td>2:15</td><td>Le dossier <code>textures_cmf</code> : cinq images raccordables, dont <code>grain_structure.png</code>, et un <code>LISEZ-MOI.txt</code></td></tr>
-<tr><td><code>PRC02_ch3_finitions_triplanaires.blend</code></td><td>2:15 (votre démo), défis ★★</td><td>Cinq pièces sans dépliage UV, des trois secteurs ; la collection masquée <em>Corrigé</em></td></tr>
-<tr><td><code>PRC02_ch3_lampe_habillage.zip</code></td><td>0:00 (le but du jour), fin</td><td>L'état attendu de <code>lampe_habillage_v002.blend</code>, avec son fichier de catalogues ; un point de départ possible du chapitre 4</td></tr>
+<tr><td><code>PRC02_ch3_lampe_a_habiller.blend</code></td><td>0:00 (secours), puis vos démos jusqu'à 3:12</td><td>La lampe du chapitre 2, sans matière ; les collections masquées <em>Corrigé coloris A</em> (sections 1 à 3, socle en peinture structurée), <em>Corrigé socle PBR</em> (le socle en noyer, fin de la section 2) et <em>Corrigé coloris B</em> (atelier), dont les matières portent le suffixe <code>_corrige</code>. Les images du corrigé sont empaquetées : 1,9 Mo</td></tr>
+<tr><td><code>PRC02_bibliotheque_CMF.zip</code></td><td>0:35 (votre démo), 3:12, atelier</td><td>Le dossier <code>PRC02_bibliotheque_CMF</code> : le nuancier <code>PRC02_ch3_nuancier_cmf.blend</code> (vingt-cinq matières en cinq catalogues, et la grille <em>Metallic</em> / <em>Roughness</em>) et son <code>blender_assets.cats.txt</code>. C'est aussi le corrigé du rangement en actifs</td></tr>
+<tr><td><code>PRC02_ch3_textures_cmf.zip</code></td><td>2:11</td><td>Le dossier <code>textures_cmf</code> : cinq images raccordables, dont <code>grain_structure.png</code>, et un <code>LISEZ-MOI.txt</code></td></tr>
+<tr><td><code>PRC02_ch3_finitions_triplanaires.blend</code></td><td>2:11 (votre démo), défis ★★</td><td>Cinq pièces sans dépliage UV, des trois secteurs ; la collection masquée <em>Corrigé</em></td></tr>
+<tr><td><code>PRC02_ch3_textures_pbr.zip</code></td><td>2:32</td><td>Le dossier <code>textures_pbr</code> : trois lots CC0 de Poly Haven en 1K, un sous-dossier par lot : <code>walnut_veneer_02</code> (noyer, celui de la recette), <code>granular_concrete</code> (béton lisse) et <code>rosewood_veneer1</code> (palissandre verni). Quatre cartes JPG par lot (<code>diff</code>, <code>rough</code>, <code>nor_gl</code>, <code>disp</code>) et un <code>LISEZ-MOI.txt</code> : source, licence, <em>Color Space</em> de chaque carte. 6,7 Mo</td></tr>
+<tr><td><code>PRC02_ch3_lampe_habillage.zip</code></td><td>0:00 (le but du jour), fin</td><td>Un exemple de <code>lampe_habillage_v002.blend</code>, avec son fichier de catalogues ; un point de départ possible du chapitre 4. Son socle garde la peinture structurée : ceux des apprenants portent leur lot PBR</td></tr>
 <tr><td><code>PRC02_ch3_defi_procedural.blend</code></td><td>Hors minutage</td><td>Le défi facultatif ; la collection masquée « Corrigé défi procédural »</td></tr>
 <tr><td><code>PRC02_CMF_planche.zip</code></td><td>Après la séance, ou pour une présentation CMF</td><td>La ressource complémentaire qui ferme le chapitre : une planche de présentation sous éclairage fixe et neutre, vierge et habillée, avec les matières du chapitre en actifs, des gabarits réglables et un mémo d'une page</td></tr>
 </tbody></table>
-<p>L'application propose la lampe à habiller en section 1, sous « Où l'on en est ». Les images et les finitions triplanaires sont en section 2, sous « Une image projetée sur trois axes : Box ». La bibliothèque est en section 3, sous « Récupérer une matière : File &gt; Append ». La lampe habillée suit l'atelier, et la planche CMF ferme le chapitre. Le défi est dans la rubrique « Pour aller plus loin » de la barre latérale (Défi 2).</p>
+<p>L'application propose la lampe à habiller en section 1, sous « Où l'on en est ». Les images et les finitions triplanaires sont en section 2, sous « Une image projetée sur trois axes : Box » ; les lots PBR, plus loin dans la même section, sous « Où trouver des lots : Poly Haven ». La bibliothèque est en section 3, sous « Récupérer une matière : File &gt; Append ». La lampe habillée suit l'atelier, et la planche CMF ferme le chapitre. Le défi est dans la rubrique « Pour aller plus loin » de la barre latérale (Défi 2).</p>
 <blockquote><p><strong>À savoir :</strong> chaque fichier <code>.blend</code> du chapitre contient un texte LISEZ-MOI, affiché à l'ouverture : en bas de l'écran dans l'espace <em>Layout</em>, en haut à gauche dans les deux fichiers qui s'ouvrent sur l'espace <em>Shading</em>. Il donne les consignes par paliers (socle, ★, ★★) et dit où se trouve le corrigé. Ce document n'a donc pas d'annexe de consignes : projetez le LISEZ-MOI ou renvoyez-y. Celui de la lampe marque <em>Coat</em> et le grain de l'ABS d'une étoile : en séance, tout le monde les fait. Les matières des corrigés ne sont pas des actifs : la bibliothèque <em>Current File</em> est vide au début de la section 3. Un apprenant qui garde sa propre lampe n'a pas le corrigé dans son fichier : il le voit sur votre écran, ou ouvre <code>PRC02_ch3_lampe_a_habiller.blend</code> dans une seconde fenêtre de Blender.</p></blockquote>
 <h2>Avant la demi-journée</h2>
 <h3>Les postes des apprenants</h3>
@@ -108,7 +115,7 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 <li>Le dossier de travail contient le fichier de fin du chapitre 2, <code>lampe_modele_v001.blend</code>.
 </li>
-<li>Il contient aussi les fichiers du chapitre 3, décompressés : <code>PRC02_ch3_lampe_a_habiller.blend</code>, le dossier <code>textures_cmf</code> et le dossier <code>PRC02_bibliotheque_CMF</code>, où le nuancier reste à côté de son <code>blender_assets.cats.txt</code>. À défaut, chacun les télécharge depuis l'application au moment voulu.
+<li>Il contient aussi les fichiers du chapitre 3, décompressés : <code>PRC02_ch3_lampe_a_habiller.blend</code>, les dossiers <code>textures_cmf</code> et <code>textures_pbr</code>, et le dossier <code>PRC02_bibliotheque_CMF</code>, où le nuancier reste à côté de son <code>blender_assets.cats.txt</code>. À défaut, chacun les télécharge depuis l'application au moment voulu.
 </li>
 <li>Blender 5.2 LTS s'ouvre, avec une souris à trois boutons : la molette cliquée déplace la vue du Shader Editor.
 </li>
@@ -119,15 +126,17 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </ul>
 <h3>Votre poste de démonstration</h3>
 <ul>
-<li><strong>Lancez Blender en configuration d'usine</strong> (<code>blender.exe --factory-startup</code>), comme à l'initiation : votre écran correspond à celui des apprenants, et vos préférences ne sont pas touchées. En contrepartie, une bibliothèque déclarée dans les préférences ne survit pas à un redémarrage : pour l'option de 3:10, déclarez-la pendant la pause de 2:40.
+<li><strong>Lancez Blender en configuration d'usine</strong> (<code>blender.exe --factory-startup</code>), comme à l'initiation : votre écran correspond à celui des apprenants, et vos préférences ne sont pas touchées. En contrepartie, une bibliothèque déclarée dans les préférences ne survit pas à un redémarrage : pour l'option de 3:12, déclarez-la pendant la pause de 2:44.
 </li>
 <li><strong>Agrandissez l'interface</strong> pour le vidéoprojecteur : <em>Resolution Scale</em> à 1,3.
 </li>
-<li><strong>Préparez une copie de travail de <code>PRC02_ch3_lampe_a_habiller.blend</code>,</strong> enregistrée sous un autre nom, avec le dossier <code>textures_cmf</code> à côté. Toutes vos démos sur la lampe s'y font, et ses corrigés se projettent aux points de contrôle. Sa case <em>Raytracing</em> est décochée, comme chez les apprenants : vous la cochez à 1:15.
+<li><strong>Préparez une copie de travail de <code>PRC02_ch3_lampe_a_habiller.blend</code>,</strong> enregistrée sous un autre nom, avec les dossiers <code>textures_cmf</code> et <code>textures_pbr</code> à côté. Toutes vos démos sur la lampe s'y font, et ses corrigés se projettent aux points de contrôle. Sa case <em>Raytracing</em> est décochée, comme chez les apprenants : vous la cochez à 1:15.
 </li>
-<li><strong>Gardez à portée</strong> le dossier <code>PRC02_bibliotheque_CMF</code> (démos de 0:35 et 3:10), une copie de <code>PRC02_ch3_finitions_triplanaires.blend</code> (démo de 2:15) et la lampe habillée, décompressée de <code>PRC02_ch3_lampe_habillage.zip</code> (ouverture). Enregistrez votre copie avant chaque changement de fichier ; <em>File &gt; Open Recent</em> vous ramène à la lampe.
+<li><strong>Gardez à portée</strong> le dossier <code>PRC02_bibliotheque_CMF</code> (démos de 0:35 et 3:12), une copie de <code>PRC02_ch3_finitions_triplanaires.blend</code> (démo de 2:11) et la lampe habillée, décompressée de <code>PRC02_ch3_lampe_habillage.zip</code> (ouverture). Enregistrez votre copie avant chaque changement de fichier ; <em>File &gt; Open Recent</em> vous ramène à la lampe.
 </li>
 <li><strong>Gardez l'application ouverte</strong> sur le chapitre 3, pour projeter les figures et les quiz.
+</li>
+<li><strong>Pour la démo de Poly Haven (2:32),</strong> vérifiez l'accès à Internet de votre poste et ouvrez à l'avance la page du noyer, <code>https://polyhaven.com/a/walnut_veneer_02</code>. Sans Internet, décrivez le téléchargement d'après le § 2 « Où trouver des lots : Poly Haven » : le dossier <code>textures_pbr</code> contient déjà les trois lots.
 </li>
 </ul>
 <h3>Le matériel de la salle</h3>
@@ -137,11 +146,11 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <li>Le paperboard, préparé avant l'arrivée des apprenants :
 <ul>
 <li>l'idée du jour : « Une matière se partage. Avant de la changer pour une seule pièce : un clic sur son compteur. » ;</li>
-<li>le cahier CMF du coloris A : <em>Socle</em> et <em>Tête</em> <code>Peinture_Vert</code>, puis <code>Structure_Vert</code> sur le socle ; <em>Interrupteur</em>, ses crans et <em>Grille_aeration</em> <code>ABS_Noir</code> ; bras <code>Alu_Naturel</code>, qui devient <code>Alu_Brosse</code> ; articulations <code>Chrome</code> ; <em>Câble</em> <code>PVC_Mat_Noir</code> ; <em>Ampoule</em> <code>Verre_Clair</code> ; <em>Douille</em> <code>Alu_Naturel</code>, pris dans le nuancier ;</li>
+<li>le cahier CMF du coloris A : <em>Socle</em> et <em>Tête</em> <code>Peinture_Vert</code>, puis <code>Structure_Vert</code> sur le socle, puis le lot PBR <code>Bois_Noyer</code> (ou <code>Beton_Lisse</code>, <code>Palissandre_Verni</code>) ; <em>Interrupteur</em>, ses crans et <em>Grille_aeration</em> <code>ABS_Noir</code> ; bras <code>Alu_Naturel</code>, qui devient <code>Alu_Brosse</code> ; articulations <code>Chrome</code> ; <em>Câble</em> <code>PVC_Mat_Noir</code> ; <em>Ampoule</em> <code>Verre_Clair</code> ; <em>Douille</em> <code>Alu_Naturel</code>, pris dans le nuancier ;</li>
 <li>le corrigé : « collections <em>Corrigé coloris A</em> et <em>B</em>, œil fermé, dans <code>PRC02_ch3_lampe_a_habiller.blend</code> : on compare, on ne copie pas » ;</li>
 <li>les fichiers : <code>lampe_habillage_v001.blend</code>, puis <code>lampe_habillage_v002.blend</code>, toujours avec <code>blender_assets.cats.txt</code> à côté ;</li>
-<li>la chaîne des finitions, complétée au fil de la section 2 : <em>Texture Coordinate</em> (<em>Object</em>) → <em>Mapping</em> → texture → <em>Bump</em> → entrée <em>Normal</em> du Principled ;</li>
-<li>les raccourcis du jour, complétés au fil de la séance : <code>/</code> ; dans le Shader Editor, <code>Maj + A</code>, <code>G</code>, <code>X</code> et <code>Origine</code> ; <code>Ctrl + A &gt; Scale</code> ; <code>N</code> dans l'Asset Browser.</li>
+<li>la chaîne des finitions, complétée au fil de la section 2 : <em>Texture Coordinate</em> (<em>Object</em>) → <em>Mapping</em> → texture → <em>Bump</em> → entrée <em>Normal</em> du Principled ; puis celle du lot PBR : un seul <em>Mapping</em> → trois <em>Image Texture</em> en <em>Box</em> → <code>diff</code> (<em>sRGB</em>) dans <em>Base Color</em>, <code>rough</code> (<em>Non-Color</em>) dans <em>Roughness</em>, <code>nor_gl</code> (<em>Non-Color</em>) → <em>Normal Map</em> → <em>Normal</em> ;</li>
+<li>les raccourcis du jour, complétés au fil de la séance : <code>/</code> ; dans le Shader Editor, <code>Maj + A</code>, <code>G</code>, <code>X</code>, <code>Maj + D</code> et <code>Origine</code> ; <code>Ctrl + A &gt; Scale</code> ; <code>N</code> dans l'Asset Browser.</li>
 </ul>
 </li>
 </ul>
@@ -152,16 +161,18 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <tr><td>0:15</td><td>20 min</td><td>Une matière dans Blender</td><td>1</td><td>Démo 7 + guidé 13</td></tr>
 <tr><td>0:35</td><td>30 min</td><td>Métal et plastique, puis <em>Coat</em></td><td>1</td><td>Démo 7 + guidé 7 + autonomie 9 + quiz 1 ; <em>Coat</em> : démo 2 + guidé 3 + quiz 1</td></tr>
 <tr><td>1:05</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
-<tr><td>1:15</td><td>20 min</td><td>Le verre</td><td>1</td><td>Démo 6 + guidé 9 + autonomie 4 + quiz 1</td></tr>
-<tr><td>1:35</td><td>15 min</td><td>Le Shader Editor : la matière en nœuds</td><td>2</td><td>Démo 6 + guidé 9</td></tr>
-<tr><td>1:50</td><td>25 min</td><td>Finitions procédurales sans UV</td><td>2</td><td>Démo 8 + guidé 11 + autonomie 5 + quiz 1</td></tr>
-<tr><td>2:15</td><td>25 min</td><td>Projection triplanaire d'images</td><td>2</td><td>Démo 8 + guidé 9 + autonomie 6 + quiz 2</td></tr>
-<tr><td>2:40</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
-<tr><td>2:50</td><td>20 min</td><td>Ranger ses matières en actifs</td><td>3</td><td>Démo 6 + guidé 7 + autonomie 6 + quiz 1</td></tr>
-<tr><td>3:10</td><td>12 min</td><td>Réutiliser : récupérer une matière par Append</td><td>3</td><td>Démo 5 + guidé 6 + quiz 1</td></tr>
-<tr><td>3:22</td><td>20 min</td><td>Atelier · Le second coloris</td><td></td><td>Lancement 2 + autonomie 16 + revue 2</td></tr>
-<tr><td>3:42</td><td>8 min</td><td>Tour des postes, bilan et passerelle vers le chapitre 4</td><td></td><td>Collectif, dont 1 quiz</td></tr>
+<tr><td>1:15</td><td>16 min</td><td>Le verre</td><td>1</td><td>Démo 6 + guidé 9 + quiz 1</td></tr>
+<tr><td>1:31</td><td>15 min</td><td>Le Shader Editor : la matière en nœuds</td><td>2</td><td>Démo 6 + guidé 9</td></tr>
+<tr><td>1:46</td><td>25 min</td><td>Finitions procédurales sans UV</td><td>2</td><td>Démo 8 + guidé 11 + autonomie 5 + quiz 1</td></tr>
+<tr><td>2:11</td><td>21 min</td><td>Projection triplanaire d'images</td><td>2</td><td>Démo 8 + guidé 9 + autonomie 3 + quiz 1</td></tr>
+<tr><td>2:32</td><td>12 min</td><td>Un lot de textures PBR sur le socle</td><td>2</td><td>Démo Poly Haven 2 + démo 3 + guidé 5 + <em>Pack Resources</em> 1 + quiz 1</td></tr>
+<tr><td>2:44</td><td>10 min</td><td>Pause</td><td></td><td></td></tr>
+<tr><td>2:54</td><td>18 min</td><td>Ranger ses matières en actifs</td><td>3</td><td>Démo 6 + guidé 7 + autonomie 4 + quiz 1</td></tr>
+<tr><td>3:12</td><td>12 min</td><td>Réutiliser : récupérer une matière par Append</td><td>3</td><td>Démo 5 + guidé 6 + quiz 1</td></tr>
+<tr><td>3:24</td><td>20 min</td><td>Atelier · Le second coloris</td><td></td><td>Lancement 2 + autonomie 16 + revue 2</td></tr>
+<tr><td>3:44</td><td>6 min</td><td>Tour des postes, bilan et passerelle vers le chapitre 4</td><td></td><td>Collectif, dont 1 quiz</td></tr>
 </tbody></table>
+<p>Le lot PBR du socle a pris 12 minutes, reprises ailleurs avec l'accord du formateur (25 novembre 2026) : l'essai du verre dépoli ou fumé devient un défi ★ (−4) ; <em>Pack Resources</em> passe après le lot, un seul geste pour toutes les images (−3) ; le quiz du <em>Bump</em> devient celui du lot (−1) ; la description d'un actif devient un défi ★ (−2) ; le bilan garde une question orale sur deux (−2).</p>
 <h3>0:00 · Ouverture et check-up du modèle (15 min)</h3>
 <ul>
 <li><strong>Le parcours de la lampe (collectif, 5 min) :</strong> bloquée au chapitre 1, modélisée au chapitre 2, habillée aujourd'hui, mise en scène au chapitre 4.
@@ -266,11 +277,11 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 <li>Le câble est une courbe : son onglet <em>Material</em> fonctionne comme celui d'un maillage.
 </li>
-<li>Gardez le nom <code>Alu_Naturel</code> jusqu'à 1:50 : il devient alors <code>Alu_Brosse</code>, ce qui évite un conflit avec l'<code>Alu_Naturel</code> du nuancier à 3:10.
+<li>Gardez le nom <code>Alu_Naturel</code> jusqu'à 1:46 : il devient alors <code>Alu_Brosse</code>, ce qui évite un conflit avec l'<code>Alu_Naturel</code> du nuancier à 3:12.
 </li>
 </ul>
 <h3>1:05 · Pause (10 min)</h3>
-<h3>1:15 · Le verre (20 min)</h3>
+<h3>1:15 · Le verre (16 min)</h3>
 <p><strong>Vous montrez (6 min),</strong> d'après § 1 « Le verre : Transmission » (figure 3.10), « Voir à travers le verre : deux interrupteurs » (figures 3.11 à 3.13) et « Un verre fin : Thin Wall » (figure 3.14) :</p>
 <ol>
 <li>L'ampoule et la tête sélectionnées, <code>/</code> : la vue locale. <code>Verre_Clair</code> sur l'ampoule ; dépliez <em>Transmission</em>, <em>Weight</em> <code>1</code> ; <em>Roughness</em> <code>0</code>. L'ampoule ne montre que le paysage de l'image d'environnement. Faites deviner pourquoi.
@@ -285,7 +296,7 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 </ol>
 <p><strong>Ils font, en guidé (9 min),</strong> d'après § 1 « Recette · Le verre de l'ampoule », étapes 1 à 5, jusqu'au retour par <code>/</code>.</p>
-<p><strong>Ils font, seuls (4 min) :</strong> un verre dépoli (<em>Roughness</em> <code>0.4</code>) ou fumé (<em>Base Color</em> grise). Chacun garde celui qui convient à sa lampe.</p>
+<p><strong>Pour ceux qui ont fini (défi ★, hors minutage) :</strong> un verre dépoli (<em>Roughness</em> <code>0.4</code>) ou fumé (<em>Base Color</em> grise). Chacun garde celui qui convient à sa lampe.</p>
 <p><strong>Quiz (1 min),</strong> ensemble à l'écran : le deuxième quiz de la section 1, les deux interrupteurs.</p>
 <p><strong>Point de contrôle :</strong> en vue de dessous, la douille se voit à travers l'ampoule, sans déformation.</p>
 <p><strong>Corrigé :</strong> <code>Verre_Clair_corrige</code>, sur <em>Ampoule_A</em>. Le fichier de secours a sa case <em>Raytracing</em> décochée : cochez-la pour voir le corrigé à travers le verre.</p>
@@ -302,10 +313,10 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <li>La douille introuvable au contrôle : la vue locale est restée active. <code>/</code>.
 </li>
 </ul>
-<h3>1:35 · Le Shader Editor : la matière en nœuds (15 min)</h3>
+<h3>1:31 · Le Shader Editor : la matière en nœuds (15 min)</h3>
 <p><strong>Vous montrez (6 min),</strong> d'après § 2 « Pourquoi pas de dépliage UV », « Le Shader Editor : la même matière, vue en nœuds » (figure 3.18), « Un nœud, des entrées, des sorties » (figure 3.19), « Se déplacer et agir dans le Shader Editor » et « Ajouter un nœud et le relier » (figures 3.20 et 3.21) :</p>
 <ol>
-<li>Une phrase sur l'UV : « Un dépliage sert à poser une image à un endroit précis, comme un logo. Un grain ou un brossé s'appliquent en 3D, sans dépliage. »
+<li>Une phrase sur l'UV : « Un dépliage sert à poser une image à un endroit précis, comme un logo. Un grain, un brossé ou un lot de textures de bois s'appliquent en 3D, sans dépliage. »
 </li>
 <li>L'onglet <em>Shading</em> : la vue 3D en <em>Material Preview</em> en haut, le Shader Editor en bas, l'éditeur de propriétés à droite.
 </li>
@@ -330,7 +341,7 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <li>Les reflets changent en passant dans l'espace <em>Shading</em> : sa vue 3D a ses propres réglages, dont l'image d'environnement.
 </li>
 </ul>
-<h3>1:50 · Finitions procédurales sans UV (25 min)</h3>
+<h3>1:46 · Finitions procédurales sans UV (25 min)</h3>
 <p>Trois nœuds, l'un après l'autre. Chaque étape suit le même rythme : vous montrez, puis ils font l'étape de la recette, avant la suivante. Ils suivent § 2 « Recette · L'aluminium brossé ». Ajoutez chaque nœud à la chaîne du paperboard.</p>
 <p><strong>Étape 1 · Les coordonnées (démo 3 min, guidé 3 min),</strong> d'après § 2 « Étape 1 · Les coordonnées : Texture Coordinate » (figure 3.22). Reliez de nouveau <em>Color</em> du <em>Noise</em> à <em>Base Color</em> : le motif est étiré sur la longueur du bras. <code>Maj + A &gt; Input &gt; Texture Coordinate</code> ; sa sortie <em>Object</em> vers l'entrée <em>Vector</em> du <em>Noise</em> : le motif garde la même taille partout. La lampe est petite : <em>Scale</em> du <em>Noise</em> passe de 5 à <code>1000</code>, environ un motif par millimètre. Ils font les étapes 1 et 2 de la recette.</p>
 <p><strong>Étape 2 · Le relief (démo 3 min, guidé 4 min),</strong> d'après § 2 « Étape 2 · Du motif au relief : Bump » (figure 3.23). Défaites le lien vers <em>Base Color</em>. <code>Maj + A &gt; Displacement &gt; Bump</code> : <em>Factor</em> du <em>Noise</em> vers <em>Height</em>, <em>Normal</em> du <em>Bump</em> vers <em>Normal</em> du Principled. Le motif devient un relief. <em>Strength</em> passe de 1 à <code>0.2</code> ; <em>Distance</em> garde sa valeur. « La force par défaut est trop forte pour un si petit objet : le relief scintille. » Ils font l'étape 3.</p>
@@ -350,10 +361,10 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 <li>Le <em>Mapping</em> est posé, mais rien ne s'étire : la sortie <em>Object</em> va encore directement au <em>Noise</em>.
 </li>
-<li>La matière n'a pas été renommée <code>Alu_Brosse</code> : faites-le maintenant, sinon l'Append de 3:10 donnera <code>Alu_Naturel.001</code>.
+<li>La matière n'a pas été renommée <code>Alu_Brosse</code> : faites-le maintenant, sinon l'Append de 3:12 donnera <code>Alu_Naturel.001</code>.
 </li>
 </ul>
-<h3>2:15 · Projection triplanaire d'images (25 min)</h3>
+<h3>2:11 · Projection triplanaire d'images (21 min)</h3>
 <p><strong>Vous montrez (8 min),</strong> d'après § 2 « Une image projetée sur trois axes : Box » (figures 3.25 à 3.28), « Les images de données : Non-Color » (figure 3.29) et « L'échelle appliquée, condition de la projection » (figure 3.30), sur <code>PRC02_ch3_finitions_triplanaires.blend</code>, qui s'ouvre sur l'espace <em>Shading</em>, l'accoudoir sélectionné :</p>
 <ol>
 <li>L'accoudoir n'a pas de dépliage UV. Sa matière a son Principled réglé et un nœud <em>Image Texture</em> déjà chargé, <code>grain_cuir</code>, non relié. Reliez l'image à <em>Base Color</em>, sans coordonnées : rien de lisible. Avec <em>Texture Coordinate</em> (<em>Object</em>) et la projection <em>Flat</em> : l'image coule sur les flancs.
@@ -380,9 +391,9 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <li><em>Texture Coordinate</em> (<em>Object</em>), <em>Mapping</em> (<em>Scale</em> <code>50</code> sur les trois axes), l'image, <em>Bump</em> (<em>Strength</em> <code>0.2</code>), puis <em>Normal</em>.
 </li>
 </ol>
-<p><strong>Ils font, seuls (6 min),</strong> d'après § 2 « Consignes · Sans raccord, puis empaqueter » : le tour du socle, <em>Blend</em> et <em>Scale</em> réglés jusqu'à ne plus voir de raccord ; <em>File &gt; External Data &gt; Pack Resources</em> (figure 3.31) ; <code>Ctrl + S</code>.</p>
-<p><strong>Quiz (2 min),</strong> ensemble à l'écran : les deuxième et troisième quiz de la section 2, le grain étiré et le nœud <em>Bump</em>.</p>
-<p><strong>Point de contrôle :</strong> le socle est grainé, la tête reste laquée et lisse ; aucun raccord au tour du socle. Après <em>Pack Resources</em>, le fichier ne dépend plus du dossier <code>textures_cmf</code>.</p>
+<p><strong>Ils font, seuls (3 min),</strong> d'après § 2 « Consignes · Sans raccord » : le tour du socle, <em>Blend</em> et <em>Scale</em> réglés jusqu'à ne plus voir de raccord ; <code>Ctrl + S</code>. <em>Pack Resources</em> attend la fin du lot PBR : un seul geste pour toutes les images.</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le deuxième quiz de la section 2, le grain étiré.</p>
+<p><strong>Point de contrôle :</strong> le socle est grainé, la tête reste laquée et lisse ; aucun raccord au tour du socle.</p>
 <p><strong>Corrigé :</strong> <code>Structure_Vert_corrige</code>, sur <em>Socle_A</em>. Pour la démo : la collection masquée <em>Corrigé</em> du fichier des finitions.</p>
 <p><strong>Pièges fréquents :</strong></p>
 <ul>
@@ -390,16 +401,61 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 <li>Un grain trop contrasté, ou un peu coloré : <em>Color Space</em> est resté en <em>sRGB</em>.
 </li>
-<li>Le nœud <em>Normal Map</em> ne convient pas ici : il a besoin d'un dépliage UV. Le nœud <em>Bump</em> suffit.
+<li>Le grain du socle est une image de hauteur, en niveaux de gris : elle passe par un <em>Bump</em>. Une carte de normales passe par un <em>Normal Map</em> : c'est la séquence suivante, sans dépliage UV elle aussi.
 </li>
 <li>L'image introuvable : l'archive n'a pas été décompressée (clic droit &gt; <em>Extraire tout</em>), ou le dossier <code>textures_cmf</code> n'est pas à côté du fichier de travail.
 </li>
 </ul>
-<h3>2:40 · Pause (10 min)</h3>
-<h3>2:50 · Ranger ses matières en actifs (20 min)</h3>
-<p><strong>Vous montrez (6 min),</strong> d'après § 3 « Pourquoi une bibliothèque » (figure 3.33), « Faire d'une matière un actif » (figure 3.34), « Le sélecteur de type d'éditeur » (figures 3.35 et 3.36), « Ranger en catalogues » (figure 3.37), « Décrire un actif » (figure 3.38) et « Appliquer un actif par glisser-déposer » (figure 3.39) :</p>
+<h3>2:32 · Un lot de textures PBR sur le socle (12 min)</h3>
+<p><strong>Vous montrez le téléchargement (2 min),</strong> d'après § 2 « Un lot de textures PBR » et « Où trouver des lots : Poly Haven », dans votre navigateur :</p>
 <ol>
-<li>Une phrase : « Une équipe CMF réutilise ses matières d'un projet à l'autre, au lieu de les recréer. » La figure 3.33 montre le nuancier de la classe.
+<li>« Un designer CMF part le plus souvent d'un échantillon numérisé : un lot de textures PBR. Une image par réglage du Principled : la couleur, la rugosité, les normales, la hauteur. »
+</li>
+<li>La page <code>https://polyhaven.com/a/walnut_veneer_02</code> : la licence CC0 et la taille réelle de l'échantillon, « 1m wide ». « CC0 : tout usage est permis, y compris commercial, sans attribution obligatoire. »
+</li>
+<li>La définition, en haut à droite : passez de 4K à 1K, « assez pour un objet de 18 cm ». La flèche à droite de <em>Download</em> liste les cartes : <em>Diffuse</em>, <em>Rough</em>, <em>Normal (GL)</em>, <em>Displacement</em>, chacune en EXR, JPG ou PNG. Téléchargez une carte en JPG.
+</li>
+<li>« Le dossier <code>textures_pbr</code> de l'application contient déjà trois lots : le noyer, un béton lisse et un palissandre verni. »
+</li>
+</ol>
+<p><strong>Vous montrez la chaîne (3 min),</strong> d'après § 2 « Toutes les cartes en projection Box », « La carte de normales : Normal Map » (figure 3.31), « Garder une matière : le bouclier » (figure 3.32) et la recette (figures 3.33 à 3.35), sur votre copie de la lampe, dans l'espace <em>Shading</em>, le socle sélectionné :</p>
+<ol>
+<li>Le bouclier de <code>Structure_Vert</code> : « Une matière qu'aucune pièce ne porte disparaît à l'enregistrement. Le bouclier la garde, pour le coloris B. » Puis le bouton de copie, juste à droite : <code>Bois_Noyer</code>.
+</li>
+<li>Dans le nœud <em>Image Texture</em>, le bouton de dossier : la carte <code>diff</code>, en <em>sRGB</em>, vers <em>Base Color</em> ; le <em>Bump</em> supprimé ; <em>Scale</em> du <em>Mapping</em> à <code>2</code>.
+</li>
+<li><code>Maj + D</code> sur l'image : une copie, déjà en <em>Box</em>. Le lien du <em>Mapping</em>, la carte <code>rough</code> en <em>Non-Color</em>, vers <em>Roughness</em>.
+</li>
+<li>Encore <code>Maj + D</code> : la carte <code>nor_gl</code>, en <em>Non-Color</em>. <code>Maj + A &gt; Displacement &gt; Normal Map</code>, à côté de <em>Bump</em> : « Une carte de normales n'est pas une hauteur. Elle passe par <em>Normal Map</em>, en projection <em>Box</em>, sans dépliage UV. » Faites tourner l'image d'environnement : les reflets suivent le fil du bois.
+</li>
+<li><strong>Ailleurs :</strong> une tablette en placage de bois (ferroviaire, aviation d'affaires), un dessus de console (automobile).
+</li>
+</ol>
+<p><strong>Ils font, en guidé (5 min),</strong> d'après § 2 « Recette · Un lot PBR sur le socle », étapes 1 à 4 : le bouclier et la copie <code>Bois_Noyer</code> ; la couleur ; la rugosité ; les normales et le <em>Normal Map</em>.</p>
+<p><strong>Ils font, seuls (1 min),</strong> d'après § 2 « Consignes · Votre lot, puis empaqueter » : <em>File &gt; External Data &gt; Pack Resources</em> (figure 3.38), puis <code>Ctrl + S</code>. Le choix d'un autre lot, béton ou palissandre, se fait pendant l'atelier ou après la séance.</p>
+<p><strong>Quiz (1 min),</strong> ensemble à l'écran : le troisième quiz de la section 2, le nœud <em>Normal Map</em>.</p>
+<p><strong>Point de contrôle :</strong> le socle porte le veinage du noyer, net et sans raccord ; <code>Structure_Vert</code> reste dans la liste des matières, son bouclier activé. Après <em>Pack Resources</em>, le fichier ne dépend plus des dossiers <code>textures_cmf</code> et <code>textures_pbr</code>.</p>
+<p><strong>Corrigé :</strong> <code>Bois_Noyer_corrige</code>, sur <em>Socle_PBR</em>, dans la collection masquée <em>Corrigé socle PBR</em>, devant la lampe du coloris A. La collection <em>Corrigé coloris A</em> garde le socle en peinture structurée : c'est l'état de 2:11.</p>
+<p><strong>Pièges fréquents :</strong></p>
+<ul>
+<li>Le socle devient bleu violet : la carte <code>nor_gl</code> est reliée à <em>Base Color</em>. Elle va dans le <em>Normal Map</em>.
+</li>
+<li>Des creux en bosse : la carte <code>nor_dx</code> a été téléchargée au lieu de <code>nor_gl</code>.
+</li>
+<li>Un bois délavé : la carte <code>diff</code> est en <em>Non-Color</em>. Un socle trop brillant ou trop mat : la carte <code>rough</code> est restée en <em>sRGB</em>.
+</li>
+<li>Une carte décalée des autres : son entrée <em>Vector</em> n'est pas reliée au <em>Mapping</em>. <code>Maj + D</code> ne copie pas ce lien.
+</li>
+<li>Le bouclier oublié : <code>Structure_Vert</code> disparaîtra à la prochaine ouverture. Activez-le maintenant ; sinon, le coloris B reprendra <code>Structure_Vert_corrige</code>.
+</li>
+<li>Un apprenant qui a activé <em>Node Wrangler</em> et charge le lot par <code>Ctrl + Maj + T</code> (figure 3.37) : sortie <em>Object</em> au lieu de <em>UV</em>, chaque image en <em>Box</em>, et pas de carte <code>disp</code>.
+</li>
+</ul>
+<h3>2:44 · Pause (10 min)</h3>
+<h3>2:54 · Ranger ses matières en actifs (18 min)</h3>
+<p><strong>Vous montrez (6 min),</strong> d'après § 3 « Pourquoi une bibliothèque » (figure 3.39), « Faire d'une matière un actif » (figure 3.40), « Le sélecteur de type d'éditeur » (figures 3.41 et 3.42), « Ranger en catalogues » (figure 3.43), « Décrire un actif » (figure 3.44) et « Appliquer un actif par glisser-déposer » (figure 3.45) :</p>
+<ol>
+<li>Une phrase : « Une équipe CMF réutilise ses matières d'un projet à l'autre, au lieu de les recréer. » La figure 3.39 montre le nuancier de la classe.
 </li>
 <li>Clic droit sur le nom de <code>Alu_Brosse</code>, dans l'onglet <em>Material</em> : <em>Mark as Asset</em>. Une vignette se calcule.
 </li>
@@ -407,7 +463,7 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 <li>Le bouton <code>+</code> de la liste des catalogues : <em>Métaux</em>, renommé d'un double-clic. Glissez la vignette dessus.
 </li>
-<li>La barre latérale (<code>N</code>) : une description, par exemple « Aluminium brossé. Bras de lampe ; convient aussi à une main courante ou à une jante. »
+<li>La barre latérale (<code>N</code>) : une description, par exemple « Aluminium brossé. Bras de lampe ; convient aussi à une main courante ou à une jante. » Les apprenants le feront en défi ★.
 </li>
 <li>La douille est encore nue : glissez sur elle la vignette de <code>Chrome</code>. Blender affiche « Drop Chrome on Douille ». « Un essai : la douille recevra mieux tout à l'heure. »
 </li>
@@ -415,7 +471,7 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 </ol>
 <p><strong>Ils font, en guidé (7 min),</strong> d'après § 3 « Recette · Ranger les matières de la lampe », étapes 1 à 5 : <code>Alu_Brosse</code>, <code>Chrome</code> et <code>Peinture_Vert</code> en actifs ; trois catalogues, <em>Métaux</em>, <em>Plastiques et peintures</em> et <em>Verres</em> ; le rangement ; <code>Chrome</code> glissé sur la douille.</p>
-<p><strong>Ils font, seuls (6 min),</strong> d'après § 3 « Consignes · Jusqu'à la dernière matière » : <code>Structure_Vert</code>, <code>ABS_Noir</code>, <code>PVC_Mat_Noir</code> et <code>Verre_Clair</code> marqués et rangés ; un actif décrit, au choix ; <code>Ctrl + S</code>, puis un coup d'œil dans l'Explorateur Windows : <code>blender_assets.cats.txt</code> est apparu.</p>
+<p><strong>Ils font, seuls (4 min),</strong> d'après § 3 « Consignes · Jusqu'à la dernière matière » : <code>ABS_Noir</code>, <code>PVC_Mat_Noir</code>, <code>Verre_Clair</code> et la matière du socle (<code>Bois_Noyer</code>…) marqués et rangés, le socle dans un quatrième catalogue, <em>Bois et minéraux</em> ; <code>Ctrl + S</code>, puis un coup d'œil dans l'Explorateur Windows : <code>blender_assets.cats.txt</code> est apparu. Décrire un actif devient un défi ★.</p>
 <p><strong>Quiz (1 min),</strong> ensemble à l'écran : le troisième quiz de la section 3, <em>Current File</em>.</p>
 <p><strong>Point de contrôle :</strong> dans <em>Current File</em>, chaque matière de la lampe est rangée dans un catalogue ; <em>Métaux</em> montre l'aluminium brossé et le chrome. La douille est chromée.</p>
 <p><strong>Corrigé :</strong> la bibliothèque CMF elle-même, avec ses actifs, ses catalogues, ses descriptions et ses étiquettes. Les matières <code>_corrige</code> du fichier de secours ne sont pas des actifs.</p>
@@ -432,8 +488,8 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <li>Les catalogues ont disparu après une copie du fichier : <code>blender_assets.cats.txt</code> est resté dans l'ancien dossier. Les actifs, eux, sont toujours là. Gardez aussi la lampe hors du dossier <code>PRC02_bibliotheque_CMF</code>, qui a son propre fichier de catalogues.
 </li>
 </ul>
-<h3>3:10 · Réutiliser : récupérer une matière par Append (12 min)</h3>
-<p><strong>Vous montrez (5 min),</strong> d'après § 3 « Récupérer une matière : File &gt; Append » (figure 3.40) et « Un fichier .blend s'ouvre comme un dossier » (figure 3.41) :</p>
+<h3>3:12 · Réutiliser : récupérer une matière par Append (12 min)</h3>
+<p><strong>Vous montrez (5 min),</strong> d'après § 3 « Récupérer une matière : File &gt; Append » (figure 3.46) et « Un fichier .blend s'ouvre comme un dossier » (figure 3.47) :</p>
 <ol>
 <li>Le nuancier de 0:35 : « La gamme CMF de la classe. » Revenez à la lampe par <em>File &gt; Open Recent</em>.
 </li>
@@ -445,7 +501,7 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 <li>« Le chapitre 4 reprendra ce geste, dans le dossier <em>Collection</em>, pour amener la lampe dans son studio. »
 </li>
-<li>En option (1 min), d'après § 3 « Option : déclarer une bibliothèque » et « Option : la section Asset Libraries » (figures 3.42 à 3.44) : sur votre poste, la bibliothèque déclarée dans <em>Edit &gt; Preferences &gt; Asset Libraries</em> apparaît dans le menu des bibliothèques de l'Asset Browser. Le menu <em>Import Settings</em> propose <em>Follow Asset or Preferences</em>, <em>Link</em>, <em>Append</em> et <em>Pack</em>. Une bibliothèque déclarée importe en <em>Pack</em> par défaut : pour une matière à modifier, on préfère <em>Append</em>. « C'est l'usage d'une équipe. Aujourd'hui, nous ne touchons pas aux préférences des postes. »
+<li>En option (1 min), d'après § 3 « Option : déclarer une bibliothèque » et « Option : la section Asset Libraries » (figures 3.48 à 3.50) : sur votre poste, la bibliothèque déclarée dans <em>Edit &gt; Preferences &gt; Asset Libraries</em> apparaît dans le menu des bibliothèques de l'Asset Browser. Le menu <em>Import Settings</em> propose <em>Follow Asset or Preferences</em>, <em>Link</em>, <em>Append</em> et <em>Pack</em>. Une bibliothèque déclarée importe en <em>Pack</em> par défaut : pour une matière à modifier, on préfère <em>Append</em>. « C'est l'usage d'une équipe. Aujourd'hui, nous ne touchons pas aux préférences des postes. »
 </li>
 <li><strong>Ailleurs :</strong> la gamme de teintes d'un constructeur automobile, la charte des intérieurs d'une compagnie aérienne, les matières homologuées feu et fumée d'un aménagement ferroviaire.
 </li>
@@ -458,24 +514,20 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <ul>
 <li>Pas de dossier <em>Material</em> : l'apprenant est resté dans le dossier <code>PRC02_bibliotheque_CMF</code>. Double-clic sur le fichier <code>.blend</code>.
 </li>
-<li>La matière s'appelle <code>Alu_Naturel.001</code> : l'aluminium des bras n'a pas été renommé <code>Alu_Brosse</code> à 1:50. Renommez les deux.
+<li>La matière s'appelle <code>Alu_Naturel.001</code> : l'aluminium des bras n'a pas été renommé <code>Alu_Brosse</code> à 1:46. Renommez les deux.
 </li>
 <li>Des réglages grisés : la matière a été liée par <em>File &gt; Link</em>. <code>Ctrl + Z</code>, puis <em>File &gt; Append</em>.
 </li>
 <li>Le dossier introuvable : l'archive n'a pas été décompressée (clic droit &gt; <em>Extraire tout</em>).
 </li>
 </ul>
-<h3>3:22 · Atelier · Le second coloris (20 min)</h3>
+<h3>3:24 · Atelier · Le second coloris (20 min)</h3>
 <p>La fiche complète est plus bas. Le lancement dure 2 minutes, l'autonomie 16 minutes et la revue 2 minutes.</p>
-<h3>3:42 · Tour des postes, bilan et passerelle (8 min)</h3>
+<h3>3:44 · Tour des postes, bilan et passerelle (6 min)</h3>
 <ul>
-<li><strong>Tour des postes (3 min) :</strong> les écrans en <em>Material Preview</em>, les deux coloris côte à côte. Tout le monde fait le tour.
+<li><strong>Tour des postes (2 min) :</strong> les écrans en <em>Material Preview</em>, les deux coloris côte à côte, chaque socle avec son lot. Tout le monde fait le tour.
 </li>
-<li><strong>Deux questions (2 min) :</strong>
-<ul>
-<li>« Métal ou plastique : quel réglage décide ? »</li>
-<li>« Pourquoi l'ampoule ne montrait-elle que l'image d'environnement ? »</li>
-</ul>
+<li><strong>Une question (1 min) :</strong> « Pourquoi l'ampoule ne montrait-elle que l'image d'environnement ? »
 </li>
 <li><strong>Quiz (1 min),</strong> ensemble à l'écran : le deuxième quiz de la section 3, <em>Link</em> face à <em>Append</em>. Puis : « Append ou Link, pour envoyer votre fichier à un client ? »
 </li>
@@ -486,7 +538,7 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </ul>
 <div class="pagebreak"></div>
 <h2>Atelier · Le second coloris</h2>
-<p><strong>Fichier :</strong> <code>lampe_habillage_v001.blend</code>, enregistré sous <code>lampe_habillage_v002.blend</code> · <strong>Durée :</strong> 20 min · <strong>De 3:22 à 3:42</strong></p>
+<p><strong>Fichier :</strong> <code>lampe_habillage_v001.blend</code>, enregistré sous <code>lampe_habillage_v002.blend</code> · <strong>Durée :</strong> 20 min · <strong>De 3:24 à 3:44</strong></p>
 <p><strong>Situation :</strong> « La revue de design demande une seconde proposition de couleurs : le coloris B. »</p>
 <p><strong>Objectif :</strong> décliner la lampe dans un second coloris, sans toucher au premier.</p>
 <p><strong>Pourquoi il fonctionne :</strong></p>
@@ -500,10 +552,10 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </ul>
 <p><strong>Le socle, en 5 étapes :</strong></p>
 <table><thead><tr><th>Étape</th><th>Ce qu'il faut faire</th><th>Gestes réinvestis</th></tr></thead><tbody>
-<tr><td>1</td><td>Clic droit sur <em>Lampe</em> &gt; <em>Duplicate Collection</em> (figure 3.45) ; la copie renommée <code>Lampe_coloris_B</code></td><td><em>Duplicate Collection</em> (chapitre 1)</td></tr>
+<tr><td>1</td><td>Clic droit sur <em>Lampe</em> &gt; <em>Duplicate Collection</em> (figure 3.51) ; la copie renommée <code>Lampe_coloris_B</code></td><td><em>Duplicate Collection</em> (chapitre 1)</td></tr>
 <tr><td>2</td><td>Clic droit sur <code>Lampe_coloris_B</code> &gt; <em>Select Objects</em>, puis <code>G X = 750mm</code></td><td>Saisie avec unité (chapitre 1)</td></tr>
 <tr><td>3</td><td>Sur chaque pièce à changer : un clic sur le compteur de sa matière, puis un nouveau nom (<code>Laque_Blanche</code>…)</td><td>Le compteur d'utilisateurs (section 1, initiation)</td></tr>
-<tr><td>4</td><td>Au moins quatre matières changées, dont une peinture et un métal</td><td><em>Base Color</em>, <em>Metallic</em>, <em>Roughness</em>, <em>Coat</em>, le verre ; les nœuds suivent la copie</td></tr>
+<tr><td>4</td><td>Au moins quatre matières changées, dont une peinture et un métal. Pour le socle : <code>Structure_Vert</code>, gardée par son bouclier, copiée en <code>Structure_Blanche</code>, ou un autre lot PBR</td><td><em>Base Color</em>, <em>Metallic</em>, <em>Roughness</em>, <em>Coat</em>, le verre ; les nœuds suivent la copie ; le bouton de copie et les cartes d'un lot (section 2)</td></tr>
 <tr><td>5</td><td>Une teinte du coloris B changée : le coloris A ne bouge pas. <em>File &gt; Save As</em>, bouton <code>+</code> : <code>lampe_habillage_v002.blend</code></td><td>L'enregistrement incrémental (initiation)</td></tr>
 </tbody></table>
 <p><strong>Déroulé :</strong></p>
@@ -532,11 +584,13 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 <li><code>ABS_Noir</code> et <code>PVC_Mat_Noir</code> peuvent rester partagées : seule une matière que l'on change doit être rendue indépendante.
 </li>
+<li>Le socle du coloris B porte d'abord le lot PBR du coloris A : la peinture structurée revient par la liste des matières, grâce à son bouclier. Sans bouclier, elle a disparu à la réouverture : reprenez <code>Structure_Vert_corrige</code> du fichier de secours, ou un autre lot.
+</li>
 <li>La collection <em>Lampe</em> renommée par erreur : redonnez-lui son nom, le chapitre 4 la cherche.
 </li>
 </ul>
-<p><strong>Corrigé :</strong> la collection masquée <em>Corrigé coloris B</em> de <code>PRC02_ch3_lampe_a_habiller.blend</code>, objets suffixés <code>_B</code> : <code>Structure_Blanche_corrige</code>, <code>Laque_Blanche_corrige</code>, <code>Alu_Anodise_Noir_corrige</code> (brossé), <code>Laiton_corrige</code> sur les articulations et la douille, <code>Verre_Depoli_corrige</code>. <code>ABS_Noir_corrige</code> et <code>PVC_Mat_Noir_corrige</code> y restent partagées avec le coloris A. La lampe habillée, <code>PRC02_ch3_lampe_habillage.zip</code>, montre le même résultat sous les vrais noms (figure 3.46).</p>
-<p><strong>Ce que le chapitre 4 attend :</strong> <code>lampe_habillage_v002.blend</code>, avec la collection <em>Lampe</em> en coloris A et <code>Lampe_coloris_B</code> ; des images empaquetées et aucune matière liée ; le verre avec <em>Raytraced Transmission</em> et <em>Thin Wall</em> ; EEVEE, case <em>Raytracing</em> cochée. Un atelier inachevé ne bloque personne : le chapitre 4 a son propre fichier de secours, <code>PRC02_ch4_lampe_en_studio.blend</code>, tiré de la lampe habillée.</p>
+<p><strong>Corrigé :</strong> la collection masquée <em>Corrigé coloris B</em> de <code>PRC02_ch3_lampe_a_habiller.blend</code>, objets suffixés <code>_B</code> : <code>Structure_Blanche_corrige</code>, <code>Laque_Blanche_corrige</code>, <code>Alu_Anodise_Noir_corrige</code> (brossé), <code>Laiton_corrige</code> sur les articulations et la douille, <code>Verre_Depoli_corrige</code>. <code>ABS_Noir_corrige</code> et <code>PVC_Mat_Noir_corrige</code> y restent partagées avec le coloris A. La lampe habillée, <code>PRC02_ch3_lampe_habillage.zip</code>, montre le même résultat sous les vrais noms (figure 3.52) ; son coloris A garde le socle en peinture structurée.</p>
+<p><strong>Ce que le chapitre 4 attend :</strong> <code>lampe_habillage_v002.blend</code>, avec la collection <em>Lampe</em> en coloris A, son socle en lot PBR, et <code>Lampe_coloris_B</code> ; des images empaquetées, cartes du lot comprises, et aucune matière liée ; le verre avec <em>Raytraced Transmission</em> et <em>Thin Wall</em> ; EEVEE, case <em>Raytracing</em> cochée. Un atelier inachevé ne bloque personne : le chapitre 4 a son propre fichier de secours, <code>PRC02_ch4_lampe_en_studio.blend</code>, tiré de la lampe habillée.</p>
 <h2>Le défi facultatif · Matières procédurales</h2>
 <p>Le Défi 2 de la rubrique « Pour aller plus loin » de la barre latérale, qui prolonge ce chapitre, hors programme de base et hors minutage : environ 3 heures, en deux paliers et sept étapes. Vous n'en faites aucune démonstration.</p>
 <p><strong>À qui :</strong> aux apprenants qui parcourent vite le contenu principal, et à ceux qui maîtrisent déjà ces sujets. En cas de doute, les trois quiz de la section 2 servent de test d'entrée.</p>
@@ -592,7 +646,7 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <ul>
 <li>Les binômes et les copilotes de l'initiation restent en place.
 </li>
-<li>La section 1 ne montre aucun nœud : rassurez ceux qu'inquiète le Shader Editor, il n'arrive qu'à 1:35, à partir d'une matière déjà connue.
+<li>La section 1 ne montre aucun nœud : rassurez ceux qu'inquiète le Shader Editor, il n'arrive qu'à 1:31, à partir d'une matière déjà connue.
 </li>
 <li>Le LISEZ-MOI de la lampe reprend chaque partie par paliers. Les valeurs restent indicatives : chacun compose sa gamme, seuls les noms comptent pour la suite.
 </li>
@@ -609,11 +663,13 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <ul>
 <li>Les paliers ★ et ★★ de l'atelier.
 </li>
-<li><strong>Les défis ★ de l'application :</strong> le verre dépoli et le verre fumé ; l'intérieur blanc de la tête, par un second emplacement et le <em>Material Offset</em> du <em>Solidify</em> (figures 3.16 et 3.17) ; un voyant lumineux par <em>Emission</em> (figure 3.15) ; <em>File &gt; Link</em> d'une matière du nuancier, qui arrive grisée (figure 3.47), puis <code>Ctrl + Z</code> ; <code>Ctrl + L &gt; Link Materials</code>.
+<li><strong>Le lot PBR :</strong> un autre lot sur le socle, béton ou palissandre ; la carte de hauteur <code>disp</code> dans un <em>Bump</em> chaîné au <em>Normal Map</em> (★) ; un lot chargé d'un coup par <code>Ctrl + Maj + T</code> de <em>Node Wrangler</em>, puis repassé en <em>Box</em> (figure 3.37).
+</li>
+<li><strong>Les défis ★ de l'application :</strong> le verre dépoli et le verre fumé ; la description d'un actif ; l'intérieur blanc de la tête, par un second emplacement et le <em>Material Offset</em> du <em>Solidify</em> (figures 3.16 et 3.17) ; un voyant lumineux par <em>Emission</em> (figure 3.15) ; <em>File &gt; Link</em> d'une matière du nuancier, qui arrive grisée (figure 3.53), puis <code>Ctrl + Z</code> ; <code>Ctrl + L &gt; Link Materials</code>.
 </li>
 <li><strong>La bibliothèque déclarée (★) :</strong> dans <em>Edit &gt; Preferences &gt; Asset Libraries</em>, puis une vignette glissée et le menu <em>Import Method</em>. Elle s'enregistre dans les préférences du poste : prévenez le gestionnaire si la salle est partagée.
 </li>
-<li><strong>Les articulations microbillées (★★ dans le LISEZ-MOI) :</strong> la consigne de 1:50.
+<li><strong>Les articulations microbillées (★★ dans le LISEZ-MOI) :</strong> la consigne de 1:46.
 </li>
 <li><strong>Automobile (★★) :</strong> la peinture métallisée du nuancier, <code>Peinture_Metallisee_Bleu</code>, décortiquée dans le Shader Editor, puis reproduite.
 </li>
@@ -635,7 +691,7 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 <li><strong>Jugez aux reflets.</strong> Un métal, une laque ou un brossé se jugent aux reflets, pas à la teinte. Faites tourner l'image d'environnement, ou la vue, avant de valider.
 </li>
-<li><strong>Le compteur avant la modification.</strong> Posez la question à chaque changement de finition ou de coloris : « Cette matière est-elle partagée ? » Elle revient au socle structuré et dans tout l'atelier.
+<li><strong>Le compteur avant la modification.</strong> Posez la question à chaque changement de finition ou de coloris : « Cette matière est-elle partagée ? » Elle revient au socle structuré et dans tout l'atelier. Au lot PBR, une seconde question : « Cette matière doit-elle rester dans le fichier ? » Le bouclier la garde.
 </li>
 <li><strong>Les valeurs sont des points de départ.</strong> Teintes, <em>Roughness</em>, <em>Scale</em> et <em>Strength</em> se règlent à l'œil. Seuls les noms des matières et de la collection <em>Lampe</em> comptent pour le chapitre 4.
 </li>
@@ -646,13 +702,14 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 <p>Raccourcissez dans cet ordre :</p>
 <table><thead><tr><th>Ordre</th><th>Ce que l'on coupe</th><th>Ce que l'on garde</th></tr></thead><tbody>
 <tr><td>D'abord</td><td><em>Coat</em> : démo seule, sans essai</td><td>Le réglage montré, que l'atelier peut réinvestir</td></tr>
-<tr><td>D'abord</td><td>L'option de la bibliothèque déclarée ; les descriptions des actifs</td><td><em>Mark as Asset</em> et les catalogues</td></tr>
-<tr><td>Ensuite</td><td>L'autonomie du verre : un verre dépoli ou fumé</td><td>Les deux interrupteurs et <em>Thin Wall</em></td></tr>
+<tr><td>D'abord</td><td>L'option de la bibliothèque déclarée</td><td><em>Mark as Asset</em> et les catalogues</td></tr>
+<tr><td>D'abord</td><td>La démo du téléchargement sur Poly Haven : projetez le § 2 « Où trouver des lots : Poly Haven »</td><td>Le lot du dossier <code>textures_pbr</code>, posé sur le socle</td></tr>
 <tr><td>Ensuite</td><td>L'autonomie du procédural, le grain de l'ABS</td><td>La chaîne du brossé, en trois étapes</td></tr>
-<tr><td>Ensuite</td><td>L'autonomie de la projection, réduite à <em>Pack Resources</em> et à l'enregistrement</td><td>La projection <em>Box</em> sur le socle</td></tr>
+<tr><td>Ensuite</td><td>L'autonomie de la projection, réduite à l'enregistrement</td><td>La projection <em>Box</em> sur le socle</td></tr>
+<tr><td>Ensuite</td><td>Le lot PBR réduit à deux cartes, la couleur et les normales ; la rugosité après la séance</td><td>Le <em>Normal Map</em> en projection <em>Box</em>, puis <em>Pack Resources</em></td></tr>
 <tr><td>En dernier</td><td>L'atelier réduit à son socle, en 10 minutes ; la suite après la séance, avec le LISEZ-MOI et <em>Corrigé coloris B</em></td><td><code>Lampe_coloris_B</code> et l'enregistrement sous <code>lampe_habillage_v002.blend</code></td></tr>
 </tbody></table>
-<p><strong>Ce qui ne saute jamais,</strong> car le chapitre 4 s'en sert : <em>Material Preview</em> et le Principled (<em>Metallic</em>, <em>Roughness</em>) ; le verre et ses deux interrupteurs ; le Shader Editor et la chaîne du brossé ; la projection <em>Box</em> sur le socle ; <em>Mark as Asset</em> et <em>File &gt; Append</em> ; l'enregistrement final, images empaquetées.</p>
+<p><strong>Ce qui ne saute jamais,</strong> car le chapitre 4 s'en sert : <em>Material Preview</em> et le Principled (<em>Metallic</em>, <em>Roughness</em>) ; le verre et ses deux interrupteurs ; le Shader Editor et la chaîne du brossé ; la projection <em>Box</em> sur le socle ; le lot PBR et son <em>Normal Map</em> ; <em>Mark as Asset</em> et <em>File &gt; Append</em> ; l'enregistrement final, images empaquetées.</p>
 <h2>Si vous êtes en avance</h2>
 <ul>
 <li><strong>L'atelier s'enrichit :</strong> les paliers ★, puis le coloris C du palier ★★.
@@ -661,10 +718,12 @@ hr + p { font-size: 8.5pt; color: var(--ink-subtle); }
 </li>
 <li><strong>Les finitions triplanaires :</strong> l'accoudoir, puis la coque (★), puis le marchepied et le carbone (★★), d'après le LISEZ-MOI du fichier.
 </li>
+<li><strong>Le socle, trois lots :</strong> chacun essaie le béton et le palissandre, puis garde le lot de son coloris A ; montrez la figure 3.35.
+</li>
 <li><strong>Le défi facultatif,</strong> pour ceux qui le veulent, à partir de l'étape 1.
 </li>
 </ul>
 <hr>
-<p>Les fichiers du chapitre se reconstruisent avec les scripts de <code>tool/exercices_ch3/</code> : <code>construire.ps1</code> pour la lampe, la bibliothèque et les finitions (option <code>-Textures</code> pour les images), <code>build_defi.py</code> pour le défi facultatif. Les textes LISEZ-MOI se lisent dans les scripts <code>build_*.py</code>. Ce document se convertit en PDF avec <code>tool/deroule_initiation/export_pdf.ps1 -Source _resources\PRC02-deroule-chap3.md</code>.</p>
+<p>Les fichiers du chapitre se reconstruisent avec les scripts de <code>tool/exercices_ch3/</code> : <code>construire.ps1</code> pour la lampe, la bibliothèque et les finitions (option <code>-Textures</code> pour les images), <code>textures_pbr.py</code> pour le zip des lots de Poly Haven (cartes rangées hors du dépôt, dans <code>tool/exercices_ch3/textures_pbr/</code>), <code>build_defi.py</code> pour le défi facultatif. Les textes LISEZ-MOI se lisent dans les scripts <code>build_*.py</code>. Ce document se convertit en PDF avec <code>tool/deroule_initiation/export_pdf.ps1 -Source _resources\PRC02-deroule-chap3.md</code>.</p>
 </body>
 </html>
